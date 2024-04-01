@@ -37,7 +37,9 @@ h1 {
   background-color: var(--background-color);
   color:var(--text-color);
 }
-.highlight{color:var(--theme-color);}
+.highlight{
+  color:var(--theme-color);
+}
 *{
   transition:all .2s;
 }
