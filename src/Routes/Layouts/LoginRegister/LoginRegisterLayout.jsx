@@ -6,6 +6,7 @@ const LoginRegisterLayout=()=>{
     return(
         <div className="container">
             <img width="50em" src={logo} alt="Logo" />
+            <h2 className="highlight">TARUN INDIA TYPING</h2>
             <Outlet/>
         </div>
     )
