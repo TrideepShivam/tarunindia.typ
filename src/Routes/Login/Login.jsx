@@ -1,19 +1,26 @@
+import { useRef } from 'react';
 import Button from '../../Components/Button/Button';
 import Hyperlink from '../../Components/Hyperlink/Hyperlink';
 import Textbox from '../../Components/Textbox/Textbox';
 import './Login.css'
  
 const Login=()=>{
-    
+    const emailRef = useRef()
+    const pwdRef = useRef()
     const handleLogin=()=>{
-        console.log("clicked");
+        console.log(emailRef.current.value+" "+pwdRef.current.value);
+        pwdRef.current.value=""
+        pwdRef.current.focus()
+        pwdRef.current.blur()
+        emailRef.current.focus()
+        emailRef.current.value=""
     }
 
     return(
         <div className="loginContainer">
             <h2>Login</h2>
-            <Textbox type="text" legend="Email"/>
-            <Textbox type="Password" legend="Password"/>
+            <Textbox var={emailRef} type="text" legend="Email"/>
+            <Textbox var={pwdRef} type="Password" legend="Password"/>
             <Hyperlink href="/forgot-password" value="Forgot Password?"/>
             <Button onClick={handleLogin} value="Login"/>
             <p>
