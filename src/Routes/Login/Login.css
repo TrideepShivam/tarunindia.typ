@@ -1,0 +1,10 @@
+.loginContainer{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:.5em;
+    padding:2em;
+    border-radius:.5em;
+    border:.1em solid var(--theme-color);
+}

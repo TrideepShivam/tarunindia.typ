@@ -1,0 +1,19 @@
+.textboxContainer{
+    position:relative;
+    margin:.5em;
+}
+.textboxContainer p{
+    position: absolute;
+}
+.textboxContainer input{
+    background-color: transparent;
+    padding:.2em 0em;
+    font-size:1.6em;
+    color:var(--text-color);
+    border:none;
+    outline:none;
+    border-bottom:.1em solid var(--text-color);
+}
+.textboxContainer input:focus{
+    border-bottom:.1em solid var(--theme-color);
+}
