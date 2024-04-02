@@ -1,0 +1,13 @@
+.toggleContainer{
+    padding:.5em;
+    cursor: pointer;
+}
+.toggleContainer input{
+    display: none;
+}
+.toggleContainer .toggle{
+    color:var(--text-color);
+    cursor: pointer;
+    display: flex;
+    gap:.5em;
+}
