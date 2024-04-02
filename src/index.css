@@ -4,7 +4,7 @@
   --background-color:#101010;
   --light-back-color:#1a1a1a;
   --text-color:#fefeff;
-  --text-color-light:#aaaadd;
+  --text-color-light:#9999aa;
   --theme-color:#00ff85;
   --theme-color-reverse:#5000ff;
   --transparent-color:rgba(0,0,0,.5);
@@ -15,7 +15,7 @@
 }
 .dark-theme{
   --background-color:#fefeff;
-  --light-back-color:#1a1a1a;
+  --light-back-color:#efefee;
   --text-color:#101010;
   --text-color-light:#202020;
   --theme-color-reverse:#00ff85;

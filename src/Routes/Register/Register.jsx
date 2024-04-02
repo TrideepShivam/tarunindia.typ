@@ -22,7 +22,7 @@ const Register=()=>{
 
     return(
         <div className="registerContainer">
-            <h2>Register</h2>
+            <h2 className='highlight'>Register</h2>
             <Textbox var={emailRef} type="text" legend="Email"/>
             <Textbox var={pwdRef} type="Password" legend="Password"/>
             <Textbox var={pwdReRef} type="Password" legend="Confirm Password"/>

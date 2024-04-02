@@ -18,7 +18,7 @@ const Login=()=>{
 
     return(
         <div className="loginContainer">
-            <h2>Login</h2>
+            <h2 className='highlight'>Login</h2>
             <Textbox var={emailRef} type="text" legend="Email"/>
             <Textbox var={pwdRef} type="Password" legend="Password"/>
             <Hyperlink href="/forgot-password" value="Forgot Password?"/>
