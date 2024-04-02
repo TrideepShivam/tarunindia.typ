@@ -1,15 +1,15 @@
 .themeButton{
-    padding:1em 2em;
-    font-size: 1em;
-    width:90%;
-    margin:.2em;
+    padding:1em;
+    font-size: 1.2em;
+    width:calc(100% - 2em);
     border:none;
     outline:none;
-    color:var(--text-color);
+    color:white;
     border-radius: .5em;
     cursor: pointer;
+    letter-spacing: .1em;
     box-shadow: inset 0em 0em .5em var(--background-color);
-    background-image:linear-gradient(to right,var(--theme-color),var(--theme-color-reverse));
+    background-image:linear-gradient(to left,var(--theme-color),var(--theme-color-reverse));
 }
 .themeButton:hover{
     transform: scale(1.02);

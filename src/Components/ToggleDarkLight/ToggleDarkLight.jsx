@@ -3,7 +3,7 @@ import './ToggleDarkLight.css'
 import { Context } from "../../ContextAPI";
 
 const ToggleDarkLight = () => {
-    const [toggleOn,setToggleOn] = useState(false);
+    const [toggleOn,setToggleOn] = useState(true);//switch on for dark mode defaultly
     let imgurl = toggleOn?
         "https://img.icons8.com/external-glyph-silhouettes-icons-papa-vector/28/FAB005/external-Light-Mode-interface-glyph-silhouettes-icons-papa-vector.png":
         "https://img.icons8.com/sf-regular-filled/28/000000/moon-symbol.png";
