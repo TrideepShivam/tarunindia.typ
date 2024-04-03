@@ -1,4 +1,7 @@
 .navContentContainer{
-    width:100%;
-    
+    width:calc(100% - 1em);
+    height: calc(100% - 4em);
+    display:flex;
+    place-self: flex-end;
+    padding:.5px;
 }

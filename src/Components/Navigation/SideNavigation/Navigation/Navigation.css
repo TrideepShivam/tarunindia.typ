@@ -1,0 +1,15 @@
+.navigation{
+    color:var(--text-color);
+    padding:.6em 1em;
+    text-decoration: none;
+    display:flex;
+    align-items: center;
+    gap:1em;
+}
+.navigation:hover{
+    background-color: var(--light-back-color);
+}
+.navigation span{
+    font-size: 1.2em;
+    animation:fromleftfade .5s;
+}
