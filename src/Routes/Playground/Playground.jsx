@@ -2,7 +2,12 @@ import './Playground.css'
  
 const Playground=()=>{
     return(
-<>Playground</>
+    <>
+        <p className="sectionHead">PLAYGROUND</p>
+        <div className="mainContent">
+            main content
+        </div>
+    </>
     )
 }
 

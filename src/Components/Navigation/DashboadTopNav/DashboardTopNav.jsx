@@ -16,7 +16,7 @@ const DashboardTopNav=({sideNavOpen,setSideNavOpen})=>{
     return(
         <div className="topNavigation">
             <div className='navElement'>
-                <img onClick={()=>setSideNavOpen(!sideNavOpen)} width="25" height="25" src={menu} alt="menu"/>               
+                <img className='menuButton' onClick={()=>setSideNavOpen(!sideNavOpen)} width="25" height="25" src={menu} alt="menu"/>               
             </div>
             <div className='navElement'><img width="40em" src={logo} alt="Logo" /></div>
             <div className='navElement'><ToggleDarkLight/></div>

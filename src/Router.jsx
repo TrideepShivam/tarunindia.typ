@@ -7,6 +7,10 @@ import Dashboard from "./Routes/Dashboard/Dashboard";
 import Playground from "./Routes/Playground/Playground";
 import Results from "./Routes/Results/Results";
 import DashboardLayout from "./Routes/Layouts/DashboardLayout/DashboardLayout";
+import Events from "./Routes/Events/Events";
+import Leaderboard from "./Routes/Leaderboard/Leaderboard";
+import Support from "./Routes/Support/Support";
+import About from "./Routes/About/About";
 
 const Router = createBrowserRouter([
     {
@@ -49,11 +53,11 @@ const Router = createBrowserRouter([
             },
             {
                 path:'/events',
-                element:<Login/>
+                element:<Events/>
             },
             {
                 path:'/leaderboard',
-                element:<Login/>
+                element:<Leaderboard/>
             },
             {
                 path:'/results',
@@ -61,11 +65,11 @@ const Router = createBrowserRouter([
             },
             {
                 path:'/support',
-                element:<Register/>
+                element:<Support/>
             },
             {
                 path:'/about',
-                element:<Register/>
+                element:<About/>
             }
         ]
     }

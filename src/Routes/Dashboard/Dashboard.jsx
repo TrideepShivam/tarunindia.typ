@@ -2,7 +2,12 @@ import './Dashboard.css'
  
 const Dashboard=()=>{
     return(
-<>Dashboard</>
+    <>
+        <p className="sectionHead">DASHBOARD</p>
+        <div className="mainContent">
+            main content
+        </div>
+    </>
     )
 }
 

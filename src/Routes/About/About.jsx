@@ -1,9 +1,9 @@
-import './Results.css'
+import './About.css'
  
-const Results=()=>{
+const About=()=>{
     return(
     <>
-        <p className="sectionHead">RESULTS</p>
+        <p className="sectionHead">ABOUT</p>
         <div className="mainContent">
             main content
         </div>
@@ -11,4 +11,4 @@ const Results=()=>{
     )
 }
 
-export default Results;
+export default About;

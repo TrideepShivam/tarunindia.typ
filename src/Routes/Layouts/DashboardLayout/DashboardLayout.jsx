@@ -10,8 +10,12 @@ const DashboardLayout=()=>{
         <>
             <DashboardTopNav sideNavOpen={sideNavOpen} setSideNavOpen={setSideNavOpen}/>
             <div className="navContentContainer">
-                <SideNavigation sideNavOpen={sideNavOpen}/>
-                <Outlet/>
+                <div className="sideNavContainer">
+                    <SideNavigation sideNavOpen={sideNavOpen}/>
+                </div>
+                <div className="mainContentContainer">
+                    <Outlet/>
+                </div>
             </div>
         </>
     )

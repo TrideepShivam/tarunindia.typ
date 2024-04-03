@@ -1,6 +1,6 @@
 .sideNavigation{
     border-radius: 2em;
-    padding:.8em 0em;
+    padding:1em 0em;
     border:.1em solid var(--theme-color);
     overflow:hidden;
     display:flex;
