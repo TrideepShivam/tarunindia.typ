@@ -1,0 +1,25 @@
+.dropdownContainer{
+    position:relative;
+    margin:.5em;
+}
+.dropdownContainer p{
+    position: absolute;
+    background:var(--background-color);
+    padding:0em .2em;
+}
+.dropdownContainer select{
+    width:100%;
+    background-color: transparent;
+    padding:.4em;
+    font-size:1.6em;
+    color:var(--text-color);
+    border:.1em solid var(--text-color);
+    border-radius:.5em;
+    outline:none;
+}
+.dropdownContainer select option{
+    background:var(--light-back-color);
+}
+.dropdownContainer select:focus{
+    border-color:var(--theme-color);
+}

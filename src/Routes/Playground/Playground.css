@@ -1,0 +1,10 @@
+.mainContent{
+    width:100%;
+    display:flex;
+}
+.mainContent .informationContainer{
+    width:50%;
+}
+.mainContent .playForm{
+    width:50%;
+}
