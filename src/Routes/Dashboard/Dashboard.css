@@ -1,3 +1,9 @@
-.mainContent{
+.dashboardContent{
     width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap:.5em;
+}
+.box{
+    background:var(--light-back-color);
 }

@@ -2,10 +2,16 @@ import { useRef } from 'react';
 import Dropdown from '../../Components/Dropdown/Dropdown';
 import './Playground.css'
 import Button from '../../Components/Button/Button';
+import ToggleButton from '../../Components/ToggleButton/ToggleButton';
  
 const Playground=()=>{
     const language = ["","English","Hindi"]
+    const duration = ["","1 min","5 min","10 min"]
+    const level = ["","Level 1","Level 2","Level 3","Level 4","Level 5"]
     const langRef = useRef()
+    const durationRef = useRef()
+    const levelRef = useRef()
+    const conditions=["Backspace Blocking","Hightlighting Text","Numeric Content","Capitalized Content"]
     const handlePlay=()=>{
         console.log(langRef.current.value)
     }
@@ -15,10 +21,25 @@ const Playground=()=>{
         <div className="mainContent">
             <div className="informationContainer">
                 <h1 className="highlight">Information</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
             <div className="playForm">
                 <Dropdown var={langRef} options={language} legend="Language"/>
-                <Button onClick={handlePlay} value={"Play"}/>
+                <Dropdown var={durationRef} options={duration} legend="Duration"/>
+                <Dropdown var={levelRef} options={level} legend="Level"/>
+                {
+                    conditions.map((item,index)=>
+                    <div key={index} className="conditionContainer">
+                        <p>{item}</p>
+                        <ToggleButton/>
+                    </div>
+                    )
+                }
+                <Button style={{margin:".8em"}} value={"Play"} onClick={handlePlay}/>
             </div>
         </div>
     </>

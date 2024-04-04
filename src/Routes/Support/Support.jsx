@@ -5,7 +5,7 @@ const Support=()=>{
     <>
         <p className="sectionHead">SUPPORT</p>
         <div className="mainContent">
-            main content
+            coming soon
         </div>
     </>
     )

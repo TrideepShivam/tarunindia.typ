@@ -5,7 +5,7 @@ const About=()=>{
     <>
         <p className="sectionHead">ABOUT</p>
         <div className="mainContent">
-            main content
+            Typing test web app.
         </div>
     </>
     )

@@ -5,7 +5,7 @@ const Events=()=>{
     <>
         <p className="sectionHead">EVENTS</p>
         <div className="mainContent">
-            main content
+            Coming soon
         </div>
     </>
     )
