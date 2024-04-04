@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navigation from './Navigation/Navigation';
 import './SideNavigation.css'
+import { useLocation } from 'react-router-dom';
 
 const sideMenu = [//0:green 1:blue 2:white 3:black
     {
@@ -77,6 +78,12 @@ const sideMenu = [//0:green 1:blue 2:white 3:black
 
 const SideNavigation=({sideNavOpen})=>{
     const [clickedMenu,setClickedMenu] = useState(0)
+    var location = useLocation()
+    useEffect(()=>{
+        sideMenu.map((item,index)=>{
+            item.href==location.pathname&&setClickedMenu(index)
+        })
+    })
     return(
         <div 
             className="sideNavigation"
