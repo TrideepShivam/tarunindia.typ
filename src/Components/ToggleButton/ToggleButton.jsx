@@ -2,12 +2,17 @@ import { useState } from "react";
 import './ToggleButton.css'
 
 const ToggleButton = (props) => {
-    const [toggleOn,setToggleOn] = useState(false);
-
+    const [toggleOn,setToggleOn] = useState(true);
+    // props.var.current.value=toggleOn
     return(
-        <div className="toggleButtonContainer">
-            <input id="toggleButtonCheckbox" type="checkbox" onChange={()=>setToggleOn(!toggleOn)}  checked={toggleOn}/>
-            <label htmlFor="toggleButtonCheckbox" className="toggleButton"></label>
+        <div 
+            className="toggleButtonContainer" 
+            style={{backgroundColor:!toggleOn?"var(--text-color)":"var(--theme-color)"}}>
+            <div 
+                style={{left:toggleOn?"1em":"-.8em"}}
+                className="toggleButton" 
+                onClick={()=>setToggleOn(!toggleOn)}
+                ></div>
         </div>
     )
 }

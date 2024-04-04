@@ -6,12 +6,6 @@
     position: relative;
     margin:1em;
 }
-.toggleButtonContainer input{
-    display: none;
-}
-.toggleButtonContainer input:checked~.toggleButton{
-    left:calc(2em  - 1em);
-}
 .toggleButtonContainer .toggleButton{
     background-color: white;
     box-shadow: .1em .1em .1em rgba(0,0,0,.5);
@@ -23,6 +17,5 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    left: -.8em;
     top: -.65em;
 }
