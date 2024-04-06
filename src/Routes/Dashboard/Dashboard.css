@@ -2,7 +2,7 @@
     width:100%;
     display: flex;
     flex-wrap: wrap;
-    gap:.5em;
+    gap:1em;
 }
 .box{
     border-radius: 1em;
