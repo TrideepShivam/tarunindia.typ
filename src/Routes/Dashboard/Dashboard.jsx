@@ -29,8 +29,6 @@ const Dashboard=()=>{
                 <Card key={index} val={item}/>
             )}
             <TotalCard val={totalData}/>
-            <div className="box" style={{width:"60.5%",height:"25em"}}></div>
-            <div className="box" style={{width:"30%",height:"25em"}}></div>
         </div>
     </>
     )

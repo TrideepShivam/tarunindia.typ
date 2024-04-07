@@ -7,7 +7,9 @@ const LoginRegisterLayout=()=>{
     return(
         <div className="container">
             <TopNavigation/>
-            <Outlet/>
+            <div className="form">
+                <Outlet/>
+            </div>
         </div>
     )
 }

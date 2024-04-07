@@ -4,6 +4,10 @@
     display: flex;
     gap:.5em;
     flex-direction: column;
-    align-items: center;
+}
+.form{
+    height:90%;
+    display: flex;
     justify-content: center;
+    align-items: center;
 }

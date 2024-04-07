@@ -1,10 +1,13 @@
 .topNavigation{
     width:calc(100% - 2em);
-    padding:.2em 1em;
+    padding:.25em 1em;
+    height:6%;
+    position: relative;
     background:var(--light-back-color);
     display:flex;
     justify-content: space-between;
     color:var(--text-color);
+
 }
 .topNavigation .navElement{
     width:30%;

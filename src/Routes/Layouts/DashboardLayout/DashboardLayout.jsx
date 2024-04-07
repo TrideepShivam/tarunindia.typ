@@ -11,10 +11,12 @@ const DashboardLayout=()=>{
         <>
             <DashboardTopNav sideNavOpen={sideNavOpen} setSideNavOpen={setSideNavOpen}/>
             <div className="navContentContainer">
-                <div className="sideNavContainer">
+                <div className="sideNavContainer" style={{width:sideNavOpen?"14em":"4.5em"}}>
                     <SideNavigation sideNavOpen={sideNavOpen}/>
                 </div>
-                <div className="mainContentContainer">
+                <div 
+                    className="mainContentContainer" 
+                    style={{width:sideNavOpen?"calc(100% - 14.5em)":"calc(100% - 5em)"}}>
                     <Outlet/>
                 </div>
             </div>

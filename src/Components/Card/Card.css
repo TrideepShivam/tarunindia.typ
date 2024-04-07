@@ -1,5 +1,6 @@
 .cardContainer{
-    min-width: 20em;
+    width:20em;
+    min-width: 10em;
     padding:2em;
     border-radius: 1em;
     background-color: var(--light-back-color);
@@ -10,7 +11,6 @@
 .topContainer{
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 .cardValue{
     font-size:5em;
