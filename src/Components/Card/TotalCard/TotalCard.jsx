@@ -1,8 +1,8 @@
 import '../Card.css'
  
-const TotalCard=({val})=>{
+const TotalCard=({val,style})=>{
     return(
-        <div className="cardContainer">
+        <div className="cardContainer" style={style}>
             <p className='sectionHead'>Total Attempts</p>
             <div className="topContainer">
                 <p className="cardValue">{val.value}</p>

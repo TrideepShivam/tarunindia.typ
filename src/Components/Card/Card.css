@@ -1,7 +1,6 @@
 .cardContainer{
-    width:20em;
-    min-width: 10em;
-    padding:2em;
+    min-width: 15em;
+    padding:1.5em;
     border-radius: 1em;
     background-color: var(--light-back-color);
     display: flex;

@@ -10,6 +10,7 @@
 .mainContentContainer{
     overflow-x:hidden;
     overflow-y: auto;
+    padding:.5em;
 }
 .sectionHead{
     padding:0em .5em;

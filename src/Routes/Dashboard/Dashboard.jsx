@@ -1,6 +1,8 @@
 import Card from '../../Components/Card/Card';
 import TotalCard from '../../Components/Card/TotalCard/TotalCard';
+import ReactApexChart from 'react-apexcharts'
 import './Dashboard.css'
+import { useState } from 'react';
 
 const totalData={
     value:"1147",
@@ -21,14 +23,60 @@ const data = [{
     increment:true
 }]
 const Dashboard=()=>{
+     const [chartData, setChartData] = useState({
+          
+        series: [{
+            name: "Desktops",
+            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+        },{
+            name: "Mobile",
+            data: [11, 21, 15, 31, 29, 22, 79, 91, 48]
+        }],
+        options: {
+          chart: {
+            type: 'line',//used to decide the type of the chart
+            zoom: {
+              enabled: false//used for zoom icons
+            },
+            background:'transparent'
+          },
+          colors:["#00ff85","#5000ff"],//used to set the color of the line
+          dataLabels: {
+            enabled: false//used if you want labels on the line
+          },
+          stroke: {
+            curve: 'straight',
+          },
+          title: {
+            text: 'Product Trends by Month',
+            align: 'left'
+          },
+          xaxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+          },
+          theme:{
+            mode:'dark'
+          }
+        },      
+      })
+
     return(
     <>
         <p className="sectionHead">DASHBOARD</p>
         <div className="dashboardContent">
             {data.map((item,index)=>
-                <Card key={index} val={item}/>
+                <Card key={index} val={item} style={{width:"28%"}}/>
             )}
-            <TotalCard val={totalData}/>
+            <TotalCard val={totalData} style={{width:"28%"}}/>
+            <div className="box" style={{width:"40%"}}>
+                <ReactApexChart
+                    options={chartData.options}
+                    series={chartData.series}
+                    type="line"
+                    height={350} // Customize the chart height
+                />
+            </div>
+            <div className="box" style={{width:"51%"}}>Events are comming soon</div>
         </div>
     </>
     )
