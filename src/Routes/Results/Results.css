@@ -2,8 +2,22 @@
     width:100%;
     display: flex;
     flex-wrap: wrap;
-    gap:.5em;
+    gap:1em;
+    animation:fromleftfade .5s;
 }
-.box{
+.resultTableContainer{
+    min-height: 20em;
+    height:auto;
     background:var(--light-back-color);
+}
+.resultTableContainer table{
+    width:100%;
+    padding:.5em;
+    font-size: 1.5em;
+}
+.resultTableContainer table tr td:first-child{
+    width:5%;
+}
+.resultTableContainer table tr td:not(:first-child){
+    width:20%;
 }

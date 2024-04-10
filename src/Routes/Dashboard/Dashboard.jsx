@@ -1,8 +1,9 @@
 import Card from '../../Components/Card/Card';
 import TotalCard from '../../Components/Card/TotalCard/TotalCard';
-import ReactApexChart from 'react-apexcharts'
+import Chart from 'react-apexcharts'
 import './Dashboard.css'
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import {Context} from './../../ContextAPI';
 
 const totalData={
     value:"1147",
@@ -23,8 +24,8 @@ const data = [{
     increment:true
 }]
 const Dashboard=()=>{
-     const [chartData, setChartData] = useState({
-          
+    const {lightMode} = useContext(Context)
+    const [chartData, setChartData] = useState({
         series: [{
             name: "Desktops",
             data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
@@ -55,11 +56,21 @@ const Dashboard=()=>{
             categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
           },
           theme:{
-            mode:'dark'
+            mode:!lightMode?'light':'dark'
           }
         },      
       })
-
+    useEffect(()=>{
+        setChartData((prevChartData) => ({
+            ...prevChartData,
+            options: {
+              ...prevChartData.options,
+              theme: {
+                mode: !lightMode ? "light" : "dark",
+              },
+            },
+        }));
+    },[lightMode])
     return(
     <>
         <p className="sectionHead">DASHBOARD</p>
@@ -68,15 +79,17 @@ const Dashboard=()=>{
                 <Card key={index} val={item} style={{width:"28%"}}/>
             )}
             <TotalCard val={totalData} style={{width:"28%"}}/>
-            <div className="box" style={{width:"40%"}}>
-                <ReactApexChart
+            <div className="chartContainer" style={{width:"40%"}}>
+                <Chart
                     options={chartData.options}
                     series={chartData.series}
                     type="line"
                     height={350} // Customize the chart height
                 />
             </div>
-            <div className="box" style={{width:"51%"}}>Events are comming soon</div>
+            <div className="eventContainer" style={{width:"51%"}}>
+              Events are comming soon
+            </div>
         </div>
     </>
     )
