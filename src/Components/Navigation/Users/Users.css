@@ -1,0 +1,27 @@
+.userContainer{
+    padding:.5em 1em;
+    border-radius: 1.5em;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:1em;
+    background:var(--background-color);
+    cursor: pointer;
+    position: relative;
+}
+.user{
+    padding: 1em;
+    border-radius: 1em;
+    width:15em;
+    position: absolute;
+    top:3.5em;
+    background-color: var(--light-back-color);
+    box-shadow: 0px 5px 15px rgba(0,0,0,.2);
+    display: flex;
+    flex-direction: column;
+    animation:fromleftfade .5s;
+}
+.divider{
+    border:.1em solid var(--theme-color);
+    width:2em;
+}

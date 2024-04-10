@@ -1,8 +1,9 @@
 import './DashboardTopNav.css'
 import logo from '../../../assets/logo-reverse.svg'
-import ToggleDarkLight from '../../ToggleDarkLight/ToggleDarkLight';
 import { useContext } from 'react';
 import { Context } from '../../../ContextAPI';
+import Users from '../Users/Users';
+import ToggleDarkLight from '../../ToggleDarkLight/ToggleDarkLight';
 
 const DashboardTopNav=({sideNavOpen,setSideNavOpen})=>{
     const {lightMode} = useContext(Context);
@@ -19,7 +20,10 @@ const DashboardTopNav=({sideNavOpen,setSideNavOpen})=>{
                 <img className='menuButton' onClick={()=>setSideNavOpen(!sideNavOpen)} width="25" height="25" src={menu} alt="menu"/>               
             </div>
             <div className='navElement'><img width="40em" src={logo} alt="Logo" /></div>
-            <div className='navElement'><ToggleDarkLight/></div>
+            <div className='navElement'>
+                <Users/>
+                <ToggleDarkLight/>
+            </div>
         </div>
     )
 }
