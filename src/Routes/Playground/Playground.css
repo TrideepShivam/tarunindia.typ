@@ -1,14 +1,17 @@
-.mainContent{
+.playgroundContent{
     width:100%;
-    display:flex;
+    display: flex;
+    flex-wrap: wrap;
+    gap:1em;
+    animation:fromleftfade .5s;
 }
-.mainContent .informationContainer{
+.playgroundContent .informationContainer{
     width:45%;
     display: flex;
     flex-direction: column;
     gap:1em;
 }
-.mainContent .playForm{
+.playgroundContent .playForm{
     width:50%;
     padding:1em;
     display:flex;

@@ -4,7 +4,7 @@ const Support=()=>{
     return(
     <>
         <p className="sectionHead">SUPPORT</p>
-        <div className="mainContent">
+        <div className="supportContent">
             coming soon
         </div>
     </>

@@ -4,7 +4,7 @@ const Events=()=>{
     return(
     <>
         <p className="sectionHead">EVENTS</p>
-        <div className="mainContent">
+        <div className="eventsContent">
             Coming soon
         </div>
     </>

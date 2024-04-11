@@ -18,7 +18,7 @@ const Playground=()=>{
     return(
     <>
         <p className="sectionHead">PLAYGROUND</p>
-        <div className="mainContent">
+        <div className="playgroundContent">
             <div className="informationContainer">
                 <h1 className="highlight">Information</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>

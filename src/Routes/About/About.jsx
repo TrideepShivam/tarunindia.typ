@@ -4,7 +4,7 @@ const About=()=>{
     return(
     <>
         <p className="sectionHead">ABOUT</p>
-        <div className="mainContent">
+        <div className="aboutContent">
             Typing test web app.
         </div>
     </>

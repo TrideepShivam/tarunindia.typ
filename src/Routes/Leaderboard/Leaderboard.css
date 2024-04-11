@@ -2,7 +2,8 @@
     width:100%;
     display: flex;
     flex-wrap: wrap;
-    gap:.5em;
+    gap:1em;
+    animation:fromleftfade .5s;
 }
 .box{
     background:var(--light-back-color);
