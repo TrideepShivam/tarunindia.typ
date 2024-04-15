@@ -25,7 +25,7 @@ const Textbox=(props)=>{
     return(
         <div className="textboxContainer">
             <input type={props.type} ref={data} onFocus={focusText} onBlur={blurText}/>
-            <p style={legend?focusStyle:blurStyle}>{props.legend}</p>
+            <p style={legend?focusStyle:blurStyle} onClick={focusText}>{props.legend}</p>
         </div>
     )
 }
