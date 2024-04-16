@@ -1,14 +1,25 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Button from '../../Components/Button/Button';
 import Hyperlink from '../../Components/Hyperlink/Hyperlink';
 import Textbox from '../../Components/Textbox/Textbox';
 import './Login.css'
+import MsgBox from '../../Components/MsgBox/MsgBox';
  
 const Login=()=>{
+    const [msg,setMsg] = useState({
+        isOpen:false,
+        status:'Information',
+        message:"Message"
+    })
     const emailRef = useRef()
     const pwdRef = useRef()
     const handleLogin=()=>{
-        console.log(emailRef.current.value+" "+pwdRef.current.value);
+        setMsg({
+            ...msg,
+            isOpen:true,
+            status:'Success',
+            message:emailRef.current.value+" "+pwdRef.current.value
+        })
         pwdRef.current.value=""
         pwdRef.current.focus()
         pwdRef.current.blur()
@@ -23,6 +34,7 @@ const Login=()=>{
             <Textbox var={pwdRef} type="Password" legend="Password"/>
             <Hyperlink href="/forgot-password" value="Forgot Password?"/>
             <Button onClick={handleLogin} value="Login"/>
+            {msg.isOpen&&<MsgBox setMsg={setMsg} data={msg}/>}
             <p>
                 Don't have an account?&nbsp;
                 <Hyperlink href="/register" value="Register"/>

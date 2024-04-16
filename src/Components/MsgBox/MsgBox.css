@@ -1,0 +1,39 @@
+.msgContainer{
+    min-width: 100px;
+    max-width: 300px;
+    min-height: 50px;
+    position:fixed;
+    /* text-wrap:wrap; */
+    word-break: break-all;
+    bottom:1em;
+    right:1em;
+    padding:.8em 0em;
+    border-radius:.5em;
+    color: var(--text-color);
+    background-color:var(--light-back-color);
+    animation:fadeIn .5s,fadeOut .5s 5.6s;
+    z-index: 10;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0,0,0,.2);
+}
+.msgContainer p{
+    padding:0em 1em;
+}
+.msgContainer .counter{
+    position:absolute;
+    bottom: 0px;
+    height:.2em;
+    animation:slider 6s ease;
+}
+@keyframes slider {
+    0%{width:100%;}
+    100%{width:0%;}
+}
+@keyframes fadeIn{
+    0%{opacity:0;right:0px;}
+    100%{opacity:1;right:1em;}
+}
+@keyframes fadeOut{
+    0%{opacity:1;right:1em;}
+    100%{opacity:0;right:0px;}
+}
