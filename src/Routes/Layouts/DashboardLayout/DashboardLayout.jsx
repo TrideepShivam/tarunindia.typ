@@ -1,12 +1,16 @@
-import { Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import './DashboardLayout.css'
 import DashboardTopNav from '../../../Components/Navigation/DashboadTopNav/DashboardTopNav';
 import SideNavigation from '../../../Components/Navigation/SideNavigation/SideNavigation';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { Context } from '../../../ContextAPI';
  
 const DashboardLayout=()=>{
     const [sideNavOpen,setSideNavOpen]=useState(true)
-    
+    const {userDetails} = useContext(Context)
+    if(userDetails.token){
+        return <Navigate to={'/login'}/>
+    }
     return(
         <>
             <DashboardTopNav sideNavOpen={sideNavOpen} setSideNavOpen={setSideNavOpen}/>

@@ -27,10 +27,10 @@ const Dashboard=()=>{
     const {lightMode} = useContext(Context)
     const [chartData, setChartData] = useState({
         series: [{
-            name: "Desktops",
+            name: "Speed",
             data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
         },{
-            name: "Mobile",
+            name: "Accuracy",
             data: [11, 21, 15, 31, 29, 22, 79, 91, 48]
         }],
         options: {
