@@ -4,7 +4,7 @@ import Hyperlink from '../../Components/Hyperlink/Hyperlink';
 import Textbox from '../../Components/Textbox/Textbox';
 import './Login.css'
 import MsgBox from '../../Components/MsgBox/MsgBox';
-import axios from 'axios';
+import api from '../../api';
  
 const Login=()=>{
     const [msg,setMsg] = useState({
@@ -15,7 +15,7 @@ const Login=()=>{
     const emailRef = useRef()
     const pwdRef = useRef()
     const handleLogin=()=>{
-        axios.post(import.meta.env.VITE_APP_URL,)
+        api().get()
         setMsg({
             ...msg,
             isOpen:true,
