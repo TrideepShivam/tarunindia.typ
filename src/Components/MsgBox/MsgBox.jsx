@@ -6,10 +6,12 @@ const MsgBox =({setMsg,data})=>{
         setMsg(false)
     }
     setTimeout(closeMsgBox, 6000)
-    const msgThemeColor = data.status=='Failure'?'tomato':'var(--theme-color)';
+    const msgThemeColor = data.status=='fail'?'tomato':'var(--theme-color)';
     return(
         <div className="msgContainer">
-            <p style={{color:msgThemeColor}}>{data.status}</p>
+            <p style={{color:msgThemeColor}}>{
+                data.status
+            }</p>
             <p>{data.message}</p>
             <div className="counter" style={{background:msgThemeColor}}></div>
         </div>

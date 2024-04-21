@@ -8,7 +8,7 @@ import { Context } from '../../../ContextAPI';
 const DashboardLayout=()=>{
     const [sideNavOpen,setSideNavOpen]=useState(true)
     const {userDetails} = useContext(Context)
-    if(!userDetails.token){
+    if(!userDetails){
         return <Navigate to={'/login'}/>
     }
     return(

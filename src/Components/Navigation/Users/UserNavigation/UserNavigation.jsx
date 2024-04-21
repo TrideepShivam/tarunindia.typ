@@ -9,7 +9,7 @@ const UserNavigation=({item})=>{
     return(
         <Link 
             className='userNavigation' 
-            to={item.href}
+            to={item.href&&item.href}
             onClick={()=>item.action()}
         >
             <img width="30px" src={item.icons[lightMode?0:1]} alt="menu" />

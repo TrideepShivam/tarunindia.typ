@@ -1,32 +1,45 @@
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import Button from '../../Components/Button/Button';
 import Hyperlink from '../../Components/Hyperlink/Hyperlink';
 import Textbox from '../../Components/Textbox/Textbox';
 import './Login.css'
 import MsgBox from '../../Components/MsgBox/MsgBox';
 import api from '../../api';
+import { Context } from '../../ContextAPI';
+import { Navigate } from 'react-router-dom';
  
 const Login=()=>{
-    const [msg,setMsg] = useState({
-        isOpen:false,
-        status:'Information',
-        message:"Message"
-    })
+    const {setUserLocal} = useContext(Context)
+    const {userDetails} = useContext(Context)
+    const [msg,setMsg] = useState(false)
+
     const emailRef = useRef()
     const pwdRef = useRef()
+
     const handleLogin=()=>{
-        api().get()
-        setMsg({
-            ...msg,
-            isOpen:true,
-            status:'Success',
-            message:'null'
-        })
+        api.post('/auth/login',{
+            email:emailRef.current.value,
+            password:pwdRef.current.value
+        }).then(({data}) =>{
+            setMsg({
+                ...msg,
+                isOpen:true,
+                status:data.state,
+                message:data.message
+            })
+            setUserLocal(data)
+        }).catch(({response}) => {
+            console.log(response.data);
+        });
+
         pwdRef.current.value=""
         pwdRef.current.focus()
         pwdRef.current.blur()
         emailRef.current.focus()
         emailRef.current.value=""
+    }
+    if(userDetails){
+        return <Navigate to={'/dashboard'}/>
     }
 
     return(
