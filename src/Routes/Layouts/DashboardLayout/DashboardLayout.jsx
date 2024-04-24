@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Context } from '../../../ContextAPI';
  
 const DashboardLayout=()=>{
-    const [sideNavOpen,setSideNavOpen]=useState(true)
+    const [sideNavOpen,setSideNavOpen,msg,setMsg]=useState(true)
     const {userDetails} = useContext(Context)
     if(!userDetails){
         return <Navigate to={'/login'}/>

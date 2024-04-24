@@ -11,6 +11,7 @@ import Events from "./Routes/Events/Events";
 import Leaderboard from "./Routes/Leaderboard/Leaderboard";
 import Support from "./Routes/Support/Support";
 import About from "./Routes/About/About";
+import Play from "./Routes/Play/Play";
 
 const Router = createBrowserRouter([
     {
@@ -72,6 +73,10 @@ const Router = createBrowserRouter([
                 element:<About/>
             }
         ]
+    },
+    {
+        path:'/play',
+        element:<Play/>
     }
 ])
 

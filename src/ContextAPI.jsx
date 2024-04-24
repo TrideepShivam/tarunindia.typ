@@ -1,8 +1,10 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
+import MsgBox from "./Components/MsgBox/MsgBox";
 
 export const Context = createContext()
 
 const ContextAPI = ({children})=>{
+    const [msg,setMsg] = useState(false)
     const [lightMode,setLightMode] = useState(
         localStorage.getItem('LIGHT_MODE')=='false'?false:true
     );
@@ -28,9 +30,12 @@ const ContextAPI = ({children})=>{
             lightMode,
             setLightMode,
             userDetails,
-            setUserLocal
+            setUserLocal,
+            msg,
+            setMsg
         }}>
             {children}
+            {msg.isOpen&&<MsgBox setMsg={setMsg} data={msg}/>}
         </Context.Provider>
     )
 }

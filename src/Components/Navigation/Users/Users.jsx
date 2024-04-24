@@ -43,13 +43,8 @@ const userNavigator =[
     }
 ]
 const Users=()=>{
-    const {lightMode,setUserLocal} = useContext(Context);
-    const [openUser,setOpenUser]=useState(false);
-    const [msg,setMsg] = useState({
-        isOpen:false,
-        status:'Information',
-        message:"Message"
-    })
+    const {lightMode,setUserLocal,msg,setMsg} = useContext(Context);
+    const [openUser,setOpenUser]=useState(false)
     const userNavigator =[
         {
             id:'0',value:'Profile',href:'/profile',action:()=>{
@@ -112,7 +107,6 @@ const Users=()=>{
                     <UserNavigation item={item} key={index}/>
                 )}
             </div> }
-            {msg.isOpen&&<MsgBox setMsg={setMsg} data={msg}/>}
         </div>
     )
 }
