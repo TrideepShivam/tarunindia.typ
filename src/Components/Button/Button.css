@@ -11,6 +11,14 @@
     box-shadow: inset 0em 0em .5em var(--background-color);
     background-image:linear-gradient(to left,var(--theme-color),var(--theme-color-reverse));
 }
+.themeButton.transparent{
+    background-color: transparent;
+    background-image: none;
+    color:var(--theme-color);
+    box-shadow:none;
+    padding:.5em;
+
+}
 .themeButton:hover{
     transform: scale(1.02);
 }
