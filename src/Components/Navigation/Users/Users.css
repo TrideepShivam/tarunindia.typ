@@ -8,6 +8,7 @@
     background:var(--background-color);
     cursor: pointer;
     position: relative;
+    z-index: 1;
 }
 .user{
     padding: 1em;

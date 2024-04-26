@@ -4,14 +4,7 @@ import { Context } from '../../../ContextAPI';
 import Profile from '../../../assets/pexels.jpg'
 import UserNavigation from './UserNavigation/UserNavigation';
 import api from '../../../api';
-import MsgBox from '../../MsgBox/MsgBox';
 
-
-const user = {
-    id:'1234',
-    name:'user',
-    img:'image'
-}
 const userNavigator =[
     {
         id:'0',value:'Profile',href:'/profile',action:()=>{
@@ -43,7 +36,7 @@ const userNavigator =[
     }
 ]
 const Users=()=>{
-    const {lightMode,setUserLocal,msg,setMsg} = useContext(Context);
+    const {lightMode,setUserLocal,userDetails,setMsg} = useContext(Context);
     const [openUser,setOpenUser]=useState(false)
     const userNavigator =[
         {
@@ -81,7 +74,6 @@ const Users=()=>{
         api.post('/auth/logout')
         .then(({data})=>{
             setMsg({
-                ...msg,
                 isOpen:true,
                 status:data.state,
                 message:data.message
@@ -90,12 +82,13 @@ const Users=()=>{
             setUserLocal("")
         }).catch((error)=>{
             console.log(error)
+            localStorage.clear()
         })
     }
 
     return(
         <div className="userContainer" onClick={()=>setOpenUser(!openUser)}>
-            <p className="highlight">Hi, {user.name}</p>
+            <p className="highlight">Hi, {userDetails.user.name}</p>
             <img 
                 style={{transform:openUser?'rotate(90deg)':'rotate(270deg)'}} 
                 width="15em" height="15em" src={arrow} alt="arrow"
