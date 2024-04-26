@@ -13,6 +13,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+::-webkit-scrollbar{width:.1em;}
+::-webkit-scrollbar-track{background:var(--background-color);}
+::-webkit-scrollbar-thumb{background:var(--text-color-light);}
 .dark-theme{
   --background-color:#fefeff;
   --light-back-color:#efefee;

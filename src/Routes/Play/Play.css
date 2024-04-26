@@ -1,0 +1,142 @@
+.playContainer{
+	height:100%;
+	width:100%;
+	background-color: var(--background-color);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.contentContainer{
+	height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.contentContainer.details{
+	padding:1em;
+}
+.textContainer{
+	display: flex;
+	padding:1em 0em;
+	height:46%;
+	width:95%;
+	font-size:24px;
+	color:var(--text-color);
+	overflow-y:auto;
+	border-bottom:2px solid var(--theme-color);
+	-webkit-scroll-behavior: smooth;
+	scroll-behavior: smooth;
+	word-wrap: wrap;
+	text-indent:2em;
+}
+.textContainer textarea{
+	width: 100%;
+	height: calc(100% - .5em);
+	outline:none;
+    background: transparent;
+	border: none;
+	color:var(--text-color);
+	resize: none;
+	font-size:28px;
+}
+/* }
+#write{
+	height:100%;
+	width: 100%;
+	outline:none;
+    background: transparent;
+	border: none;
+	color:var(--text-color);
+	resize: none;
+	font-size:28px;
+}
+.forKrutiDev{	font-family: hindiKrutiDev;
+}
+.forEnglish{
+	font-family: 'Calibri';
+}
+.forMangal{
+	font-family: 'Mangal';
+}
+#userProfile{
+	width:auto;
+	display:flex;
+	align-items: center;
+	flex-direction: column;
+	position: relative;
+}
+.textContainer{
+	height:46%;
+	width:95%;
+	background-color: #191919;
+	font-size:30px;
+	color:silver;
+	overflow-y:auto;
+	border-top:2px solid var(--themecolor);
+	-webkit-scroll-behavior: smooth;
+	scroll-behavior: smooth;
+	word-wrap: wrap;
+	text-indent:20px;
+}
+#profileImg{
+ height:16.5vw;
+ width:17vw;
+ background-size:101%;
+ background-image:url('ram.png');
+ border-radius: 100%;
+ margin-top: 1.8vw;
+ border: 5px solid var(--themecolor);
+}
+
+#userProfile #userName{
+	color: antiquewhite;
+	text-transform: uppercase;
+	margin: 1.5vw;
+	font-size: 1.6vw;
+	letter-spacing: 0.2vw;
+}
+
+.pointCase{
+	width: 82%;
+	height:80px;
+	position: relative;
+	margin:10px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.pointCase label{
+	position: absolute;
+	background-color: #191919;
+	color: antiquewhite;
+	top:-.55vw;
+	padding: 0vw .5vw 0vw .5vw;
+	font-size: 1.2vw;
+	letter-spacing: 0.25vw;
+}
+
+.pointCase input{
+	height:100%;
+	width:100%;
+	outline: none;
+	background-color: transparent;
+	border:0.25vw solid var(--themecolor);
+	border-radius: 0.6vw;
+	text-align: center;
+	color: antiquewhite;
+	font-size: 3.2vw;
+	letter-spacing: 0.45vw;
+}
+
+#restart{
+	color:var(--themecolor);
+	background-color: transparent;
+	padding:20px 40px;
+	border:none;
+	font-size:20px;
+	cursor:pointer;
+}
+
+#restart:hover{color: #ebebeb;} */

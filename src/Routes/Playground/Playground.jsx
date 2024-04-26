@@ -3,8 +3,10 @@ import Dropdown from '../../Components/Dropdown/Dropdown';
 import './Playground.css'
 import Button from '../../Components/Button/Button';
 import ToggleButton from '../../Components/ToggleButton/ToggleButton';
+import { useNavigate } from 'react-router-dom';
  
 const Playground=()=>{
+    const navigate = useNavigate()
     const language = ["","English","Hindi"]
     const duration = ["","1 min","5 min","10 min"]
     const level = ["","Level 1","Level 2","Level 3","Level 4","Level 5"]
@@ -13,7 +15,17 @@ const Playground=()=>{
     const levelRef = useRef()
     const conditions=["Backspace Blocking","Hightlighting Text","Numeric Content","Capitalized Content"]
     const handlePlay=()=>{
-        console.log(langRef.current.value)
+        navigate('/play',{
+            state:{
+                time:'1',
+                data:{
+                    language:"english",
+                    level:"1",
+                    capitalized:false,
+                    numeric:false
+                }
+            }
+        })
     }
     return(
     <>
@@ -28,6 +40,7 @@ const Playground=()=>{
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
             <div className="playForm">
+                <h2 className="sectionHead">Play Form</h2>
                 <Dropdown var={langRef} options={language} legend="Language"/>
                 <Dropdown var={durationRef} options={duration} legend="Duration"/>
                 <Dropdown var={levelRef} options={level} legend="Level"/>
