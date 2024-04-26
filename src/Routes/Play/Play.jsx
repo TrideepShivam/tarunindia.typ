@@ -1,9 +1,13 @@
 import { useContext, useEffect, useState } from 'react';
 import './Play.css'
+import logo from '../../assets/logo-reverse.svg'
 import { Context } from '../../ContextAPI';
 import { useLocation, useNavigate } from 'react-router-dom';
 import api from '../../api';
 import Timer from '../../Components/Timer/Timer';
+import ToggleDarkLight from '../../Components/ToggleDarkLight/ToggleDarkLight';
+import WordCount from '../../Components/WordCount/WordCount';
+import Button from '../../Components/Button/Button';
  
 const Play=()=>{    
     const {userDetails,setMsg} = useContext(Context)
@@ -41,14 +45,14 @@ const Play=()=>{
 			</div>
 		</div>
 		<div className="contentContainer details" id="userProfile">
+            <div style={{position:'absolute',top:'0em'}}><ToggleDarkLight/></div>
+            <img width="100em" src={logo} alt="Logo" />
 			<p id="userName">{userDetails.user.name}</p>
 			<Timer time={10} pause={false}/>
-			<div className="pointCase">
-				<label>WORDS</label>
-				<input id="totalWords" type="text" value="000" disabled/>
-			</div>
-			<button id="restart" onClick="location.reload()">RESTART</button>
-			<button className="btn" id="giveup" onClick="frontPopup(true);dashborad(Result);">GIVE UP</button>
+			<WordCount value={0}/>
+			<Button value={'Restart'} style={{width:'10em'}}/>
+			{/* <button className="btn" id="giveup" onClick="frontPopup(true);dashborad(Result);">GIVE UP</button> */}
+            
 		</div>
 	</div>
     )

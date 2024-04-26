@@ -15,6 +15,7 @@
 }
 .contentContainer.details{
 	padding:0em 1em;
+	background-color: var(--light-back-color);
 }
 .textContainer{
 	display: flex;
