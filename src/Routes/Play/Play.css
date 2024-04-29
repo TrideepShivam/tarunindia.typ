@@ -14,8 +14,9 @@
     align-items: center;
 }
 .contentContainer.details{
-	padding:0em 1em;
+	padding:0em 2em;
 	background-color: var(--light-back-color);
+	text-align: center;
 }
 .textContainer{
 	display: flex;

@@ -1,0 +1,10 @@
+.textContent{
+    color:var(--text-color-light)
+}
+.typedContent{
+    color:var(--text-color);
+}
+.highlightedContent{
+    color:var(--theme-color);
+    text-decoration:underline;
+}
