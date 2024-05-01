@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Timer.css'
  
-const Timer=({time=2,pause=false})=>{
+const Timer=({time=1,pause=false,timeOut})=>{
     const [second,setSecond] = useState((time?time:1)*60)
     const getTime= ()=>{
         return `${Math.floor(second/60)}:${second%60}`
@@ -9,10 +9,14 @@ const Timer=({time=2,pause=false})=>{
 
     useEffect(()=>{
         let interval
-        if(second>0&&!pause)
+        if(second>0&&!pause){
             interval = setInterval(()=>{
                 setSecond((s)=>s-1)
             },1000)
+        }
+        else{
+            timeOut()
+        }
         return ()=>clearInterval(interval)
     },[second])
 

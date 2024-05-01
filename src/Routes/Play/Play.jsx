@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import './Play.css'
 import logo from '../../assets/logo-reverse.svg'
 import { Context } from '../../ContextAPI';
@@ -10,12 +10,23 @@ import WordCount from '../../Components/WordCount/WordCount';
 import Button from '../../Components/Button/Button';
 import TextContent from '../../Components/TextContent/TextContent';
  
-const Play=()=>{    
+const Play=()=>{
+    const writtenStory = useRef("")
     const {userDetails,setMsg} = useContext(Context)
     const location = useLocation()
     const navigate = useNavigate()
     const [story,setStory] = useState(['Text']);
     const [wordCount,setWordCount] = useState(0);
+    const [typingDisabled,setTypingDisabled]=useState(false)
+    const resultRef = useRef({
+        totalWord:0,
+        duration:location.state.time,
+        language:location.state.data.language,
+        keystrokes:0,
+        story:"",
+        errors:{}
+    })
+
     useEffect(()=>{
         api.post('/story',location.state.data)
         .then(({data})=>{
@@ -25,6 +36,7 @@ const Play=()=>{
                 status:data.state,
                 message:data.message
             })
+            resultRef.current.story=data.data.title
         }).catch(({response})=>{
             setMsg({
                 isOpen:true,
@@ -37,11 +49,31 @@ const Play=()=>{
     },[])
 
     const keyPrevention =(e)=>{
-        // console.log(e.target.value)
+        let text = e.target.value
+        e.key=='Backspace'&&text[text.length-1]==' '&&e.preventDefault()
     }
 
     const typing = (e) =>{
-        e.key == ' '&&setWordCount((count)=>count+1)
+        if(e.key == ' '){
+            let writtenText = e.target.value
+            let currentWord = writtenText.slice(writtenStory.current.length,writtenText.length-1)
+            setWordCount(resultRef.current.totalWord = wordCount+1)
+            if(currentWord!==story[wordCount*2])
+                resultRef.current.errors[`[${story[wordCount*2]}]`]=`[${currentWord}]`
+            writtenStory.current = writtenText
+        }else if(/^[0-9a-zA-Z!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/? ]+$/.test(e.key)){
+            resultRef.current.keystrokes+=1
+        }
+    }
+    const timeOut = ()=>{
+        console.log(resultRef.current)
+        setTypingDisabled(true)
+        setMsg({
+            isOpen:true,
+            status:'success',
+            message:'Test attempted successfully'
+        })
+        navigate('/results')
     }
     return(
     <div className='playContainer'>
@@ -51,7 +83,12 @@ const Play=()=>{
 			</div>
             <hr className='divider' />
 			<div className="textContainer" id="writable">
-				<textarea placeholder="start typing..." onKeyDown={(e)=>keyPrevention(e)} onKeyUp={(e)=>typing(e)}></textarea>
+				<textarea 
+                    placeholder="start typing..." 
+                    onKeyDown={(e)=>keyPrevention(e)} 
+                    onKeyUp={(e)=>typing(e)}
+                    disabled={typingDisabled}
+                />
 			</div>
 		</div>
 		<div className="contentContainer details" id="userProfile">
@@ -59,11 +96,10 @@ const Play=()=>{
             <img width="100em" src={logo} alt="Logo" />
 			<h2 id="userName">{userDetails.user.name.toUpperCase()}</h2>
             <hr className='divider' />
-			<Timer time={10} pause={true}/>
+			<Timer time={location.state.time} pause={false} timeOut={timeOut}/>
 			<WordCount value={wordCount}/>
 			<Button value={'Restart'} style={{width:'10em'}}/>
-			{/* <button className="btn" id="giveup" onClick="frontPopup(true);dashborad(Result);">GIVE UP</button> */}
-			<Button value={'Give Up'} transparancy={true}/>
+			<Button  value={'Give Up'} transparancy={true}/>
 		</div>
 	</div>
     )

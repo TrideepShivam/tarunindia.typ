@@ -17,10 +17,10 @@ const Playground=()=>{
     const handlePlay=()=>{
         navigate('/play',{
             state:{
-                time:'1',
+                time:.5,
                 data:{
                     language:"english",
-                    level:"1",
+                    level:1,
                     capitalized:false,
                     numeric:false
                 }

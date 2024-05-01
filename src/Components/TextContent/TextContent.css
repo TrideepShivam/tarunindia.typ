@@ -1,5 +1,6 @@
 .textContent{
-    color:var(--text-color-light)
+    color:var(--text-color-light);
+    user-select:none;
 }
 .typedContent{
     color:var(--text-color);
