@@ -4,6 +4,7 @@ import './Playground.css'
 import Button from '../../Components/Button/Button';
 import ToggleButton from '../../Components/ToggleButton/ToggleButton';
 import { useNavigate } from 'react-router-dom';
+import ResultDetail from '../../Components/ResultDetail/ResultDetail';
  
 const Playground=()=>{
     const navigate = useNavigate()
@@ -29,6 +30,7 @@ const Playground=()=>{
     }
     return(
     <>
+        <ResultDetail/>
         <p className="sectionHead">PLAYGROUND</p>
         <div className="playgroundContent">
             <div className="informationContainer">

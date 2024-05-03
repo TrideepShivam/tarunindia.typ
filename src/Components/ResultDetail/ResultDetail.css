@@ -1,0 +1,21 @@
+.resultDetailContainer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--transparent-color);
+    backdrop-filter: blur(10px);
+    position: absolute;
+    width:calc(100% - 1em);
+    height:calc(100% - 1em);
+    z-index:1;
+    animation:fromleftfade .5s;
+}
+.resultDetail{
+    padding:1em;
+    width:90%;
+    height:80%;
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
