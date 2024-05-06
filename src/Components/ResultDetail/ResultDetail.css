@@ -1,21 +1,24 @@
 .resultDetailContainer{
     display:flex;
+    gap:1em;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: var(--transparent-color);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     position: absolute;
+    right:.5em;
     width:calc(100% - 1em);
     height:calc(100% - 1em);
     z-index:1;
     animation:fromleftfade .5s;
 }
-.resultDetail{
-    padding:1em;
-    width:90%;
-    height:80%;
+.details{
+    padding:4em;
+    display:flex;
+    gap:5em;
     background-color: var(--background-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+}
+.details table td{
+    padding:.2em 1em;
 }

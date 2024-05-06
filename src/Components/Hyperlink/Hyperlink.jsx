@@ -3,7 +3,7 @@ import './Hyperlink.css'
  
 const Hyperlink=(props)=>{
     return(
-        <Link className='anchor' to={props.href}>
+        <Link className='anchor' to={props.href} onClick={props.onClick?props.onClick:''}>
             {props.value}
         </Link>
     )

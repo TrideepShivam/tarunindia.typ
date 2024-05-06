@@ -8,9 +8,8 @@
     display:flex;
 }
 .mainContentContainer{
+    height:var(100% - 1em);
     position: relative;
-    overflow-x:hidden;
-    overflow-y: auto;
     padding:.5em;
 }
 .sectionHead{

@@ -18,7 +18,7 @@ const Playground=()=>{
     const handlePlay=()=>{
         navigate('/play',{
             state:{
-                time:.5,
+                time:1,
                 data:{
                     language:"english",
                     level:1,
@@ -30,7 +30,6 @@ const Playground=()=>{
     }
     return(
     <>
-        <ResultDetail/>
         <p className="sectionHead">PLAYGROUND</p>
         <div className="playgroundContent">
             <div className="informationContainer">

@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import Card from '../../Components/Card/Card';
 import Hyperlink from '../../Components/Hyperlink/Hyperlink';
 import './Results.css'
+import ResultDetail from '../../Components/ResultDetail/ResultDetail';
+import Button from '../../Components/Button/Button';
 
 const data = [{
     value:"31",
@@ -151,8 +154,14 @@ const testDetail=[
     }
 ]
 const Results=()=>{
+    const [details,setDetails]=useState({
+        open:false,
+        id:-1
+    })
+
     return(
     <>
+        {details.open&&<ResultDetail details={details} setDetails={setDetails}/>}   
         <p className="sectionHead">RESULTS</p>
         <div className="resultContent">
             {data.map((item,index)=>
@@ -160,6 +169,7 @@ const Results=()=>{
             )}
             <div className="resultTableContainer" style={{width:"97%"}}>
                 <table>
+                    <thead>
                     <tr className='highlight'>
                         <td>ID</td>
                         <td>DATE</td>
@@ -168,6 +178,8 @@ const Results=()=>{
                         <td>LANGUAGE</td>
                         <td>SEARCH</td>
                     </tr>
+                    </thead>
+                    <tbody>
                     {testDetail.length?
                     testDetail.map((item,index)=>
                     <tr key={index}>
@@ -176,13 +188,18 @@ const Results=()=>{
                         <td>{item.wpm}</td>
                         <td>{item.accuracy}</td>
                         <td>{item.language}</td>
-                        <td><Hyperlink to="#" value="details"/></td>
+                        <td><Button transparancy={true} onClick={()=>setDetails({
+                            ...details,
+                            open:true,
+                            id:item.id,
+                        })} value="details"/></td>
                     </tr>
                     ):
                     <tr>
                         <td style={{padding:'5em',textAlign:'center'}} colSpan={5}>No Data Found</td>
                     </tr>}
-                </table>    
+                    </tbody>
+                </table>
             </div>
         </div>
     </>
