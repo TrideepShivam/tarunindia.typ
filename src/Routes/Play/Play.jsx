@@ -91,7 +91,7 @@ const Play=()=>{
                 />
 			</div>
 		</div>
-		<div className="contentContainer details" id="userProfile">
+		<div className="contentContainer info">
             <div style={{position:'absolute',top:'0em'}}><ToggleDarkLight/></div>
             <img width="100em" src={logo} alt="Logo" />
 			<h2 id="userName">{userDetails.user.name.toUpperCase()}</h2>
