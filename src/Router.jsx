@@ -12,6 +12,7 @@ import Leaderboard from "./Routes/Leaderboard/Leaderboard";
 import Support from "./Routes/Support/Support";
 import About from "./Routes/About/About";
 import Play from "./Routes/Play/Play";
+import Profile from "./Routes/Profile/Profile";
 
 const Router = createBrowserRouter([
     {
@@ -71,12 +72,17 @@ const Router = createBrowserRouter([
             {
                 path:'/about',
                 element:<About/>
-            }
+            },
+            
         ]
     },
     {
         path:'/play',
         element:<Play/>
+    },
+    {
+        path:'/profile',
+        element:<Profile/>
     }
 ])
 
