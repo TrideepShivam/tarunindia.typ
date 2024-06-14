@@ -4,6 +4,7 @@
 }
 .textboxContainer p{
     position: absolute;
+    z-index: 0;
 }
 .textboxContainer input{
     background-color: transparent;
@@ -12,6 +13,8 @@
     color:var(--text-color);
     border:none;
     outline:none;
+    position: relative;
+    z-index:1;
     border-bottom:.1em solid var(--text-color);
 }
 .textboxContainer input:focus{
