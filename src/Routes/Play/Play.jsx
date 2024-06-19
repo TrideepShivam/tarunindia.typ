@@ -19,12 +19,12 @@ const Play=()=>{
     const [wordCount,setWordCount] = useState(0);
     const [typingDisabled,setTypingDisabled]=useState(false)
     const resultRef = useRef({
-        totalWord:0,
+        words:0,
         duration:location.state.time,
-        language:location.state.data.language,
+        char_with_spaces:0,
         keystrokes:0,
-        story:"",
-        errors:{}
+        story_id:-1,
+        mistakes:{}
     })
 
     useEffect(()=>{
@@ -36,7 +36,7 @@ const Play=()=>{
                 status:data.state,
                 message:data.message
             })
-            resultRef.current.story=data.data.title
+            resultRef.current.story_id=data.data.id
         }).catch(({response})=>{
             setMsg({
                 isOpen:true,
@@ -54,27 +54,39 @@ const Play=()=>{
     }
 
     const typing = (e) =>{
+        resultRef.current.keystrokes+=1
         if(e.key == ' '){
             let writtenText = e.target.value
             let currentWord = writtenText.slice(writtenStory.current.length,writtenText.length-1)
-            setWordCount(resultRef.current.totalWord = wordCount+1)
+            setWordCount(resultRef.current.words = wordCount+1)
             if(currentWord!==story[wordCount*2])
-                resultRef.current.errors[`[${story[wordCount*2]}]`]=`[${currentWord}]`
+                resultRef.current.mistakes[`[${story[wordCount*2]}]`]=`[${currentWord}]`
             writtenStory.current = writtenText
         }else if(/^[0-9a-zA-Z!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/? ]+$/.test(e.key)){
-            resultRef.current.keystrokes+=1
+            resultRef.current.char_with_spaces+=1
         }
     }
     const timeOut = ()=>{
         console.log(resultRef.current)
         setTypingDisabled(true)
-        setMsg({
-            isOpen:true,
-            status:'success',
-            message:'Test attempted successfully'
+        api.post('/store-test',resultRef.current)
+        .then(({data})=>{
+            setMsg({
+                isOpen:true,
+                status:data.state,
+                message:data.message
+            })
+        }).catch(({response})=>{
+            setMsg({
+                isOpen:true,
+                status:response.data.state,
+                message:response.data.message
+            })
+            console.log(response)
         })
         navigate('/results')
     }
+
     return(
     <div className='playContainer'>
 		<div className="contentContainer test">
