@@ -8,22 +8,22 @@ import ResultDetail from '../../Components/ResultDetail/ResultDetail';
  
 const Playground=()=>{
     const navigate = useNavigate()
-    const language = ["","English","Hindi"]
+    const language = ["","English","Hindi"]//database
     const duration = ["","1 min","5 min","10 min"]
-    const level = ["","Level 1","Level 2","Level 3","Level 4","Level 5"]
+    const level = ["","Level 1","Level 2","Level 3","Level 4","Level 5"]//database
     const langRef = useRef()
     const durationRef = useRef()
     const levelRef = useRef()
-    const conditions=["Backspace Blocking","Hightlighting Text","Numeric Content","Capitalized Content"]
+    const storyRef = useRef()
+    const conditions=["Backspace Blocking","Hightlighting Text"]
     const handlePlay=()=>{
         navigate('/play',{
             state:{
-                time:1,
+                time:durationRef.current.value,
                 data:{
-                    language:"english",
-                    level:1,
-                    capitalized:false,
-                    numeric:false
+                    language:langRef.current.value,
+                    level:levelRef.current.value,
+                    story:storyRef.current.value
                 }
             }
         })
@@ -33,7 +33,7 @@ const Playground=()=>{
         <p className="sectionHead">PLAYGROUND</p>
         <div className="playgroundContent">
             <div className="informationContainer">
-                <h1 className="highlight">Information</h1>
+                <h2 className="highlight">Information</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -45,6 +45,7 @@ const Playground=()=>{
                 <Dropdown var={langRef} options={language} legend="Language"/>
                 <Dropdown var={durationRef} options={duration} legend="Duration"/>
                 <Dropdown var={levelRef} options={level} legend="Level"/>
+                <Dropdown var={storyRef} options={level} legend="Story"/>
                 {
                     conditions.map((item,index)=>
                     <div key={index} className="conditionContainer">
