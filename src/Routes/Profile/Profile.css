@@ -27,12 +27,12 @@
     align-items: space-around;
     height: 100%;
 }
-img
+/* img
 {
    height: 80%;
    width: 95%;
     border: 1px solid green;
-}
+} */
 .bodyBox{
     padding: 0% 4% 0% 4%;
 }

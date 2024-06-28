@@ -7,7 +7,7 @@ const MsgBox =({setMsg,data})=>{
         setMsg(false)
     }
     setTimeout(closeMsgBox, 6000)
-    const msgThemeColor = data.status=='fail'?'tomato':'var(--theme-color)';
+    const msgThemeColor = data.status=='Fail'||data.status=='Error'?'tomato':'var(--theme-color)';
     return(
         <>
         {createPortal(<div className="msgContainer">

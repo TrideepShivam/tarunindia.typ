@@ -27,7 +27,7 @@ const Dropdown=(props)=>{
 
     return(
         <div className="dropdownContainer">
-            <select ref={data} onFocus={focusText} onBlur={blurText}>
+            <select ref={data} onFocus={focusText} onBlur={blurText} onClick={props.onClick&&(()=>props.onClick())}>
                 {props.options.map((item,index)=>
                     <option key={index}>{item}</option>
                 )}
