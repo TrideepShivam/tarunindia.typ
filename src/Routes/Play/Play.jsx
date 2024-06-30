@@ -11,6 +11,7 @@ import Button from '../../Components/Button/Button';
 import TextContent from '../../Components/TextContent/TextContent';
  
 const Play=()=>{
+    const [pauseTimer,setPauseTimer] = useState(true)
     const writtenStory = useRef("")
     const {userDetails,setMsg} = useContext(Context)
     const location = useLocation()
@@ -18,9 +19,10 @@ const Play=()=>{
     const [story,setStory] = useState(['Text']);
     const [wordCount,setWordCount] = useState(0);
     const [typingDisabled,setTypingDisabled]=useState(false)
+    const [second,setSecond] = useState(parseInt(location.state.time)*60)
     const resultRef = useRef({
         words:0,
-        duration:location.state.time,
+        duration:parseInt(location.state.time),
         char_with_spaces:0,
         keystrokes:0,
         story_id:-1,
@@ -30,13 +32,13 @@ const Play=()=>{
     useEffect(()=>{
         api.post('/story',location.state.data)
         .then(({data})=>{
-            setStory(data.data.content.split(/(\s+)/))
+            setStory(data.content.split(/(\s+)/))
             setMsg({
                 isOpen:true,
-                status:data.state,
-                message:data.message
+                status:"Success",
+                message:"Story Fetched Successfully"
             })
-            resultRef.current.story_id=data.data.id
+            resultRef.current.story_id=data.id
         }).catch(({response})=>{
             setMsg({
                 isOpen:true,
@@ -54,6 +56,8 @@ const Play=()=>{
     }
 
     const typing = (e) =>{
+        debugger
+        pauseTimer&&setPauseTimer(false)
         resultRef.current.keystrokes+=1
         if(e.key == ' '){
             let writtenText = e.target.value
@@ -108,10 +112,13 @@ const Play=()=>{
             <img width="100em" src={logo} alt="Logo" />
 			<h2 id="userName">{userDetails.user.name.toUpperCase()}</h2>
             <hr className='divider' />
-			<Timer time={location.state.time} pause={false} timeOut={timeOut}/>
+			<Timer second={second} setSecond={setSecond} pause={pauseTimer} timeOut={timeOut}/>
 			<WordCount value={wordCount}/>
 			<Button value={'Restart'} style={{width:'10em'}}/>
-			<Button  value={'Give Up'} transparancy={true}/>
+			<Button  value={pauseTimer?'Pause':'Resume'} transparancy={true} onClick={()=>{
+                setPauseTimer(!pauseTimer)
+                setTypingDisabled(pauseTimer)
+            }}/>
 		</div>
 	</div>
     )

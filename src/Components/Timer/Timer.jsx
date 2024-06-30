@@ -1,23 +1,23 @@
 import { useEffect, useState } from 'react';
 import './Timer.css'
  
-const Timer=({time=1,pause=false,timeOut})=>{
-    const [second,setSecond] = useState((time?time:1)*60)
+const Timer=({second,setSecond,pause=false,timeOut})=>{
     const getTime= ()=>{
         return `${Math.floor(second/60)}:${second%60}`
     }
 
     useEffect(()=>{
-        let interval
-        if(second>0&&!pause){
-            interval = setInterval(()=>{
-                setSecond((s)=>s-1)
-            },1000)
+        if(!pause){
+            let interval
+            if(second>0){
+                interval = setInterval(()=>{
+                    setSecond((s)=>s-1)
+                },1000)
+            }else{
+                timeOut()
+            }
+            return ()=>clearInterval(interval)
         }
-        else{
-            timeOut()
-        }
-        return ()=>clearInterval(interval)
     },[second])
 
     return(
