@@ -2,8 +2,8 @@ import { useState } from "react";
 import './ToggleButton.css'
 
 const ToggleButton = (props) => {
-    const [toggleOn,setToggleOn] = useState(true);
-    // props.var.current.value=toggleOn
+    const [toggleOn,setToggleOn] = useState(false);
+    props.var.current=toggleOn
     return(
         <div 
             className="toggleButtonContainer" 

@@ -52,11 +52,9 @@ const Play=()=>{
 
     const keyPrevention =(e)=>{
         let text = e.target.value
-        e.key=='Backspace'&&text[text.length-1]==' '&&e.preventDefault()
+        e.key=='Backspace'&&(text[text.length-1]==' '||location.state.backspace)&&e.preventDefault()
     }
-
     const typing = (e) =>{
-        debugger
         pauseTimer&&setPauseTimer(false)
         resultRef.current.keystrokes+=1
         if(e.key == ' '){
@@ -90,12 +88,14 @@ const Play=()=>{
         })
         navigate('/results')
     }
-
     return(
     <div className='playContainer'>
 		<div className="contentContainer test">
 			<div className="textContainer" id="readable">
-				<TextContent story={story} highlightingIndex={wordCount*2}/>
+                {!location.state.highlight?
+                    <p>{story}</p>:
+				    <TextContent story={story} highlightingIndex={wordCount*2}/>
+                }
 			</div>
             <hr className='divider' />
 			<div className="textContainer" id="writable">
@@ -115,7 +115,7 @@ const Play=()=>{
 			<Timer second={second} setSecond={setSecond} pause={pauseTimer} timeOut={timeOut}/>
 			<WordCount value={wordCount}/>
 			<Button value={'Restart'} style={{width:'10em'}}/>
-			<Button  value={pauseTimer?'Pause':'Resume'} transparancy={true} onClick={()=>{
+			<Button  value={!pauseTimer?'Pause':'Resume'} transparancy={true} onClick={()=>{
                 setPauseTimer(!pauseTimer)
                 setTypingDisabled(pauseTimer)
             }}/>

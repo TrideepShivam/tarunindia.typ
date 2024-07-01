@@ -18,7 +18,7 @@ const Timer=({second,setSecond,pause=false,timeOut})=>{
             }
             return ()=>clearInterval(interval)
         }
-    },[second])
+    },[second,pause])
 
     return(
         <div className="timeContainer">

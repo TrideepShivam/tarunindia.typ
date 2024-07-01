@@ -20,12 +20,16 @@ const Playground=()=>{
     const durationRef = useRef()
     const levelRef = useRef()
     const storyRef = useRef()
+    const backspaceRef = useRef(false)
+    const highlightRef = useRef(false)
     const conditions=["Backspace Blocking","Hightlighting Text"]
     const handlePlay=()=>{
         if(langRef.current.value&&durationRef.current.value&&levelRef.current.value&&storyRef.current.value)
             navigate('/play',{
                 state:{
                     time:durationRef.current.value,
+                    backspace:backspaceRef.current,
+                    highlight:highlightRef.current,
                     data:{
                         language:langRef.current.value,
                         level:levelRef.current.value,
@@ -103,7 +107,7 @@ const Playground=()=>{
                     conditions.map((item,index)=>
                     <div key={index} className="conditionContainer">
                         <p>{item}</p>
-                        <ToggleButton/>
+                        <ToggleButton var={index===0?backspaceRef:highlightRef}/>
                     </div>
                     )
                 }
