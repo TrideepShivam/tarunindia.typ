@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from '../../Components/Card/Card';
-import Hyperlink from '../../Components/Hyperlink/Hyperlink';
 import './Results.css'
 import ResultDetail from '../../Components/ResultDetail/ResultDetail';
 import Button from '../../Components/Button/Button';
+import api from '../../api';
 
 const data = [{
     value:"31",
@@ -24,141 +24,26 @@ const data = [{
     more:false,
     increment:true
 }]
-const testDetail=[
-    {
-        id:'0',
-        date:'9/4/2024',
-        wpm:'23.7',
-        accuracy:'91.03',
-        language:'Hindi'
-    },{
-        id:'0',
-        date:'9/4/2024',
-        wpm:'23.7',
-        accuracy:'91.03',
-        language:'Hindi'
-    },{
-        id:'0',
-        date:'9/4/2024',
-        wpm:'23.7',
-        accuracy:'91.03',
-        language:'Hindi'
-    },{
-        id:'0',
-        date:'9/4/2024',
-        wpm:'23.7',
-        accuracy:'91.03',
-        language:'Hindi'
-    },{
-        id:'0',
-        date:'9/4/2024',
-        wpm:'23.7',
-        accuracy:'91.03',
-        language:'Hindi'
-    },{
-        id:'0',
-        date:'9/4/2024',
-        wpm:'23.7',
-        accuracy:'91.03',
-        language:'Hindi'
-    },{
-        id:'0',
-        date:'9/4/2024',
-        wpm:'23.7',
-        accuracy:'91.03',
-        language:'Hindi'
-    },{
-        id:'0',
-        date:'9/4/2024',
-        wpm:'23.7',
-        accuracy:'91.03',
-        language:'Hindi'
-    },{
-        id:'1',
-        date:'10/4/2024',
-        wpm:'25',
-        accuracy:'95',
-        language:'English'
-    },{
-        id:'1',
-        date:'10/4/2024',
-        wpm:'25',
-        accuracy:'95',
-        language:'English'
-    },{
-        id:'1',
-        date:'10/4/2024',
-        wpm:'25',
-        accuracy:'95',
-        language:'English'
-    },{
-        id:'1',
-        date:'10/4/2024',
-        wpm:'25',
-        accuracy:'95',
-        language:'English'
-    },{
-        id:'1',
-        date:'10/4/2024',
-        wpm:'25',
-        accuracy:'95',
-        language:'English'
-    },{
-        id:'1',
-        date:'10/4/2024',
-        wpm:'25',
-        accuracy:'95',
-        language:'English'
-    },{
-        id:'1',
-        date:'10/4/2024',
-        wpm:'25',
-        accuracy:'95',
-        language:'English'
-    },{
-        id:'1',
-        date:'10/4/2024',
-        wpm:'25',
-        accuracy:'95',
-        language:'English'
-    },{
-        id:'1',
-        date:'10/4/2024',
-        wpm:'25',
-        accuracy:'95',
-        language:'English'
-    },{
-        id:'1',
-        date:'10/4/2024',
-        wpm:'25',
-        accuracy:'95',
-        language:'English'
-    },{
-        id:'1',
-        date:'10/4/2024',
-        wpm:'25',
-        accuracy:'95',
-        language:'English'
-    },{
-        id:'1',
-        date:'10/4/2024',
-        wpm:'25',
-        accuracy:'95',
-        language:'English'
-    },{
-        id:'1',
-        date:'10/4/2024',
-        wpm:'25',
-        accuracy:'95',
-        language:'English'
-    }
-]
 const Results=()=>{
+    const [testDetail,setTestDetail]=useState()
+    const [loading,setLoading] = useState(true)
     const [details,setDetails]=useState({
         open:false,
-        id:-1
+        data:''
     })
-
+    useEffect(()=>{
+        api.get('/get-attempts')
+        .then(({data})=>{
+            console.log(data)
+            setTestDetail(data)
+            setLoading(false)
+        }).catch(({response})=>{
+            console.log(response)
+        })
+    },[])
+    if(loading){
+        return <p>Loading...</p>
+    }
     return(
     <>
         {details.open&&<ResultDetail details={details} setDetails={setDetails}/>}   
@@ -171,27 +56,27 @@ const Results=()=>{
                 <table>
                     <thead>
                     <tr className='highlight'>
-                        <td>ID</td>
                         <td>DATE</td>
                         <td>WPM</td>
                         <td>ACCURACY</td>
                         <td>LANGUAGE</td>
+                        <td>ERRORS</td>
                         <td>SEARCH</td>
                     </tr>
                     </thead>
                     <tbody>
                     {testDetail.length?
-                    testDetail.map((item,index)=>
+                    testDetail.slice(0).reverse().map((item,index)=>
                     <tr key={index}>
-                        <td>{item.id}</td>
-                        <td>{item.date}</td>
-                        <td>{item.wpm}</td>
-                        <td>{item.accuracy}</td>
-                        <td>{item.language}</td>
+                        <td>{item.created_at}</td>
+                        <td>{item.test_details.wpm}</td>
+                        <td>{item.test_details.accuracy}</td>
+                        <td>{item.stories.language}</td>
+                        <td>{item.test_details.errors}</td>
                         <td><Button transparancy={true} onClick={()=>setDetails({
                             ...details,
                             open:true,
-                            id:item.id,
+                            data:item,
                         })} value="details"/></td>
                     </tr>
                     ):

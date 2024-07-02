@@ -28,16 +28,19 @@ const ResultDetail=({details,setDetails})=>{
         <h1 className="highlight">Test Details</h1>
         <div className="details">
             <CircleButton details={details} setDetails={setDetails} style={{top:"1em",right:"0.5em"}} value={img} />
-            <Percentage value={testdetails.accuracy} text={'accuracy'}/>
+            <Percentage value={details.data.test_details.accuracy} text={'accuracy'}/>
             <div>
                 <h3 className="sectionHead">Details</h3>
                 <table>
                     <tbody>
-                    {
-                        Object.entries(testdetails).map(([key,value])=>
-                            key!=='errors'&&key!=='accuracy'&&<tr key={key}><td>{key.toUpperCase()} </td><td className='highlight'>{value}</td></tr>
-                        )
-                    }
+                        <tr><td>WPM</td><td className='highlight'>{details.data.test_details.wpm}</td></tr>
+                        <tr><td>KPM</td><td className='highlight'>{details.data.test_details.kpm}</td></tr>
+                        <tr><td>WORDS</td><td className='highlight'>{details.data.test_details.words}</td></tr>
+                        <tr><td>CHAR WITH SPACES</td><td className='highlight'>{details.data.test_details.char_with_spaces}</td></tr>
+                        <tr><td>DURATION</td><td className='highlight'>{details.data.duration}</td></tr>
+                        <tr><td>LANGUAGE</td><td className='highlight'>{details.data.stories.language}</td></tr>
+                        <tr><td>STORY</td><td className='highlight'>{details.data.stories.title}</td></tr>
+                        <tr><td>DATE & TIME</td><td className='highlight'>{details.data.created_at}</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -46,7 +49,7 @@ const ResultDetail=({details,setDetails})=>{
                 <table>
                 <tbody>
                 {
-                    Object.entries(testdetails.errors).map(([key,value])=>
+                    Object.entries(JSON.parse(details.data.mistakes)).map(([key,value])=>
                         <tr key={key}><td>{key} </td><td>{value}</td></tr>
                     )
                 }

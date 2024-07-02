@@ -15,10 +15,5 @@
     width:100%;
     padding:.5em;
     font-size: 1.2em;
-}
-.resultTableContainer table tr td:first-child{
-    width:5%;
-}
-.resultTableContainer table tr td:not(:first-child){
-    width:20%;
+    margin:.1em;
 }
