@@ -6,18 +6,17 @@ import './Register.css'
 import api from '../../api';
 import { Context } from '../../ContextAPI';
 import { Navigate } from 'react-router-dom';
+import Loading from '../../Components/Loading/Loading';
  
 const Register=()=>{
     const {userDetails,setUserLocal,msg,setMsg} = useContext(Context)
-
+    const [loading,setLoading] =useState(false)
     const nameRef = useRef()
     const emailRef = useRef()
     const pwdRef = useRef()
     const pwdReRef = useRef()
     const handleRegister=()=>{
-        console.log(nameRef.current.value+" "+emailRef.current.value+" "+pwdRef.current.value);
-        console.log(pwdRef.current.value==pwdReRef.current.value);
-        
+        setLoading(true)
         api.post('/auth/register',{
             name:nameRef.current.value,
             email:emailRef.current.value,
@@ -31,6 +30,7 @@ const Register=()=>{
                 message:data.message
             })
             setUserLocal(data)
+            setLoading(false)
             console.log(data)
         }).catch(({response}) => {
             setMsg({
@@ -38,20 +38,12 @@ const Register=()=>{
                 status:response.data.state,
                 message:response.data.message
             })
+            setLoading(false)
             console.log(response);
         });
-
-        pwdReRef.current.value=""
-        pwdReRef.current.focus()
-        pwdReRef.current.blur()
-        pwdRef.current.value=""
-        pwdRef.current.focus()
-        pwdRef.current.blur()
-        emailRef.current.value=""
-        emailRef.current.focus()
-        emailRef.current.blur()
-        nameRef.current.focus()
-        nameRef.current.value=""
+    }
+    if(loading){
+        return <Loading/>
     }
     if(userDetails){
         return <>

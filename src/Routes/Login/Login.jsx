@@ -6,14 +6,16 @@ import './Login.css'
 import api from '../../api';
 import { Context } from '../../ContextAPI';
 import { Navigate } from 'react-router-dom';
+import Loading from '../../Components/Loading/Loading';
  
 const Login=()=>{
     const {userDetails,setUserLocal,msg,setMsg} = useContext(Context)
-
+    const [loading,setLoading] =useState(false)
     const emailRef = useRef()
     const pwdRef = useRef()
 
     const handleLogin=()=>{
+        setLoading(true)
         api.post('/auth/login',{
             email:emailRef.current.value,
             password:pwdRef.current.value
@@ -25,21 +27,19 @@ const Login=()=>{
                 message:data.message
             })
             setUserLocal(data)
-            console.log(data)
+            setLoading(false)
         }).catch(({response}) => {
             setMsg({
                 isOpen:true,
                 status:response.data.state,
                 message:response.data.message
             })
-            console.log(response);
+            console.log(response)
+            setLoading(false)
         });
-
-        pwdRef.current.value=""
-        pwdRef.current.focus()
-        pwdRef.current.blur()
-        emailRef.current.focus()
-        emailRef.current.value=""
+    }
+    if(loading){
+        return <Loading/>
     }
     if(userDetails){
         return <>

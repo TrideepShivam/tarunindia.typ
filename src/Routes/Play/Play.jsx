@@ -9,8 +9,10 @@ import ToggleDarkLight from '../../Components/ToggleDarkLight/ToggleDarkLight';
 import WordCount from '../../Components/WordCount/WordCount';
 import Button from '../../Components/Button/Button';
 import TextContent from '../../Components/TextContent/TextContent';
+import Loading from '../../Components/Loading/Loading';
  
 const Play=()=>{
+    const [loading,setLoading] =useState(true)
     const [pauseTimer,setPauseTimer] = useState(true)
     const writtenStory = useRef("")
     const {userDetails,setMsg} = useContext(Context)
@@ -39,6 +41,7 @@ const Play=()=>{
                 message:"Story Fetched Successfully"
             })
             resultRef.current.story_id=data.id
+            setLoading(false)
         }).catch(({response})=>{
             setMsg({
                 isOpen:true,
@@ -49,7 +52,9 @@ const Play=()=>{
             navigate('/playground')
         })
     },[])
-
+    if(loading){
+        return <Loading/>
+    }
     const keyPrevention =(e)=>{
         let text = e.target.value
         e.key=='Backspace'&&(text[text.length-1]==' '||location.state.backspace)&&e.preventDefault()

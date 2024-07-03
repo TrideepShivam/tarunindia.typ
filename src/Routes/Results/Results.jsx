@@ -4,6 +4,7 @@ import './Results.css'
 import ResultDetail from '../../Components/ResultDetail/ResultDetail';
 import Button from '../../Components/Button/Button';
 import api from '../../api';
+import Loading from '../../Components/Loading/Loading';
 
 const data = [{
     value:"31",
@@ -42,7 +43,7 @@ const Results=()=>{
         })
     },[])
     if(loading){
-        return <p>Loading...</p>
+        return <Loading/>
     }
     return(
     <>

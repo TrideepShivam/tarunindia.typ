@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import ResultDetail from '../../Components/ResultDetail/ResultDetail';
 import api from '../../api';
 import { Context } from '../../ContextAPI';
+import Loading from '../../Components/Loading/Loading';
  
 const Playground=()=>{
     const [loading,setLoading] = useState(true)
@@ -83,7 +84,7 @@ const Playground=()=>{
             }) 
     }
     if(loading){
-        return <p>loading...</p>
+        return <Loading/>
     }
     return(
     <>
