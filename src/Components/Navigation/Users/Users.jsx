@@ -71,7 +71,7 @@ const Users=()=>{
     const arrow =!lightMode?"https://img.icons8.com/ios-filled/25/000000/back.png":
         "https://img.icons8.com/ios-filled/25/ffffff/back.png"
     const logout =()=>{
-        api.post('/auth/logout')
+        api.get('/auth/logout')
         .then(({data})=>{
             setMsg({
                 isOpen:true,
@@ -79,10 +79,10 @@ const Users=()=>{
                 message:data.message
             })
             console.log(data)
+            localStorage.removeItem('USER_DETAILS')
             setUserLocal("")
         }).catch((error)=>{
             console.log(error)
-            localStorage.clear()
         })
     }
 
