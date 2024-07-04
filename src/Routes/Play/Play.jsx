@@ -63,11 +63,15 @@ const Play=()=>{
         pauseTimer&&setPauseTimer(false)
         resultRef.current.keystrokes+=1
         if(e.key == ' '){
-            let writtenText = e.target.value
-            let currentWord = writtenText.slice(writtenStory.current.length,writtenText.length-1)
+            let writtenText = e.target.value.split(/(\s+)/)
+            // console.log(writtenText)
+            // let currentWord = writtenText.slice(writtenStory.current.length,writtenText.length-1)//here we dont use length-1 we have to find previous space index then till that index we have to use it
+
             setWordCount(resultRef.current.words = wordCount+1)
-            if(currentWord!==story[wordCount*2])
-                resultRef.current.mistakes[`[${story[wordCount*2]}]`]=`[${currentWord}]`
+            let shownWord = story[wordCount*2]//this solution reduces the time to compare
+            let currentWord = writtenText[wordCount*2]
+            if(currentWord!==shownWord)
+                resultRef.current.mistakes[`[${shownWord}]`]=`[${currentWord}]`
             writtenStory.current = writtenText
         }else if(/^[0-9a-zA-Z!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/? ]+$/.test(e.key)){
             resultRef.current.char_with_spaces+=1
