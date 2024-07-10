@@ -3,7 +3,7 @@ import './Textbox.css'
 import { useState } from 'react';
  
 const Textbox=(props)=>{
-    const [legend,setLegend] = useState(false)
+    const [legend,setLegend] = useState(props.legendStyle?props.legendStyle:false)
     const blurStyle={
         top:"0em",
         fontSize:"1.5em",
@@ -22,10 +22,10 @@ const Textbox=(props)=>{
     const blurText = ()=>{
         setLegend(data.current.value?true:false)
     }
-
+    const today = new Date().toISOString().split('T')[0];
     return(
         <div className="textboxContainer">
-            <input type={props.type} ref={data} onFocus={focusText} onBlur={blurText}/>
+            <input defaultValue={today} max={props.max?props.max:today} type={props.type} ref={data} onFocus={focusText} onBlur={blurText}/>
             <p style={legend?focusStyle:blurStyle} >{props.legend}</p>
         </div>
     )

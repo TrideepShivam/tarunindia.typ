@@ -25,9 +25,8 @@ const ResultDetail=({details,setDetails})=>{
 
     return(
     <div className="resultDetailContainer">
-        <h1 className="highlight">Test Details</h1>
         <div className="details">
-            <CircleButton details={details} setDetails={setDetails} style={{top:"1em",right:"0.5em"}} value={img} />
+            <CircleButton details={details} action={setDetails} style={{top:"1em",right:"0.5em"}} value={img} />
             <Percentage value={details.data.test_details.accuracy} text={'accuracy'}/>
             <div>
                 <h3 className="sectionHead">Details</h3>

@@ -1,0 +1,57 @@
+import { useContext, useRef, useState } from 'react';
+import { Context } from '../../ContextAPI';
+import './Search.css'
+import CircleButton from '../CircleButton/CircleButton';
+import Textbox from '../Textbox/Textbox';
+import Button from '../Button/Button';
+import api from '../../api';
+import Loading from '../Loading/Loading';
+ 
+const Search=(props)=>{
+    const {lightMode} = useContext(Context);
+    const [loading,setLoading]= useState(false)
+    const today = new Date().toISOString().split('T')[0];
+
+    const startDateRef = useRef(today)
+    const img = <img width="25" height="25" src={
+        !lightMode?"https://img.icons8.com/ios-filled/25/000000/delete-sign--v1.png":
+                "https://img.icons8.com/ios-filled/25/ffffff/delete-sign--v1.png"
+    } alt="back"/>;
+    const yymmdd = (d)=>{
+        const date = new Date(d)
+        const formattedYear = date.getFullYear().toString();
+        const formattedMonth = (date.getMonth() + 1).toString().padStart(2, "0");
+        const formattedDay = date.getDate().toString().padStart(2, "0");
+
+        const result = `${formattedYear}/${formattedMonth}/${formattedDay}`;
+        return result
+    }
+    const handleSearch=()=>{
+        setLoading(true)
+        api.post('/search',{
+            start:yymmdd(startDateRef.current.value)
+        })
+        .then(({data})=>{
+            props.setTestDetail(data)
+            props.onClick()
+            setLoading(false)
+        }).catch(({response})=>{
+            console.log(response)
+            setLoading(false)
+        })
+    }
+    if(loading)
+        return <Loading/>
+    return(
+        <div className="searchContainer">
+            <div className="searchBox">
+                <CircleButton onClick={props.onClick} style={{top:"1em",right:"0.5em"}} value={img} />
+                <Textbox var={startDateRef} legendStyle={true} type={'date'} legend={'Date'} />
+                <Button value={'Search'} onClick={handleSearch}/>
+
+            </div>
+        </div>
+    )
+}
+
+export default Search;

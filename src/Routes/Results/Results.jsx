@@ -1,13 +1,22 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Card from '../../Components/Card/Card'
 import './Results.css'
 import ResultDetail from '../../Components/ResultDetail/ResultDetail'
 import Button from '../../Components/Button/Button'
 import api from '../../api'
 import Loading from '../../Components/Loading/Loading'
+import CircleButton from '../../Components/CircleButton/CircleButton'
+import { Context } from '../../ContextAPI'
+import Search from '../../Components/Search/Search'
 
 
 const Results=()=>{
+    const {lightMode} = useContext(Context);
+    const img = <img width="25" height="25" src={
+        !lightMode?"https://img.icons8.com/ios-filled/25/000000/search.png":
+                "https://img.icons8.com/ios-filled/25/ffffff/search.png"
+    } alt="back"/>;
+
     const cardData = [{
         id:0,
         value:"31",
@@ -38,7 +47,7 @@ const Results=()=>{
             case 0:
               return { ...card, value: newWPM.toString() }
             case 1:
-              return { ...card, value: newAccuracy.toFixed(1).toString() }
+              return { ...card, value: newAccuracy.toString() }
             case 2:
               return { ...card, value: newKPM.toString() }
             default:
@@ -53,14 +62,14 @@ const Results=()=>{
         open:false,
         data:''
     })
+    const [search,setSearch]=useState(false)
     useEffect(()=>{
         api.get('/get-attempts')
         .then(({data})=>{
-            console.log(data)
             setTestDetail(data)
-            const averageWPM = Math.floor(data.reduce((sum, user) => sum + user.test_details.wpm, 0) / data.length).toFixed(1)
+            const averageWPM = (data.reduce((sum, user) => sum + user.test_details.wpm, 0) / data.length).toFixed(1)
             const averageAccuracy = (data.reduce((sum, user) => sum + user.test_details.accuracy, 0) / data.length).toFixed(1)
-            const averageKPM = Math.floor(data.reduce((sum, user) => sum + user.test_details.kpm, 0) / data.length).toFixed(1)
+            const averageKPM = (data.reduce((sum, user) => sum + user.test_details.kpm, 0) / data.length).toFixed(1)
             //call fn with 3 values
             updateCardValues(averageWPM, averageAccuracy, averageKPM)
             setLoading(false)
@@ -73,6 +82,7 @@ const Results=()=>{
     }
     return(
     <>
+        {search&&<Search setTestDetail={setTestDetail} onClick={()=>setSearch(false)}/>}
         {details.open&&<ResultDetail details={details} setDetails={setDetails}/>}   
         <p className="sectionHead">RESULTS</p>
         <div className="resultContent">
@@ -88,7 +98,9 @@ const Results=()=>{
                         <td>ACCURACY</td>
                         <td>LANGUAGE</td>
                         <td>ERRORS</td>
-                        <td>SEARCH</td>
+                        <td style={{position:'relative'}}>
+                            <CircleButton style={{top:'-.2em',right:'.5em'}} value={img} onClick={()=>setSearch(true)}/>
+                        </td>
                     </tr>
                     </thead>
                     <tbody>

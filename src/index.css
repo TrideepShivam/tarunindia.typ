@@ -16,6 +16,7 @@
 ::-webkit-scrollbar{width:.1em;}
 ::-webkit-scrollbar-track{background:var(--background-color);}
 ::-webkit-scrollbar-thumb{background:var(--text-color-light);}
+::-webkit-calendar-picker-indicator{filter: invert(80%);cursor: pointer;}
 .dark-theme{
   --background-color:#fefeff;
   --light-back-color:#efefee;

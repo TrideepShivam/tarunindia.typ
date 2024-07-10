@@ -1,4 +1,4 @@
-.resultDetailContainer{
+.searchContainer{
     display:flex;
     gap:1em;
     flex-direction: column;
@@ -13,13 +13,13 @@
     z-index:1;
     animation:fromleftfade .5s;
 }
-.details{
+.searchBox{
     padding:4em;
     display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap:5em;
     background-color: var(--background-color);
     border:.1em solid var(--light-back-color);
-}
-.details table td{
-    padding:.2em 1em;
 }
