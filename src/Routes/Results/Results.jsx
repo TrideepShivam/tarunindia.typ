@@ -16,6 +16,10 @@ const Results=()=>{
         !lightMode?"https://img.icons8.com/ios-filled/25/000000/search.png":
                 "https://img.icons8.com/ios-filled/25/ffffff/search.png"
     } alt="back"/>;
+    const imgrefresh = <img width="25" height="25" src={
+        !lightMode?"https://img.icons8.com/ios-filled/25/000000/refresh.png":
+                "https://img.icons8.com/ios-filled/25/ffffff/refresh.png"
+    } alt="back"/>;
 
     const cardData = [{
         id:0,
@@ -55,7 +59,8 @@ const Results=()=>{
           }
         })
         setCards(updatedCards)
-      }
+    }
+    const [refresh,setRefresh]=useState(false)
     const [testDetail,setTestDetail]=useState()
     const [loading,setLoading] = useState(true)
     const [details,setDetails]=useState({
@@ -66,6 +71,7 @@ const Results=()=>{
     useEffect(()=>{
         api.get('/get-attempts')
         .then(({data})=>{
+            setRefresh(false)
             setTestDetail(data)
             const averageWPM = (data.reduce((sum, user) => sum + user.test_details.wpm, 0) / data.length).toFixed(1)
             const averageAccuracy = (data.reduce((sum, user) => sum + user.test_details.accuracy, 0) / data.length).toFixed(1)
@@ -76,7 +82,7 @@ const Results=()=>{
         }).catch(({response})=>{
             console.log(response)
         })
-    },[])
+    },[refresh])
     if(loading){
         return <Loading/>
     }
@@ -99,6 +105,10 @@ const Results=()=>{
                         <td>LANGUAGE</td>
                         <td>ERRORS</td>
                         <td style={{position:'relative'}}>
+                            <CircleButton style={{top:'-.2em',right:'4em'}} value={imgrefresh} onClick={()=>{
+                                setRefresh(true)
+                                setLoading(true)
+                            }}/>
                             <CircleButton style={{top:'-.2em',right:'.5em'}} value={img} onClick={()=>setSearch(true)}/>
                         </td>
                     </tr>

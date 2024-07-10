@@ -19,7 +19,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap:5em;
+    gap:1em;
     background-color: var(--background-color);
     border:.1em solid var(--light-back-color);
 }
