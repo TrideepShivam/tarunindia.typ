@@ -99,7 +99,8 @@ const Results=()=>{
                 <table>
                     <thead>
                     <tr className='highlight'>
-                        <td>DATE</td>
+                        <td>DATE (yy-mm-dd)</td>
+                        <td>TIME</td>
                         <td>WPM</td>
                         <td>ACCURACY</td>
                         <td>LANGUAGE</td>
@@ -117,7 +118,8 @@ const Results=()=>{
                     {testDetail.length?
                     testDetail.slice(0).reverse().map((item,index)=>
                     <tr key={index}>
-                        <td>{item.created_at}</td>
+                        <td>{item.created_at.split('T')[0]}</td>
+                        <td>{item.created_at.split('T')[1].slice(0,8)}</td>
                         <td>{item.test_details.wpm}</td>
                         <td>{item.test_details.accuracy}</td>
                         <td>{item.stories.language}</td>

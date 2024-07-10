@@ -22,7 +22,7 @@ const ResultDetail=({details,setDetails})=>{
         !lightMode?"https://img.icons8.com/ios-filled/25/000000/delete-sign--v1.png":
                 "https://img.icons8.com/ios-filled/25/ffffff/delete-sign--v1.png"
     } alt="back"/>;
-
+    const dateAndTime = details.data.created_at.split('T')
     return(
     <div className="resultDetailContainer">
         <div className="details">
@@ -39,7 +39,8 @@ const ResultDetail=({details,setDetails})=>{
                         <tr><td>DURATION</td><td className='highlight'>{details.data.duration}</td></tr>
                         <tr><td>LANGUAGE</td><td className='highlight'>{details.data.stories.language}</td></tr>
                         <tr><td>STORY</td><td className='highlight'>{details.data.stories.title}</td></tr>
-                        <tr><td>DATE & TIME</td><td className='highlight'>{details.data.created_at}</td></tr>
+                        <tr><td>DATE</td><td className='highlight'>{dateAndTime[0]}</td></tr>
+                        <tr><td>TIME</td><td className='highlight'>{dateAndTime[1].slice(0,8)}</td></tr>
                     </tbody>
                 </table>
             </div>
