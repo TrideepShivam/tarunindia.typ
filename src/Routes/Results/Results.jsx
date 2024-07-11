@@ -73,9 +73,9 @@ const Results=()=>{
         .then(({data})=>{
             setRefresh(false)
             setTestDetail(data)
-            const averageWPM = (data.reduce((sum, user) => sum + user.test_details.wpm, 0) / data.length).toFixed(1)
-            const averageAccuracy = (data.reduce((sum, user) => sum + user.test_details.accuracy, 0) / data.length).toFixed(1)
-            const averageKPM = (data.reduce((sum, user) => sum + user.test_details.kpm, 0) / data.length).toFixed(1)
+            const averageWPM = (data.reduce((sum, user) => sum + user.test_details.wpm, 0) / data.length).toFixed(2)
+            const averageAccuracy = (data.reduce((sum, user) => sum + user.test_details.accuracy, 0) / data.length).toFixed(2)
+            const averageKPM = (data.reduce((sum, user) => sum + user.test_details.kpm, 0) / data.length).toFixed(2)
             //call fn with 3 values
             updateCardValues(averageWPM, averageAccuracy, averageKPM)
             setLoading(false)

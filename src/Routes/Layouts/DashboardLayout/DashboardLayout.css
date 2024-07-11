@@ -17,3 +17,6 @@
     margin: .2em 0em;
     border-left:.1em solid var(--theme-color);
 }
+.divider{
+    border:.1em solid var(--theme-color);
+}

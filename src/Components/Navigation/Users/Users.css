@@ -22,7 +22,3 @@
     flex-direction: column;
     animation:fromleftfade .5s;
 }
-.divider{
-    border:.1em solid var(--theme-color);
-    width:2em;
-}

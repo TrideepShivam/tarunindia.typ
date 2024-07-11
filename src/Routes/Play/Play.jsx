@@ -21,6 +21,7 @@ const Play=()=>{
     const [story,setStory] = useState(['Text']);
     const [wordCount,setWordCount] = useState(0);
     const [typingDisabled,setTypingDisabled]=useState(false)
+    const [wrong,setWrong] = useState(false)
     const [second,setSecond] = useState(parseInt(location.state.time)*60)
     const resultRef = useRef({
         words:0,
@@ -61,6 +62,7 @@ const Play=()=>{
     }
     const typing = (e) =>{
         pauseTimer&&setPauseTimer(false)
+        wrong&&setWrong(false)
         resultRef.current.keystrokes+=1
         if(e.key == ' '){
             let writtenText = e.target.value.split(/(\s+)/)
@@ -70,8 +72,10 @@ const Play=()=>{
             setWordCount(resultRef.current.words = wordCount+1)
             let shownWord = story[wordCount*2]//this solution reduces the time to compare
             let currentWord = writtenText[wordCount*2]
-            if(currentWord!==shownWord)
+            if(currentWord!==shownWord){
                 resultRef.current.mistakes[`[${shownWord}]`]=`[${currentWord}]`
+                setWrong(true)
+            }
             writtenStory.current = writtenText
         }else if(/^[0-9a-zA-Z!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/? ]+$/.test(e.key)){
             resultRef.current.char_with_spaces+=1
@@ -106,7 +110,7 @@ const Play=()=>{
 				    <TextContent story={story} highlightingIndex={wordCount*2}/>
                 }
 			</div>
-            <hr className='divider' />
+            <hr className='divider' style={{borderColor:wrong?'tomato':'var(--theme-color)',width:'100%'}}/>
 			<div className="textContainer" id="writable">
 				<textarea 
                     placeholder="start typing..." 
