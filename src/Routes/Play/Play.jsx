@@ -59,12 +59,14 @@ const Play=()=>{
     const keyPrevention =(e)=>{
         let text = e.target.value
         e.key=='Backspace'&&(text[text.length-1]==' '||location.state.backspace)&&e.preventDefault()
+        (e.key == ' '&&text[text.length-1]==' ')&&e.preventDefault()
     }
     const typing = (e) =>{
+        let text = e.target.value
         pauseTimer&&setPauseTimer(false)
         wrong&&setWrong(false)
         resultRef.current.keystrokes+=1
-        if(e.key == ' '){
+        if(e.key == ' '&&text[text.length-2]!=' '){
             let writtenText = e.target.value.split(/(\s+)/)
             // console.log(writtenText)
             // let currentWord = writtenText.slice(writtenStory.current.length,writtenText.length-1)//here we dont use length-1 we have to find previous space index then till that index we have to use it
@@ -77,12 +79,16 @@ const Play=()=>{
                 setWrong(true)
             }
             writtenStory.current = writtenText
-        }else if(/^[0-9a-zA-Z!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/? ]+$/.test(e.key)){
+        }else if(e.key == ' '&&text[text.length-2]==' ')
+            e.target.value = text.substring(0,text.length-1)
+            
+        if(/^[0-9a-zA-Z!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/? ]+$/.test(e.key)){
             resultRef.current.char_with_spaces+=1
         }
     }
     const timeOut = ()=>{
         console.log(resultRef.current)
+        setLoading(true)
         setTypingDisabled(true)
         api.post('/store-test',resultRef.current)
         .then(({data})=>{
@@ -91,15 +97,17 @@ const Play=()=>{
                 status:data.state,
                 message:data.message
             })
+            setLoading(false)
         }).catch(({response})=>{
             setMsg({
                 isOpen:true,
                 status:response.data.state,
                 message:response.data.message
             })
+            setLoading(false)
             console.log(response)
         })
-        navigate('/results')
+        !loading&&navigate('/results')
     }
     return(
     <div className='playContainer'>
