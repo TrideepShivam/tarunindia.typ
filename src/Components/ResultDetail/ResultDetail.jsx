@@ -36,7 +36,7 @@ const ResultDetail=({details,setDetails})=>{
                         <tr><td>KPM</td><td className='highlight'>{details.data.test_details.kpm}</td></tr>
                         <tr><td>WORDS</td><td className='highlight'>{details.data.test_details.words}</td></tr>
                         <tr><td>CHAR WITH SPACES</td><td className='highlight'>{details.data.test_details.char_with_spaces}</td></tr>
-                        <tr><td>DURATION</td><td className='highlight'>{details.data.duration}</td></tr>
+                        <tr><td>DURATION</td><td className='highlight'>{details.data.duration} min</td></tr>
                         <tr><td>LANGUAGE</td><td className='highlight'>{details.data.stories.language}</td></tr>
                         <tr><td>STORY</td><td className='highlight'>{details.data.stories.title}</td></tr>
                         <tr><td>DATE</td><td className='highlight'>{dateAndTime[0]}</td></tr>
@@ -48,10 +48,10 @@ const ResultDetail=({details,setDetails})=>{
                 <h3 className="sectionHead">Errors</h3>
                 <table>
                 <tbody>
-                {
+                {   JSON.parse(details.data.mistakes).length!=0?
                     Object.entries(JSON.parse(details.data.mistakes)).map(([key,value])=>
                         <tr key={key}><td>{key} </td><td>{value}</td></tr>
-                    )
+                    ):<p>No Mistakes</p>
                 }
                 </tbody>
                 </table>

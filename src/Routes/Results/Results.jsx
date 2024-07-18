@@ -105,6 +105,7 @@ const Results=()=>{
                         <td>ACCURACY</td>
                         <td>LANGUAGE</td>
                         <td>ERRORS</td>
+                        <td>DURATION</td>
                         <td style={{position:'relative'}}>
                             <CircleButton style={{top:'-.2em',right:'4em'}} value={imgrefresh} onClick={()=>{
                                 setRefresh(true)
@@ -124,6 +125,7 @@ const Results=()=>{
                         <td>{item.test_details.accuracy}</td>
                         <td>{item.stories.language}</td>
                         <td>{item.test_details.errors}</td>
+                        <td>{item.duration} min</td>
                         <td><Button transparancy={true} onClick={()=>setDetails({
                             ...details,
                             open:true,
