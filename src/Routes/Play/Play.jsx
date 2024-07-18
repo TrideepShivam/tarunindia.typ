@@ -59,29 +59,27 @@ const Play=()=>{
     const keyPrevention =(e)=>{
         let text = e.target.value
         e.key=='Backspace'&&(text[text.length-1]==' '||location.state.backspace)&&e.preventDefault()
-        (e.key == ' '&&text[text.length-1]==' ')&&e.preventDefault()
     }
     const typing = (e) =>{
         let text = e.target.value
         pauseTimer&&setPauseTimer(false)
         wrong&&setWrong(false)
         resultRef.current.keystrokes+=1
-        if(e.key == ' '&&text[text.length-2]!=' '){
+        if(e.key == ' '){
             let writtenText = e.target.value.split(/(\s+)/)
-            // console.log(writtenText)
             // let currentWord = writtenText.slice(writtenStory.current.length,writtenText.length-1)//here we dont use length-1 we have to find previous space index then till that index we have to use it
-
-            setWordCount(resultRef.current.words = wordCount+1)
-            let shownWord = story[wordCount*2]//this solution reduces the time to compare
-            let currentWord = writtenText[wordCount*2]
-            if(currentWord!==shownWord){
-                resultRef.current.mistakes[`[${shownWord}]`]=`[${currentWord}]`
-                setWrong(true)
+            if(writtenText.length!=resultRef.current.words*2+1){
+                setWordCount(resultRef.current.words = wordCount+1)
+                let shownWord = story[wordCount*2]//this solution reduces the time to compare
+                let currentWord = writtenText[wordCount*2]
+                console.log(shownWord,' ',currentWord)
+                if(currentWord!==shownWord){
+                    resultRef.current.mistakes[`[${shownWord}]`]=`[${currentWord}]`
+                    setWrong(true)
+                }
+                writtenStory.current = writtenText
             }
-            writtenStory.current = writtenText
-        }else if(e.key == ' '&&text[text.length-2]==' ')
-            e.target.value = text.substring(0,text.length-1)
-            
+        }
         if(/^[0-9a-zA-Z!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/? ]+$/.test(e.key)){
             resultRef.current.char_with_spaces+=1
         }
