@@ -1,5 +1,5 @@
 import './Profile.css'
-import Textbox from '../../Components/Textbox/Textbox';
+import Textbox from '../../components/textbox/Textbox';
  
 const Profile=()=>{
     const allTextField=["First Name",'Last Name','Instagram','Twitter','Email']

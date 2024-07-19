@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import './LoginRegisterLayout.css'
-import TopNavigation from '../../../Components/Navigation/TopNavigation/TopNavigation';
+import TopNavigation from '../../../components/navigation/topNavigation/TopNavigation';
  
 const LoginRegisterLayout=()=>{
     return(

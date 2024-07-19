@@ -1,12 +1,12 @@
 import { useContext, useRef, useState } from 'react';
-import Button from '../../Components/Button/Button';
-import Hyperlink from '../../Components/Hyperlink/Hyperlink';
-import Textbox from '../../Components/Textbox/Textbox';
+import Button from '../../components/button/Button';
+import Hyperlink from '../../components/hyperlink/Hyperlink';
+import Textbox from '../../components/textbox/Textbox';
 import './Register.css'
 import api from '../../api';
 import { Context } from '../../ContextAPI';
 import { Navigate } from 'react-router-dom';
-import Loading from '../../Components/Loading/Loading';
+import Loading from '../../components/loading/Loading';
  
 const Register=()=>{
     const {userDetails,setUserLocal,msg,setMsg} = useContext(Context)

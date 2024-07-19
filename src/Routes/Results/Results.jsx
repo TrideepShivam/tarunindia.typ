@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from 'react'
-import Card from '../../Components/Card/Card'
+import Card from '../../components/card/Card'
 import './Results.css'
-import ResultDetail from '../../Components/ResultDetail/ResultDetail'
-import Button from '../../Components/Button/Button'
+import ResultDetail from '../../components/resultDetail/ResultDetail'
+import Button from '../../components/button/Button'
 import api from '../../api'
-import Loading from '../../Components/Loading/Loading'
-import CircleButton from '../../Components/CircleButton/CircleButton'
+import Loading from '../../components/loading/Loading'
+import CircleButton from '../../components/circleButton/CircleButton'
 import { Context } from '../../ContextAPI'
-import Search from '../../Components/Search/Search'
+import Search from '../../components/search/Search'
 
 
 const Results=()=>{
@@ -99,7 +99,7 @@ const Results=()=>{
                 <table>
                     <thead>
                     <tr className='highlight'>
-                        <td>DATE (yy-mm-dd)</td>
+                        <td>DATE (yyyy-mm-dd)</td>
                         <td>TIME</td>
                         <td>WPM</td>
                         <td>ACCURACY</td>

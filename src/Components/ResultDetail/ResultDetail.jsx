@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import Percentage from './Percentage/Percentage';
+import Percentage from './percentage/Percentage';
 import './ResultDetail.css'
 import { Context } from '../../ContextAPI';
-import CircleButton from '../CircleButton/CircleButton';
+import CircleButton from '../circleButton/CircleButton';
 
 const testdetails={
     wpm:0,

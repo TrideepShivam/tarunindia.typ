@@ -1,12 +1,12 @@
 import { useContext, useRef, useState } from 'react';
 import { Context } from '../../ContextAPI';
 import './Search.css'
-import CircleButton from '../CircleButton/CircleButton';
-import Textbox from '../Textbox/Textbox';
-import Button from '../Button/Button';
+import CircleButton from '../circleButton/CircleButton';
+import Textbox from '../textbox/Textbox';
+import Button from '../button/Button';
 import api from '../../api';
-import Loading from '../Loading/Loading';
-import Hyperlink from '../Hyperlink/Hyperlink';
+import Loading from '../loading/Loading';
+import Hyperlink from '../hyperlink/Hyperlink';
  
 const Search=(props)=>{
     const {lightMode} = useContext(Context);

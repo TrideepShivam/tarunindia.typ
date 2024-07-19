@@ -1,4 +1,4 @@
-import Hyperlink from '../Hyperlink/Hyperlink';
+import Hyperlink from '../hyperlink/Hyperlink';
 import './Card.css'
  
 const Card=({val,style})=>{

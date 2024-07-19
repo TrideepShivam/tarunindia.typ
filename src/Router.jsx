@@ -1,18 +1,18 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
-import Home from "./Routes/Home";
-import LoginRegisterLayout from "./Routes/Layouts/LoginRegister/LoginRegisterLayout";
-import Login from "./Routes/Login/Login";
-import Register from "./Routes/Register/Register";
-import Dashboard from "./Routes/Dashboard/Dashboard";
-import Playground from "./Routes/Playground/Playground";
-import Results from "./Routes/Results/Results";
-import DashboardLayout from "./Routes/Layouts/DashboardLayout/DashboardLayout";
-import Events from "./Routes/Events/Events";
-import Leaderboard from "./Routes/Leaderboard/Leaderboard";
-import Support from "./Routes/Support/Support";
-import About from "./Routes/About/About";
-import Play from "./Routes/Play/Play";
-import Profile from "./Routes/Profile/Profile";
+import Home from "./routes/Home";
+import LoginRegisterLayout from "./routes/layouts/loginRegister/LoginRegisterLayout";
+import Login from "./routes/login/Login";
+import Register from "./routes/register/Register";
+import Dashboard from "./routes/dashboard/Dashboard";
+import Playground from "./routes/playground/Playground";
+import Results from "./routes/results/Results";
+import DashboardLayout from "./routes/layouts/dashboardLayout/DashboardLayout";
+import Events from "./routes/events/Events";
+import Leaderboard from "./routes/leaderboard/Leaderboard";
+import Support from "./routes/support/Support";
+import About from "./routes/about/About";
+import Play from "./routes/play/Play";
+import Profile from "./routes/profile/Profile";
 
 const Router = createBrowserRouter([
     {

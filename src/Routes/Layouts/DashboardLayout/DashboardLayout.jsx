@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import './DashboardLayout.css'
-import DashboardTopNav from '../../../Components/Navigation/DashboadTopNav/DashboardTopNav';
-import SideNavigation from '../../../Components/Navigation/SideNavigation/SideNavigation';
+import DashboardTopNav from '../../../components/navigation/dashboadTopNav/DashboardTopNav';
+import SideNavigation from '../../../components/navigation/sideNavigation/SideNavigation';
 import { useContext, useEffect, useState } from 'react';
 import { Context } from '../../../ContextAPI';
  

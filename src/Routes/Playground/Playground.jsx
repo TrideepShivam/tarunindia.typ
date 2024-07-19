@@ -1,13 +1,12 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import Dropdown from '../../Components/Dropdown/Dropdown';
+import Dropdown from '../../components/dropdown/Dropdown';
 import './Playground.css'
-import Button from '../../Components/Button/Button';
-import ToggleButton from '../../Components/ToggleButton/ToggleButton';
+import Button from '../../components/button/Button';
+import ToggleButton from '../../components/toggleButton/ToggleButton';
 import { useNavigate } from 'react-router-dom';
-import ResultDetail from '../../Components/ResultDetail/ResultDetail';
 import api from '../../api';
 import { Context } from '../../ContextAPI';
-import Loading from '../../Components/Loading/Loading';
+import Loading from '../../components/loading/Loading';
  
 const Playground=()=>{
     const [loading,setLoading] = useState(true)

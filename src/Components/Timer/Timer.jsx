@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import './Timer.css'
  
 const Timer=({second,setSecond,pause=false,timeOut})=>{

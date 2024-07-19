@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import './WordCount.css'
  
 const WordCount=({value})=>{

@@ -4,12 +4,12 @@ import logo from '../../assets/logo-reverse.svg'
 import { Context } from '../../ContextAPI';
 import { useLocation, useNavigate } from 'react-router-dom';
 import api from '../../api';
-import Timer from '../../Components/Timer/Timer';
-import ToggleDarkLight from '../../Components/ToggleDarkLight/ToggleDarkLight';
-import WordCount from '../../Components/WordCount/WordCount';
-import Button from '../../Components/Button/Button';
-import TextContent from '../../Components/TextContent/TextContent';
-import Loading from '../../Components/Loading/Loading';
+import Timer from '../../components/timer/Timer';
+import ToggleDarkLight from '../../components/toggleDarkLight/ToggleDarkLight';
+import WordCount from '../../components/wordCount/WordCount';
+import Button from '../../components/button/Button';
+import TextContent from '../../components/textContent/TextContent';
+import Loading from '../../components/loading/Loading';
  
 const Play=()=>{
     const [loading,setLoading] =useState(true)

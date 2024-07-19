@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import './Users.css'
 import { Context } from '../../../ContextAPI';
 import Profile from '../../../assets/pexels.jpg'
-import UserNavigation from './UserNavigation/UserNavigation';
+import UserNavigation from './userNavigation/UserNavigation';
 import api from '../../../api';
 
 const userNavigator =[

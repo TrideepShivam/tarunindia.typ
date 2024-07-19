@@ -1,6 +1,6 @@
 import './TopNavigation.css'
 import logo from '../../../assets/logo-reverse.svg'
-import ToggleDarkLight from '../../ToggleDarkLight/ToggleDarkLight';
+import ToggleDarkLight from '../../toggleDarkLight/ToggleDarkLight';
 const TopNavigation=()=>{
     return(
         <div className="topNavigation">

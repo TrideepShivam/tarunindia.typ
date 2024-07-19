@@ -1,9 +1,9 @@
-import Card from '../../Components/Card/Card';
-import TotalCard from '../../Components/Card/TotalCard/TotalCard';
+import Card from '../../components/card/Card';
+import TotalCard from '../../components/card/totalCard/TotalCard';
 import Chart from 'react-apexcharts'
 import './Dashboard.css'
 import { useContext, useEffect, useState } from 'react';
-import {Context} from './../../ContextAPI';
+import {Context} from '../../ContextAPI';
 
 const totalData={
     value:"1147",

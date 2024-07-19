@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import MsgBox from "./Components/MsgBox/MsgBox";
+import MsgBox from "./components/msgBox/MsgBox";
 
 export const Context = createContext()
 
