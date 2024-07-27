@@ -1,15 +1,16 @@
 import './TextContent.css'
 import PropTypes from 'prop-types'
 
-const TextContent=({story,highlightingIndex})=>{
+const TextContent=({language,story,highlightingIndex})=>{
     const typedContent = highlightingIndex==0?"":story.slice(0,highlightingIndex).join("")
     const highlightedContent = story[highlightingIndex]
     const restContent = story.slice(highlightingIndex+1,story.length)
     return(
-        <p className='textContent'>
+        <p className='textContent' style={{fontFamily:language?language:'arial'}}>
             <span className='typedContent'>{typedContent}</span>
             <span className='highlightedContent'>{highlightedContent}</span>
-            {restContent}</p>
+            {restContent}
+        </p>
     )
 }
 

@@ -18,5 +18,15 @@
     border-left:.1em solid var(--theme-color);
 }
 .divider{
-    border:.1em solid var(--theme-color);
+    border:.2em solid var(--theme-color);
+}
+@font-face {
+	font-family: Krutidev;
+	src: url('./../../../assets/fonts/k010.ttf');
+	src: local('k010'), url('./../../../assets/fonts/k010.woff') format('woff'), url('./../../../assets/fonts/k010.ttf') format('truetype');
+}
+@font-face {
+	font-family: Mangal;
+	src: url('./../../../assets/fonts/mangal.ttf');
+	src: local('mangal'), url('./../../../assets/fonts/mangal.woff') format('woff'), url('./../../../assets/fonts/mangal.ttf') format('truetype');
 }

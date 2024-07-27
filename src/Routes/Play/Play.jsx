@@ -61,7 +61,6 @@ const Play=()=>{
         e.key=='Backspace'&&(text[text.length-1]==' '||location.state.backspace)&&e.preventDefault()
     }
     const typing = (e) =>{
-        let text = e.target.value
         pauseTimer&&setPauseTimer(false)
         wrong&&setWrong(false)
         resultRef.current.keystrokes+=1
@@ -74,7 +73,7 @@ const Play=()=>{
                 let currentWord = writtenText[wordCount*2]
                 console.log(shownWord,' ',currentWord)
                 if(currentWord!==shownWord){
-                    resultRef.current.mistakes[`[${shownWord}]`]=`[${currentWord}]`
+                    resultRef.current.mistakes[`${shownWord}`]=`${currentWord}`
                     setWrong(true)
                 }
                 writtenStory.current = writtenText
@@ -107,19 +106,28 @@ const Play=()=>{
         })
         !loading&&navigate('/results')
     }
+    const getFont = ()=>{
+        let lang = location.state.data.language
+        if(lang=='english')
+            return'arial'
+        else
+            return lang
+        }
     return(
     <div className='playContainer'>
 		<div className="contentContainer test">
 			<div className="textContainer" id="readable">
                 {!location.state.highlight?
                     <p>{story}</p>:
-				    <TextContent story={story} highlightingIndex={wordCount*2}/>
+				    <TextContent language={getFont()} story={story} highlightingIndex={wordCount*2}/>
                 }
 			</div>
             <hr className='divider' style={{borderColor:wrong?'tomato':'var(--theme-color)',width:'100%'}}/>
 			<div className="textContainer" id="writable">
 				<textarea 
-                    placeholder="start typing..." 
+                    autoFocus
+                    style={{fontFamily:getFont()}}
+                    placeholder={getFont()=='Krutidev'?"Vkbi djsa---":"start typing..." }
                     onKeyDown={(e)=>keyPrevention(e)} 
                     onKeyUp={(e)=>typing(e)}
                     disabled={typingDisabled}

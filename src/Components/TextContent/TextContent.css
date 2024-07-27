@@ -1,6 +1,7 @@
 .textContent{
     color:var(--text-color-light);
     user-select:none;
+    font-size: 1.3em;
 }
 .typedContent{
     color:var(--text-color);

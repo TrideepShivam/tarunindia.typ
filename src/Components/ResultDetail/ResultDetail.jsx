@@ -23,6 +23,13 @@ const ResultDetail=({details,setDetails})=>{
                 "https://img.icons8.com/ios-filled/25/ffffff/delete-sign--v1.png"
     } alt="back"/>;
     const dateAndTime = details.data.created_at.split('T')
+    const font = ()=>{
+        var lang = details.data.stories.language
+        if(lang=='english')
+            return 'arial'
+        else
+            return lang
+    }
     return(
     <div className="resultDetailContainer">
         <div className="details">
@@ -47,10 +54,13 @@ const ResultDetail=({details,setDetails})=>{
             <div className="errors">
                 <h3 className="sectionHead">Errors</h3>
                 <table>
-                <tbody>
+                <tbody >
                 {   JSON.parse(details.data.mistakes).length!=0?
                     Object.entries(JSON.parse(details.data.mistakes)).map(([key,value])=>
-                        <tr key={key}><td>{key} </td><td>{value}</td></tr>
+                        <tr key={key}>
+                            <td>[<span style={{fontFamily:font()}}>{key}</span>]</td>
+                            <td>[<span style={{fontFamily:font()}}>{value}</span>]</td>
+                        </tr>
                     ):<p>No Mistakes</p>
                 }
                 </tbody>
