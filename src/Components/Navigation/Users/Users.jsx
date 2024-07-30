@@ -80,9 +80,14 @@ const Users=()=>{
             })
             console.log(data)
             localStorage.removeItem('USER_DETAILS')
-            setUserLocal("")
-        }).catch((error)=>{
-            console.log(error)
+            setUserLocal(false)
+        }).catch((response)=>{
+            setMsg({
+                isOpen:true,
+                status:response.state,
+                message:response.message
+            })
+            console.log(response)
         })
     }
 

@@ -8,9 +8,11 @@ import Loading from '../../components/loading/Loading'
 import CircleButton from '../../components/circleButton/CircleButton'
 import { Context } from '../../ContextAPI'
 import Search from '../../components/search/Search'
+import useAuthInterceptor from '../../hooks/useAuthInterceptor'
 
 
 const Results=()=>{
+    useAuthInterceptor()
     const {lightMode} = useContext(Context);
     const img = <img width="25" height="25" src={
         !lightMode?"https://img.icons8.com/ios-filled/25/000000/search.png":
