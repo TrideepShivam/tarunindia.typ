@@ -7,14 +7,19 @@ const useAuthInterceptor=()=>{
     const {setUserLocal,msg,setMsg} = useContext(Context)
 
     useEffect(()=>{
-        const authInterceptor = api.interceptors.response.use((response)=>{
+        const responseInterceptor = api.interceptors.response.use((response)=>{
             return response;
         },(error)=>{
             try{
                 if(error.response.status==401){
-                    console.log(error)
                     localStorage.removeItem('USER_DETAILS')
                     setUserLocal("")
+                    setMsg({
+                        ...msg,
+                        isOpen:true,
+                        status:'Error',
+                        message:error.response.statusText
+                    })
                     return error.response;
                 }
                 return Promise.reject(error);
@@ -23,7 +28,7 @@ const useAuthInterceptor=()=>{
             }
         })
         return () => {
-            api.interceptors.response.eject(authInterceptor); // remove interceptor on dismount/auth change
+            api.interceptors.response.eject(responseInterceptor); // remove interceptor on dismount/auth change
         }
     },[])
 }

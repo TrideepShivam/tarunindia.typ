@@ -78,7 +78,6 @@ const Users=()=>{
                 status:data.state,
                 message:data.message
             })
-            console.log(data)
             localStorage.removeItem('USER_DETAILS')
             setUserLocal(false)
         }).catch((response)=>{

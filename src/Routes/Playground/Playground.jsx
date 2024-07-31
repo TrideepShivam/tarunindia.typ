@@ -7,8 +7,10 @@ import { useNavigate } from 'react-router-dom';
 import api from '../../api';
 import { Context } from '../../ContextAPI';
 import Loading from '../../components/loading/Loading';
+import useAuthInterceptor from '../../hooks/useAuthInterceptor';
  
 const Playground=()=>{
+    useAuthInterceptor()
     const [loading,setLoading] = useState(true)
     const {setMsg} = useContext(Context)
     const navigate = useNavigate()

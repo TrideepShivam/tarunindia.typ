@@ -7,8 +7,10 @@ import api from '../../api';
 import { Context } from '../../ContextAPI';
 import { Navigate } from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
+import useAuthInterceptor from '../../hooks/useAuthInterceptor';
  
 const Login=()=>{
+    useAuthInterceptor()
     const {userDetails,setUserLocal,msg,setMsg} = useContext(Context)
     const [loading,setLoading] =useState(false)
     const emailRef = useRef()
@@ -19,21 +21,30 @@ const Login=()=>{
         api.post('/auth/login',{
             email:emailRef.current.value,
             password:pwdRef.current.value
-        }).then(({data}) =>{
-            setMsg({
-                ...msg,
-                isOpen:true,
-                status:data.state,
-                message:data.message
-            })
-            setUserLocal(data)
+        }).then((response) =>{
+            if(response.data.access_token){
+                setMsg({
+                    ...msg,
+                    isOpen:true,
+                    status:response.data.state,
+                    message:response.data.message
+                })
+                setUserLocal(response.data)
+            }else{
+                setMsg({
+                    ...msg,
+                    isOpen:true,
+                    status:response.data.state,
+                    message:response.data.message
+                })
+            }
             setLoading(false)
-        }).catch(({response}) => {
-            setMsg({
-                isOpen:true,
-                status:response.data.state,
-                message:response.data.message
-            })
+        }).catch((response) => {
+            // setMsg({
+            //     isOpen:true,
+            //     status:response.data.state,
+            //     message:response.data.message
+            // })
             console.log(response)
             setLoading(false)
         });

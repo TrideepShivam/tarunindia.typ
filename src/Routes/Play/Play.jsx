@@ -10,8 +10,10 @@ import WordCount from '../../components/wordCount/WordCount';
 import Button from '../../components/button/Button';
 import TextContent from '../../components/textContent/TextContent';
 import Loading from '../../components/loading/Loading';
+import useAuthInterceptor from '../../hooks/useAuthInterceptor';
  
 const Play=()=>{
+    useAuthInterceptor()
     const [loading,setLoading] =useState(true)
     const [pauseTimer,setPauseTimer] = useState(true)
     const writtenStory = useRef("")
@@ -71,7 +73,6 @@ const Play=()=>{
                 setWordCount(resultRef.current.words = wordCount+1)
                 let shownWord = story[wordCount*2]//this solution reduces the time to compare
                 let currentWord = writtenText[wordCount*2]
-                console.log(shownWord,' ',currentWord)
                 if(currentWord!==shownWord){
                     resultRef.current.mistakes[`${shownWord}`]=`${currentWord}`
                     setWrong(true)

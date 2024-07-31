@@ -81,7 +81,7 @@ const Results=()=>{
             //call fn with 3 values
             updateCardValues(averageWPM, averageAccuracy, averageKPM)
             setLoading(false)
-        }).catch(({response})=>{
+        }).catch((response)=>{
             console.log(response)
         })
     },[refresh])
