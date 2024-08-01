@@ -1,9 +1,13 @@
 import { useEffect } from 'react';
 import './Timer.css'
  
-const Timer=({second,setSecond,pause=false,timeOut})=>{
+const Timer=({percentage,second,setSecond,pause=false,timeOut})=>{
     const getTime= ()=>{
-        return `${Math.floor(second/60)}:${second%60}`
+        let min = Math.floor(second/60)
+        let sec = second%60
+        min<10&&(min='0'+min)
+        sec<10&&(sec='0'+sec)
+        return `${min}:${sec}`
     }
 
     useEffect(()=>{
@@ -19,9 +23,11 @@ const Timer=({second,setSecond,pause=false,timeOut})=>{
             return ()=>clearInterval(interval)
         }
     },[second,pause])
-
     return(
-        <div className="timeContainer">
+        <div 
+            className="timeContainer"
+            style={{backgroundImage:'conic-gradient(var(--theme-color) '+percentage+'%,var(--background-color) 1%,black '+(100-percentage)+'%)'}}
+        >
             <div className="time">
                 <p className="highlight">TIMER</p>
                 <h1>{getTime()}</h1>

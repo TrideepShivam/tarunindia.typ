@@ -139,7 +139,7 @@ const Play=()=>{
             <div style={{position:'absolute',top:'0em'}}><ToggleDarkLight/></div>
             <img width="100em" src={logo} alt="Logo" />
 			<h2 id="userName">{userDetails.user.name.toUpperCase()}</h2>
-			<Timer second={second} setSecond={setSecond} pause={pauseTimer} timeOut={timeOut}/>
+			<Timer percentage={(second/(parseInt(location.state.time)*60))*100} second={second} setSecond={setSecond} pause={pauseTimer} timeOut={timeOut}/>
 			<WordCount value={wordCount}/>
 			<Button value={'Restart'} style={{width:'10em'}}/>
 			<Button  value={!pauseTimer?'Pause':'Resume'} transparancy={true} onClick={()=>{
