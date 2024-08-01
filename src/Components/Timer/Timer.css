@@ -1,6 +1,13 @@
 .timeContainer{
+    padding:.2em;
+    border-radius: 50%;
+    background:var(--theme-color);
+}
+.time{
     display:flex;
     flex-direction: column;
-    align-items: center;
-    padding:1em;
+    justify-content: space-between;
+    padding:2em;
+    background:var(--background-color);
+    border-radius: 50%;
 }

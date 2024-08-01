@@ -22,8 +22,10 @@ const Timer=({second,setSecond,pause=false,timeOut})=>{
 
     return(
         <div className="timeContainer">
-			<p className="highlight">TIMER</p>
-			<h1>{getTime()}</h1>
+            <div className="time">
+                <p className="highlight">TIMER</p>
+                <h1>{getTime()}</h1>
+            </div>
 		</div>
     )
 }

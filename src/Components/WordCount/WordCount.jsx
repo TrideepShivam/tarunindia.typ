@@ -3,7 +3,7 @@ import './WordCount.css'
 const WordCount=({value})=>{
 
     return(
-        <div className="timeContainer">
+        <div className="wordContainer">
 			<p className="highlight">Words</p>
 			<h1>{value}</h1>
 		</div>
