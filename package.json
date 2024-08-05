@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "apexcharts": "^3.48.0",
+    "apexcharts": "^3.52.0",
     "axios": "^0.27.2",
     "dotenv": "^16.4.5",
     "react": "^18.2.0",
