@@ -27,7 +27,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - name: Install all dependencies
-        run: npm install react-router-dom react-device-detect
+        run: npm install react-router-dom
 
 
       - name: Build
