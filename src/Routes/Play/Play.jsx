@@ -113,7 +113,8 @@ const Play=()=>{
             return'arial'
         else
             return lang
-        }
+    }
+
     return(
     <div className='playContainer'>
 		<div className="contentContainer test">
