@@ -1,9 +1,0 @@
-.sideNavigation{
-    border-radius: 2em;
-    padding:1em 0em;
-    border:.1em solid var(--theme-color);
-    overflow:hidden;
-    display:flex;
-    flex-direction: column;
-    transition: width .5s;
-}
