@@ -13,6 +13,7 @@ import Support from "./routes/support/Support";
 import About from "./routes/about/About";
 import Play from "./routes/play/Play";
 import Profile from "./routes/profile/Profile";
+import Admin from "./routes/admin/Admin";
 
 const Router = createBrowserRouter([
     {
@@ -34,7 +35,12 @@ const Router = createBrowserRouter([
             {
                 path:'/Register',
                 element:<Register/>
+            },
+            {
+                path:'/admin',
+                element:<Admin/>
             }
+
         ]
     },
     {
