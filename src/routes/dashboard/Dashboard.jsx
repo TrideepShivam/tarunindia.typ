@@ -76,9 +76,9 @@ const Dashboard=()=>{
         <p className="sectionHead">DASHBOARD</p>
         <div className="dashboardContent">
             {data.map((item,index)=>
-                <Card key={index} val={item} style={{width:"28%"}}/>
+                <Card key={index} val={item} />
             )}
-            <TotalCard val={totalData} style={{width:"28%"}}/>
+            <TotalCard val={totalData} />
             <div className="chartContainer" style={{width:"40%"}}>
                 <Chart
                     options={chartData.options}

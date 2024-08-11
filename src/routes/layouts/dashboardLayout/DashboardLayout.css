@@ -11,6 +11,7 @@
     height:var(100% - 1em);
     position: relative;
     padding:.5em;
+    overflow-y:auto;
 }
 .sectionHead{
     padding:0em .5em;

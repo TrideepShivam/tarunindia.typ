@@ -6,7 +6,6 @@
     align-items: flex-start;
     gap:1em;
     animation:fromleftfade .5s;
-    overflow:auto;
 }
 .resultTableContainer{
     min-height: 25em;

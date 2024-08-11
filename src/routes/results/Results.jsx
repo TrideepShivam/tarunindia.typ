@@ -95,9 +95,9 @@ const Results=()=>{
         <p className="sectionHead">RESULTS</p>
         <div className="resultContent">
             {cards.map((item,index)=>
-                <Card key={index} val={item} style={{width:"28%"}}/>
+                <Card key={index} val={item} />
             )}
-            <div className="resultTableContainer" style={{width:"97%"}}>
+            <div className="resultTableContainer" style={{width:"95%"}}>
                 <table>
                     <thead>
                     <tr className='highlight'>
