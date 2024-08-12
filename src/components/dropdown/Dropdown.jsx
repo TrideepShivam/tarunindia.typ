@@ -1,9 +1,15 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import './Dropdown.css'
 import { useState } from 'react';
+import { Context } from '../../ContextAPI';
  
 const Dropdown=(props)=>{
-    const [legend,setLegend] = useState(false)
+    const {lightMode} = useContext(Context)
+    const [text,setText] = useState("")
+    const [legend,setLegend] = useState(text?true:false)
+    const [options,setOptions] =useState(false)
+    const arrow =!lightMode?"https://img.icons8.com/ios-filled/25/000000/back.png":
+        "https://img.icons8.com/ios-filled/25/ffffff/back.png"
     const blurStyle={
         top:".3em",
         left:".6em",
@@ -15,24 +21,33 @@ const Dropdown=(props)=>{
         top:"-.8em",
         left:".6em",
         fontSize:"1em",
-        color:"var(--theme-color)"
+        color:"var(--theme-color)",
+        zIndex:"1"
     }
     let data = props.var?props.var:useRef()
     const focusText = ()=>{
         setLegend(true)
+        setOptions(true)
+        props.onClick&&props.onClick()
     }
     const blurText = ()=>{
-        setLegend(data.current.value?true:false)
+        setLegend(text?true:false)
+        setOptions(false)
     }
-
+    const handleValue=(val)=>{
+        setText(val)
+        setOptions(false)
+    }
     return(
-        <div className="dropdownContainer">
-            <select ref={data} onFocus={focusText} onBlur={blurText} onClick={props.onClick&&(()=>props.onClick())}>
-                {props.options.map((item,index)=>
-                    <option key={index}>{item}</option>
-                )}
-            </select>
-            <p style={legend?focusStyle:blurStyle}>{props.legend}</p>
+        <div className="dropdownContainer" onMouseOver={focusText} onMouseLeave={blurText}>
+            <input style={{borderColor:legend&&'var(--theme-color)'}} value={text} disabled ref={data} />
+            <p className='legend' style={legend?focusStyle:blurStyle}>{props.legend}</p>
+            <img src={arrow} />
+            {options&& <div className="options">
+                {props.options.length>0?props.options.map((item,index)=>
+                    <p key={index} onClick={()=>handleValue(item)}>{item}</p>
+                ):<p>No Options</p>}
+            </div> }
         </div>
     )
 }

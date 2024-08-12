@@ -12,10 +12,12 @@
     gap:1em;
 }
 .playgroundContent .playForm{
-    width:50%;
-    padding:1em;
+    width:40%;
+    padding:2em;
     display:flex;
     flex-direction: column;
+    border-radius: 1em;
+    background-color: var(--light-back-color);
 }
 .conditionContainer{
     display: flex;

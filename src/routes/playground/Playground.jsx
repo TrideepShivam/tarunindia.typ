@@ -14,10 +14,10 @@ const Playground=()=>{
     const [loading,setLoading] = useState(true)
     const {setMsg} = useContext(Context)
     const navigate = useNavigate()
-    const [dropdownLanguage,setDropdownLanguage] = useState([""])//database
-    const [dropdownLevel,setDropdownLevel] = useState([""])//database
-    const [dropdownDuration,setDropdownDuration] = useState(["",'1 min','5 min','10 min'])
-    const [dropdownStory,setDropdownStory] = useState([""])
+    const [dropdownLanguage,setDropdownLanguage] = useState([])//database
+    const [dropdownLevel,setDropdownLevel] = useState([])//database
+    const [dropdownDuration,setDropdownDuration] = useState(['1 min','5 min','10 min'])
+    const [dropdownStory,setDropdownStory] = useState([])
     const langRef = useRef()
     const durationRef = useRef()
     const levelRef = useRef()
@@ -51,11 +51,9 @@ const Playground=()=>{
         .then(({data})=>{
             setLoading(false)
             setDropdownLanguage([
-                "",
                 ...data.languages
             ])
             setDropdownLevel([
-                "",
                 ...data.levels
             ])
         }).catch(({response})=>{
@@ -70,7 +68,6 @@ const Playground=()=>{
             })
             .then(({data})=>{
                 setDropdownStory([
-                    "",
                     ...data
                 ])
                 
