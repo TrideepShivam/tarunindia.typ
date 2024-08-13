@@ -1,6 +1,10 @@
+.navigationContainer{
+    position: relative;
+}
 .navigation{
+    border-radius: 3em;
     color:var(--text-color);
-    padding:.6em 1.1em;
+    padding:.6em 1em;
     text-decoration: none;
     display:flex;
     align-items: center;
@@ -13,4 +17,13 @@
     padding:0em .5em;
     font-size: 1.2em;
     animation:fromleftfade .5s;
+}
+.tooltip{
+    position:absolute;
+    top:1em;
+    left: 5em;
+    padding:.2em .5em;
+    background-color: var(--transparent-color);
+    z-index: 10;
+    animation: fromleftfade .2s;
 }

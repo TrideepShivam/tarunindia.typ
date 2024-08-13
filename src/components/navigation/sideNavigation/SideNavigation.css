@@ -1,8 +1,8 @@
 .sideNavigation{
-    border-radius: 2em;
-    padding:1em 0em;
+    border-radius: 2.5em;
+    padding:.5em .2em;
     border:.1em solid var(--theme-color);
-    overflow:hidden;
+    /* overflow:hidden; */
     display:flex;
     flex-direction: column;
     transition: width .5s;
