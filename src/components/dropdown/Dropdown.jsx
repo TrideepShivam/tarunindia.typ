@@ -31,7 +31,7 @@ const Dropdown=(props)=>{
         props.onClick&&props.onClick()
     }
     const blurText = ()=>{
-        setLegend(text?true:false)
+        setLegend(text!=""?true:false)
         setOptions(false)
     }
     const handleValue=(val)=>{
@@ -39,14 +39,21 @@ const Dropdown=(props)=>{
         setOptions(false)
     }
     return(
-        <div className="dropdownContainer" onMouseOver={focusText} onMouseLeave={blurText}>
-            <input style={{borderColor:legend&&'var(--theme-color)'}} value={text} disabled ref={data} />
+        <div className="dropdownContainer" >
+            <input 
+                style={{borderColor:legend&&'var(--theme-color)'}}
+                ref={data}
+                onFocus={focusText} 
+                onBlur={blurText}
+                value={text}
+                readOnly
+            />
             <p className='legend' style={legend?focusStyle:blurStyle}>{props.legend}</p>
-            <img src={arrow} />
+            <img style={{transform:options&&'rotate(-270deg)'}} src={arrow} />
             {options&& <div className="options">
                 {props.options.length>0?props.options.map((item,index)=>
-                    <p key={index} onClick={()=>handleValue(item)}>{item}</p>
-                ):<p>No Options</p>}
+                    <p key={index} onMouseDown={()=>handleValue(item)}>{item}</p>
+                ):<p >No Options</p>}
             </div> }
         </div>
     )

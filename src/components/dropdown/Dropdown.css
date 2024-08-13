@@ -1,5 +1,6 @@
 .dropdownContainer{
     position:relative;
+    cursor: pointer;
     margin:.5em;
 }
 .dropdownContainer .legend,.dropdownContainer img{
@@ -25,9 +26,6 @@
     outline:none;
     z-index: 1;
 }
-.dropdownContainer:hover img{
-    transform: rotate(-270deg);
-}
 .dropdownContainer .options{
     width:100%;
     border-radius: .5em;
@@ -35,14 +33,13 @@
     background-color: var(--background-color);
     position: absolute;
     top:3em;
-    left:.8em;
+    left:.3em;
     z-index: 2;
     animation:fromtopfade .1s;
 }
 .dropdownContainer .options p{
     padding:.5em;
     font-size: 1.2em;
-    cursor: pointer;
 }
 .dropdownContainer .options p:hover{
     background-color: var(--light-back-color);
