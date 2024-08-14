@@ -5,7 +5,7 @@ import { Context } from '../../../ContextAPI';
 import Users from '../users/Users';
 import ToggleDarkLight from '../../toggleDarkLight/ToggleDarkLight';
 
-const DashboardTopNav=({sideNavOpen,setSideNavOpen})=>{
+const DashboardTopNav=({userNavigator,sideNavOpen,setSideNavOpen})=>{
     const {lightMode} = useContext(Context);
     
     const menu = !sideNavOpen?
@@ -21,7 +21,7 @@ const DashboardTopNav=({sideNavOpen,setSideNavOpen})=>{
             </div>
             <div className='navElement'><img width="40em" src={logo} alt="Logo" /></div>
             <div className='navElement'>
-                <Users/>
+                <Users userNavigator={userNavigator}/>
                 <ToggleDarkLight/>
             </div>
         </div>
