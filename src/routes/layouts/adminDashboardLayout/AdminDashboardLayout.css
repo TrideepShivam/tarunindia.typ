@@ -1,0 +1,33 @@
+.navContentContainer{
+    width:100%;
+    height: calc(94% - .5em);
+    display:flex;
+}
+.sideNavContainer{
+    padding:0em .25em;
+    display:flex;
+}
+.mainContentContainer{
+    height:var(100% - 1em);
+    position: relative;
+    padding:.5em;
+    overflow-y:auto;
+}
+.sectionHead{
+    padding:0em .5em;
+    margin: .2em 0em;
+    border-left:.1em solid var(--theme-color);
+}
+.divider{
+    border:.2em solid var(--theme-color);
+}
+@font-face {
+	font-family: Krutidev;
+	src: url('./../../../assets/fonts/k010.ttf');
+	src: local('k010'), url('./../../../assets/fonts/k010.woff') format('woff'), url('./../../../assets/fonts/k010.ttf') format('truetype');
+}
+@font-face {
+	font-family: Mangal;
+	src: url('./../../../assets/fonts/mangal.ttf');
+	src: local('mangal'), url('./../../../assets/fonts/mangal.woff') format('woff'), url('./../../../assets/fonts/mangal.ttf') format('truetype');
+}

@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import './DashboardLayout.css'
+import './AdminDashboardLayout.css'
 import DashboardTopNav from '../../../components/navigation/dashboadTopNav/DashboardTopNav';
 import SideNavigation from '../../../components/navigation/sideNavigation/SideNavigation';
 import { useContext, useState } from 'react';
@@ -12,7 +12,7 @@ const DashboardLayout=()=>{
     const {userDetails,setUserLocal,setMsg} = useContext(Context)
     const sideMenu = [//0:green 1:blue 2:white 3:black
         {
-            href:"/dashboard",
+            href:"/admin/dashboard",
             value:"DASHBOARD",
             icons:[
                 "https://img.icons8.com/ios-filled/30/00ff85/performance-macbook.png",
@@ -22,8 +22,8 @@ const DashboardLayout=()=>{
             ]
         },
         {
-            href:"/playground",
-            value:"PLAYGROUND",
+            href:"/admin/announcements",
+            value:"ANNOUNCEMENTS",
             icons:[
                 "https://img.icons8.com/ios-filled/30/00ff85/key-press.png",
                 "https://img.icons8.com/ios-filled/30/5000ff/key-press.png",
@@ -32,7 +32,7 @@ const DashboardLayout=()=>{
             ]
         },
         {
-            href:"/events",
+            href:"/admin/events",
             value:"EVENTS",
             icons:[
                 "https://img.icons8.com/ios-glyphs/30/00ff85/confetti--v1.png",
@@ -42,7 +42,7 @@ const DashboardLayout=()=>{
             ]
         },
         {
-            href:"/leaderboard",
+            href:"/admin/leaderboard",
             value:"LEADERBOARD",
             icons:[
                 "https://img.icons8.com/ios-filled/30/00ff85/leaderboard.png",
@@ -52,8 +52,8 @@ const DashboardLayout=()=>{
             ]
         },
         {
-            href:"/results",
-            value:"RESULTS",
+            href:"/admin/users",
+            value:"USERS",
             icons:[
                 "https://img.icons8.com/ios-glyphs/30/00ff85/improvement.png",
                 "https://img.icons8.com/ios-glyphs/30/5000ff/improvement.png",
@@ -62,8 +62,8 @@ const DashboardLayout=()=>{
             ]
         },
         {
-            href:"/support",
-            value:"SUPPORT",
+            href:"/admin/connects",
+            value:"CONNECTS",
             icons:[
                 "https://img.icons8.com/ios-glyphs/30/00ff85/customer-support.png",
                 "https://img.icons8.com/ios-glyphs/30/5000ff/customer-support.png",
@@ -72,7 +72,17 @@ const DashboardLayout=()=>{
             ]
         },
         {
-            href:"/about",
+            href:"/admin/requests",
+            value:"REQUESTS",
+            icons:[
+                "https://img.icons8.com/ios-glyphs/30/00ff85/info-squared.png",
+                "https://img.icons8.com/ios-glyphs/30/5000ff/info-squared.png",
+                "https://img.icons8.com/ios-glyphs/30/fefeff/info-squared.png",
+                "https://img.icons8.com/ios-glyphs/30/101010/info-squared.png"
+            ]
+        },
+        {
+            href:"/admin/about",
             value:"ABOUT",
             icons:[
                 "https://img.icons8.com/ios-glyphs/30/00ff85/info-squared.png",
