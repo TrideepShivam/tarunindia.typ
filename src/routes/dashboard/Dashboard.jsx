@@ -8,7 +8,9 @@ import {Context} from '../../ContextAPI';
 const totalData={
     value:"1147",
     unit:"WPM",
-    todayCount:"2"
+    todayCount:"2",
+    cardHead:"Total Attempts",
+    queryQsn:"Today Attempts:"
 }
 const data = [{
     value:"33.7",

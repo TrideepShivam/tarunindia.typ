@@ -147,7 +147,7 @@ const DashboardLayout=()=>{
         <>
             <DashboardTopNav userNavigator={userNavigator} sideNavOpen={sideNavOpen} setSideNavOpen={setSideNavOpen}/>
             <div className="navContentContainer">
-                <div className="sideNavContainer" style={{width:sideNavOpen?"14em":"4.5em"}}>
+                <div className="sideNavContainer" style={{width:sideNavOpen?"17em":"4.5em"}}>
                     <SideNavigation sideNavOpen={sideNavOpen} sideMenu={sideMenu}/>
                 </div>
                 <div 

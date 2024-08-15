@@ -5,3 +5,11 @@
     gap:1em;
     animation:fromleftfade .5s;
 }
+.topUserBox{
+    min-width: 15em;
+    padding:1.5em;
+    border-radius: 1em;
+    background-color: var(--light-back-color);
+    display: flex;
+    flex-direction: column;
+}
