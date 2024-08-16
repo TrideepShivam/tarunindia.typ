@@ -13,7 +13,7 @@ import useAuthInterceptor from '../../hooks/useAuthInterceptor'
 
 const Results=()=>{
     useAuthInterceptor()
-    const {lightMode} = useContext(Context);
+    const {lightMode,setMsg} = useContext(Context);
     const img = <img width="25" height="25" src={
         !lightMode?"https://img.icons8.com/ios-filled/25/000000/search.png":
                 "https://img.icons8.com/ios-filled/25/ffffff/search.png"
@@ -82,7 +82,11 @@ const Results=()=>{
             updateCardValues(averageWPM, averageAccuracy, averageKPM)
             setLoading(false)
         }).catch((response)=>{
-            console.log(response)
+            setMsg({
+                isOpen:true,
+                status:"Error",
+                message:response.message
+            })
         })
     },[refresh])
     if(loading){

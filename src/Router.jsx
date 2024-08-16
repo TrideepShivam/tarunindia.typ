@@ -16,6 +16,7 @@ import Play from "./routes/play/Play";
 import Profile from "./routes/profile/Profile";
 import Admin from "./routes/admin/Admin";
 import AdminDashboard from "./routes/admin/dashboard/Dashboard";
+import Error from "./routes/error/Error";
 
 const Router = createBrowserRouter([
     {
@@ -41,6 +42,9 @@ const Router = createBrowserRouter([
             {
                 path:'/admin',
                 element:<Admin/>
+            },{
+                path:'/error',
+                element:<Error/>
             }
 
         ]
