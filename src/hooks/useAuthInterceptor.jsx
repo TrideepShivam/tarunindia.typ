@@ -20,7 +20,7 @@ const useAuthInterceptor=()=>{
                         ...msg,
                         isOpen:true,
                         status:'Error',
-                        message:error.response.statusText
+                        message:error.response.data.message
                     })
                     return error.response;
                 }
