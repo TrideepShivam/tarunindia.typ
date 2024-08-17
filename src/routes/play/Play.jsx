@@ -96,6 +96,7 @@ const Play=()=>{
                 message:data.message
             })
             setLoading(false)
+            !loading&&navigate('/results')
         }).catch(({response})=>{
             setMsg({
                 isOpen:true,
@@ -105,7 +106,6 @@ const Play=()=>{
             setLoading(false)
             console.log(response)
         })
-        !loading&&navigate('/results')
     }
     const getFont = ()=>{
         let lang = location.state.data.language
