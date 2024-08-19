@@ -2,7 +2,7 @@ import { useState } from "react";
 import './ToggleButton.css'
 
 const ToggleButton = (props) => {
-    const [toggleOn,setToggleOn] = useState(false);
+    const [toggleOn,setToggleOn] = useState(true);
     props.var.current=toggleOn
     return(
         <div 

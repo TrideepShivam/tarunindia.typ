@@ -35,6 +35,7 @@
     top:3em;
     left:.3em;
     z-index: 2;
+    border:.1em solid var(--light-back-color);
     animation:fromtopfade .1s;
 }
 .dropdownContainer .options p{
