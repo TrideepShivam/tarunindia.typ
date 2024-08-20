@@ -7,6 +7,7 @@ import api from '../../api';
 import { Context } from '../../ContextAPI';
 import { Navigate } from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
+import Checkbox from '../../components/checkbox/Checkbox';
  
 const Register=()=>{
     const {userDetails,setUserLocal,msg,setMsg} = useContext(Context)
@@ -57,6 +58,7 @@ const Register=()=>{
             <Textbox var={emailRef} type="text" legend="Email"/>
             <Textbox var={pwdRef} type="Password" legend="Password"/>
             <Textbox var={pwdReRef} type="Password" legend="Confirm Password"/>
+            <Checkbox value='Agree Terms and Conditions'/>
             <Button onClick={handleRegister} value="Register"/>
             <p>
                 Have an account?&nbsp;
