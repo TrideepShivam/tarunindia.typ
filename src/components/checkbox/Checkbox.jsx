@@ -8,12 +8,12 @@ const Checkbox=({value,transparent=true})=>{
         <div 
             className="checkboxContainer" 
             onClick={()=>setChecked(!checked)}
-            // style={(transparent&&checked)&&{
-            //     background:'var(--theme-color)',
-            //     color:'var(--background-color)'
-            // }}
+            style={{background:!transparent&&checked&&'var(--theme-color)',color:!transparent&&checked&&'var(--background-color)'}}
         >
-            <div className="circle" style={{color:checked?'var(--background-color)':'var(--theme-color)'}}>&#10003;</div>
+            <div className="circle" style={{
+                color:checked?'var(--theme-color)':'var(--background-color)',
+                borderColor:!transparent?(checked?'transparent':'var(--text-color-light)'):(checked?'var(--theme-color)':'var(--text-color-light)')
+            }}>&#10003;</div>
             <p className="checkboxText" >{value?value:'checkbox'}</p>
         </div>
     )

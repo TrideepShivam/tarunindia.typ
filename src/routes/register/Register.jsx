@@ -58,7 +58,8 @@ const Register=()=>{
             <Textbox var={emailRef} type="text" legend="Email"/>
             <Textbox var={pwdRef} type="Password" legend="Password"/>
             <Textbox var={pwdReRef} type="Password" legend="Confirm Password"/>
-            <Checkbox value='Agree Terms and Conditions'/>
+            <Checkbox value='Agree' transparent={true}/>
+            <Hyperlink href="/tnc" value="Terms and Conditions"/>
             <Button onClick={handleRegister} value="Register"/>
             <p>
                 Have an account?&nbsp;

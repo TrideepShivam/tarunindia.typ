@@ -1,7 +1,7 @@
 .checkboxContainer{
     display:flex;
     align-items: center;
-    gap:.1em;
+    gap:.5em;
     padding:.2em .3em;
     border:.1em solid transparent;
     border-radius: 2em;
@@ -9,13 +9,14 @@
     color:var(--text-color);
 }
 .checkboxContainer .circle{
-    height: .3em;
-    width:.3em;
+    height: .2em;
+    width:.2em;
     padding:.5em;
-    border:.1em solid var(--text-color);
+    border:.1em solid var(--text-color-light);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color:var(--background-color);
+    background-color: var(--light-back-color);
 }
