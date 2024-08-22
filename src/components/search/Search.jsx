@@ -7,6 +7,7 @@ import Button from '../button/Button';
 import api from '../../api';
 import Loading from '../loading/Loading';
 import Hyperlink from '../hyperlink/Hyperlink';
+import PopUpContainer from '../popUpContainer/PopUpContainer';
  
 const Search=(props)=>{
     const {lightMode} = useContext(Context);
@@ -47,7 +48,7 @@ const Search=(props)=>{
     if(loading)
         return <Loading/>
     return(
-        <div className="searchContainer">
+        <PopUpContainer>
             <div className="searchBox">
                 <h2 className="highlight">Search {more?'between dates':'with date'}</h2>
                 <CircleButton onClick={props.onClick} style={{top:"1em",right:"0.5em"}} value={img} />
@@ -57,7 +58,7 @@ const Search=(props)=>{
                 <Button value={'Search'} onClick={handleSearch}/>
 
             </div>
-        </div>
+        </PopUpContainer>
     )
 }
 

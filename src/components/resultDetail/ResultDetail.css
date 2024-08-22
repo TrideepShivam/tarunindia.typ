@@ -1,26 +1,11 @@
-.resultDetailContainer{
-    display:flex;
-    gap:1em;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--transparent-color);
-    backdrop-filter: blur(5px);
-    position: fixed;
-    right:0em;
-    width:calc(100%);
-    height:calc(100%);
-    z-index:2;
-    animation:fromleftfade .5s;
-}
-.resultDetailContainer .details{
+.popUpContainer .details{
     padding:4em;
     display:flex;
     gap:1em;
     background-color: var(--background-color);
     border:.1em solid var(--light-back-color);
 }
-.resultDetailContainer .errors tbody{
+.popUpContainer .errors tbody{
     font-size: 1.2em;
 }
 .details table td{

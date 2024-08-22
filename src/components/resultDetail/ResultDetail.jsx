@@ -3,6 +3,7 @@ import Percentage from './percentage/Percentage';
 import './ResultDetail.css'
 import { Context } from '../../ContextAPI';
 import CircleButton from '../circleButton/CircleButton';
+import PopUpContainer from '../popUpContainer/PopUpContainer';
 
 const testdetails={
     wpm:0,
@@ -31,7 +32,7 @@ const ResultDetail=({details,setDetails})=>{
             return lang
     }
     return(
-    <div className="resultDetailContainer">
+    <PopUpContainer>
         <div className="details">
             <CircleButton details={details} action={setDetails} style={{top:"1em",right:"0.5em"}} value={img} />
             <Percentage value={details.data.test_details.accuracy} text={'accuracy'}/>
@@ -67,7 +68,7 @@ const ResultDetail=({details,setDetails})=>{
                 </table>
             </div>
         </div>
-    </div>
+    </PopUpContainer>
     )
 }
 
