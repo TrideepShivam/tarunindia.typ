@@ -1,0 +1,14 @@
+.confirmationBox{
+    padding:2em;
+    max-width: 25%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap:.5em;
+    background-color: var(--background-color);
+    border:.1em solid var(--text-color-light);
+}
+.confirmationBox p span{
+    font-size: 1.1em;
+}

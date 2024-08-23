@@ -11,9 +11,11 @@ import Button from '../../components/button/Button';
 import TextContent from '../../components/textContent/TextContent';
 import Loading from '../../components/loading/Loading';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
+import LanguageConfirmation from '../../components/languageConfirmation/LanguageConfirmation';
  
 const Play=()=>{
     useAuthInterceptor()
+    const [skipIntro,setSkipIntro]= useState(true)
     const [loading,setLoading] =useState(true)
     const [pauseTimer,setPauseTimer] = useState(true)
     const writtenStory = useRef("")
@@ -22,7 +24,7 @@ const Play=()=>{
     const navigate = useNavigate()
     const [story,setStory] = useState(['Text']);
     const [wordCount,setWordCount] = useState(0);
-    const [typingDisabled,setTypingDisabled]=useState(false)
+    const [typingDisabled,setTypingDisabled]=useState(true)
     const [wrong,setWrong] = useState(false)
     const [second,setSecond] = useState(parseInt(location.state.time)*60)
     const resultRef = useRef({
@@ -37,21 +39,18 @@ const Play=()=>{
     useEffect(()=>{
         api.post('/story',location.state.data)
         .then(({data})=>{
-            setStory(data.content.split(/(\s+)/))
-            setMsg({
-                isOpen:true,
-                status:"Success",
-                message:"Story Fetched Successfully"
-            })
-            resultRef.current.story_id=data.id
+            setStory(data.storyDetails.content.split(/(\s+)/))
+            resultRef.current.story_id=data.storyDetails.id
+            setSkipIntro(data.skipIntro)
             setLoading(false)
+            data.skipIntro&&setTypingDisabled(false)
         }).catch(({response})=>{
+            console.log(response)
             setMsg({
                 isOpen:true,
                 status:response.data.state,
                 message:response.data.message
             })
-            console.log(response)
             navigate('/playground')
         })
     },[])
@@ -117,6 +116,7 @@ const Play=()=>{
 
     return(
     <div className='playContainer'>
+        {!skipIntro&&<LanguageConfirmation setTypingDisabled={setTypingDisabled} setSkipIntro={setSkipIntro} language={location.state.data.language}/>}
 		<div className="contentContainer test">
 			<div className="textContainer" id="readable">
                 {!location.state.highlight?

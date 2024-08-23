@@ -9,7 +9,7 @@ const useAuthInterceptor=()=>{
     const location = useLocation()
     const navigate = useNavigate()
     useEffect(()=>{
-    if(navigator.onLine){
+    if(navigator.onLine||import.meta.env.VITE_BASE_URL!='https://localhost/api'){
         const requestInterceptor = api.interceptors.request.use((config)=>{
             const token = JSON.parse(localStorage.getItem('USER_DETAILS'))
             config.headers.Authorization=`Bearer ${token&&token.access_token}`

@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Checkbox.css'
  
-const Checkbox=({value,transparent=true})=>{
+const Checkbox=({checkedRef,value,transparent=true})=>{
     const [checked,setChecked] = useState(false)
-    
+    useEffect(()=>{
+        checkedRef.current=checked
+    },[checked])
     return(
         <div 
             className="checkboxContainer" 

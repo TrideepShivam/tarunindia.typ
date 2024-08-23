@@ -36,14 +36,14 @@
 .bodyBox{
     padding: 0% 4% 0% 4%;
 }
-.textboxContainer input{
+/* .textboxContainer input{
     
     width: 30vw;
 }
 .textboxContainer input{
     
     border-bottom:.05em solid var(--text-color);
-}
+} */
 .achivement
 {
     width: 100%;
