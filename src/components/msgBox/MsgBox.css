@@ -1,7 +1,7 @@
 .msgContainer{
-    min-width: 100px;
-    max-width: 300px;
-    min-height: 50px;
+    min-width: 10em;
+    max-width: 20em;
+    min-height: 2em;
     position:fixed;
     /* text-wrap:wrap; */
     word-break: break-all;
@@ -15,6 +15,7 @@
     z-index: 10;
     overflow: hidden;
     box-shadow: 0px 0px 10px rgba(0,0,0,.2);
+    border:.01em solid var(--text-color-light)
 }
 .msgContainer p{
     padding:0em 1em;

@@ -3,7 +3,7 @@
     display:flex;
     gap:1em;
     background-color: var(--background-color);
-    border:.1em solid var(--light-back-color);
+    border:.1em solid var(--text-color-light);
 }
 .popUpContainer .errors tbody{
     font-size: 1.2em;

@@ -7,7 +7,7 @@
     align-items: flex-start;
     gap:.5em;
     background-color: var(--background-color);
-    border:.1em solid var(--text-color-light);
+    border:.01em solid var(--text-color-light);
 }
 .confirmationBox p span{
     font-size: 1.1em;
