@@ -29,6 +29,7 @@ const Playground=()=>{
         if(langRef.current.value&&durationRef.current.value&&levelRef.current.value&&storyRef.current.value)
             navigate('/play',{
                 state:{
+                    from:'/playground',
                     time:durationRef.current.value,
                     backspace:backspaceRef.current,
                     highlight:highlightRef.current,

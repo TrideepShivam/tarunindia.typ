@@ -6,6 +6,7 @@ import Textbox from '../textbox/Textbox';
 import Checkbox from '../checkbox/Checkbox';
 import Button from '../button/Button';
 import Hyperlink from '../hyperlink/Hyperlink';
+import api from '../../api';
  
 const LanguageConfirmation=({setTypingDisabled,setSkipIntro,language})=>{
     const confirmRef = useRef("")
@@ -28,7 +29,22 @@ const LanguageConfirmation=({setTypingDisabled,setSkipIntro,language})=>{
     const confirm = ()=>{
         setSkipIntro(true)
         setTypingDisabled(false)
-        console.log(checkedRef.current);
+        checkedRef.current&&api.patch('/auth/skip-intro',{
+            skipintro:checkedRef.current
+        })
+        .then(({data})=>{
+            setMsg({
+                isOpen:true,
+                status:data.state,
+                message:data.message
+            })
+        }).catch(({response})=>{
+            setMsg({
+                isOpen:true,
+                status:response.data.state,
+                message:response.data.message
+            })            
+        })
         
     }
     const handleConfirm = ()=>{

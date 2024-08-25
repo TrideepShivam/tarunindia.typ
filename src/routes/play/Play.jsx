@@ -20,16 +20,17 @@ const Play=()=>{
     const [pauseTimer,setPauseTimer] = useState(true)
     const writtenStory = useRef("")
     const {userDetails,setMsg} = useContext(Context)
+    const navigate = useNavigate()    
     const location = useLocation()
-    const navigate = useNavigate()
+    const time = parseInt(location.state?location.state.time:'0')
     const [story,setStory] = useState(['Text']);
     const [wordCount,setWordCount] = useState(0);
     const [typingDisabled,setTypingDisabled]=useState(true)
     const [wrong,setWrong] = useState(false)
-    const [second,setSecond] = useState(parseInt(location.state.time)*60)
+    const [second,setSecond] = useState(time*60)
     const resultRef = useRef({
         words:0,
-        duration:parseInt(location.state.time),
+        duration:time,
         char_with_spaces:0,
         keystrokes:0,
         story_id:-1,
@@ -37,22 +38,29 @@ const Play=()=>{
     })
 
     useEffect(()=>{
-        api.post('/story',location.state.data)
-        .then(({data})=>{
-            setStory(data.storyDetails.content.split(/(\s+)/))
-            resultRef.current.story_id=data.storyDetails.id
-            setSkipIntro(data.skipIntro)
-            setLoading(false)
-            data.skipIntro&&setTypingDisabled(false)
-        }).catch(({response})=>{
-            console.log(response)
+        if(!location.state){//prohibiting direct /play url hit
             setMsg({
                 isOpen:true,
-                status:response.data.state,
-                message:response.data.message
+                status:'Error',
+                message:'Please fill the Play Form first.'
             })
-            navigate('/playground')
-        })
+            navigate('/playground',{replace:true})
+        }else
+            api.post('/story',location.state.data)
+            .then(({data})=>{
+                setStory(data.storyDetails.content.split(/(\s+)/))
+                resultRef.current.story_id=data.storyDetails.id
+                setSkipIntro(data.skipIntro)
+                setLoading(false)
+                data.skipIntro&&setTypingDisabled(false)
+            }).catch(({response})=>{
+                setMsg({
+                    isOpen:true,
+                    status:response.data.state,
+                    message:response.data.message
+                })
+                navigate('/playground',{replace:true})
+            })
     },[])
     if(loading){
         return <Loading/>
@@ -84,7 +92,6 @@ const Play=()=>{
         }
     }
     const timeOut = ()=>{
-        console.log(resultRef.current)
         setLoading(true)
         setTypingDisabled(true)
         api.post('/store-test',resultRef.current)
@@ -95,7 +102,7 @@ const Play=()=>{
                 message:data.message
             })
             setLoading(false)
-            !loading&&navigate('/results')
+            !loading&&navigate('/results',{replace:true})
         }).catch(({response})=>{
             setMsg({
                 isOpen:true,
