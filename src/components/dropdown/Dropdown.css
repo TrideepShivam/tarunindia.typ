@@ -19,7 +19,7 @@
     width:100%;
     background-color: transparent;
     padding:.4em;
-    font-size:1.6em;
+    font-size:1.5em;
     color:var(--text-color);
     border:.1em solid var(--text-color);
     border-radius:.5em;
@@ -28,6 +28,7 @@
 }
 .dropdownContainer .options{
     width:100%;
+    max-height: 15em;
     border-radius: .5em;
     padding:.5em;
     background-color: var(--background-color);
@@ -37,11 +38,12 @@
     z-index: 2;
     border:.1em solid var(--light-back-color);
     animation:fromtopfade .1s;
+    overflow-y: scroll;
 }
 .dropdownContainer .options p{
-    padding:.5em;
+    padding:.4em;
     font-size: 1.2em;
 }
 .dropdownContainer .options p:hover{
-    background-color: var(--light-back-color);
+    color: var(--theme-color);
 }
