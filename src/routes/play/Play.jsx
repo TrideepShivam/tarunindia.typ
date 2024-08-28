@@ -120,7 +120,7 @@ const Play=()=>{
         else
             return lang
     }
-
+    
     return(
     <div className='playContainer'>
         {!skipIntro&&<LanguageConfirmation setTypingDisabled={setTypingDisabled} setSkipIntro={setSkipIntro} language={location.state.data.language}/>}
