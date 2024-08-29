@@ -1,9 +1,11 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import './ToggleDarkLight.css'
 import { Context } from "../../ContextAPI";
 
 const ToggleDarkLight = () => {
     const {lightMode,setLightMode} = useContext(Context);
+    const [showTooltip,setShowtooltip] = useState(false)
+
     const handleMode=()=>{
         localStorage.setItem('LIGHT_MODE',!lightMode)
         setLightMode(!lightMode)
@@ -19,10 +21,15 @@ const ToggleDarkLight = () => {
     return(
         <div className="toggleContainer">
             <input id="toggleCheckbox" type="checkbox" onChange={handleMode}  checked={lightMode}/>
-            <label htmlFor="toggleCheckbox" className="toggle">
+            <label 
+                htmlFor="toggleCheckbox" 
+                className="toggle"
+                onMouseOver={()=>setShowtooltip(true)}
+                onMouseLeave={()=>setShowtooltip(false)}
+            >
                 <img width="28" height="28" src={imgurl} alt="Mode"/>
-                {!lightMode?"Dark mode":"Light mode"}
             </label>
+            {showTooltip&&<p className='toggleModeTooltip'>{!lightMode?"Dark":"Light"}</p>}
         </div>
     )
 }
