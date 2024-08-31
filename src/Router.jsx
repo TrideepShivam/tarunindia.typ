@@ -1,5 +1,5 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
-import Home from "./routes/Home";
+import Home from "./routes/home/Home";
 import LoginRegisterLayout from "./routes/layouts/loginRegister/LoginRegisterLayout";
 import Login from "./routes/login/Login";
 import Register from "./routes/register/Register";
@@ -19,17 +19,14 @@ import AdminDashboard from "./routes/admin/dashboard/Dashboard";
 import Error from "./routes/error/Error";
 
 const Router = createBrowserRouter([
-    {
-        path:'/',
-        element:<Home/>
-    },
+
     {
         path:'/',
         element:<LoginRegisterLayout/>,
         children:[
             {
                 path:'/',
-                element:<Navigate to={'/'}/>
+                element:<Home/>
             },
             {
                 path:'/login',

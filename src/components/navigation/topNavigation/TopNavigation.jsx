@@ -1,11 +1,18 @@
+import { Link } from 'react-router-dom';
 import './TopNavigation.css'
 import logo from '../../../assets/logo-reverse.svg'
 import ToggleDarkLight from '../../toggleDarkLight/ToggleDarkLight';
 const TopNavigation=()=>{
+    const arr=[{name:"Home",path:"/",color:false},{name:"Contact",path:"#",color:false},{name:"Login",path:"/login",color:true},{name:"Register",path:"/Register",color:true}];
     return(
         <div className="topNavigation">
             <img width="50em" src={logo} alt="Logo" />
-            <ToggleDarkLight/>
+               
+                <div className="navSlab">
+                    {arr.map((a)=><Link className={`${a.color? "bluegoto":"goto"}`} to={a.path}>{a.name}</Link>)}
+                    <ToggleDarkLight/>
+                </div>
+            
         </div>
     )
 }

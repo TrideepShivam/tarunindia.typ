@@ -1,7 +1,7 @@
 .topNavigation{
     width:calc(100% - 2em);
     padding:.5em 1em;
-    background:var(--light-back-color);
+    background-color:transparent;
     position:fixed;
     top:0em;
     color:var(--text-color);
@@ -9,4 +9,26 @@
     justify-content: space-between;
     align-items: center;
     text-align: center;
+}
+.navSlab
+{
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    height: 100%;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    
+
+}
+.navSlab .goto
+{
+    text-decoration: none;
+    color:white;
+}
+.bluegoto
+{
+    text-decoration: none;
+    color:var(--theme-color);
 }
