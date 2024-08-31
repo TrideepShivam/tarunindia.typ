@@ -1,4 +1,4 @@
-.topNavigation{
+.dashboardTopNavigation{
     width:calc(100% - 2em);
     padding:.25em 1em;
     height:6%;
@@ -9,7 +9,7 @@
     color:var(--text-color);
 
 }
-.topNavigation .navElement{
+.dashboardTopNavigation .navElement{
     width:30%;
     display:flex;
     justify-content: center;

@@ -5,6 +5,7 @@ import SideNavigation from '../../../components/navigation/sideNavigation/SideNa
 import { useContext, useState } from 'react';
 import api from '../../../api';
 import { Context } from '../../../ContextAPI';
+import useAuthInterceptor from '../../../hooks/useAuthInterceptor';
 
 
 const DashboardLayout=()=>{
@@ -104,7 +105,7 @@ const DashboardLayout=()=>{
             ]
         },
         {
-            id:'0',value:'Logout',href:'/login',
+            id:'0',value:'Logout',href:'/dashboard',
             action:()=>{
                     api.get('/auth/logout')
                     .then(({data})=>{

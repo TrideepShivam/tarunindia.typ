@@ -2,10 +2,11 @@ import { Link } from 'react-router-dom';
 import './UserNavigation.css';
 import { useContext } from 'react';
 import { Context } from '../../../../ContextAPI';
+import useAuthInterceptor from '../../../../hooks/useAuthInterceptor';
  
 const UserNavigation=({item})=>{
     const {lightMode} = useContext(Context)
-    
+    useAuthInterceptor()
     return(
         <Link 
             className='userNavigation' 

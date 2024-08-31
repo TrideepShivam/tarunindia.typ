@@ -15,7 +15,7 @@ const DashboardTopNav=({userNavigator,sideNavOpen,setSideNavOpen})=>{
                 "https://img.icons8.com/ios-filled/25/ffffff/delete-sign--v1.png"
 
     return(
-        <div className="topNavigation">
+        <div className="dashboardTopNavigation">
             <div className='navElement'>
                 <img className='menuButton' onClick={()=>setSideNavOpen(!sideNavOpen)} width="25" height="25" src={menu} alt="menu"/>               
             </div>

@@ -4,36 +4,41 @@ import Chart from 'react-apexcharts'
 import './Dashboard.css'
 import { useContext, useEffect, useState } from 'react';
 import {Context} from '../../ContextAPI';
+import api from '../../api';
+import useAuthInterceptor from '../../hooks/useAuthInterceptor';
+import Loading from '../../components/loading/Loading';
 
-const totalData={
+const Dashboard=()=>{
+    useAuthInterceptor()
+    const [loading,setLoading] = useState(true)
+    const {lightMode} = useContext(Context)
+    const [wpm,setWpm] = useState([{
+      value:"33.7",
+      unit:"WPM",
+      cardHead:"Average",
+      more:true
+  },{
+      value:"31",
+      unit:"WPM",
+      cardHead:"Last Attempt",
+      more:true
+    }])
+    
+    const [totalData,setTotalData]=useState({
     value:"1147",
     unit:"WPM",
     todayCount:"2",
     cardHead:"Total Attempts",
     queryQsn:"Today Attempts:"
-}
-const data = [{
-    value:"33.7",
-    unit:"WPM",
-    cardHead:"Average",
-    more:true,
-    increment:false
-},{
-    value:"31",
-    unit:"WPM",
-    cardHead:"Last Attempt",
-    more:true,
-    increment:true
-}]
-const Dashboard=()=>{
-    const {lightMode} = useContext(Context)
+    })
+
     const [chartData, setChartData] = useState({
         series: [{
-            name: "Speed",
-            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+            name: "WPM",
+            data: [30, 41, 35, 51, 49, 62, 69, 61, 48]
         },{
             name: "Accuracy",
-            data: [11, 21, 15, 31, 29, 22, 79, 91, 48]
+            data: [81, 91, 95, 91, 99, 92, 99, 91, 98]
         }],
         options: {
           chart: {
@@ -51,7 +56,7 @@ const Dashboard=()=>{
             curve: 'straight',
           },
           title: {
-            text: 'Product Trends by Month',
+            text: 'Progress Report',
             align: 'left'
           },
           xaxis: {
@@ -61,23 +66,93 @@ const Dashboard=()=>{
             mode:!lightMode?'light':'dark'
           }
         },      
-      })
+    })
+
+    const generateData = (existingData, startDate, days) => {
+      const newData = [];
+      const existingDates = existingData.map(item => item.date);
+    
+      for (let i = 0; i < days; i++) {
+        const date = new Date(startDate);
+        date.setDate(date.getDate() - i);
+        const formattedDate = date.toISOString().split('T')[0];
+    
+        const existingEntry = existingData.find(item => item.date === formattedDate);
+        if (existingEntry) {
+          newData.push(existingEntry);
+        } else {
+          newData.push({ date: formattedDate, avg_wpm: 0, avg_accuracy: 0 });
+        }
+      }
+    
+      return newData;
+    }
     useEffect(()=>{
-        setChartData((prevChartData) => ({
-            ...prevChartData,
-            options: {
-              ...prevChartData.options,
-              theme: {
-                mode: !lightMode ? "light" : "dark",
-              },
-            },
-        }));
-    },[lightMode])
+        api.get('/dashboard')
+            .then(({data})=>{
+              setWpm([
+                {
+                  value: data.avg_total_today.avg_wpm,
+                  unit: "WPM",
+                  cardHead: "Average",
+                  more: true
+                },
+                {
+                  value: data.last_7_days[0].avg_wpm,
+                  unit: "WPM",
+                  cardHead: "Last Attempt",
+                  more: true
+                }
+              ])
+              setTotalData({
+                value:data.avg_total_today.total_tests,
+                unit:"WPM",
+                todayCount:data.avg_total_today.today_tests,
+                cardHead:"Total Attempts",
+                queryQsn:"Today Attempts:"
+              })
+              const updatedData = data.last_7_days
+              const daysOfWeek = updatedData.map(item => item.date).map(date => {
+                const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+                const day = new Date(date).getDay();
+                return dayNames[day];
+              })
+              setChartData({
+                series: [{
+                  name: "WPM",
+                  data: updatedData.map(item => item.avg_wpm) // New WPM data
+                },{
+                  name: "Accuracy",
+                  data: updatedData.map(item => item.avg_accuracy) // New Accuracy data
+                }],
+                options: {
+                  ...chartData.options,
+                  xaxis: {
+                    categories: daysOfWeek
+                  },
+                  theme:{
+                    mode:!lightMode?'light':'dark'
+                  }
+                }
+              })
+              setLoading(false)
+
+            }).catch(({response})=>{
+              console.log(response)
+            })
+
+
+    },[wpm,totalData])
+
+    if(loading){
+      return <Loading/>
+    }
+
     return(
     <>
         <p className="sectionHead">DASHBOARD</p>
         <div className="dashboardContent">
-            {data.map((item,index)=>
+            {wpm.map((item,index)=>
                 <Card key={index} val={item} />
             )}
             <TotalCard val={totalData} />
