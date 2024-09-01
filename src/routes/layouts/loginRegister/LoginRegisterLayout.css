@@ -6,7 +6,7 @@
     flex-direction: column;
 }
 .form{
-    height:90%;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
