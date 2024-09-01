@@ -1,0 +1,27 @@
+
+.gradentBorder{
+    height: 293px;
+    width: 293px;
+    border-radius: 25px;
+    background: linear-gradient(45deg, var(--c1,#00ff85 ), var(--c1,#5000ff), var(--c1,#00ff85 ),var(--c1,#5000ff)) var(--x, 0)/ 200%;  
+      transition:1s;
+      padding: 3.5px;
+}
+.gradentBorder:hover{--x:100%;}
+.field
+{
+ height: 273px;
+ width: 273px;
+ border-radius: inherit;
+ background-color: black;
+ display: flex;
+ justify-content: center;
+ gap: 10px;
+ align-items: center;
+ flex-direction: column;
+ padding: 10px;
+}
+h2,p
+{
+    color: var(--text-color);
+}

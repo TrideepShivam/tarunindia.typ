@@ -3,7 +3,7 @@ import './TopNavigation.css'
 import logo from '../../../assets/logo-reverse.svg'
 import ToggleDarkLight from '../../toggleDarkLight/ToggleDarkLight';
 const TopNavigation=()=>{
-    const arr=[{name:"Home",path:"/",color:false},{name:"Contact",path:"#",color:false},{name:"Login",path:"/login",color:true},{name:"Register",path:"/Register",color:true}];
+    const arr=[{name:"Home",path:"/",color:false},{name:"Contact",path:"#",color:false},{name:"Login",path:"/login",color:true},{name:"Register",path:"/register",color:true}];
     return(
         <div className="topNavigation">
             <img width="50em" src={logo} alt="Logo" />
