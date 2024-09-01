@@ -1,45 +1,25 @@
-.parent
-{
+.parent {
     height: auto;
     width: 100%;
     background-color: black;
 }
-.firstDiv
-{
-    height: 100vh;
-    width: 100;
-    background-image: url('../../assets/Designer1.jpeg.jpg');
-    background-size: cover;
 
-}
+.blur h1 {
 
-.blur
-{
-    height: inherit;
-    width: inherit;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    backdrop-filter: blur(3.5px);
-    background-color: rgba(0, 0, 0, 0.408);
-    gap: 2.8vh;
-}
-.blur h1{
-    
-    background: linear-gradient(to right,#00ff85 15%,#5000ff );
+    background: linear-gradient(to right, #00ff85 15%, #5000ff);
     color: transparent;
-    background-clip:text;
+    background-clip: text;
     font-size: 400%;
     padding: .6%;
-
-
 }
-.blur p{
+
+.blur p {
     font-size: larger;
     letter-spacing: 2px;
 }
-.feature, .whyUs{
+
+.feature,
+.whyUs {
     min-height: 100vh;
     width: 90%;
     padding: 5%;
@@ -47,56 +27,58 @@
     flex-direction: column;
     gap: 10px;
 }
-.whyUs
-{
-    background-image:url('../../assets/Designer2.jpeg.jpg');
-    background-size: cover;
-}
-.featureBox
-{
+
+.featureBox {
     display: flex;
     width: 100%;
-    height:80%;
+    height: 80%;
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
 
 }
-.workFlow
-{
-    height:auto;
+
+.workFlow {
+    height: auto;
     width: 90%;
     padding: 10% 5%;
 
 }
-.lastDiv
-{
+
+.lastDiv {
     width: 100%;
-    background-color:var(--light-back-color);
-    height:25rem;
+    background-color: var(--light-back-color);
+    height: 25rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
 }
-.about, .contact
-{
-   
+
+.about,
+.contact {
+
     height: 20rem;
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
     gap: 10px;
 }
-.about{width: 55%;}
-.contact{width: 35%;}
-.lastRibbon
-{
+
+.about {
+    width: 55%;
+}
+
+.contact {
+    width: 35%;
+}
+
+.lastRibbon {
     width: 92%;
     height: 4rem;
     display: flex;
     justify-content: space-between;
-    padding:0 4% 0 4%;
+    padding: 0 4% 0 4%;
     align-items: center;
 }

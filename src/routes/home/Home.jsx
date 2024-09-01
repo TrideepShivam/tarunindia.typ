@@ -24,7 +24,7 @@ const Home = () => {
             </BlurImgDiv>
 
             <div className="feature">
-                <p className="sectionHead" style={{ fontSize: 30 + "px" }}>FEATURE</p>
+                <p className="sectionHead" style={{ fontSize: 30 + "px" }}>FEATURES</p>
                 <div className="featureBox">
                     {
                         feature.map((a) =>
@@ -40,7 +40,7 @@ const Home = () => {
                 <Button value="JOIN NOW" style={{ width: 15 + "%" }}></Button>
             </BlurImgDiv>
             <div className="workFlow">
-                <p className="sectionHead" style={{ fontSize: 30 + "px" , marginBottom:3+"%"}}>WHY US</p>
+                <p className="sectionHead" style={{ fontSize: 30 + "px" , marginBottom:3+"%"}}>WORK FLOW</p>
                 <DotLineBox dot="left" image={why1}></DotLineBox>
                 <DotLineBox dot="right" image={why2}></DotLineBox>
                 <DotLineBox dot="left"  image={why3}></DotLineBox>

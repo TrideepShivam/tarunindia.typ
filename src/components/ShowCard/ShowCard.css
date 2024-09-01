@@ -6,6 +6,7 @@
     background: linear-gradient(45deg, var(--c1,#00ff85 ), var(--c1,#5000ff), var(--c1,#00ff85 ),var(--c1,#5000ff)) var(--x, 0)/ 200%;  
       transition:1s;
       padding: 3.5px;
+      cursor: pointer;
 }
 .gradentBorder:hover{--x:100%;}
 .field
