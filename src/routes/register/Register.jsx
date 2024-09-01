@@ -16,6 +16,7 @@ const Register=()=>{
     const emailRef = useRef()
     const pwdRef = useRef()
     const pwdReRef = useRef()
+    const tncRef = useRef(false)
     const handleRegister=()=>{
         setLoading(true)
         api.post('/auth/register',{
@@ -58,7 +59,7 @@ const Register=()=>{
             <Textbox var={emailRef} type="text" legend="Email"/>
             <Textbox var={pwdRef} type="Password" legend="Password"/>
             <Textbox var={pwdReRef} type="Password" legend="Confirm Password"/>
-            <Checkbox value='Agree' transparent={true}/>
+            <Checkbox checkedRef={tncRef} value='Agree' transparent={true}/>
             <Hyperlink href="/tnc" value="Terms and Conditions"/>
             <Button onClick={handleRegister} value="Register"/>
             <p>
