@@ -17,7 +17,7 @@ const Home = () => {
     let feature = [{ header: "Gamimg", content: "comming soon" }, { header: "Gamimg", content: "comming soon" }, { header: "Gamimg", content: "comming soon" }, { header: "Gamimg", content: "comming soon" }]
     return (
         <div className='parent'>
-            <BlurImgDiv image={designer1}>
+            <BlurImgDiv image={designer1} style={{backgroundAttachment:"fixed"}}>
                 <h1>Traun India Typing</h1>
                 <p>A typing test Platform to Learn, Grow & Earn</p>
                 <Button value="Explore" style={{ width: 15 + "%" }}></Button>

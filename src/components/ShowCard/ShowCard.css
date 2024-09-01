@@ -14,7 +14,7 @@
  height: 273px;
  width: 273px;
  border-radius: inherit;
- background-color: black;
+ background-color: var(--background-color);
  display: flex;
  justify-content: center;
  gap: 10px;

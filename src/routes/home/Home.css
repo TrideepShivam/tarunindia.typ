@@ -1,7 +1,7 @@
 .parent {
     height: auto;
     width: 100%;
-    background-color: black;
+    background-color:var(--background-color);
 }
 
 .blur h1 {
