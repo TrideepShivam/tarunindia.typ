@@ -73,7 +73,7 @@ const Play=()=>{
         pauseTimer&&setPauseTimer(false)
         wrong&&setWrong(false)
         resultRef.current.keystrokes+=1
-        if(e.key == ' '){
+        if(e.code == 'Space'){
             let writtenText = e.target.value.split(/(\s+)/)
             // let currentWord = writtenText.slice(writtenStory.current.length,writtenText.length-1)//here we dont use length-1 we have to find previous space index then till that index we have to use it
             if(writtenText.length!=resultRef.current.words*2+1){
