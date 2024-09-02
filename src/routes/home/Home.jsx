@@ -6,60 +6,84 @@ import Hyperlink from '../../components/hyperlink/Hyperlink';
 import designer1 from '../../assets/Designer1.jpeg.jpg';
 import designer2 from '../../assets/Designer2.jpeg.jpg';
 import DotLineBox from '../../components/dotLineBox/DotLineBox';
-import why1 from '../../assets/login-dark.png';
-import why2 from '../../assets/form-dark.png';
-import why3 from '../../assets/play-dark.png';
-import why4 from '../../assets/report-dark.png';
+import why11 from '../../assets/login-dark.png';
+import why12 from '../../assets/login-light.png';
+import why21 from '../../assets/form-dark.png';
+import why22 from '../../assets/form-light.png';
+import why31 from '../../assets/play-dark.png';
+import why32 from '../../assets/play-light.png';
+import why41 from '../../assets/report-dark.png';
+import why42 from '../../assets/report-light.png';
 
- 
+
 const Home = () => {
-    const sty={justifyContent:"flex-start"}
-    let feature = [{ header: "Gamimg", content: "comming soon" }, { header: "Gamimg", content: "comming soon" }, { header: "Gamimg", content: "comming soon" }, { header: "Gamimg", content: "comming soon" }]
+
+    let feature = [{ header: "USER FRIENDLY", content: "A user-friendly interface to make your typing practice easier to use and grow" }, { header: "MANGAL FONT", content: "Get not only English typing even Mangal font typing test is also there to make you prepared for Government exams." }, { header: "PROGRESS TRACKING", content: "A better progress tracking interface to track your WPM and Accuracy and also get the detailed version of results." }, { header: "SUPPORT SYSTEM", content: "12+ hrs supporting team to cover all the inconveniences during your app use. Nothing can distract you from your goals. " }]
+    const workflow = [{ dot: "left", image: { dark: why11, light: why12 }, head: "Enter The World", short: "STEP 01" }, { dot: "right", image: { dark: why21, light: why22 }, head: "Fill the form", short: "STEP 02" }, { dot: "left", image: { dark: why31, light: why32 }, head: "Attempt Test", short: "STEP 03" }, { dot: "right", image: { dark: why41, light: why42 }, head: "Track Progess", short: "STEP 04" }]
+    const whyDetail=[{head:"TRUSTWORTHY",content:"A better progress tracking interface to track your WPM and Accuracy and also get the detailed version of results."},{head:"ENGAGEMENT",content:"A better progress tracking interface to track your WPM and Accuracy and also get the detailed version of results."},{head:"SUPPORT",content:"A better progress tracking interface to track your WPM and Accuracy and also get the detailed version of results."}];
     return (
         <div className='parent'>
-            <BlurImgDiv image={designer1} style={{backgroundAttachment:"fixed"}}>
-                <h1>Traun India Typing</h1>
+            <BlurImgDiv image={designer1} style={{ backgroundAttachment: "fixed" }}>
+                <h1>Tarun India Typing</h1>
                 <p>A typing test Platform to Learn, Grow & Earn</p>
-                <Button value="Explore" style={{ width: 15 + "%" }}></Button>
+                <Button value="Explore" style={{ width: 15 + "%" }} ></Button>
             </BlurImgDiv>
 
             <div className="feature">
                 <p className="sectionHead" style={{ fontSize: 30 + "px" }}>FEATURES</p>
                 <div className="featureBox">
                     {
-                        feature.map((a) =>
-
-                            <ShowCard header={a.header} content={a.content} style={{ margin: 4 + "%" }}></ShowCard>
-                        )
+                        feature.map((a) => <ShowCard header={a.header} content={a.content} style={{ margin: 4 + "%" }}></ShowCard>)
                     }
 
                 </div>
             </div>
-             <BlurImgDiv image={designer2} adjust={{gap:50+"%"}}>
-                <p className="sectionHead" style={{ fontSize: 30 + "px" }}>WHY US</p>
-                <Button value="JOIN NOW" style={{ width: 15 + "%" }}></Button>
+            <BlurImgDiv image={designer2} adjust={{ gap: 5 + "%" }}>
+                <p className="sectionHead" style={{ fontSize: 30 + "px", width: 90 + "%" }}>WHY US</p>
+                <div className='whyBox'>
+                    {
+                        whyDetail.map((data,index)=><div className='whyDetail'><h3 style={{color:"#00ff85"}}>{data.head}</h3><p>{data.content}</p></div>)
+                    }
+                    
+                </div>
+                    <Button value="JOIN NOW" style={{ width: 15 + "%" }}></Button>
+
             </BlurImgDiv>
             <div className="workFlow">
-                <p className="sectionHead" style={{ fontSize: 30 + "px" , marginBottom:3+"%"}}>WORK FLOW</p>
-                <DotLineBox dot="left" image={why1}></DotLineBox>
-                <DotLineBox dot="right" image={why2}></DotLineBox>
-                <DotLineBox dot="left"  image={why3}></DotLineBox>
-                <DotLineBox dot="right"  image={why4}></DotLineBox>
+                <p className="sectionHead" style={{ fontSize: 30 + "px", marginBottom: 3 + "%", width: 80 + "%" }}>WORK FLOW</p>
+                {
+                    workflow.map((a, key) => <DotLineBox dot={a.dot} image={a.image} head={a.head} short={a.short} />)
+                }
             </div>
             <div className="lastDiv">
                 <div className="about">
-                <p className="sectionHead" style={{ fontSize: 30 + "px" }}>ABOUT</p>
-                    <p></p>
+                    <p className="sectionHead" style={{ fontSize: 30 + "px" }}>ABOUT</p>
+                    <p>
+                        Welcome to <span class="highlight">Tarun India Typing</span>, your go-to platform for enhancing your typing skills! Our mission is to provide an engaging and effective way for users of all levels to improve their typing speed and accuracy. Whether you’re a beginner just starting out or an experienced typist looking to refine your skills, our customizable tests and user-friendly interface make practice enjoyable and productive. Join us on your journey to becoming a <span class="highlight">typing pro!</span>
+                    </p>
                 </div>
                 <div className="contact">
 
-                <p className="sectionHead" style={{ fontSize: 30 + "px" }}>CONTACT</p>
-                <p></p>
+                    <p className="sectionHead" style={{ fontSize: 30 + "px" }}>CONTACT</p>
+                    <span>
+                        <span>
+                            <h2>TARUN INDIA INSTITUTE</h2>
+                            <p>TARUN INDIA INSTITUTE
+                                In Front of Police Station
+                                Madhepura, Bihar, India
+                                852113</p>
+                        </span>
+                        <span>
+                            <Hyperlink value="tarunindia1989@gmail.com"/><br/>
+                            <Hyperlink value="9709483986"/>
+                        </span>
+                        <span></span>
+                    </span>
                 </div>
                 <div className="lastRibbon">
                     <span className='highlight'><span>terms & services </span>
-                    <span>privacy policy</span></span>
-                    
+                        <span>privacy policy</span></span>
+
                     <span><span>copyright @ 2024</span><Hyperlink value=" tarunindia.in"></Hyperlink></span>
                 </div>
             </div>

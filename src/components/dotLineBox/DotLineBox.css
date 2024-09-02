@@ -1,5 +1,5 @@
 .dotBox{
-    width: 96%;
+    width: 95%;
     display: flex;
     justify-content: space-between;
     height: 22rem;
@@ -9,4 +9,7 @@
    padding:2%;
    
 
+}
+.workExplain p{
+letter-spacing: .1em;
 }
