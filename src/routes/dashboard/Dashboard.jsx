@@ -70,21 +70,19 @@ const Dashboard=()=>{
 
     const generateData = (existingData, startDate, days) => {
       const newData = [];
-      const existingDates = existingData.map(item => item.date);
     
       for (let i = 0; i < days; i++) {
         const date = new Date(startDate);
         date.setDate(date.getDate() - i);
         const formattedDate = date.toISOString().split('T')[0];
-    
         const existingEntry = existingData.find(item => item.date === formattedDate);
+        
         if (existingEntry) {
           newData.push(existingEntry);
         } else {
           newData.push({ date: formattedDate, avg_wpm: 0, avg_accuracy: 0 });
         }
       }
-    
       return newData;
     }
     useEffect(()=>{
@@ -98,7 +96,7 @@ const Dashboard=()=>{
                   more: true
                 },
                 {
-                  value: data.last_7_days[0].avg_wpm,
+                  value: data.last_7_days.length>0?data.last_7_days[0].avg_wpm:0,
                   unit: "WPM",
                   cardHead: "Last Attempt",
                   more: true
@@ -111,7 +109,7 @@ const Dashboard=()=>{
                 cardHead:"Total Attempts",
                 queryQsn:"Today Attempts:"
               })
-              const updatedData = data.last_7_days
+              const updatedData = generateData(data.last_7_days,new Date(),10)
               const daysOfWeek = updatedData.map(item => item.date).map(date => {
                 const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
                 const day = new Date(date).getDay();
@@ -120,15 +118,15 @@ const Dashboard=()=>{
               setChartData({
                 series: [{
                   name: "WPM",
-                  data: updatedData.map(item => item.avg_wpm) // New WPM data
+                  data: (updatedData.map(item => item.avg_wpm)).reverse() // New WPM data
                 },{
                   name: "Accuracy",
-                  data: updatedData.map(item => item.avg_accuracy) // New Accuracy data
+                  data: (updatedData.map(item => item.avg_accuracy)).reverse() // New Accuracy data
                 }],
                 options: {
                   ...chartData.options,
                   xaxis: {
-                    categories: daysOfWeek
+                    categories: daysOfWeek.reverse()
                   },
                   theme:{
                     mode:!lightMode?'light':'dark'
@@ -142,7 +140,7 @@ const Dashboard=()=>{
             })
 
 
-    },[wpm,totalData])
+    },[])
 
     if(loading){
       return <Loading/>

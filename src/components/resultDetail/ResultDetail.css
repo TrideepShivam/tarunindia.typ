@@ -1,9 +1,14 @@
 .popUpContainer .details{
+    max-height:60%;
     padding:4em;
     display:flex;
     gap:1em;
     background-color: var(--background-color);
     border:.1em solid var(--text-color-light);
+}
+.errors{
+    overflow-x: scroll;
+    /* scrolled error container */
 }
 .popUpContainer .errors tbody{
     font-size: 1.2em;

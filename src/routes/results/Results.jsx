@@ -75,9 +75,10 @@ const Results=()=>{
         .then(({data})=>{
             setRefresh(false)
             setTestDetail(data)
-            const averageWPM = (data.reduce((sum, user) => sum + user.test_details.wpm, 0) / data.length).toFixed(2)
-            const averageAccuracy = (data.reduce((sum, user) => sum + user.test_details.accuracy, 0) / data.length).toFixed(2)
-            const averageKPM = (data.reduce((sum, user) => sum + user.test_details.kpm, 0) / data.length).toFixed(2)
+            //used checking ternary to set data if no data is responsed from server
+            const averageWPM = data.length>0?(data.reduce((sum, user) => sum + user.test_details.wpm, 0) / data.length).toFixed(2):0
+            const averageAccuracy = data.length>0?(data.reduce((sum, user) => sum + user.test_details.accuracy, 0) / data.length).toFixed(2):0
+            const averageKPM = data.length>0?(data.reduce((sum, user) => sum + user.test_details.kpm, 0) / data.length).toFixed(2):0
             //call fn with 3 values
             updateCardValues(averageWPM, averageAccuracy, averageKPM)
             setLoading(false)
@@ -105,19 +106,19 @@ const Results=()=>{
                 <table>
                     <thead>
                     <tr className='highlight'>
-                        <td>DATE (yyyy-mm-dd)</td>
+                        <td >DATE (y-m-d)</td>
                         <td>TIME</td>
                         <td>WPM</td>
-                        <td>ACCURACY</td>
+                        <td>ACCURACY (%)</td>
                         <td>LANGUAGE</td>
                         <td>ERRORS</td>
                         <td>DURATION</td>
                         <td style={{position:'relative'}}>
-                            <CircleButton style={{top:'-.2em',right:'4em'}} value={imgrefresh} onClick={()=>{
+                            <CircleButton style={{top:'-.3em',right:'3em'}} value={imgrefresh} onClick={()=>{
                                 setRefresh(true)
                                 setLoading(true)
                             }}/>
-                            <CircleButton style={{top:'-.2em',right:'.5em'}} value={img} onClick={()=>setSearch(true)}/>
+                            <CircleButton style={{top:'-.3em',right:'-.1em'}} value={img} onClick={()=>setSearch(true)}/>
                         </td>
                     </tr>
                     </thead>
@@ -140,7 +141,7 @@ const Results=()=>{
                     </tr>
                     ):
                     <tr>
-                        <td style={{padding:'5em',textAlign:'center'}} colSpan={5}>No Data Found</td>
+                        <td style={{padding:'5em',textAlign:'center'}} colSpan={7}>No Data Found</td>
                     </tr>}
                     </tbody>
                 </table>
