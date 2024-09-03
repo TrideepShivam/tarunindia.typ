@@ -65,9 +65,33 @@ const Play=()=>{
     if(loading){
         return <Loading/>
     }
+    
     const keyPrevention =(e)=>{
         let text = e.target.value
         e.key=='Backspace'&&(text[text.length-1]==' '||location.state.backspace)&&e.preventDefault()
+    }
+    const altCode={
+        '☺':'ँ',//२३०५
+        '↓':'ङ',//२३२९
+        '▲':'ञ',//२३३४
+        'P':'ॐ',//२३८४
+        '[':'ज़',//२३९५
+        '\\':'ड़',//२३९६
+        ']':'ढ़',//२३९७
+        '^':'फ़',//२३९८
+        'e':'॥',//२४०५
+        'f':'०',//२४०६
+        'p':'॰',//२४१६
+    }
+    let isSpecialChar=false
+    const removeSpecialChar=(e)=>{
+        if(isSpecialChar&&getFont()=='Mangal'){
+            let content = e.target.value
+            let newContent=content.slice(0,-1)
+            e.target.value = newContent
+            isSpecialChar=false
+            console.log(writtenStory.current)
+        }
     }
     const typing = (e) =>{
         pauseTimer&&setPauseTimer(false)
@@ -86,7 +110,14 @@ const Play=()=>{
                 }
                 writtenStory.current = writtenText
             }
+        }else if(altCode[e.key]&&getFont()=='Mangal'){
+            e.preventDefault()
+            let code = altCode[e.key]
+            let content = e.target.value
+            e.target.value=content+code
+            isSpecialChar=true
         }
+        
         if(/^[0-9a-zA-Z!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/? ]+$/.test(e.key)){
             resultRef.current.char_with_spaces+=1
         }
@@ -139,6 +170,7 @@ const Play=()=>{
                     placeholder={getFont()=='Krutidev'?"Vkbi djsa---":"start typing..." }
                     onKeyDown={(e)=>keyPrevention(e)} 
                     onKeyUp={(e)=>typing(e)}
+                    onInput={(e)=>removeSpecialChar(e)}
                     disabled={typingDisabled}
                 />
 			</div>

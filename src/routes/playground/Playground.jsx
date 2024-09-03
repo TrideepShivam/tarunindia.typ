@@ -103,7 +103,9 @@ const Playground=()=>{
                     <li>Unblock the <span className="highlight">Hilighting text</span> if you don't want to Highlight the text.</li>
                 </ol>
                 <h3>Now, Click to the <span className="highlight">Play</span> button and start your typing speed improvement journey!</h3>
-                <p><span className="highlight">Note:-</span> To change the keyboard layout for Hindi <span className="highlight">Mangal</span> font, please press <span className="highlight">ALT+SHIFT</span> from keyboard. For this you must have installed <span className="highlight">Indic Input 3</span> Software. You can download it from <Hyperlink href="https://www.microsoft.com/en-in/bhashaindia/downloads?msockid=15f4967d9a2f6ebc02f784929b296f8e" value='here'/>. If you feel any difficulty please contact us on <span className="highlight">Support</span> Channel</p>
+                <p><span className="highlight">Note:-</span> To change the keyboard layout for Hindi <span className="highlight">Mangal</span> font, please press <span className="highlight">ALT+SHIFT</span> from keyboard. For this you must have installed <span className="highlight">Indic Input 3</span> Software. You can download it from <Hyperlink onClick={()=>
+                    window.location.href="https://www.microsoft.com/en-in/bhashaindia/downloads?msockid=15f4967d9a2f6ebc02f784929b296f8e"
+                }value='here'/>. If you feel any difficulty please contact us on <span className="highlight">Support</span> Channel</p>
             </div>
             <div className="playForm">
                 <h2 className="sectionHead">Play Form</h2>
