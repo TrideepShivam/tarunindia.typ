@@ -16,12 +16,12 @@ const Dashboard=()=>{
       value:"33.7",
       unit:"WPM",
       cardHead:"Average",
-      more:true
+      more:false
   },{
       value:"31",
       unit:"WPM",
       cardHead:"Last Attempt",
-      more:true
+      more:false
     }])
     
     const [totalData,setTotalData]=useState({
@@ -93,13 +93,13 @@ const Dashboard=()=>{
                   value: data.avg_total_today.avg_wpm,
                   unit: "WPM",
                   cardHead: "Average",
-                  more: true
+                  more: false
                 },
                 {
                   value: data.last_7_days.length>0?data.last_7_days[0].avg_wpm:0,
                   unit: "WPM",
                   cardHead: "Last Attempt",
-                  more: true
+                  more: false
                 }
               ])
               setTotalData({

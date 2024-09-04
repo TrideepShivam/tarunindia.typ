@@ -82,6 +82,8 @@ const Play=()=>{
         'e':'॥',//२४०५
         'f':'०',//२४०६
         'p':'॰',//२४१६
+        'ô':'“',//147
+        'ö':'”',//148
     }
     let isSpecialChar=false
     const removeSpecialChar=(e)=>{
@@ -146,8 +148,8 @@ const Play=()=>{
     }
     const getFont = ()=>{
         let lang = location.state.data.language
-        if(lang=='english')
-            return'arial'
+        if(lang.toLowerCase()=='english')
+            return 'arial'
         else
             return lang
     }
