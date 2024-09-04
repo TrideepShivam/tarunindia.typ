@@ -14,18 +14,23 @@ const InformationContainer=({children})=>{
                     onClick={()=>window.location.href='https://whatsapp.com/channel/0029VaiLTTTLtOjHBKi3ox3s'} 
                     value='Whatsapp'/> channel.
                 </p>
-
-                <img width='70%' src={yt} alt="youtube" />
-                <div style={{display:'flex',alignItems:'center'}}>
-                    <img src="https://img.icons8.com/color/40/whatsapp.png" alt="youtube" />
-                    <p>@tarunindia.in</p>
+                <div className='qrcontainer'>
+                    <div>
+                        <img width={'70%'} src={yt} alt="youtube" />
+                        <div style={{display:'flex',alignItems:'center'}}>
+                            <img  src="https://img.icons8.com/color/40/whatsapp.png" alt="youtube" />
+                            <p>@tarunindia.in</p>
+                        </div>
+                    </div>
+                    <div>
+                        <img width={'70%'} src={wa} alt="whatsapp" />
+                        <div style={{display:'flex',alignItems:'center'}}>
+                            <img  src="https://img.icons8.com/color/40/youtube-play.png" alt="youtube" />
+                            <p>@tarunindiainstitute</p>
+                        </div>
+                    </div>
                 </div>
-                <img width='70%' src={wa} alt="whatsapp" />
-                <div style={{display:'flex',alignItems:'center'}}>
-                    <img src="https://img.icons8.com/color/40/youtube-play.png" alt="youtube" />
-                    <p>@tarunindiainstitute</p>
-                </div>
-                <Hyperlink value='tarunindia.in'/>
+                <Hyperlink href='/' value='tarunindia.in'/>
             </div>
         </div>
     )
