@@ -1,7 +1,12 @@
+.parent *{
+    letter-spacing: .05em;
+
+}
 .parent {
     height: auto;
     width: 100%;
     background-color:var(--background-color);
+
 }
 
 .blur h1 {
@@ -15,16 +20,15 @@
 
 .blur p {
     font-size: larger;
-    letter-spacing: 2px;
     color: #fefeff;
 }
 
 .feature,
 .whyUs {
     height: auto;
-    width: 100%;
+    width: 94%;
     display: flex;
-    padding: 5% 0%;
+    padding: 5% 3%;
     flex-direction: column;
     gap: 3em;
 }
@@ -39,7 +43,7 @@
 .whyDetail
 {
     height: 52%;
-    width: 18vw;
+    width: 19vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -67,6 +71,7 @@
     word-spacing: .2em;
     align-items: center;
     padding: 0% 9vw 0% 9vw;
+    gap: 1em;
 
     
 }
@@ -117,7 +122,7 @@
 }
 
 .about {
-    width: 55%;
+    width: 50%;
     
 }
 

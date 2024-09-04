@@ -1,7 +1,7 @@
 
 .multiColorBorder{
-    height: 14em;
-    width: 14em;
+    height: 15em;
+    width: 15em;
     border-radius: 1em;
     background: linear-gradient(45deg, var(--c1,#00ff85 ), var(--c1,#5000ff), var(--c1,#00ff85 ),var(--c1,#5000ff)) var(--x, 0)/ 200%;  
       transition:1s;
@@ -15,27 +15,21 @@
 .field
 {
  height: 12em;
- width: 14em;
+ width: 12em;
  border-radius: 1em;
  background-color: var(--background-color);
- display: flex;
- justify-content: flex-start;
- align-items: center;
- gap: 3%;
- padding: 1em 0;
+ padding: 1.5em;
  flex-direction: column;
  text-wrap:pretty;
  color: var(--text-color);
 }
 .field p
 {
-    text-align: start;
-    width: 85%;
     font-size: large;
     color:var(--text-color-light);
 }
 .field h2
 {
+    margin:.2em 0;
     font-size: medium;
-    text-align: center;
 }

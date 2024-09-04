@@ -15,10 +15,11 @@ import why32 from '../../assets/play-light.png';
 import why41 from '../../assets/report-dark.png';
 import why42 from '../../assets/report-light.png';
 import InstLogo from '../../assets/institute-logo.jpg'
+import { useNavigate } from 'react-router-dom';
 
 
 const Home = () => {
-
+    const navigate=useNavigate();
     let feature = [{ header: "USER FRIENDLY", content: "A user-friendly interface to make your typing practice easier to use and grow" }, { header: "MANGAL FONT", content: "Get not only English typing even Mangal font typing test is also there to make you prepared for Government exams." }, { header: "PROGRESS TRACKING", content: "A better progress tracking interface to track your WPM and Accuracy and also get the detailed version of results." }, { header: "SUPPORT SYSTEM", content: "12+ hrs supporting team to cover all the inconveniences during your app use. Nothing can distract you from your goals. " }]
     const workflow = [{ dot: "left", image: { dark: why11, light: why12 }, head: "Enter The World", short: "STEP 01" }, { dot: "right", image: { dark: why21, light: why22 }, head: "Fill the form", short: "STEP 02" }, { dot: "left", image: { dark: why31, light: why32 }, head: "Attempt Test", short: "STEP 03" }, { dot: "right", image: { dark: why41, light: why42 }, head: "Track Progess", short: "STEP 04" }]
     const whyDetail=[{head:"TRUSTWORTHY",content:"A better progress tracking interface to track your WPM and Accuracy and also get the detailed version of results."},{head:"ENGAGEMENT",content:"A better progress tracking interface to track your WPM and Accuracy and also get the detailed version of results."},{head:"SUPPORT",content:"A better progress tracking interface to track your WPM and Accuracy and also get the detailed version of results."}];
@@ -40,16 +41,23 @@ const Home = () => {
             </div>
 
             <div className="whoWeAre">
-                        <p className="sectionHead" style={{ fontSize: 30 + "px", marginLeft:2+"em",height:"max-Content", width:90+"%"}}>FEATURES</p>
+                        <p className="sectionHead" style={{ fontSize: 30 + "px", marginLeft:2+"em",height:"max-Content", width:90+"%"}}>WHO WE ARE</p>
                         <div className="detailWho">
                             <p style={{fontSize:19+"px"}}>
                             A unit of <span class="highlight">TARUN INDIA INSTITUTE</span> of technical training, Madhepura, Bihar, India. Estd. in <span class="highlight">1989</span> and reg no is <span class="highlight">xyz. 10000+</span> students have registered within our Organization, <span class="highlight">2000+</span> Certificates have issued, <span class="highlight">1500+</span> students got the Government Jobs and <span class="highlight"></span> students are Entrepreneur.
                             </p>
                             <div className="socialMedia">
-                            <img  src="https://img.icons8.com/color/40/youtube-play.png" alt="youtube" />
-                            <img  src="https://img.icons8.com/color/40/facebook.png" alt="youtube" />
-
-                            <img  src="https://img.icons8.com/color/40/whatsapp.png" alt="youtube" />
+                            <Hyperlink 
+                    onClick={()=>window.location.href='https://www.youtube.com/channel/UChbMJR4lwYEqA9sIa6bI7fg/'} 
+                    value={<img  src="https://img.icons8.com/color/40/youtube-play.png" alt="youtube" />}/>
+                    <Hyperlink 
+                    onClick={()=>window.location.href='https://whatsapp.com/channel/0029VaiLTTTLtOjHBKi3ox3s'} 
+                    value={ <img  src="https://img.icons8.com/color/40/whatsapp.png" alt="whatsapp" />}/> 
+                    <Hyperlink 
+                    onClick={()=>window.location.href='#'} 
+                    value={ <img  src="https://img.icons8.com/color/40/facebook.png" alt="facebook" />}/> 
+                            
+                           
                             </div>
                         </div>
                         <div className="imageWho">
@@ -62,7 +70,7 @@ const Home = () => {
                 <div className='whyBox'>
                     {whyDetail.map((data,index)=><div className='whyDetail'><h3 style={{color:"#00ff85"}}>{data.head}</h3><p>{data.content}</p></div>)}
                 </div>
-                    <Button value="JOIN NOW" style={{ width: 15 + "%" }}></Button>
+                    <Button value="JOIN NOW" onClick={()=>navigate('/login')} style={{ width: 15 + "%" }}></Button>
             </BlurImgDiv>
             
             <div className="workFlow">
@@ -84,8 +92,7 @@ const Home = () => {
                     <span>
                         <span>
                             <h2>TARUN INDIA INSTITUTE</h2>
-                            <p>TARUN INDIA INSTITUTE
-                                In Front of Police Station
+                            <p>In Front of Police Station, ward no-13,
                                 Madhepura, Bihar, India
                                 852113</p>
                         </span>
