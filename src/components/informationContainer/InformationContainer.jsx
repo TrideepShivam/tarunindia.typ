@@ -5,7 +5,10 @@ import Hyperlink from '../hyperlink/Hyperlink'
 const InformationContainer=({children})=>{
     return(
         <div className="informationContainer">
-            <div className="information">{children}</div>
+            <div className="information">
+                {children}
+                <p style={{textAlign:'right'}}>Team <br /><Hyperlink href='/' value='tarunindia.in'/></p>
+            </div>
             <div className="commonInformation">
                 <p className="sectionHead">SCAN TO SUBSCRIBE US</p>
                 <p>Get Notified via <Hyperlink 
@@ -19,7 +22,7 @@ const InformationContainer=({children})=>{
                         <img width={'70%'} src={yt} alt="youtube" />
                         <div style={{display:'flex',alignItems:'center'}}>
                             <img  src="https://img.icons8.com/color/40/whatsapp.png" alt="youtube" />
-                            <p>@tarunindia.in</p>
+                            <p>tarunindia.in</p>
                         </div>
                     </div>
                     <div>
@@ -30,7 +33,6 @@ const InformationContainer=({children})=>{
                         </div>
                     </div>
                 </div>
-                <Hyperlink href='/' value='tarunindia.in'/>
             </div>
         </div>
     )

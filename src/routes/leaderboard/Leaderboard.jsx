@@ -5,8 +5,7 @@ const Leaderboard=()=>{
     <>
         <p className="sectionHead">LEADERBOARD</p>
         <div className="leaderboardContent">
-            <div className="box" style={{width:"95%",height:"5em"}}></div>
-            <div className="box" style={{width:"95%",height:"32em"}}></div>
+            Coming soon
         </div>
     </>
     )
