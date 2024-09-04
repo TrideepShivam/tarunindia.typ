@@ -5,7 +5,7 @@ const DotLineBox = (props) => {
     const {lightMode,setLightMode}=useContext(Context);
     let currentImg=!lightMode?props.image.light:props.image.dark;
     return (
-        <div className="dotBox" style={props.dot=="left"?{borderLeftWidth:2+"px"}:{borderRightWidth:2+"px",flexDirection:"row-reverse"}}>
+        <div className="dotBox" style={props.dot=="left"?{borderLeftWidth:.2+"em"}:{borderRightWidth:.2+"em",flexDirection:"row-reverse"}}>
             <div className="workExplain">
                 <h2>{props.head}</h2>
                 <p style={props.dot=="right"?{textAlign:"end"}:{}}>{props.short} </p>

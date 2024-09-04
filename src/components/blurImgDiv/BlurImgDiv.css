@@ -1,12 +1,11 @@
 .blurContainer
 {
-    height: 100vh;
+    height: auto;
     width: 100;
     background-size: cover;
 
 }
 .blur{
-    height: inherit;
     width: inherit;
     display: flex;
     justify-content: center;

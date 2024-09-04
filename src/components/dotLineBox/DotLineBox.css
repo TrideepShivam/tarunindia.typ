@@ -3,9 +3,9 @@
     display: flex;
     justify-content: space-between;
     height: 22rem;
-    border-style: dashed;
+    border-style: solid;
     border-color: var(--theme-color);
-   border-width:0px 0px 2px 0px;
+   border-width:0px 0px 0px 0px;
    padding:2%;
    
 

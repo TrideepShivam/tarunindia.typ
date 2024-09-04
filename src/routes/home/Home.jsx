@@ -14,6 +14,7 @@ import why31 from '../../assets/play-dark.png';
 import why32 from '../../assets/play-light.png';
 import why41 from '../../assets/report-dark.png';
 import why42 from '../../assets/report-light.png';
+import InstLogo from '../../assets/institute-logo.jpg'
 
 
 const Home = () => {
@@ -23,32 +24,47 @@ const Home = () => {
     const whyDetail=[{head:"TRUSTWORTHY",content:"A better progress tracking interface to track your WPM and Accuracy and also get the detailed version of results."},{head:"ENGAGEMENT",content:"A better progress tracking interface to track your WPM and Accuracy and also get the detailed version of results."},{head:"SUPPORT",content:"A better progress tracking interface to track your WPM and Accuracy and also get the detailed version of results."}];
     return (
         <div className='parent'>
-            <BlurImgDiv image={designer1} style={{ backgroundAttachment: "fixed" }}>
+            <BlurImgDiv image={designer1} style={{ backgroundAttachment: "fixed",height:90+"vh" }} adjust={{height:100+"%"}}>
                 <h1>Tarun India Typing</h1>
                 <p>A typing test Platform to Learn, Grow & Earn</p>
                 <Button value="Explore" style={{ width: 15 + "%" }} ></Button>
             </BlurImgDiv>
 
             <div className="feature">
-                <p className="sectionHead" style={{ fontSize: 30 + "px" }}>FEATURES</p>
+                <p className="sectionHead" style={{ fontSize: 30 + "px", marginLeft:2+"em" }}>FEATURES</p>
                 <div className="featureBox">
                     {
-                        feature.map((a) => <ShowCard header={a.header} content={a.content} style={{ margin: 4 + "%" }}></ShowCard>)
+                        feature.map((a) => <ShowCard header={a.header} content={a.content} ></ShowCard>)
                     }
-
                 </div>
             </div>
-            <BlurImgDiv image={designer2} adjust={{ gap: 5 + "%" }}>
+
+            <div className="whoWeAre">
+                        <p className="sectionHead" style={{ fontSize: 30 + "px", marginLeft:2+"em",height:"max-Content", width:90+"%"}}>FEATURES</p>
+                        <div className="detailWho">
+                            <p style={{fontSize:19+"px"}}>
+                            A unit of <span class="highlight">TARUN INDIA INSTITUTE</span> of technical training, Madhepura, Bihar, India. Estd. in <span class="highlight">1989</span> and reg no is <span class="highlight">xyz. 10000+</span> students have registered within our Organization, <span class="highlight">2000+</span> Certificates have issued, <span class="highlight">1500+</span> students got the Government Jobs and <span class="highlight"></span> students are Entrepreneur.
+                            </p>
+                            <div className="socialMedia">
+                            <img  src="https://img.icons8.com/color/40/youtube-play.png" alt="youtube" />
+                            <img  src="https://img.icons8.com/color/40/facebook.png" alt="youtube" />
+
+                            <img  src="https://img.icons8.com/color/40/whatsapp.png" alt="youtube" />
+                            </div>
+                        </div>
+                        <div className="imageWho">
+                            <img src={InstLogo} height={400+"em"} width={400+'em'}/>
+                        </div>
+                  
+            </div>
+            <BlurImgDiv image={designer2} adjust={{ gap: 7 + "vh" ,padding:"5% 0%"}}>
                 <p className="sectionHead" style={{ fontSize: 30 + "px", width: 90 + "%" }}>WHY US</p>
                 <div className='whyBox'>
-                    {
-                        whyDetail.map((data,index)=><div className='whyDetail'><h3 style={{color:"#00ff85"}}>{data.head}</h3><p>{data.content}</p></div>)
-                    }
-                    
+                    {whyDetail.map((data,index)=><div className='whyDetail'><h3 style={{color:"#00ff85"}}>{data.head}</h3><p>{data.content}</p></div>)}
                 </div>
                     <Button value="JOIN NOW" style={{ width: 15 + "%" }}></Button>
-
             </BlurImgDiv>
+            
             <div className="workFlow">
                 <p className="sectionHead" style={{ fontSize: 30 + "px", marginBottom: 3 + "%", width: 80 + "%" }}>WORK FLOW</p>
                 {

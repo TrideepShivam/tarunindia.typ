@@ -1,38 +1,41 @@
 
-.gradentBorder{
-    height: 293px;
-    width: 293px;
-    border-radius: 28px;
+.multiColorBorder{
+    height: 14em;
+    width: 14em;
+    border-radius: 1em;
     background: linear-gradient(45deg, var(--c1,#00ff85 ), var(--c1,#5000ff), var(--c1,#00ff85 ),var(--c1,#5000ff)) var(--x, 0)/ 200%;  
       transition:1s;
-      padding: 3.5px;
+      padding: .2em;
       cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 }
-.gradentBorder:hover{--x:100%;}
+.multiColorBorder:hover{--x:100%;}
 .field
 {
- height: 213px;
- width: 249px;
- border-radius: 25px;
+ height: 12em;
+ width: 14em;
+ border-radius: 1em;
  background-color: var(--background-color);
  display: flex;
  justify-content: flex-start;
  align-items: center;
- gap: 12%;
+ gap: 3%;
+ padding: 1em 0;
  flex-direction: column;
  text-wrap:pretty;
  color: var(--text-color);
- padding:  40px 22px;
 }
 .field p
 {
     text-align: start;
-    word-spacing: 2px;
     width: 85%;
     font-size: large;
     color:var(--text-color-light);
 }
 .field h2
 {
+    font-size: medium;
     text-align: center;
 }
