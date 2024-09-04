@@ -1,0 +1,12 @@
+.informationContainer{
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+}
+.informationContainer .commonInformation{
+    width:30%;
+    display: flex;
+    align-items: flex-start;
+    gap:.2em;
+    flex-direction: column;
+}

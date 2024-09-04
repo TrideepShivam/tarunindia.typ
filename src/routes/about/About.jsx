@@ -1,3 +1,4 @@
+import InformationContainer from '../../components/informationContainer/InformationContainer';
 import './About.css'
  
 const About=()=>{
@@ -5,7 +6,9 @@ const About=()=>{
     <>
         <p className="sectionHead">ABOUT</p>
         <div className="aboutContent">
-            Typing test web app.
+            <InformationContainer>
+                <p>Information</p>
+            </InformationContainer>
         </div>
     </>
     )
