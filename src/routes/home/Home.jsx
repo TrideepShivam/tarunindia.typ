@@ -20,6 +20,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
     const navigate=useNavigate();
+    
     let feature = [{ header: "USER FRIENDLY", content: "A user-friendly interface to make your typing practice easier to use and grow" }, { header: "MANGAL FONT", content: "Get not only English typing even Mangal font typing test is also there to make you prepared for Government exams." }, { header: "PROGRESS TRACKING", content: "A better progress tracking interface to track your WPM and Accuracy and also get the detailed version of results." }, { header: "SUPPORT SYSTEM", content: "12+ hrs supporting team to cover all the inconveniences during your app use. Nothing can distract you from your goals. " }]
     const workflow = [{ dot: "left", image: { dark: why11, light: why12 }, head: "Enter The World", short: "STEP 01" }, { dot: "right", image: { dark: why21, light: why22 }, head: "Fill the form", short: "STEP 02" }, { dot: "left", image: { dark: why31, light: why32 }, head: "Attempt Test", short: "STEP 03" }, { dot: "right", image: { dark: why41, light: why42 }, head: "Track Progess", short: "STEP 04" }]
     const whyDetail=[{head:"TRUSTWORTHY",content:"A better progress tracking interface to track your WPM and Accuracy and also get the detailed version of results."},{head:"ENGAGEMENT",content:"A better progress tracking interface to track your WPM and Accuracy and also get the detailed version of results."},{head:"SUPPORT",content:"A better progress tracking interface to track your WPM and Accuracy and also get the detailed version of results."}];
@@ -28,7 +29,7 @@ const Home = () => {
             <BlurImgDiv image={designer1} style={{ backgroundAttachment: "fixed",height:90+"vh" }} adjust={{height:100+"%"}}>
                 <h1>Tarun India Typing</h1>
                 <p>A typing test Platform to Learn, Grow & Earn</p>
-                <Button value="Explore" style={{ width: 15 + "%" }} ></Button>
+                <Button value="Explore" style={{ width: 22 + "vh",}} ></Button>
             </BlurImgDiv>
 
             <div className="feature">
@@ -41,7 +42,7 @@ const Home = () => {
             </div>
 
             <div className="whoWeAre">
-                        <p className="sectionHead" style={{ fontSize: 30 + "px", marginLeft:2+"em",height:"max-Content", width:90+"%"}}>WHO WE ARE</p>
+                        <p className="sectionHead" style={{ fontSize: 30 + "px", marginLeft:9+"%",height:"max-Content", width:90+"%"}}>WHO WE ARE</p>
                         <div className="detailWho">
                             <p style={{fontSize:19+"px"}}>
                             A unit of <span className="highlight">TARUN INDIA INSTITUTE</span> of technical training, Madhepura, Bihar, India. Estd. in <span className="highlight">1989</span> and reg no is <span className="highlight">329-90</span>. <span className="highlight"> 10000+</span> students have registered within our Organization, <span className="highlight">2000+</span> Certificates have issued, <span className="highlight">1500+</span> students got the Government Jobs and <span className="highlight"></span> students are Entrepreneur.
@@ -65,12 +66,12 @@ const Home = () => {
                         </div>
                   
             </div>
-            <BlurImgDiv image={designer2} adjust={{ gap: 7 + "vh" ,padding:"5% 0%"}}>
+            <BlurImgDiv image={designer2} adjust={{ gap: 7 + "vh" ,padding:"5% 5%"}}>
                 <p className="sectionHead" style={{ fontSize: 30 + "px", width: 90 + "%" }}>WHY US</p>
                 <div className='whyBox'>
                     {whyDetail.map((data,index)=><div key={index} className='whyDetail'><h3 style={{color:"#00ff85"}}>{data.head}</h3><p>{data.content}</p></div>)}
                 </div>
-                    <Button value="JOIN NOW" onClick={()=>navigate('/login')} style={{ width: 15 + "%" }}></Button>
+                    <Button value="JOIN NOW" onClick={()=>navigate('/login')} style={{ width: 22 + "vh" }}></Button>
             </BlurImgDiv>
             
             <div className="workFlow">
@@ -92,7 +93,7 @@ const Home = () => {
                     <p>In Front of Police Station, ward no-13,</p>
                     <p>Madhepura, Bihar, India</p>    
                     <p>852113</p>    
-                    <h3 className="highlight">tarunindia1989@gmail.com</h3>
+                    <h3 className="highlight" style={{wordBreak:"break-all"}}>tarunindia1989@gmail.com</h3>
                     <h3 className="highlight">9709483986</h3>
                 </div>
                 <div className="lastRibbon">

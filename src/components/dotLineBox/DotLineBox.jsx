@@ -2,16 +2,17 @@ import "./DotLineBox.css"
 import { Context } from "../../ContextAPI";
 import { useContext } from "react";
 const DotLineBox = (props) => {
+    let res=window.innerWidth;
     const {lightMode,setLightMode}=useContext(Context);
     let currentImg=!lightMode?props.image.light:props.image.dark;
     return (
-        <div className="dotBox" style={props.dot=="left"?{borderLeftWidth:.2+"em"}:{borderRightWidth:.2+"em",flexDirection:"row-reverse"}}>
+        <div className="dotBox" style={ (props.dot=="left"?{borderLeftWidth:.2+"em"}:(res>800?{borderRightWidth:.2+"em",flexDirection:"row-reverse"}:{borderRightWidth:.2+"em"}))}>
             <div className="workExplain">
                 <h2>{props.head}</h2>
-                <p style={props.dot=="right"?{textAlign:"end"}:{}}>{props.short} </p>
+                <p style={props.dot=="right" && res>800?{textAlign:"end"}:{}}>{props.short} </p>
             </div>
             <img src={currentImg}/>
         </div>
     )
-}
+}//borderRightWidth:.2+"em",flexDirection:"row-reverse"
 export default DotLineBox;

@@ -2,7 +2,7 @@
     width: 95%;
     display: flex;
     justify-content: space-between;
-    height: 22rem;
+    height: 22em;
     border-style: solid;
     border-color: var(--theme-color);
    border-width:0px 0px 0px 0px;
@@ -12,4 +12,24 @@
 }
 .workExplain p{
 letter-spacing: .1em;
+}
+.dotBox img{
+   height: auto;
+   width: 90%;
+   max-width: fit-content;
+}
+
+@media screen and (max-width:800px){
+
+   .dotBox{
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      height: auto;
+      padding: 5vh 0;
+      gap: 1.2em;
+      
+      
+}
+
 }

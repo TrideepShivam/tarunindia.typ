@@ -4,6 +4,7 @@
     width: 100;
     background-size: cover;
     background-attachment: fixed;
+    background-position: center;
 }
 .blur{
     width: inherit;
@@ -15,3 +16,16 @@
     background-color: rgba(0, 0, 0, 0.408);
     gap: 2.8vh;
 }
+
+@media screen and (max-width:800px){
+    .blur{
+       
+        align-items: flex-start;
+        padding:0 6vw;
+        line-height: 20PX;
+ }
+ .blur h1{padding: 3% 0;}
+ 
+ }
+
+
