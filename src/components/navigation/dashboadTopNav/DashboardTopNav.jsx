@@ -19,7 +19,11 @@ const DashboardTopNav=({userNavigator,sideNavOpen,setSideNavOpen})=>{
             <div className='navElement'>
                 <img className='menuButton' onClick={()=>setSideNavOpen(!sideNavOpen)} width="25" height="25" src={menu} alt="menu"/>               
             </div>
-            <div className='navElement'><img width="40em" src={logo} alt="Logo" /></div>
+            <div className='navElement'>
+                <img width="40em" src={logo} alt="Logo" />
+                &nbsp;
+                <p className='highlight'>Trial</p>
+            </div>
             <div className='navElement'>
                 <Users userNavigator={userNavigator}/>
                 <ToggleDarkLight/>

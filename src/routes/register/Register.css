@@ -1,4 +1,5 @@
 .registerContainer{
+    max-width: 80%;
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -9,4 +10,9 @@
     background-color: var(--light-back-color);
     /* border:.1em solid var(--theme-color); */
     animation:fromleftfade .5s;
+}
+@media only screen and (max-width:800px){
+    .registerContainer{
+       width:100%;
+    }
 }
