@@ -31,7 +31,7 @@ const RegisterTrial=()=>{
 
                 <h2>STEP 04:</h2>
                 <p>Share your <span className="highlight">Full Name</span> and <span className="highlight">Email Id</span>.</p>
-                <img width='50%' src={Tnc} alt="" />
+                <img width='50%' src={NameId} alt="" />
                 
                 <h2>STEP 05:</h2>
                 <p>Get Your <span className="highlight">Password</span> and Enjoy your <span className="highlight">Typing Journey!</span></p>
