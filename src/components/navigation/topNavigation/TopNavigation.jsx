@@ -9,7 +9,7 @@ const TopNavigation=()=>{
             <img width="50em" src={logo} alt="Logo" />
                
                 <div className="navSlab">
-                    {arr.map((a)=><Link className={`${a.color? "bluegoto":"goto"}`} to={a.path}>{a.name}</Link>)}
+                    {arr.map((a,index)=><Link key={index} className={`${a.color? "bluegoto":"goto"}`} to={a.path}>{a.name}</Link>)}
                     <ToggleDarkLight/>
                 </div>
             

@@ -32,10 +32,10 @@ const Home = () => {
             </BlurImgDiv>
 
             <div className="feature">
-                <p className="sectionHead" style={{ fontSize: 30 + "px", marginLeft:2+"em" }}>FEATURES</p>
+                <p className="sectionHead" style={{ fontSize: 30 + "px", marginLeft:.5+"em" }}>FEATURES</p>
                 <div className="featureBox">
                     {
-                        feature.map((a) => <ShowCard header={a.header} content={a.content} ></ShowCard>)
+                        feature.map((a,index) => <ShowCard key={index} header={a.header} content={a.content} ></ShowCard>)
                     }
                 </div>
             </div>
@@ -44,7 +44,7 @@ const Home = () => {
                         <p className="sectionHead" style={{ fontSize: 30 + "px", marginLeft:2+"em",height:"max-Content", width:90+"%"}}>WHO WE ARE</p>
                         <div className="detailWho">
                             <p style={{fontSize:19+"px"}}>
-                            A unit of <span class="highlight">TARUN INDIA INSTITUTE</span> of technical training, Madhepura, Bihar, India. Estd. in <span class="highlight">1989</span> and reg no is <span class="highlight">xyz. 10000+</span> students have registered within our Organization, <span class="highlight">2000+</span> Certificates have issued, <span class="highlight">1500+</span> students got the Government Jobs and <span class="highlight"></span> students are Entrepreneur.
+                            A unit of <span className="highlight">TARUN INDIA INSTITUTE</span> of technical training, Madhepura, Bihar, India. Estd. in <span className="highlight">1989</span> and reg no is <span className="highlight">329-90</span>. <span className="highlight"> 10000+</span> students have registered within our Organization, <span className="highlight">2000+</span> Certificates have issued, <span className="highlight">1500+</span> students got the Government Jobs and <span className="highlight"></span> students are Entrepreneur.
                             </p>
                             <div className="socialMedia">
                             <Hyperlink 
@@ -68,7 +68,7 @@ const Home = () => {
             <BlurImgDiv image={designer2} adjust={{ gap: 7 + "vh" ,padding:"5% 0%"}}>
                 <p className="sectionHead" style={{ fontSize: 30 + "px", width: 90 + "%" }}>WHY US</p>
                 <div className='whyBox'>
-                    {whyDetail.map((data,index)=><div className='whyDetail'><h3 style={{color:"#00ff85"}}>{data.head}</h3><p>{data.content}</p></div>)}
+                    {whyDetail.map((data,index)=><div key={index} className='whyDetail'><h3 style={{color:"#00ff85"}}>{data.head}</h3><p>{data.content}</p></div>)}
                 </div>
                     <Button value="JOIN NOW" onClick={()=>navigate('/login')} style={{ width: 15 + "%" }}></Button>
             </BlurImgDiv>
@@ -76,32 +76,24 @@ const Home = () => {
             <div className="workFlow">
                 <p className="sectionHead" style={{ fontSize: 30 + "px", marginBottom: 3 + "%", width: 80 + "%" }}>WORK FLOW</p>
                 {
-                    workflow.map((a, key) => <DotLineBox dot={a.dot} image={a.image} head={a.head} short={a.short} />)
+                    workflow.map((a, index) => <DotLineBox key={index} dot={a.dot} image={a.image} head={a.head} short={a.short} />)
                 }
             </div>
             <div className="lastDiv">
                 <div className="about">
-                    <p className="sectionHead" style={{ fontSize: 30 + "px" }}>ABOUT</p>
+                    <p className="sectionHead">ABOUT</p>
                     <p>
-                        Welcome to <span class="highlight">Tarun India Typing</span>, your go-to platform for enhancing your typing skills! Our mission is to provide an engaging and effective way for users of all levels to improve their typing speed and accuracy. Whether you’re a beginner just starting out or an experienced typist looking to refine your skills, our customizable tests and user-friendly interface make practice enjoyable and productive. Join us on your journey to becoming a <span class="highlight">typing pro!</span>
+                        Welcome to <span className="highlight">Tarun India Typing</span>, your go-to platform for enhancing your typing skills! Our mission is to provide an engaging and effective way for users of all levels to improve their typing speed and accuracy. Whether you’re a beginner just starting out or an experienced typist looking to refine your skills, our customizable tests and user-friendly interface make practice enjoyable and productive. Join us on your journey to becoming a <span className="highlight">typing pro!</span>
                     </p>
                 </div>
                 <div className="contact">
-
-                    <p className="sectionHead" style={{ fontSize: 30 + "px" }}>CONTACT</p>
-                    <span>
-                        <span>
-                            <h2>TARUN INDIA INSTITUTE</h2>
-                            <p>In Front of Police Station, ward no-13,
-                                Madhepura, Bihar, India
-                                852113</p>
-                        </span>
-                        <span>
-                            <Hyperlink value="tarunindia1989@gmail.com"/><br/>
-                            <Hyperlink value="9709483986"/>
-                        </span>
-                        <span></span>
-                    </span>
+                    <p className="sectionHead">CONTACT</p>
+                    <h2>TARUN INDIA INSTITUTE</h2>
+                    <p>In Front of Police Station, ward no-13,</p>
+                    <p>Madhepura, Bihar, India</p>    
+                    <p>852113</p>    
+                    <h3 className="highlight">tarunindia1989@gmail.com</h3>
+                    <h3 className="highlight">9709483986</h3>
                 </div>
                 <div className="lastRibbon">
                     <span className='highlight'><span>terms & services </span>
