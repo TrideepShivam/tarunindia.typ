@@ -12,9 +12,8 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    backdrop-filter: blur(3.5px);
-    background-color: rgba(0, 0, 0, 0.408);
-    gap: 2.8vh;
+    backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 @media screen and (max-width:800px){

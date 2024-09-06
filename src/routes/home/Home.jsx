@@ -20,20 +20,21 @@ import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
     const navigate=useNavigate();
-    
+    const responsive = window.innerWidth<800
     let feature = [{ header: "USER FRIENDLY", content: "A user-friendly interface to make your typing practice easier to use and grow" }, { header: "MANGAL FONT", content: "Get not only English typing even Mangal font typing test is also there to make you prepared for Government exams." }, { header: "PROGRESS TRACKING", content: "A better progress tracking interface to track your WPM and Accuracy and also get the detailed version of results." }, { header: "SUPPORT SYSTEM", content: "12+ hrs supporting team to cover all the inconveniences during your app use. Nothing can distract you from your goals. " }]
     const workflow = [{ dot: "left", image: { dark: why11, light: why12 }, head: "Enter The World", short: "STEP 01" }, { dot: "right", image: { dark: why21, light: why22 }, head: "Fill the form", short: "STEP 02" }, { dot: "left", image: { dark: why31, light: why32 }, head: "Attempt Test", short: "STEP 03" }, { dot: "right", image: { dark: why41, light: why42 }, head: "Track Progess", short: "STEP 04" }]
-    const whyDetail=[{head:"TRUSTWORTHY",content:"A better progress tracking interface to track your WPM and Accuracy and also get the detailed version of results."},{head:"ENGAGEMENT",content:"A better progress tracking interface to track your WPM and Accuracy and also get the detailed version of results."},{head:"SUPPORT",content:"A better progress tracking interface to track your WPM and Accuracy and also get the detailed version of results."}];
+    const whyDetail=[{head:"TRUSTWORTHY",content:"We have trained 10000+ students on ground level, 2000+ Certified folks and 3000+ well settled persons with good experiences."},{head:"ENGAGEMENT",content:"You can choose different languages and 1000+ Stories to enhance your skill. We have also a goal to organize events to showcase your skill."},{head:"SUPPORT",content:"12+ hrs supporting team to cover all the inconveniences during your app use. Nothing can distract you from your goals. "}];
     return (
         <div className='parent'>
             <BlurImgDiv image={designer1} style={{ backgroundAttachment: "fixed",height:90+"vh" }} adjust={{height:100+"%"}}>
-                <h1>Tarun India Typing</h1>
-                <p>A typing test Platform to Learn, Grow & Earn</p>
-                <Button value="Explore" style={{ width: 22 + "vh",}} ></Button>
+                    <h1>Tarun India Typing</h1>
+                    <h3>A typing test Platform to Learn, Grow & Earn</h3>
+                    <p><Hyperlink href='/register' value="Register"></Hyperlink> for Free</p>
+                    <Button onClick={()=>window.scrollTo(0,responsive?700:600)} value="Explore" style={{ width: 22 + "vh",}} ></Button>
             </BlurImgDiv>
 
             <div className="feature">
-                <p className="sectionHead" style={{ fontSize: 30 + "px", marginLeft:.5+"em" }}>FEATURES</p>
+                <p className="sectionHead" style={{ fontSize: 30 + "px", marginLeft:responsive?20:3+"em" }}>FEATURES</p>
                 <div className="featureBox">
                     {
                         feature.map((a,index) => <ShowCard key={index} header={a.header} content={a.content} ></ShowCard>)
@@ -75,7 +76,7 @@ const Home = () => {
             </BlurImgDiv>
             
             <div className="workFlow">
-                <p className="sectionHead" style={{ fontSize: 30 + "px", marginBottom: 3 + "%", width: 80 + "%" }}>WORK FLOW</p>
+                <p className="sectionHead" style={{ fontSize: 30 + "px", marginBottom: 3 + "%" }}>WORK FLOW</p>
                 {
                     workflow.map((a, index) => <DotLineBox key={index} dot={a.dot} image={a.image} head={a.head} short={a.short} />)
                 }
