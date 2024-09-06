@@ -35,8 +35,8 @@ const Router = createBrowserRouter([
             },
             {
                 path:'/Register',
-                // element:<RegisterTrial/>
-                element:<Register/>
+                element:<RegisterTrial/>
+                // element:<Register/>
             },
             {
                 path:'/admin',
