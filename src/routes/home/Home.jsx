@@ -26,7 +26,7 @@ const Home = () => {
     const whyDetail=[{head:"TRUSTWORTHY",content:"We have trained 10000+ students on ground level, 2000+ Certified folks and 3000+ well settled persons with good experiences."},{head:"ENGAGEMENT",content:"You can choose different languages and 1000+ Stories to enhance your skill. We have also a goal to organize events to showcase your skill."},{head:"SUPPORT",content:"12+ hrs supporting team to cover all the inconveniences during your app use. Nothing can distract you from your goals. "}];
     return (
         <div className='parent'>
-            <BlurImgDiv image={designer1} style={{ backgroundAttachment: "fixed",height:90+"vh" }} adjust={{height:100+"%"}}>
+            <BlurImgDiv image={designer1} style={{transition:'background .5s', backgroundAttachment: "fixed",height:90+"vh" }} adjust={{height:100+"%"}}>
                     <h1>Tarun India Typing</h1>
                     <h3>A typing test Platform to Learn, Grow & Earn</h3>
                     <p><Hyperlink href='/register' value="Register"></Hyperlink> for Free</p>

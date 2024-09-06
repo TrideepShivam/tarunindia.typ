@@ -19,14 +19,14 @@ const InformationContainer=({children})=>{
                 </p>
                 <div className='qrcontainer'>
                     <div>
-                        <img width={'70%'} src={yt} alt="youtube" />
+                        <img width={'70%'} src={wa} alt="youtube" />
                         <div style={{display:'flex',alignItems:'center'}}>
                             <img  src="https://img.icons8.com/color/40/whatsapp.png" alt="youtube" />
                             <p>tarunindia.in</p>
                         </div>
                     </div>
                     <div>
-                        <img width={'70%'} src={wa} alt="whatsapp" />
+                        <img width={'70%'} src={yt} alt="whatsapp" />
                         <div style={{display:'flex',alignItems:'center'}}>
                             <img  src="https://img.icons8.com/color/40/youtube-play.png" alt="youtube" />
                             <p>@tarunindiainstitute</p>
