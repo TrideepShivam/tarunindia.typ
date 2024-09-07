@@ -18,6 +18,7 @@ import AdminDashboard from "./routes/admin/dashboard/Dashboard";
 import Error from "./routes/error/Error";
 import RegisterTrial from "./routes/register/RegisterTrial";
 import NotFound from "./routes/error/NotFound";
+import Register from "./routes/register/Register";
 
 const Router = createBrowserRouter([
 
@@ -34,7 +35,7 @@ const Router = createBrowserRouter([
                 element:<Login/>
             },
             {
-                path:'/Register',
+                path:'/register',
                 element:<RegisterTrial/>
                 // element:<Register/>
             },
