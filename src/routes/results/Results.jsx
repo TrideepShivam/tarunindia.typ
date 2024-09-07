@@ -9,6 +9,7 @@ import CircleButton from '../../components/circleButton/CircleButton'
 import { Context } from '../../ContextAPI'
 import Search from '../../components/search/Search'
 import useAuthInterceptor from '../../hooks/useAuthInterceptor'
+import { formatDistanceToNow } from 'date-fns'
 
 
 const Results=()=>{
@@ -106,7 +107,6 @@ const Results=()=>{
                 <table>
                     <thead>
                     <tr className='highlight'>
-                        <td >DATE (y-m-d)</td>
                         <td>TIME</td>
                         <td>WPM</td>
                         <td>ACCURACY (%)</td>
@@ -126,8 +126,7 @@ const Results=()=>{
                     {testDetail.length?
                     testDetail.slice(0).reverse().map((item,index)=>
                     <tr key={index}>
-                        <td>{item.created_at.split('T')[0]}</td>
-                        <td>{item.created_at.split('T')[1].slice(0,8)}</td>
+                        <td>{formatDistanceToNow(item.created_at,{addSuffix:true})}</td>
                         <td>{item.test_details.wpm}</td>
                         <td>{item.test_details.accuracy}</td>
                         <td>{item.stories.language}</td>

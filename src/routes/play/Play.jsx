@@ -106,8 +106,8 @@ const Play=()=>{
             if(writtenText.length!=resultRef.current.words*2+1){
                 setWordCount(resultRef.current.words = wordCount+1)
                 let shownWord = story[wordCount*2].replace("‍","")//this solution reduces the time to compare
-                let currentWord = writtenText[wordCount*2].replace("‍","");
-                console.log(currentWord,shownWord,currentWord.split(''),shownWord.split(''),currentWord===shownWord)
+                let currentWord = writtenText[wordCount*2].replace("‍","");//replaced zwj with ""
+                // console.log(currentWord,shownWord,currentWord.split(''),shownWord.split(''),currentWord===shownWord)
 
                 if(currentWord!==shownWord){
                     resultRef.current.mistakes[`${shownWord}`]=`${currentWord}`
