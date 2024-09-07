@@ -2,7 +2,6 @@ import { Navigate, createBrowserRouter } from "react-router-dom";
 import Home from "./routes/home/Home";
 import LoginRegisterLayout from "./routes/layouts/loginRegister/LoginRegisterLayout";
 import Login from "./routes/login/Login";
-import Register from "./routes/register/Register";
 import Dashboard from "./routes/dashboard/Dashboard";
 import Playground from "./routes/playground/Playground";
 import Results from "./routes/results/Results";
@@ -18,6 +17,7 @@ import Admin from "./routes/admin/Admin";
 import AdminDashboard from "./routes/admin/dashboard/Dashboard";
 import Error from "./routes/error/Error";
 import RegisterTrial from "./routes/register/RegisterTrial";
+import NotFound from "./routes/error/NotFound";
 
 const Router = createBrowserRouter([
 
@@ -109,6 +109,10 @@ const Router = createBrowserRouter([
     {
         path:'/profile',
         element:<Profile/>
+    },
+    {
+        path:'*',
+        element:<NotFound/>
     }
 ])
 

@@ -101,11 +101,13 @@ const Play=()=>{
         resultRef.current.keystrokes+=1
         if(e.code == 'Space'){
             let writtenText = e.target.value.split(/(\s+)/)
+            e.target.setSelectionRange(e.target.value.length,e.target.value.length)
             // let currentWord = writtenText.slice(writtenStory.current.length,writtenText.length-1)//here we dont use length-1 we have to find previous space index then till that index we have to use it
             if(writtenText.length!=resultRef.current.words*2+1){
                 setWordCount(resultRef.current.words = wordCount+1)
                 let shownWord = story[wordCount*2]//this solution reduces the time to compare
                 let currentWord = writtenText[wordCount*2]
+                console.log(currentWord,shownWord,currentWord.split(''),shownWord.split(''),currentWord===shownWord)
                 if(currentWord!==shownWord){
                     resultRef.current.mistakes[`${shownWord}`]=`${currentWord}`
                     setWrong(true)
