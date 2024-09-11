@@ -68,9 +68,6 @@ const Login=()=>{
             <Navigate to={'/dashboard'}/>
         </>
     }
-    useWindowEvents('keyPressed',()=>{
-        
-    })
     return(
         <div className="loginContainer">
             <h2 className='highlight'>Login</h2>
