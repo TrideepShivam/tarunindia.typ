@@ -89,10 +89,11 @@ const Play=()=>{
     const removeSpecialChar=(e)=>{
         if(isSpecialChar&&getFont()=='Mangal'){
             let content = e.target.value
+            console.log(content,' ')
+            console.log(newContent)
             let newContent=content.slice(0,-1)
             e.target.value = newContent
             isSpecialChar=false
-            console.log(writtenStory.current)
         }
     }
     const typing = (e) =>{

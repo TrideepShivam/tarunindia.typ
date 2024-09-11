@@ -8,6 +8,7 @@ import { Context } from '../../ContextAPI';
 import { Navigate, useNavigate } from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
+import useWindowEvents from '../../hooks/useWindowEvents';
  
 const Login=()=>{
     const navigate = useNavigate()
@@ -67,11 +68,13 @@ const Login=()=>{
             <Navigate to={'/dashboard'}/>
         </>
     }
-
+    useWindowEvents('keyPressed',()=>{
+        
+    })
     return(
         <div className="loginContainer">
             <h2 className='highlight'>Login</h2>
-            <Textbox var={emailRef} type="text" legend="Email"/>
+            <Textbox autofocus={true} var={emailRef} type="text" legend="Email"/>
             <Textbox var={pwdRef} type="Password" legend="Password"/>
             <Hyperlink href="/forgot-password" value="Forgot Password?"/>
             <Button onClick={handleLogin} value="Login"/>
