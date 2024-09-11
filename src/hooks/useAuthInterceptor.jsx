@@ -22,7 +22,6 @@ const useAuthInterceptor=()=>{
                 if(error.response.status==401){
                     localStorage.removeItem('USER_DETAILS')
                     setUserLocal("")
-                    console.log(error.response)
                     
                     setMsg({
                         ...msg,
