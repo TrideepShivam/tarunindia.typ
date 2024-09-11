@@ -75,9 +75,7 @@ const Play=()=>{
         '↓':'ङ',//२३२९
         '▲':'ञ',//२३३४
         'P':'ॐ',//२३८४
-        '[':'ज़',//२३९५
         '\\':'ड़',//२३९६
-        ']':'ढ़',//२३९७
         '^':'फ़',//२३९८
         'e':'॥',//२४०५
         'f':'०',//२४०६
@@ -89,8 +87,6 @@ const Play=()=>{
     const removeSpecialChar=(e)=>{
         if(isSpecialChar&&getFont()=='Mangal'){
             let content = e.target.value
-            console.log(content,' ')
-            console.log(newContent)
             let newContent=content.slice(0,-1)
             e.target.value = newContent
             isSpecialChar=false
@@ -110,7 +106,6 @@ const Play=()=>{
                 let shownWord = story[wordCount*2].replace(/‍/g, "")//this solution reduces the time to compare
                 let currentWord = writtenText[wordCount*2].replace(/‍/g, "")//replaced zwj with ""
                 console.log(currentWord,shownWord,currentWord.split(''),shownWord.split(''),currentWord===shownWord)
-
                 if(currentWord!==shownWord){
                     resultRef.current.mistakes[`${shownWord}`]=`${currentWord}`
                     setWrong(true)
