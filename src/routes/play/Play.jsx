@@ -68,6 +68,7 @@ const Play=()=>{
     
     const keyPrevention =(e)=>{
         let text = e.target.value
+        e.key=='Tab'||(e.ctrlKey&&e.key=='v')&&e.preventDefault()
         e.key=='Backspace'&&(text[text.length-1]==' '||location.state.backspace)&&e.preventDefault()
     }
     const altCode={
@@ -174,6 +175,7 @@ const Play=()=>{
                     onKeyUp={(e)=>typing(e)}
                     onInput={(e)=>removeSpecialChar(e)}
                     disabled={typingDisabled}
+                    onContextMenu={(e)=>e.preventDefault()}
                 />
 			</div>
 		</div>

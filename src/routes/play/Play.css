@@ -31,6 +31,7 @@
 	text-indent:2em;
 }
 .textContainer textarea{
+	user-select: none; 
 	width: 100%;
 	height: calc(100% - .5em);
 	outline:none;
@@ -39,6 +40,10 @@
 	color:var(--text-color);
 	resize: none;
 	font-size:1.2em;
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none;    /* Firefox */
+	-ms-user-select: none;     /* Internet Explorer/Edge */
+	 
 }
 /* }
 #write{
