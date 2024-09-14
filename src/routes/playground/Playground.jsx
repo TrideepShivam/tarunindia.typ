@@ -25,7 +25,7 @@ const Playground=()=>{
     const storyRef = useRef()
     const backspaceRef = useRef(false)
     const highlightRef = useRef(false)
-    const conditions=["Backspace Block","Hightlight Text"]
+    const conditions=["Backspace","Hightlight Text"]
     const handlePlay=()=>{
         if(langRef.current.value&&durationRef.current.value&&levelRef.current.value&&storyRef.current.value)
             navigate('/play',{

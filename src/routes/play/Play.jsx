@@ -69,7 +69,7 @@ const Play=()=>{
     const keyPrevention =(e)=>{
         let text = e.target.value
         e.key=='Tab'||(e.ctrlKey&&e.key=='v')&&e.preventDefault()
-        e.key=='Backspace'&&(text[text.length-1]==' '||location.state.backspace)&&e.preventDefault()
+        e.key=='Backspace'&&(text[text.length-1]==' '||!location.state.backspace)&&e.preventDefault()
     }
     const altCode={
         '☺':'ँ',//२३०५
@@ -185,7 +185,7 @@ const Play=()=>{
 			<h2 id="userName">{userDetails.user.name.toUpperCase()}</h2>
 			<Timer percentage={(second/(parseInt(location.state.time)*60))*100} second={second} setSecond={setSecond} pause={pauseTimer} timeOut={timeOut}/>
 			<WordCount value={wordCount}/>
-			<Button value={'Restart'} style={{width:'10em'}}/>
+			<Button value={'Restart'} style={{width:'10em'}} onClick={()=>window.location.reload()}/>
 			<Button  value={!pauseTimer?'Pause':'Resume'} transparancy={true} onClick={()=>{
                 setPauseTimer(!pauseTimer)
                 setTypingDisabled(pauseTimer)
