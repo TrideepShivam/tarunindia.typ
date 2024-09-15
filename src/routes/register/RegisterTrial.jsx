@@ -14,6 +14,8 @@ const RegisterTrial=()=>{
             <InformationContainer>
                 <h2 className="sectionHead">REGISTRATION</h2>
                 <h3 className="highlight">Get FREE Registration</h3>
+                <p>Free registration is only for the student who are currently studying in Tarun India Institute</p>
+                <p>Please contact us for further query.</p>
                 <h2>STEP 01:</h2>
                 <p>Subscribe <Hyperlink 
                     onClick={()=>window.location.href='https://www.youtube.com/channel/UChbMJR4lwYEqA9sIa6bI7fg/'} 
