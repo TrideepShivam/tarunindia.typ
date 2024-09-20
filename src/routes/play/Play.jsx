@@ -67,9 +67,12 @@ const Play=()=>{
     }
     
     const keyPrevention =(e)=>{
-        let text = e.target.value
-        (e.ctrlKey&&e.key=='v')&&e.preventDefault()
-        e.key=='Backspace'&&(text[text.length-1]==' '||!location.state.backspace)&&e.preventDefault()
+        let target = e.target
+        if (target && target.value !== undefined) {
+            const text = target.value;
+            (e.key==='Tab'||(e.ctrlKey && e.key === 'v')) && e.preventDefault();
+            e.key === 'Backspace' && (text[text.length - 1] === ' ' || !location.state.backspace) && e.preventDefault();
+        }
     }
     const altCode={
         '☺':'ँ',//२३०५
