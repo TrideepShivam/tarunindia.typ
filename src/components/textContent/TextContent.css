@@ -12,4 +12,5 @@
 .highlightedContent{
     color:var(--theme-color);
     text-decoration:underline;
+    text-underline-offset: .2em;
 }

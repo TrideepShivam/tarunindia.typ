@@ -1,6 +1,8 @@
 .playgroundContent{
     width:100%;
     display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
     flex-wrap: wrap;
     gap:1em;
     animation:fromleftfade .5s;
