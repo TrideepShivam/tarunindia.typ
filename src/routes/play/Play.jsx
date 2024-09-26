@@ -131,24 +131,34 @@ const Play=()=>{
     const timeOut = ()=>{
         setLoading(true)
         setTypingDisabled(true)
-        api.post('/store-test',resultRef.current)
-        .then(({data})=>{
+        if(resultRef.current.words>0){
+            api.post('/store-test',resultRef.current)
+            .then(({data})=>{
+                setMsg({
+                    isOpen:true,
+                    status:data.state,
+                    message:data.message
+                })
+                setLoading(false)
+                !loading&&navigate('/results',{replace:true})
+            }).catch(({response})=>{
+                setMsg({
+                    isOpen:true,
+                    status:response.data.state,
+                    message:response.data.message
+                })
+                setLoading(false)
+                console.log(response)
+            })
+        }else{
             setMsg({
                 isOpen:true,
-                status:data.state,
-                message:data.message
+                status:'Error',
+                message:'Test Failed due to inactivity'
             })
             setLoading(false)
             !loading&&navigate('/results',{replace:true})
-        }).catch(({response})=>{
-            setMsg({
-                isOpen:true,
-                status:response.data.state,
-                message:response.data.message
-            })
-            setLoading(false)
-            console.log(response)
-        })
+        }
     }
     const getFont = ()=>{
         let lang = location.state.data.language
