@@ -1,6 +1,6 @@
 .userNavigation{
     color:var(--text-color);
-    padding:.6em 1.1em;
+    padding:.6em;
     text-decoration: none;
     display:flex;
     align-items: center;

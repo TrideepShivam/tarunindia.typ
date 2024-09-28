@@ -13,7 +13,7 @@ const UserNavigation=({item})=>{
             to={item.href&&item.href}
             onClick={()=>item.action()}
         >
-            <img width="30px" src={item.icons[lightMode?0:1]} alt="menu" />
+            <img width="25px" src={item.icons[lightMode?0:1]} alt="menu" />
             <span>{item.value}</span>
         </Link>
     )
