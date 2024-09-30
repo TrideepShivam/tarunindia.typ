@@ -70,7 +70,7 @@ const Play=()=>{
         let target = e.target
         if (target && target.value !== undefined) {
             const text = target.value;
-            (e.key==='Tab'||(e.ctrlKey && e.key === 'v')) && e.preventDefault();
+            (e.key==='Enter'||(e.ctrlKey && e.key === 'v')) && e.preventDefault();
             e.key === 'Backspace' && (text[text.length - 1] === ' ' || !location.state.backspace) && e.preventDefault();
         }
     }
