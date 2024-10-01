@@ -65,6 +65,16 @@ h1 {
     transform:translatex(0em);
   }
 }
+@keyframes fromrightfade {
+  0%{
+    opacity:0;
+    transform:translatex(1em);
+  }
+  100%{
+    opacity:1;
+    transform:translatex(0em);
+  }
+}
 @keyframes fromtopfade {
   0%{
     opacity:0;

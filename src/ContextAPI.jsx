@@ -4,11 +4,18 @@ import MsgBox from "./components/msgBox/MsgBox";
 export const Context = createContext()
 
 const ContextAPI = ({children})=>{
-    const [msg,setMsg] = useState(false)
-    const [lightMode,setLightMode] = useState(
+    
+    const [msg,setMsg] = useState(false)//for messagebox
+    const [responsive,setResponsive]=useState(//for detecting mobile or tab
+        navigator.userAgent.search('Mobile')>=0||navigator.userAgent.search('Tablet')>=0
+    )
+    //setting the resizing event to change the responsive value
+    window.onresize = ()=>window.innerWidth<820?setResponsive(true):setResponsive(false)
+    
+    const [lightMode,setLightMode] = useState(//for light mode dark mode
         localStorage.getItem('LIGHT_MODE')=='false'?false:true
     );
-    const [userDetails,setUserDetails] = useState(
+    const [userDetails,setUserDetails] = useState(//to get the user detail first
         JSON.parse(localStorage.getItem('USER_DETAILS'))
         // localStorage.getItem('USER_DETAILS')!=undefined?
         // JSON.parse(localStorage.getItem('USER_DETAILS')):
@@ -32,7 +39,8 @@ const ContextAPI = ({children})=>{
             userDetails,
             setUserLocal,
             msg,
-            setMsg
+            setMsg,
+            responsive
         }}>
             {children}
             {msg.isOpen&&<MsgBox setMsg={setMsg} data={msg}/>}
