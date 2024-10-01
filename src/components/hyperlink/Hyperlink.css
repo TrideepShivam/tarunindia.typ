@@ -5,3 +5,15 @@
 .anchor:hover{
     text-decoration: underline;
 }
+.buttonLike{
+    color:var(--theme-color);
+    border:.1em solid var(--theme-color);
+    border-radius: 2em;
+    padding:.4em 1.2em;
+    text-decoration: none;
+}
+.buttonLike:hover{
+    color:var(--background-color);
+    background-color: var(--theme-color);
+    box-shadow: .1em .1em .2em black;
+}
