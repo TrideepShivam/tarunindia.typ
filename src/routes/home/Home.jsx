@@ -16,11 +16,13 @@ import why41 from '../../assets/report-dark.png';
 import why42 from '../../assets/report-light.png';
 import InstLogo from '../../assets/institute-logo.jpg'
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { Context } from '../../ContextAPI';
 
 
 const Home = () => {
     const navigate=useNavigate();
-    const responsive = window.innerWidth<800
+    const {responsive} = useContext(Context)
     let feature = [{ header: "USER FRIENDLY", content: "A user-friendly interface to make your typing practice easier to use and grow" }, { header: "MANGAL FONT", content: "Get not only English typing even Mangal font typing test is also there to make you prepared for Government exams." }, { header: "PROGRESS TRACKING", content: "A better progress tracking interface to track your WPM and Accuracy and also get the detailed version of results." }, { header: "SUPPORT SYSTEM", content: "12+ hrs supporting team to cover all the inconveniences during your app use. Nothing can distract you from your goals. " }]
     const workflow = [{ dot: "left", image: { dark: why11, light: why12 }, head: "Enter The World", short: "STEP 01" }, { dot: "right", image: { dark: why21, light: why22 }, head: "Fill the form", short: "STEP 02" }, { dot: "left", image: { dark: why31, light: why32 }, head: "Attempt Test", short: "STEP 03" }, { dot: "right", image: { dark: why41, light: why42 }, head: "Track Progess", short: "STEP 04" }]
     const whyDetail=[{head:"TRUSTWORTHY",content:"We have trained 10000+ students on ground level, 2000+ Certified folks and 3000+ well settled persons with good experiences."},{head:"ENGAGEMENT",content:"You can choose different languages and 1000+ Stories to enhance your skill. We have also a goal to organize events to showcase your skill."},{head:"SUPPORT",content:"12+ hrs supporting team to cover all the inconveniences during your app use. Nothing can distract you from your goals. "}];
