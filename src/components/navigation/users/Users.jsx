@@ -1,18 +1,20 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import './Users.css'
 import { Context } from '../../../ContextAPI';
 import Profile from '../../../assets/pexels.jpg'
 import UserNavigation from './userNavigation/UserNavigation';
+import useWindowEvents from '../../../hooks/useWindowEvents';
 
 const Users=({userNavigator})=>{
-    const {lightMode,setUserLocal,userDetails,setMsg} = useContext(Context);
+    const {lightMode,userDetails} = useContext(Context);
     const [openUser,setOpenUser]=useState(false)
-    
+    const userRef = useRef(null)
+    useWindowEvents(userRef,()=>setOpenUser(false))
     const arrow =!lightMode?"https://img.icons8.com/ios-filled/25/000000/back.png":
         "https://img.icons8.com/ios-filled/25/ffffff/back.png"
-
+    
     return(
-        <div className="userContainer" onClick={()=>setOpenUser(!openUser)}>
+        <div ref={userRef} className="userContainer" onClick={()=>setOpenUser(!openUser)}>
             <p className="highlight">Hi, {userDetails.user.name.split(' ')[0]}</p>
             <img 
                 style={{transform:openUser?'rotate(90deg)':'rotate(270deg)'}} 
