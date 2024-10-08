@@ -12,14 +12,16 @@ import TextContent from '../../components/textContent/TextContent';
 import Loading from '../../components/loading/Loading';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import LanguageConfirmation from '../../components/languageConfirmation/LanguageConfirmation';
+import Retry from '../../components/retry/Retry';
  
 const Play=()=>{
     useAuthInterceptor()
     const [skipIntro,setSkipIntro]= useState(true)
     const [loading,setLoading] =useState(true)
+    const [retry,setRetry] = useState(false)
     const [pauseTimer,setPauseTimer] = useState(true)
     const writtenStory = useRef("")
-    const {userDetails,setMsg} = useContext(Context)
+    const {userDetails,setMsg,connected} = useContext(Context)
     const navigate = useNavigate()    
     const location = useLocation()
     const time = parseInt(location.state?location.state.time:'0')
@@ -62,9 +64,6 @@ const Play=()=>{
                 navigate('/playground',{replace:true})
             })
     },[])
-    if(loading){
-        return <Loading/>
-    }
     
     const keyPrevention =(e)=>{
         let target = e.target
@@ -132,32 +131,29 @@ const Play=()=>{
         setLoading(true)
         setTypingDisabled(true)
         if(resultRef.current.words>0){
-            api.post('/store-test',resultRef.current)
-            .then(({data})=>{
-                setMsg({
-                    isOpen:true,
-                    status:data.state,
-                    message:data.message
+            if(connected)
+                api.post('/store-test',resultRef.current)
+                .then(({data})=>{
+                    setMsg({
+                        isOpen:true,
+                        status:data.state,
+                        message:data.message
+                    })
+                    navigate('/results',{replace:true})
+                }).catch(({response})=>{
+                    console.log(response)
                 })
+            else{
                 setLoading(false)
-                !loading&&navigate('/results',{replace:true})
-            }).catch(({response})=>{
-                setMsg({
-                    isOpen:true,
-                    status:response.data.state,
-                    message:response.data.message
-                })
-                setLoading(false)
-                console.log(response)
-            })
+                setRetry(true)
+            }
         }else{
             setMsg({
                 isOpen:true,
                 status:'Error',
                 message:'Test Failed due to inactivity'
             })
-            setLoading(false)
-            !loading&&navigate('/results',{replace:true})
+            navigate('/results',{replace:true})
         }
     }
     const getFont = ()=>{
@@ -167,7 +163,12 @@ const Play=()=>{
         else
             return lang
     }
-    
+    if(loading){
+        return <Loading/>
+    }else if(retry){
+        return <Retry retry={timeOut}/>
+    }
+
     return(
     <div className='playContainer'>
         {!skipIntro&&<LanguageConfirmation setTypingDisabled={setTypingDisabled} setSkipIntro={setSkipIntro} language={location.state.data.language}/>}
