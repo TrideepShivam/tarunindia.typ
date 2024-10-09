@@ -4,7 +4,10 @@ import MsgBox from "./components/msgBox/MsgBox";
 export const Context = createContext()
 
 const ContextAPI = ({children})=>{
-    const [connected,setConnected] = useState(navigator.onLine)
+    let baseUrl = import.meta.env.VITE_BASE_URL
+    const [connected,setConnected] = useState(
+        (baseUrl=='http://localhost:8000/api')?true:navigator.onLine
+    )
     const [msg,setMsg] = useState(false)//for messagebox
     const [responsive,setResponsive]=useState(//for detecting mobile or tab
         navigator.userAgent.search('Mobile')>=0||navigator.userAgent.search('Tablet')>=0
@@ -13,13 +16,15 @@ const ContextAPI = ({children})=>{
     
     useEffect(() => {
         window.onresize = () => window.innerWidth < 820 ? setResponsive(true) : setResponsive(false);
-        window.addEventListener('online', () => setConnected(true));
-        window.addEventListener('offline', () => setConnected(false));
+        if(baseUrl!='http://localhost:8000/api'){   
+            window.addEventListener('online', () => setConnected(true));
+            window.addEventListener('offline', () => setConnected(false));
 
-        // Cleanup event listeners on component unmount
-        return () => {
-            window.removeEventListener('online', () => setConnected(true));
-            window.removeEventListener('offline', () => setConnected(false));
+            // Cleanup event listeners on component unmount
+            return () => {
+                window.removeEventListener('online', () => setConnected(true));
+                window.removeEventListener('offline', () => setConnected(false));
+            }
         }
     }, [])
     const [lightMode,setLightMode] = useState(//for light mode dark mode

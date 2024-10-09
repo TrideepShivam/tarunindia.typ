@@ -5,11 +5,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 
 const useAuthInterceptor=()=>{
-    const {setUserLocal,msg,setMsg} = useContext(Context)
+    const {setUserLocal,msg,setMsg,connected} = useContext(Context)
     const location = useLocation()
     const navigate = useNavigate()
     useEffect(()=>{
-    if(navigator.onLine||import.meta.env.VITE_BASE_URL=='http://localhost:8000/api'){
+    if(connected){
         const requestInterceptor = api.interceptors.request.use((config)=>{
             const token = JSON.parse(localStorage.getItem('USER_DETAILS'))
             config.headers.Authorization=`Bearer ${token&&token.access_token}`
