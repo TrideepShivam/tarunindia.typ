@@ -2,21 +2,21 @@ import './Retry.css'
 import logo from '../../assets/logo-reverse.svg'
 import Hyperlink from '../hyperlink/Hyperlink'
 
-const Retry =({retry})=>{
+const Retry =({retry,to})=>{
 
     return(
         <div className='retryContainer'>
             <img width='100px' src={logo} alt="" />
-            <p>Please Check your internet connection.</p>
+            <p>Connection Interupted or </p>
+            <p>Something went wrong.</p>
             {retry&&<>
-                <p>Then retry to submit your Test.</p>
                 <Hyperlink onClick={()=>{
                 retry&&retry()
             }} type='buttonLike' value='Retry'/>
             </>
             }
             <p>Or go to</p>
-            <Hyperlink href='/playground' value='Playground'/>
+            <Hyperlink href={to?to:'/playground'} value={to?to.replace('/', '').charAt(0).toUpperCase() + to.slice(2):'Playground'}/>
         </div>
     )
 }

@@ -8,17 +8,18 @@ import { Context } from '../../ContextAPI';
 import { Navigate } from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
 import Checkbox from '../../components/checkbox/Checkbox';
+import Retry from '../../components/retry/Retry';
  
 const Register=()=>{
     const {userDetails,setUserLocal,msg,setMsg} = useContext(Context)
-    const [loading,setLoading] =useState(false)
+    const [loading,setLoading] =useState(true)
+    const [retry,setRetry] =useState(false)
     const nameRef = useRef()
     const emailRef = useRef()
     const pwdRef = useRef()
     const pwdReRef = useRef()
     const tncRef = useRef(false)
     const handleRegister=()=>{
-        setLoading(true)
         api.post('/auth/register',{
             name:nameRef.current.value,
             email:emailRef.current.value,
@@ -41,12 +42,15 @@ const Register=()=>{
                 message:response.data.message
             })
             setLoading(false)
+            setRetry(true)
             console.log(response);
         });
     }
     if(loading){
         return <Loading/>
-    }
+    } else if(retry){
+        return <Retry retry={handleRegister} to='/register'/>
+     }
     if(userDetails){
         return <>
             <Navigate to={'/dashboard'}/>

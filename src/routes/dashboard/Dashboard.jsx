@@ -7,10 +7,12 @@ import {Context} from '../../ContextAPI';
 import api from '../../api';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import Loading from '../../components/loading/Loading';
+import Retry from '../../components/retry/Retry';
 
 const Dashboard=()=>{
     useAuthInterceptor()
-    const [loading,setLoading] = useState(true)
+    const [loading,setLoading] = useState(false)
+    const [retry,setRetry] = useState(false)
     const {lightMode} = useContext(Context)
     const [wpm,setWpm] = useState([{
       value:"33.7",
@@ -86,8 +88,8 @@ const Dashboard=()=>{
       return newData;
     }
     useEffect(()=>{
-        api.get('/dashboard')
-            .then(({data})=>{
+      api.get('/dashboard')
+      .then(({data})=>{
               setWpm([
                 {
                   value: data.avg_total_today.avg_wpm,
@@ -135,16 +137,18 @@ const Dashboard=()=>{
               })
               setLoading(false)
 
-            }).catch(({response})=>{
-              console.log(response)
-            })
-
-
-    },[])
+      }).catch(({response})=>{
+        console.log(response)
+        setLoading(false)
+        setRetry(true)
+      })
+    },[retry])
 
     if(loading){
       return <Loading/>
-    }
+    }else if(retry){
+      return <Retry retry={()=>setRetry(false)} to='/dashboard'/>
+   }
 
     return(
     <>

@@ -9,10 +9,12 @@ import { Context } from '../../ContextAPI';
 import Loading from '../../components/loading/Loading';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import Hyperlink from '../../components/hyperlink/Hyperlink';
+import Retry from '../../components/retry/Retry';
  
 const Playground=()=>{
     useAuthInterceptor()
     const [loading,setLoading] = useState(true)
+    const [retry,setRetry] = useState(false)
     const {setMsg} = useContext(Context)
     const navigate = useNavigate()
     const [dropdownLanguage,setDropdownLanguage] = useState([])//database
@@ -27,6 +29,7 @@ const Playground=()=>{
     const highlightRef = useRef(false)
     const conditions=["Backspace","Hightlight Text"]
     const handlePlay=()=>{
+        setLoading(true)
         if(langRef.current.value&&durationRef.current.value&&levelRef.current.value&&storyRef.current.value)
             navigate('/play',{
                 state:{
@@ -60,8 +63,10 @@ const Playground=()=>{
             ])
         }).catch(({response})=>{
             console.log(response)
+            setLoading(false)
+            setRetry(true)
         })
-    },[])
+    },[retry])
     const storyCollection = ()=>{
         if(langRef.current.value&&levelRef.current.value){
             api.post('/stories',{
@@ -85,7 +90,10 @@ const Playground=()=>{
     }
     if(loading){
         return <Loading/>
+    }else if(retry){
+        return <Retry retry={()=>setRetry(false)}/>
     }
+
     return(
     <>
         <p className="sectionHead">PLAYGROUND</p>

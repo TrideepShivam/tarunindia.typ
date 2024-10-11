@@ -5,7 +5,7 @@ export const Context = createContext()
 
 const ContextAPI = ({children})=>{
     let baseUrl = import.meta.env.VITE_BASE_URL
-    const [connected,setConnected] = useState(
+    const [connected,setConnected] = useState(//if local then always true
         (baseUrl=='http://localhost:8000/api')?true:navigator.onLine
     )
     const [msg,setMsg] = useState(false)//for messagebox

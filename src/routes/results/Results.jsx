@@ -10,6 +10,7 @@ import { Context } from '../../ContextAPI'
 import Search from '../../components/search/Search'
 import useAuthInterceptor from '../../hooks/useAuthInterceptor'
 import { formatDistanceToNow } from 'date-fns'
+import Retry from '../../components/retry/Retry'
 
 
 const Results=()=>{
@@ -66,6 +67,7 @@ const Results=()=>{
     const [refresh,setRefresh]=useState(false)
     const [testDetail,setTestDetail]=useState()
     const [loading,setLoading] = useState(true)
+    const [retry,setRetry] = useState(false)
     const [details,setDetails]=useState({
         open:false,
         data:''
@@ -89,11 +91,15 @@ const Results=()=>{
                 status:"Error",
                 message:response.message
             })
+            setLoading(false)
+            setRetry(true)
         })
-    },[refresh])
+    },[refresh,retry])
     if(loading){
         return <Loading/>
-    }
+    }else if(retry){
+        return <Retry retry={()=>setRetry(false)} to='/results'/>
+     }
     return(
     <>
         {search&&<Search setTestDetail={setTestDetail} onClick={()=>setSearch(false)}/>}
@@ -123,7 +129,7 @@ const Results=()=>{
                     </tr>
                     </thead>
                     <tbody>
-                    {testDetail.length?
+                    {testDetail&&testDetail.length?
                     testDetail.slice(0).reverse().map((item,index)=>
                     <tr key={index}>
                         <td>{formatDistanceToNow(item.created_at,{addSuffix:true})}</td>

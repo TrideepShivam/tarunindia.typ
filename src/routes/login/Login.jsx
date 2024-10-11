@@ -8,16 +8,17 @@ import { Context } from '../../ContextAPI';
 import { Navigate, useNavigate } from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
-import useWindowEvents from '../../hooks/useWindowEvents';
- 
+import Retry from '../../components/retry/Retry';
+
 const Login=()=>{
     const navigate = useNavigate()
     useAuthInterceptor()
     const {userDetails,setUserLocal,msg,setMsg} = useContext(Context)
-    const [loading,setLoading] =useState(false)
+    const [loading,setLoading] =useState(true)
+    const [retry,setRetry] =useState(false)
     const emailRef = useRef()
     const pwdRef = useRef()
-    useEffect(()=>{
+    useEffect(()=>{//for mobile only
         if(navigator.userAgent.match('Mobile')){
             navigate('/error',{
                 state:{
@@ -28,7 +29,6 @@ const Login=()=>{
         }
     })
     const handleLogin=()=>{
-        setLoading(true)
         api.post('/auth/login',{
             email:emailRef.current.value,
             password:pwdRef.current.value
@@ -51,17 +51,15 @@ const Login=()=>{
             }
             setLoading(false)
         }).catch((response) => {
-            // setMsg({
-            //     isOpen:true,
-            //     status:response.data.state,
-            //     message:response.data.message
-            // })
             console.log(response)
             setLoading(false)
+            setRetry(true)
         });
     }
     if(loading){
         return <Loading/>
+    }else if(retry){
+       return <Retry retry={handleLogin} to='/login'/>
     }
     if(userDetails){
         return <>
