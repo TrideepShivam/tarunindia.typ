@@ -11,7 +11,6 @@ import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import Retry from '../../components/retry/Retry';
 
 const Login=()=>{
-    const navigate = useNavigate()
     useAuthInterceptor()
     const {userDetails,setUserLocal,msg,setMsg} = useContext(Context)
     const [loading,setLoading] =useState(false)

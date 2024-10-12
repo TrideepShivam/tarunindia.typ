@@ -6,7 +6,7 @@ import Users from '../users/Users';
 import ToggleDarkLight from '../../toggleDarkLight/ToggleDarkLight';
 
 const DashboardTopNav=({userNavigator,sideNavOpen,setSideNavOpen})=>{
-    const {lightMode} = useContext(Context);
+    const {lightMode,responsive} = useContext(Context);
     
     const menu = !sideNavOpen?
         !lightMode?"https://img.icons8.com/ios-filled/50/000000/menu--v6.png":
@@ -17,13 +17,14 @@ const DashboardTopNav=({userNavigator,sideNavOpen,setSideNavOpen})=>{
     return(
         <div className="dashboardTopNavigation">
             <div className='navElement'>
+                {responsive&&<img width="40em" src={logo} alt="Logo" />}
                 <img className='menuButton' onClick={()=>setSideNavOpen(!sideNavOpen)} width="25" height="25" src={menu} alt="menu"/>               
             </div>
-            <div className='navElement'>
+            {!responsive&&<div className='navElement'>
                 <img width="40em" src={logo} alt="Logo" />
                 &nbsp;
                 <p className='highlight'>Trial</p>
-            </div>
+            </div>}
             <div className='navElement'>
                 <Users userNavigator={userNavigator}/>
                 <ToggleDarkLight/>

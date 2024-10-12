@@ -11,7 +11,7 @@ import Retry from '../../components/retry/Retry';
 
 const Dashboard=()=>{
     useAuthInterceptor()
-    const [loading,setLoading] = useState(false)
+    const [loading,setLoading] = useState(true)
     const [retry,setRetry] = useState(false)
     const {lightMode} = useContext(Context)
     const [wpm,setWpm] = useState([{
