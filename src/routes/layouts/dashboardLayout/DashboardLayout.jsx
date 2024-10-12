@@ -6,11 +6,12 @@ import { useContext, useState } from 'react';
 import api from '../../../api';
 import { Context } from '../../../ContextAPI';
 import useAuthInterceptor from '../../../hooks/useAuthInterceptor';
+import Hyperlink from '../../../components/hyperlink/Hyperlink';
 
 
 const DashboardLayout=()=>{
-    const [sideNavOpen,setSideNavOpen]=useState(true)
-    const {userDetails,setUserLocal,setMsg} = useContext(Context)
+    const {userDetails,setUserLocal,setMsg,responsive} = useContext(Context)
+    const [sideNavOpen,setSideNavOpen]=useState(responsive?false:true)
     const sideMenu = [//0:green 1:blue 2:white 3:black
         {
             href:"/dashboard",
@@ -138,12 +139,15 @@ const DashboardLayout=()=>{
         <>
             <DashboardTopNav userNavigator={userNavigator} sideNavOpen={sideNavOpen} setSideNavOpen={setSideNavOpen}/>
             <div className="navContentContainer">
-                <div className="sideNavContainer" style={{width:sideNavOpen?"14em":"4.5em"}}>
+                {(!responsive||sideNavOpen)&&<div onClick={()=>setSideNavOpen(false)} className="sideNavContainer" style={{width:responsive?'':sideNavOpen?"14em":"4.5em"}}>
                     <SideNavigation sideNavOpen={sideNavOpen} sideMenu={sideMenu}/>
-                </div>
+                    {responsive&&<div style={{position:'absolute',bottom:'1em',left:'2.5em'}}>
+                        <Hyperlink href='/' value='tarunindia.in'/>
+                    </div>}
+                </div>}
                 <div 
                     className="mainContentContainer" 
-                    style={{width:sideNavOpen?"calc(100% - 14.5em)":"calc(100% - 5em)"}}>
+                    style={{width:responsive?'100%':sideNavOpen?"calc(100% - 14.5em)":"calc(100% - 5em)"}}>
                     <Outlet/>
                 </div>
             </div>
