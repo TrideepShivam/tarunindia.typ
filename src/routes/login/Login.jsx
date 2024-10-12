@@ -14,20 +14,11 @@ const Login=()=>{
     const navigate = useNavigate()
     useAuthInterceptor()
     const {userDetails,setUserLocal,msg,setMsg} = useContext(Context)
-    const [loading,setLoading] =useState(true)
+    const [loading,setLoading] =useState(false)
     const [retry,setRetry] =useState(false)
     const emailRef = useRef()
     const pwdRef = useRef()
-    useEffect(()=>{//for mobile only
-        if(navigator.userAgent.match('Mobile')){
-            navigate('/error',{
-                state:{
-                    from:'/',
-                    message:'Only for Desktop and Laptop.'
-                }
-            })
-        }
-    })
+    
     const handleLogin=()=>{
         api.post('/auth/login',{
             email:emailRef.current.value,
