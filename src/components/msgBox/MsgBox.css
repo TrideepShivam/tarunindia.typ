@@ -11,7 +11,7 @@
     border-radius:.5em;
     color: var(--text-color);
     background-color:var(--light-back-color);
-    animation:fadeIn .5s,fadeOut .5s 5.6s;
+    animation:fadeIn .5s,fadeOut .5s 7.6s;
     z-index: 10;
     overflow: hidden;
     box-shadow: 0px 0px 10px rgba(0,0,0,.2);
@@ -24,7 +24,7 @@
     position:absolute;
     bottom: 0px;
     height:.2em;
-    animation:slider 6s ease;
+    animation:slider 8s ease;
 }
 @keyframes slider {
     0%{width:100%;}
@@ -37,4 +37,9 @@
 @keyframes fadeOut{
     0%{opacity:1;right:1em;}
     100%{opacity:0;right:0px;}
+}
+@media only screen and (max-width:820px){
+    .msgContainer{
+        font-size: .8em;
+    }
 }

@@ -6,7 +6,7 @@ const MsgBox =({setMsg,data})=>{
     const closeMsgBox = ()=>{
         setMsg(false)
     }
-    setTimeout(closeMsgBox, 6000)
+    setTimeout(closeMsgBox, 8000)
     const msgThemeColor = data.status=='Fail'||data.status=='Error'?'tomato':'var(--theme-color)';
     return(
         <>

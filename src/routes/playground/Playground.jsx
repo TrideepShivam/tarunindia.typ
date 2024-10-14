@@ -49,7 +49,8 @@ const Playground=()=>{
                 isOpen:true,
                 status:"Error",
                 message:"Please fill every field."
-            })  
+            })
+            setLoading(false)
     }
     useEffect(()=>{
         api.get('/level-language')
