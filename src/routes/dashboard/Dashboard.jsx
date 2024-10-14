@@ -8,12 +8,13 @@ import api from '../../api';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import Loading from '../../components/loading/Loading';
 import Retry from '../../components/retry/Retry';
+import CardContainer from '../../components/cardContainer/CardContainer';
 
 const Dashboard=()=>{
     useAuthInterceptor()
     const [loading,setLoading] = useState(true)
     const [retry,setRetry] = useState(false)
-    const {lightMode} = useContext(Context)
+    const {lightMode,responsive} = useContext(Context)
     const [wpm,setWpm] = useState([{
       value:"33.7",
       unit:"WPM",
@@ -154,11 +155,13 @@ const Dashboard=()=>{
     <>
         <p className="sectionHead">DASHBOARD</p>
         <div className="dashboardContent">
-            {wpm.map((item,index)=>
-                <Card key={index} val={item} />
-            )}
-            <TotalCard val={totalData} />
-            <div className="chartContainer" style={{width:"40%"}}>
+          <CardContainer>
+              {wpm.map((item,index)=>
+                  <Card key={index} val={item} />
+              )}
+              <TotalCard val={totalData} />
+          </CardContainer>
+            <div className="chartContainer" style={{width:responsive?"98%":"40%"}}>
                 <Chart
                     options={chartData.options}
                     series={chartData.series}
@@ -166,7 +169,7 @@ const Dashboard=()=>{
                     height={350} // Customize the chart height
                 />
             </div>
-            <div className="eventContainer" style={{width:"51%"}}>
+            <div className="eventContainer" style={{width:responsive?"98%":"51%"}}>
               Events are comming soon
             </div>
         </div>
