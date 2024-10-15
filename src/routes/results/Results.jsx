@@ -11,11 +11,12 @@ import Search from '../../components/search/Search'
 import useAuthInterceptor from '../../hooks/useAuthInterceptor'
 import { formatDistanceToNow } from 'date-fns'
 import Retry from '../../components/retry/Retry'
+import CardContainer from '../../components/cardContainer/CardContainer'
 
 
 const Results=()=>{
     useAuthInterceptor()
-    const {lightMode,setMsg} = useContext(Context);
+    const {lightMode,setMsg,responsive} = useContext(Context);
     const img = <img width="25" height="25" src={
         !lightMode?"https://img.icons8.com/ios-filled/25/000000/search.png":
                 "https://img.icons8.com/ios-filled/25/ffffff/search.png"
@@ -106,19 +107,23 @@ const Results=()=>{
         {details.open&&<ResultDetail details={details} setDetails={setDetails}/>}   
         <p className="sectionHead">RESULTS</p>
         <div className="resultContent">
-            {cards.map((item,index)=>
-                <Card key={index} val={item} />
-            )}
+            <CardContainer>
+                {cards.map((item,index)=>
+                    <Card key={index} val={item} />
+                )}
+            </CardContainer>
             <div className="resultTableContainer" style={{width:"95%"}}>
                 <table>
                     <thead>
                     <tr className='highlight'>
                         <td>TIME</td>
                         <td>WPM</td>
+                        {!responsive&&<>
                         <td>ACCURACY (%)</td>
                         <td>LANGUAGE</td>
                         <td>ERRORS</td>
                         <td>DURATION</td>
+                        </>}
                         <td style={{position:'relative'}}>
                             <CircleButton style={{top:'-.3em',right:'3em'}} value={imgrefresh} onClick={()=>{
                                 setRefresh(true)
@@ -134,10 +139,10 @@ const Results=()=>{
                     <tr key={index}>
                         <td>{formatDistanceToNow(item.created_at,{addSuffix:true})}</td>
                         <td>{item.test_details.wpm}</td>
-                        <td>{item.test_details.accuracy}</td>
+                        {!responsive&&<><td>{item.test_details.accuracy}</td>
                         <td>{item.stories.language}</td>
                         <td>{item.test_details.errors}</td>
-                        <td>{item.duration} min</td>
+                        <td>{item.duration} min</td></>}
                         <td><Button transparancy={true} onClick={()=>setDetails({
                             ...details,
                             open:true,

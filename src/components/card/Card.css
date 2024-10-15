@@ -1,5 +1,5 @@
 .cardContainer{
-    min-width: 15em;
+    min-width: 18em;
     padding:1.5em;
     border-radius: 1em;
     background-color: var(--light-back-color);

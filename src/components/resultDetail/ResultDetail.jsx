@@ -46,8 +46,9 @@ const ResultDetail=({details,setDetails})=>{
                         <tr><td>WPM</td><td className='highlight'>{details.data.test_details.wpm}</td></tr>
                         <tr><td>KPM</td><td className='highlight'>{details.data.test_details.kpm}</td></tr>
                         <tr><td>WORDS</td><td className='highlight'>{details.data.test_details.words}</td></tr>
-                        <tr><td>CHAR WITH SPACES</td><td className='highlight'>{details.data.test_details.char_with_spaces}</td></tr>
+                        <tr><td>KEYSTROKES</td><td className='highlight'>{details.data.test_details.char_with_spaces}</td></tr>
                         <tr><td>DURATION</td><td className='highlight'>{details.data.duration} min</td></tr>
+                        <tr><td>ERRORS</td><td className='highlight'>{details.data.test_details.errors}</td></tr>
                         <tr><td>LANGUAGE</td><td className='highlight'>{details.data.stories.language}</td></tr>
                         <tr><td>STORY</td><td className='highlight'>{details.data.stories.title}</td></tr>
                         <tr><td>DATE</td><td className='highlight'>{dateAndTime[0].slice(0,8)}</td></tr>
