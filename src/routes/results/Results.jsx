@@ -112,7 +112,7 @@ const Results=()=>{
                     <Card key={index} val={item} />
                 )}
             </CardContainer>
-            <div className="resultTableContainer" style={{width:"95%"}}>
+            <div className="resultTableContainer">
                 <table>
                     <thead>
                     <tr className='highlight'>

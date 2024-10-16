@@ -6,8 +6,8 @@ const Card=({val,style})=>{
         <div className="cardContainer" style={style}>
             <p className='sectionHead'>{val.cardHead}</p>
             <div className="topContainer">
-                <p className="cardValue">{val.value} <span>{val.unit}</span></p>
-                
+                <p className="cardValue">{val.value}</p>
+                <p className='cardUnit'>{val.unit}</p>
             </div>
             {val.more&&
                 <Hyperlink to='/dashboard' value="more details"/>

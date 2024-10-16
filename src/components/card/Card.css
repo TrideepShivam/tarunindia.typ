@@ -1,21 +1,29 @@
 .cardContainer{
-    min-width: 18em;
+    min-width: 15em;
     padding:1.5em;
     border-radius: 1em;
     background-color: var(--light-back-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-wrap: nowrap;
 }
 .topContainer{
     display: flex;
-    justify-content: space-between;
+    align-items: flex-end;
 }
 .cardValue{
     font-size:5em;
 }
-.cardValue span{
+.cardUnit{
     margin: 0;
     color:var(--theme-color);
-    font-size:.2em;
+    font-size:1em;
+}
+@media only screen and (max-width:820px) {
+    .cardContainer{
+        min-width:auto;
+        width:auto;
+        font-size: .8em;
+    }
 }

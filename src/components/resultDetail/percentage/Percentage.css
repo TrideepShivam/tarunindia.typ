@@ -1,3 +1,10 @@
+.percentageContainer{
+    width:300px;
+    height: 300px;
+}
+.congratulation{
+    position:absolute;
+}
 .outer{
     width:15em;
     height:15em;

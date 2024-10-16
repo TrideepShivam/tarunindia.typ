@@ -5,7 +5,6 @@ import { Context } from '../../ContextAPI';
 import CircleButton from '../circleButton/CircleButton';
 import PopUpContainer from '../popUpContainer/PopUpContainer';
 import { istConverter } from '../../utils/resultUtils';
-import yay from './../../assets/yay.gif'
 
 const testdetails={
     wpm:0,
@@ -36,7 +35,6 @@ const ResultDetail=({details,setDetails})=>{
     return(
     <PopUpContainer>
         <div className="details">
-            {(details.data.test_details.accuracy>=95)&&<img width='250em' className='congratulation' src={yay} alt="" />}
             <CircleButton details={details} action={setDetails} style={{top:"1em",right:"0.5em"}} value={img} />
             <Percentage value={details.data.test_details.accuracy} text={'accuracy'}/>
             <div>
