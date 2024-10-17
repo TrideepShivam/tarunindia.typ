@@ -129,7 +129,7 @@
     align-items: center;
 }
 
-@media screen and (max-width:800px){
+@media screen and (max-width:820px){
     .blur h3,.blur p{
         font-size: 1.5em;
     }
