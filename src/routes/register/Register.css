@@ -11,7 +11,7 @@
     /* border:.1em solid var(--theme-color); */
     animation:fromleftfade .5s;
 }
-@media only screen and (max-width:800px){
+@media only screen and (max-width:900px){
     .registerContainer{
        width:100%;
     }

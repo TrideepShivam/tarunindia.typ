@@ -12,7 +12,7 @@ import Retry from '../../components/retry/Retry';
  
 const Register=()=>{
     const {userDetails,setUserLocal,msg,setMsg} = useContext(Context)
-    const [loading,setLoading] =useState(true)
+    const [loading,setLoading] =useState(false)
     const [retry,setRetry] =useState(false)
     const nameRef = useRef()
     const emailRef = useRef()

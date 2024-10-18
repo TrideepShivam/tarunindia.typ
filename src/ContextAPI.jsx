@@ -15,7 +15,7 @@ const ContextAPI = ({children})=>{
     //setting the resizing event to change the responsive value
     
     useEffect(() => {
-        window.onresize = () => window.innerWidth < 820 ? setResponsive(true) : setResponsive(false);
+        window.onresize = () => window.innerWidth < 900 ? setResponsive(true) : setResponsive(false);
         if(baseUrl!='http://localhost:8000/api'){   
             window.addEventListener('online', () => setConnected(true));
             window.addEventListener('offline', () => setConnected(false));

@@ -13,3 +13,10 @@
     background:var(--light-back-color);
     border-radius: 50%;
 }
+@media screen and (max-width:900px){
+    .time{
+        width:5em;
+        height:5em;
+        font-size: .8em;
+    }
+}

@@ -22,7 +22,7 @@ const Play=()=>{
     const [pauseTimer,setPauseTimer] = useState(true)
     const writtenStory = useRef("")
     const {userDetails,setMsg,connected,responsive} = useContext(Context)
-    const [orient,setOrient] = useState('landscape')
+    const [orient,setOrient] = useState(screen.orientation.type=='landscape-primary'?"landscape":"portrait")
     const navigate = useNavigate()    
     const location = useLocation()
     const time = parseInt(location.state?location.state.time:'0')

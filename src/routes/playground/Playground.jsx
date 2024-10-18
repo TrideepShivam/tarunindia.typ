@@ -31,7 +31,7 @@ const Playground=()=>{
     const conditions=["Backspace","Hightlight Text"]
     const handlePlay=()=>{
         setLoading(true)
-        if(langRef.current.value&&durationRef.current.value&&levelRef.current.value&&storyRef.current.value)
+        if(langRef.current.value&&durationRef.current.value&&levelRef.current.value&&storyRef.current.value){
             navigate('/play',{
                 state:{
                     from:'/playground',
@@ -45,6 +45,8 @@ const Playground=()=>{
                     }
                 }
             })
+        document.body.requestFullscreen()
+    }
         else
             setMsg({
                 isOpen:true,
