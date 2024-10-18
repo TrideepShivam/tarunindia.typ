@@ -21,7 +21,8 @@ const Play=()=>{
     const [retry,setRetry] = useState(false)
     const [pauseTimer,setPauseTimer] = useState(true)
     const writtenStory = useRef("")
-    const {userDetails,setMsg,connected} = useContext(Context)
+    const {userDetails,setMsg,connected,responsive} = useContext(Context)
+    const [orient,setOrient] = useState('landscape')
     const navigate = useNavigate()    
     const location = useLocation()
     const time = parseInt(location.state?location.state.time:'0')
@@ -38,7 +39,9 @@ const Play=()=>{
         story_id:-1,
         mistakes:{}
     })
-
+    const setOreintation=()=>{
+        setOrient(screen.orientation.type=='landscape-primary'?"landscape":"portrait")
+    }
     useEffect(()=>{
         if(!location.state){//prohibiting direct /play url hit
             setMsg({
@@ -63,6 +66,10 @@ const Play=()=>{
                 })
                 navigate('/playground',{replace:true})
             })
+        screen.orientation.addEventListener('change', setOreintation)
+        return () => {
+            screen.orientation.removeEventListener('change', setOreintation);
+        }
     },[])
     
     const keyPrevention =(e)=>{
@@ -167,6 +174,13 @@ const Play=()=>{
         return <Loading/>
     }else if(retry){
         return <Retry retry={timeOut}/>
+    }else if(orient=='portrait'){
+        return(
+            <div className='loadingContainer'> 
+                <img width="48" height="48" src="https://img.icons8.com/fluency/48/lock-landscape.png" alt="lock-landscape"/>
+                <p className='highlight'>Please rotate your phone.</p>
+            </div>
+        )
     }
 
     return(
@@ -195,11 +209,11 @@ const Play=()=>{
 		</div>
 		<div className="contentContainer info">
             <div style={{position:'absolute',top:'0em'}}><ToggleDarkLight/></div>
-            <img width="100em" src={logo} alt="Logo" />
+            {!responsive&&<img width="100em" src={logo} alt="Logo" />}
 			<h2 id="userName">{userDetails.user.name.toUpperCase()}</h2>
 			<Timer percentage={(second/(parseInt(location.state.time)*60))*100} second={second} setSecond={setSecond} pause={pauseTimer} timeOut={timeOut}/>
 			<WordCount value={wordCount}/>
-			<Button value={'Restart'} style={{width:'10em'}} onClick={()=>window.location.reload()}/>
+			<Button value={'Restart'} style={{width:'80%'}} onClick={()=>window.location.reload()}/>
 			<Button  value={!pauseTimer?'Pause':'Resume'} transparancy={true} onClick={()=>{
                 setPauseTimer(!pauseTimer)
                 setTypingDisabled(pauseTimer)
