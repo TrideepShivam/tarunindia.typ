@@ -54,12 +54,12 @@
 }
 @media only screen and (max-width:900px){
 	.contentContainer{
-		font-size: .7em;
+		font-size: .9em;
 	}
 	.contentContainer.test{
 		width:78%;
 	}
 	.contentContainer.info{
-		width:25%;
+		width:20%;
 	}
 }

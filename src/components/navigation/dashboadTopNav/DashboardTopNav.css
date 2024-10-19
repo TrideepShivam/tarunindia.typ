@@ -1,5 +1,6 @@
 .dashboardTopNavigation{
     width:calc(100% - 2em);
+    min-height: 2.5em;
     padding:.25em 1em;
     height:6%;
     position: relative;

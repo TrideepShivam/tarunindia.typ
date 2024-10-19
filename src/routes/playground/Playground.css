@@ -43,5 +43,6 @@
     }
     .playgroundContent .playForm{
         width:90%;
+        min-height: 100%;
     }
 }
