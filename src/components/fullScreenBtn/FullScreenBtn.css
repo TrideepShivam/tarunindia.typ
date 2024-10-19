@@ -1,0 +1,16 @@
+.fullScreenContainer{
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.fullScreenTooltip{
+    position:absolute;
+    text-wrap: nowrap;
+    top:3em;
+    right:-3em;
+    padding:.2em .5em;
+    background-color: var(--transparent-color);
+    z-index: 10;
+    animation: fromtopfade .2s;
+}

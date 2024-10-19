@@ -1,11 +1,13 @@
 .playgroundContent{
     width:100%;
+    max-height: 100%;
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     flex-wrap: wrap;
     gap:1em;
     animation:fromleftfade .5s;
+    overflow-y: auto;
 }
 .playgroundContent .informationContainer{
     width:45%;
@@ -32,7 +34,7 @@
 @media screen and (max-width:900px){
     .playgroundContent .informationContainer{
         width:calc(100% - 1em);
-        max-height: 100%;
+        height: 100%;
         position:absolute;
         background-color: var(--transparent-color);
         backdrop-filter: blur(15px);
@@ -43,6 +45,6 @@
     }
     .playgroundContent .playForm{
         width:90%;
-        min-height: 100%;
+        font-size: .9em;
     }
 }

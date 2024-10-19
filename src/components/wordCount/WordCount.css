@@ -4,3 +4,8 @@
     align-items: center;
     padding:1em;
 }
+@media screen and (max-width:900px){
+    .wordContainer{
+        font-size: .8em;
+    }
+}

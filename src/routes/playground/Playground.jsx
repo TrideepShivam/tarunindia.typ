@@ -121,10 +121,9 @@ const Playground=()=>{
                 <Button style={{margin:".8em"}} value={"Next"} onClick={()=>setShowIntro(false)}/>}
             </div>}
             <div className="playForm">
-                <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
-                    <h2 className="sectionHead">Play Form</h2>
-                    {!showIntro&&<Hyperlink value={'Instruction'} onClick={()=>setShowIntro(true)}/>}
-                </div>
+                <h2 className="sectionHead">Play Form</h2>
+                <p><span className="highlight">Welcome!</span> Ready to take your typing skills to the next level? Let's get those fingers flying!</p>
+                {!showIntro&&<Hyperlink value={'Instruction'} onClick={()=>setShowIntro(true)}/>}
                 <Dropdown var={langRef} options={dropdownLanguage} legend="Language"/>
                 <Dropdown var={durationRef} options={dropdownDuration} legend="Duration"/>
                 <Dropdown var={levelRef} options={dropdownLevel} legend="Level"/>

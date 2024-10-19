@@ -13,6 +13,7 @@ import Loading from '../../components/loading/Loading';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import LanguageConfirmation from '../../components/languageConfirmation/LanguageConfirmation';
 import Retry from '../../components/retry/Retry';
+import FullScreenBtn from '../../components/fullScreenBtn/FullScreenBtn';
  
 const Play=()=>{
     useAuthInterceptor()
@@ -193,7 +194,7 @@ const Play=()=>{
 				    <TextContent language={getFont()} story={story} highlightingIndex={wordCount*2}/>
                 }
 			</div>
-            <hr className='divider' style={{borderColor:wrong?'tomato':'var(--theme-color)',width:'100%'}}/>
+            <hr className='divider' style={{borderColor:wrong?'tomato':'var(--theme-color)',width:'95%'}}/>
 			<div className="textContainer" id="writable">
 				<textarea 
                     autoFocus
@@ -210,10 +211,10 @@ const Play=()=>{
 		<div className="contentContainer info">
             <div style={{position:'absolute',top:'0em',display:'flex',alignItems:'center'}}>
                 <ToggleDarkLight/>
-                <img onClick={()=>document.body.requestFullscreen()} width="26" height="26" src="https://img.icons8.com/neon/96/full-screen.png" alt="full-screen"/>
+                <FullScreenBtn/>
             </div>
             {!responsive&&<img width="100em" src={logo} alt="Logo" />}
-			<h2 id="userName">{userDetails.user.name.toUpperCase()}</h2>
+			<h2 id="userName">{userDetails.user.name.split(' ')[0].toUpperCase()}</h2>
 			<Timer percentage={(second/(parseInt(location.state.time)*60))*100} second={second} setSecond={setSecond} pause={pauseTimer} timeOut={timeOut}/>
 			<WordCount value={wordCount}/>
 			<Button value={'Restart'} style={{width:'80%'}} onClick={()=>window.location.reload()}/>
