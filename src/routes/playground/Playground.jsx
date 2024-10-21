@@ -45,7 +45,7 @@ const Playground=()=>{
                     }
                 }
             })
-        document.body.requestFullscreen()
+        document.documentElement.requestFullscreen()
     }
         else
             setMsg({

@@ -8,10 +8,10 @@ const Navigation=(props)=>{
     const [showTooltip,setShowtooltip] = useState(false)
     const color=!lightMode?{
         clicked:props.isClicked?props.menu.icons[1]:props.menu.icons[3],
-        text:props.isClicked?'#5000ff':'#101010'
+        text:props.isClicked?import.meta.env.VITE_APP_LIGHT_THEME:'#101010'
     }:{
         clicked:props.isClicked?props.menu.icons[0]:props.menu.icons[2],
-        text:props.isClicked?'#00ff85':'#efefef'
+        text:props.isClicked?import.meta.env.VITE_APP_DARK_THEME:'#efefef'
     }
     
     return(

@@ -51,7 +51,7 @@ const Dashboard=()=>{
             },
             background:'transparent'
           },
-          colors:["#00ff85","#5000ff"],//used to set the color of the line
+          colors:[import.meta.env.VITE_APP_DARK_THEME,import.meta.env.VITE_APP_LIGHT_THEME],//used to set the color of the line
           dataLabels: {
             enabled: false//used if you want labels on the line
           },
