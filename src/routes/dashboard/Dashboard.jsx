@@ -11,6 +11,9 @@ import Retry from '../../components/retry/Retry';
 import CardContainer from '../../components/cardContainer/CardContainer';
 
 const Dashboard=()=>{
+  
+  let darkThemeColor = import.meta.env.VITE_APP_DARK_THEME||'#ff8822'
+  let lightThemeColor= import.meta.env.VITE_APP_LIGHT_THEME||'#138807'
     useAuthInterceptor()
     const [loading,setLoading] = useState(true)
     const [retry,setRetry] = useState(false)
@@ -51,7 +54,7 @@ const Dashboard=()=>{
             },
             background:'transparent'
           },
-          colors:[import.meta.env.VITE_APP_DARK_THEME,import.meta.env.VITE_APP_LIGHT_THEME],//used to set the color of the line
+          colors:[darkThemeColor,lightThemeColor],//used to set the color of the line
           dataLabels: {
             enabled: false//used if you want labels on the line
           },
