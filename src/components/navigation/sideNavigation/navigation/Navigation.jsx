@@ -4,14 +4,17 @@ import { useContext, useState } from 'react';
 import { Context } from '../../../../ContextAPI';
  
 const Navigation=(props)=>{
+    
+    let darkThemeColor = import.meta.env.VITE_APP_DARK_THEME||'#ff8833'
+    let lightThemeColor= import.meta.env.VITE_APP_LIGHT_THEME||'#138808'
     const {lightMode} = useContext(Context)
     const [showTooltip,setShowtooltip] = useState(false)
     const color=!lightMode?{
         clicked:props.isClicked?props.menu.icons[1]:props.menu.icons[3],
-        text:props.isClicked?import.meta.env.VITE_APP_LIGHT_THEME:'#101010'
+        text:props.isClicked?lightThemeColor:'#101010'
     }:{
         clicked:props.isClicked?props.menu.icons[0]:props.menu.icons[2],
-        text:props.isClicked?import.meta.env.VITE_APP_DARK_THEME:'#efefef'
+        text:props.isClicked?darkThemeColor:'#efefef'
     }
     
     return(
