@@ -10,8 +10,8 @@ import Hyperlink from '../../../components/hyperlink/Hyperlink';
 
 
 const DashboardLayout=()=>{
-    let darkThemeColor = import.meta.env.VITE_APP_DARK_THEME
-    let lightThemeColor= import.meta.env.VITE_APP_LIGHT_THEME
+    let darkThemeColor = import.meta.env.VITE_APP_DARK_THEME||'#00ff89'
+    let lightThemeColor= import.meta.env.VITE_APP_LIGHT_THEME||'#0055ff'
     console.log(darkThemeColor)
     const {userDetails,setUserLocal,setMsg,responsive} = useContext(Context)
     const [sideNavOpen,setSideNavOpen]=useState(responsive?false:true)
