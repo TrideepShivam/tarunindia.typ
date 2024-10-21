@@ -20,8 +20,8 @@ const DashboardLayout=()=>{
             href:"/dashboard",
             value:"DASHBOARD",
             icons:[
-                `https://img.icons8.com/ios-filled/30/${darkThemeColor.substring(1)}/performance-macbook.png`,
-                `https://img.icons8.com/ios-filled/30/${lightThemeColor.substring(1)}/performance-macbook.png`,
+                `https://img.icons8.com/ios-filled/30/${darkThemeColor.replace('#','')}/performance-macbook.png`,
+                `https://img.icons8.com/ios-filled/30/${lightThemeColor.replace('#','')}/performance-macbook.png`,
                 "https://img.icons8.com/ios-filled/30/fefeff/performance-macbook.png",
                 "https://img.icons8.com/ios-filled/30/101010/performance-macbook.png",
             ]
@@ -30,8 +30,8 @@ const DashboardLayout=()=>{
             href:"/playground",
             value:"PLAYGROUND",
             icons:[
-                `https://img.icons8.com/ios-filled/30/${darkThemeColor.substring(1)}/key-press.png`,
-                `https://img.icons8.com/ios-filled/30/${lightThemeColor.substring(1)}/key-press.png`,
+                `https://img.icons8.com/ios-filled/30/${darkThemeColor.replace('#','')}/key-press.png`,
+                `https://img.icons8.com/ios-filled/30/${lightThemeColor.replace('#','')}/key-press.png`,
                 "https://img.icons8.com/ios-filled/30/fefeff/key-press.png",
                 "https://img.icons8.com/ios-filled/30/101010/key-press.png"
             ]
@@ -40,8 +40,8 @@ const DashboardLayout=()=>{
             href:"/events",
             value:"EVENTS",
             icons:[
-                `https://img.icons8.com/ios-glyphs/30/${darkThemeColor.substring(1)}/confetti--v1.png`,
-                `https://img.icons8.com/ios-glyphs/30/${lightThemeColor.substring(1)}/confetti--v1.png`,
+                `https://img.icons8.com/ios-glyphs/30/${darkThemeColor.replace('#','')}/confetti--v1.png`,
+                `https://img.icons8.com/ios-glyphs/30/${lightThemeColor.replace('#','')}/confetti--v1.png`,
                 "https://img.icons8.com/ios-glyphs/30/fefeff/confetti--v1.png",
                 "https://img.icons8.com/ios-glyphs/30/101010/confetti--v1.png"
             ]
@@ -50,8 +50,8 @@ const DashboardLayout=()=>{
             href:"/leaderboard",
             value:"LEADERBOARD",
             icons:[
-                `https://img.icons8.com/ios-filled/30/${darkThemeColor.substring(1)}/leaderboard.png`,
-                `https://img.icons8.com/ios-filled/30/${lightThemeColor.substring(1)}/leaderboard.png`,
+                `https://img.icons8.com/ios-filled/30/${darkThemeColor.replace('#','')}/leaderboard.png`,
+                `https://img.icons8.com/ios-filled/30/${lightThemeColor.replace('#','')}/leaderboard.png`,
                 "https://img.icons8.com/ios-filled/30/fefeff/leaderboard.png",
                 "https://img.icons8.com/ios-filled/30/101010/leaderboard.png"
             ]
@@ -60,8 +60,8 @@ const DashboardLayout=()=>{
             href:"/results",
             value:"RESULTS",
             icons:[
-                `https://img.icons8.com/ios-glyphs/30/${darkThemeColor.substring(1)}/improvement.png`,
-                `https://img.icons8.com/ios-glyphs/30/${lightThemeColor.substring(1)}/improvement.png`,
+                `https://img.icons8.com/ios-glyphs/30/${darkThemeColor.replace('#','')}/improvement.png`,
+                `https://img.icons8.com/ios-glyphs/30/${lightThemeColor.replace('#','')}/improvement.png`,
                 "https://img.icons8.com/ios-glyphs/30/fefeff/improvement.png",
                 "https://img.icons8.com/ios-glyphs/30/101010/improvement.png"
             ]
@@ -70,8 +70,8 @@ const DashboardLayout=()=>{
             href:"/support",
             value:"SUPPORT",
             icons:[
-                `https://img.icons8.com/ios-glyphs/30/${darkThemeColor.substring(1)}/customer-support.png`,
-                `https://img.icons8.com/ios-glyphs/30/${lightThemeColor.substring(1)}/customer-support.png`,
+                `https://img.icons8.com/ios-glyphs/30/${darkThemeColor.replace('#','')}/customer-support.png`,
+                `https://img.icons8.com/ios-glyphs/30/${lightThemeColor.replace('#','')}/customer-support.png`,
                 "https://img.icons8.com/ios-glyphs/30/fefeff/customer-support.png",
                 "https://img.icons8.com/ios-glyphs/30/101010/customer-support.png"
             ]
@@ -80,8 +80,8 @@ const DashboardLayout=()=>{
             href:"/about",
             value:"ABOUT",
             icons:[
-                `https://img.icons8.com/ios-glyphs/30/${darkThemeColor.substring(1)}/info-squared.png`,
-                `https://img.icons8.com/ios-glyphs/30/${lightThemeColor.substring(1)}/info-squared.png`,
+                `https://img.icons8.com/ios-glyphs/30/${darkThemeColor.replace('#','')}/info-squared.png`,
+                `https://img.icons8.com/ios-glyphs/30/${lightThemeColor.replace('#','')}/info-squared.png`,
                 "https://img.icons8.com/ios-glyphs/30/fefeff/info-squared.png",
                 "https://img.icons8.com/ios-glyphs/30/101010/info-squared.png"
             ]
