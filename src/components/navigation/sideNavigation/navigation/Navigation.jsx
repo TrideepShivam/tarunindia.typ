@@ -5,8 +5,8 @@ import { Context } from '../../../../ContextAPI';
  
 const Navigation=(props)=>{
     
-    let darkThemeColor = import.meta.env.VITE_APP_DARK_THEME||'#ff8833'
-    let lightThemeColor= import.meta.env.VITE_APP_LIGHT_THEME||'#138808'
+    let darkThemeColor = import.meta.env.VITE_APP_DARK_THEME||'#00aaff'
+    let lightThemeColor= import.meta.env.VITE_APP_LIGHT_THEME||'#5500ff'
     const {lightMode} = useContext(Context)
     const [showTooltip,setShowtooltip] = useState(false)
     const color=!lightMode?{

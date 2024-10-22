@@ -12,8 +12,8 @@ import CardContainer from '../../components/cardContainer/CardContainer';
 
 const Dashboard=()=>{
   
-  let darkThemeColor = import.meta.env.VITE_APP_DARK_THEME||'#ff8822'
-  let lightThemeColor= import.meta.env.VITE_APP_LIGHT_THEME||'#138807'
+  let darkThemeColor = import.meta.env.VITE_APP_DARK_THEME||'#00aaff'
+  let lightThemeColor= import.meta.env.VITE_APP_LIGHT_THEME||'#5500ff'
     useAuthInterceptor()
     const [loading,setLoading] = useState(true)
     const [retry,setRetry] = useState(false)
