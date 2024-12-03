@@ -6,7 +6,7 @@
   --text-color:#fefeff;
   --text-color-light:#9999aa;
   --theme-color:#00aaff;/*dark*/
-  --theme-color-reverse:#5500ff;
+  --theme-color-reverse:#5500ff;/*light*/
   --transparent-color:rgba(0,0,0,.5);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
