@@ -15,8 +15,10 @@ const TopNavigation=()=>{
     } alt="back"/>;
     const topNavMenu=[
         {name:"Home",path:"/"},
-        {name:"Contents",path:"https://trideepshivam.in"},
-        {name:"Register",path:"/register"}
+        {name:"Contents",path:"https://tarunindia.in/courses"},
+        {name:"About",path:"/about-us"},
+        {name:"Contact",path:"/contact-us"},
+        {name:"Pricing",path:"/pricing"}
     ];
     return(
         <div className="topNavigation">
@@ -26,10 +28,12 @@ const TopNavigation=()=>{
                 {(!responsive||navOpen)&&<div className="navSlab">
                     {responsive&&<CircleButton style={{left:'1em',top:'1em'}} value={closeBtn} onClick={()=>setNavOpen(false)}/>}
                     {topNavMenu.map((a,index)=><Hyperlink key={index} href={a.path} value={a.name} onClick={()=>setNavOpen(false)}/>)}
-                    <Hyperlink type='buttonLike' href='/login' value="Login" onClick={()=>setNavOpen(false)}/>
                 </div>}
+            </div>
+            <div style={{display:'flex',alignItems:'center'}}>
+                <Hyperlink type='buttonLike' href='/login' value="Login" onClick={()=>setNavOpen(false)}/>
                 <ToggleDarkLight/>
-            </div>            
+            </div>      
         </div>
     )
 }

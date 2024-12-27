@@ -12,7 +12,7 @@ const ToggleDarkLight = () => {
     }
     let imgurl = lightMode?
         "https://img.icons8.com/external-glyph-silhouettes-icons-papa-vector/28/FAB005/external-Light-Mode-interface-glyph-silhouettes-icons-papa-vector.png":
-        "https://img.icons8.com/sf-regular-filled/28/000000/moon-symbol.png";
+        "https://img.icons8.com/sf-regular-filled/28/0055bb/moon-symbol.png";
 
     useEffect(()=>{
         !lightMode?document.body.classList.add("dark-theme"):document.body.classList.remove("dark-theme");
