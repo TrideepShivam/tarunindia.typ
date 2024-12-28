@@ -12,16 +12,17 @@
     z-index: 2;
 }
 .navSlab
-{   
-    padding:.5em 2em;
+{   margin-left: 5em;
+    padding:.4em 1.5em;
     border-radius: 5em;
     background:var(--light-back-color);
     list-style: none;
     display: flex;
-    gap: 2rem;
+    gap: .5rem;
     height: 100%;
     align-items: center;
     text-decoration: none;
+    box-shadow: var(--shadow);
 }
 .topNavigation .navMenuButton{
     color:var(--theme-color);

@@ -5,15 +5,37 @@
 .anchor:hover{
     text-decoration: underline;
 }
-.buttonLike{
+.bordered-theme{
     color:var(--theme-color);
     border:.1em solid var(--theme-color);
     border-radius: 2em;
-    padding:.4em 1.2em;
+    padding:.3em 1em;
     text-decoration: none;
 }
-.buttonLike:hover{
+.bordered-theme:hover{
     color:var(--background-color);
     background-color: var(--theme-color);
-    box-shadow: .1em .1em .2em black;
+    box-shadow: var(--shadow);
+}
+.themed{
+    color:var(--background-color);
+    background-color: var(--theme-color);
+    border-radius: 2em;
+    padding:.4em 1em .5em 1em;
+    text-decoration: none;
+}
+.themed:hover{
+    box-shadow: var(--shadow);
+}
+.trans-hover{
+    color:var(--text-color);
+    border-radius: 2em;
+    padding:.2em .8em .3em .8em;
+    text-decoration: none;
+
+}
+.trans-hover:hover{
+    color:var(--text-color);
+    background-color: var(--transparent-color);
+
 }

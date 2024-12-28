@@ -8,6 +8,7 @@
   --theme-color:#00aaff;/*dark*/
   --theme-color-reverse:#5500ff;/*light*/
   --transparent-color:rgba(0,0,0,.5);
+  --shadow:0em .1em .25em rgba(0,0,0,.5);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

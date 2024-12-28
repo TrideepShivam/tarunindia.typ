@@ -27,11 +27,11 @@ const TopNavigation=()=>{
                 {responsive&&<p className='navMenuButton' onClick={()=>setNavOpen(!navOpen)}>&#9776;</p>}
                 {(!responsive||navOpen)&&<div className="navSlab">
                     {responsive&&<CircleButton style={{left:'1em',top:'1em'}} value={closeBtn} onClick={()=>setNavOpen(false)}/>}
-                    {topNavMenu.map((a,index)=><Hyperlink key={index} href={a.path} value={a.name} onClick={()=>setNavOpen(false)}/>)}
+                    {topNavMenu.map((a,index)=><Hyperlink type={a.name=='Pricing'?'bordered-theme':'trans-hover'} key={index} href={a.path} value={a.name} onClick={()=>setNavOpen(false)}/>)}
                 </div>}
             </div>
             <div style={{display:'flex',alignItems:'center'}}>
-                <Hyperlink type='buttonLike' href='/login' value="Login" onClick={()=>setNavOpen(false)}/>
+                <Hyperlink type='themed' href='/login' value="Get Started" onClick={()=>setNavOpen(false)}/>
                 <ToggleDarkLight/>
             </div>      
         </div>

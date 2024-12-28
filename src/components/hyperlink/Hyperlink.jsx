@@ -4,7 +4,7 @@ import './Hyperlink.css'
 const Hyperlink=(props)=>{
     const typeCollection=['trans-hover','bordered-theme','anchor','themed']
     return(
-        <Link className={!props.type?'anchor':'buttonLike'} to={props.href&&props.href} onClick={props.onClick?props.onClick:''}>
+        <Link className={!props.type?'anchor':props.type} to={props.href&&props.href} onClick={props.onClick?props.onClick:''}>
             {props.value}
         </Link>
     )
