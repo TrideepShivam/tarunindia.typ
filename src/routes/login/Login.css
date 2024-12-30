@@ -1,12 +1,45 @@
-.loginContainer{
-    max-width: 70%;
+.loginUserContainer{
+    display: flex;
+    background:linear-gradient(0deg, var(--transparent-color), var(--transparent-color)), url('./../../assets/login-form-image.png');
+    background-size: 58%;
+    background-repeat: no-repeat;
+    animation:fromleftfade .5s;
+    border-radius:.5em;
+}
+.loginImage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:2em;
+}
+.loginForm{
+    width: 40%;
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius:.5em;
     gap:.5em;
-    padding:4em 5em;
+    padding:5em 2em;
     border-radius:.5em;
     background-color: var(--light-back-color);
-    animation:fromleftfade .5s;
+}
+@media only screen and (max-width:900px){
+	.loginUserContainer{
+        flex-direction: column;
+        width:100%;
+        background-repeat: repeat-y;
+        background-size: 100%;
+        gap:0em;
+    }
+    .loginImage{
+        justify-content: center;
+        align-items: center;
+        padding:.1em 1em;
+    }
+    .loginForm{
+        width: auto;
+        padding:2em 1em;
+        margin:.5em;
+    }
 }
