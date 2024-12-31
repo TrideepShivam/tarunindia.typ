@@ -24,14 +24,15 @@ const TopNavigation=()=>{
         <div className="topNavigation">
             <img width="50em" src={logo} alt="Logo" />
             <div style={{display:'flex',alignItems:'center'}}>
-                {responsive&&<p className='navMenuButton' onClick={()=>setNavOpen(!navOpen)}>&#9776;</p>}
                 {(!responsive||navOpen)&&<div className="navSlab">
                     {responsive&&<CircleButton style={{left:'1em',top:'1em'}} value={closeBtn} onClick={()=>setNavOpen(false)}/>}
                     {topNavMenu.map((a,index)=><Hyperlink type={a.name=='Pricing'?'bordered-theme':'trans-hover'} key={index} href={a.path} value={a.name} onClick={()=>setNavOpen(false)}/>)}
+                    {responsive&&<Hyperlink type='themed' href='/login' value="Get Started" onClick={()=>setNavOpen(false)}/>}
                 </div>}
             </div>
             <div style={{display:'flex',alignItems:'center'}}>
-                <Hyperlink type='themed' href='/login' value="Get Started" onClick={()=>setNavOpen(false)}/>
+                {responsive&&<p className='navMenuButton' onClick={()=>setNavOpen(!navOpen)}>&#9776;</p>}
+                {!responsive&&<Hyperlink type='themed' href='/login' value="Get Started" onClick={()=>setNavOpen(false)}/>}
                 <ToggleDarkLight/>
             </div>      
         </div>

@@ -9,6 +9,8 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import Retry from '../../components/retry/Retry';
+import MainFormContainer from '../../components/mainFormContainer/MainFormContainer';
+import backgroundImg from './../../assets/login-form-image.png'
 
 const Login=()=>{
     useAuthInterceptor()
@@ -57,24 +59,16 @@ const Login=()=>{
         </>
     }
     return(
-        <> 
-        <div className="loginUserContainer">
-            <div className="loginImage">
-                <h1 className='highlight'>Login</h1>
-                <p>Access your <span className="highlight">typ-A-thon</span> account by entering your credentials.</p>
-            </div>
-            <div className="loginForm">
-                <Textbox autofocus={true} var={emailRef} type="text" legend="Email"/>
-                <Textbox var={pwdRef} type="Password" legend="Password"/>
-                <Hyperlink href="/forgot-password" value="Forgot Password?"/>
-                <Button onClick={handleLogin} value="Login"/>
-                <p>
-                    Don't have an account?&nbsp;
-                    <Hyperlink href="/register" value="Register"/>
-                </p>
-            </div>
-        </div>
-        </>
+        <MainFormContainer img={backgroundImg} heading="Login" subheading="Access your typ-A-thon account by entering your credentials">
+            <Textbox autofocus={true} var={emailRef} type="text" legend="Email"/>
+            <Textbox var={pwdRef} type="Password" legend="Password"/>
+            <Hyperlink href="/forgot-password" value="Forgot Password?"/>
+            <Button onClick={handleLogin} value="Login"/>
+            <p>
+                Don't have an account?&nbsp;
+                <Hyperlink href="/register" value="Register"/>
+            </p>
+        </MainFormContainer>
     )
 }
 

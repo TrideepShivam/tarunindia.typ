@@ -1,6 +1,6 @@
 .topNavigation{
-    width:calc(100% - 2em);
-    padding:.5em 1em;
+    width:calc(100% - 1em);
+    padding:.5em;
     font-size: 1.2em;
     position:fixed;
     top:0em;
@@ -32,7 +32,9 @@
 
 @media only screen and (max-width:900px){
     .navSlab{
-        width:100%;
+        margin:0;
+        border-radius: 0em;
+        width:calc(100% - 2.8em);
         height:100vh;
         flex-direction: column;
         justify-content: center;

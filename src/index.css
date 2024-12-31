@@ -7,7 +7,7 @@
   --text-color-light:#9999aa;
   --theme-color:#00aaff;/*dark*/
   --theme-color-reverse:#5500ff;/*light*/
-  --transparent-color:rgba(0,0,0,.5);
+  --transparent-color:rgba(0,0,0,.6);
   --shadow:0em .1em .25em rgba(0,0,0,.5);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
