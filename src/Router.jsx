@@ -19,6 +19,7 @@ import Error from "./routes/error/Error";
 import RegisterTrial from "./routes/register/RegisterTrial";
 import NotFound from "./routes/error/NotFound";
 import Register from "./routes/register/Register";
+import FortgotPassword from "./routes/forgotPassword/ForgotPassword";
 
 const Router = createBrowserRouter([
 
@@ -48,6 +49,9 @@ const Router = createBrowserRouter([
             },{
                 path:'/contact-us',
                 element:<Error/>
+            },{
+                path:'/forgot-password',
+                element:<FortgotPassword/>
             }
 
         ]
