@@ -20,6 +20,7 @@ import RegisterTrial from "./routes/register/RegisterTrial";
 import NotFound from "./routes/error/NotFound";
 import Register from "./routes/register/Register";
 import FortgotPassword from "./routes/forgotPassword/ForgotPassword";
+import SetPassword from "./routes/forgotPassword/SetPassword";
 
 const Router = createBrowserRouter([
 
@@ -51,7 +52,10 @@ const Router = createBrowserRouter([
                 element:<Error/>
             },{
                 path:'/forgot-password',
-                element:<FortgotPassword/>
+                element:<FortgotPassword />
+            },{
+                path:'/reset-password',
+                element:<SetPassword />
             }
 
         ]
