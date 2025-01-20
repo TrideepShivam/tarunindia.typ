@@ -4,7 +4,7 @@ import Textbox from '../../components/textbox/Textbox';
 import './setAndForgot.css'
 import api from '../../api';
 import { Context } from '../../ContextAPI';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import Retry from '../../components/retry/Retry';
@@ -13,6 +13,7 @@ import backgroundImg from '../../assets/new-password-form-image.png'
 
 const SetPassword=()=>{
     useAuthInterceptor()
+    const {id,token} = useParams();
     const {userDetails,setUserLocal,msg,setMsg} = useContext(Context)
     const [loading,setLoading] =useState(false)
     const [retry,setRetry] =useState(false)

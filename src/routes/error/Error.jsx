@@ -5,8 +5,8 @@ import { useLocation } from 'react-router-dom';
 
 const Error =()=>{
     const location = useLocation()
-    const errMessage = location.state.message?location.state.message:'Something went wrong.'
-    const redirectedFrom = location.state.from?location.state.from:'/dashboard'
+    const errMessage = location.state&&location.state.message?location.state.message:'Something went wrong.'
+    const redirectedFrom = location.state&&location.state.from?location.state.from:'/dashboard'
     return(
         <div className='errorContainer'>
             <img src={Logo} alt="logo" />
