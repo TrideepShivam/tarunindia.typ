@@ -13,34 +13,50 @@ import backgroundImg from '../../assets/new-password-form-image.png'
 
 const SetPassword=()=>{
     useAuthInterceptor()
+    const [password,setPassword] = useState('')
+    const [feedback, setFeedback] = useState([])
     const {id,token} = useParams();
+    const navigate = useNavigate()
     const {userDetails,setUserLocal,msg,setMsg} = useContext(Context)
     const [loading,setLoading] =useState(false)
     const [retry,setRetry] =useState(false)
     const pwdRef = useRef()
     const pwdReRef = useRef()
     
+    useEffect(()=>{
+        (!id||!token)&&navigate('/error',{
+            state:{
+                message:'Unauthorised user detected.',
+                from:'/login'
+            }
+        })
+        setFeedback(validatePassword(password))
+    },[password])
+    
+    const validatePassword = (password) => { 
+        const messages = []; 
+        console.log(messages);
+        (!/[A-Z]/.test(password))&&messages.push('Password must contain at least one uppercase letter.');
+        (!/[0-9]/.test(password))&&messages.push('Password must contain at least one number.');
+        (!/[^A-Za-z0-9]/.test(password))&&messages.push('Password must contain at least one special character.');
+        (messages.length === 0)&&messages.push('\u2713 Password is strong!');
+        console.log(messages)
+
+        return messages; 
+    }
+
     const handleReset=()=>{
-        api.post('/auth/login',{
+        api.post('/auth/reset-password',{
             password:pwdRef.current.value,
             confirm_password:pwdReRef.current.value
         }).then((response) =>{
-            if(response.data.access_token){
                 setMsg({
                     ...msg,
                     isOpen:true,
                     status:response.data.state,
                     message:response.data.message
                 })
-                setUserLocal(response.data)
-            }else{
-                setMsg({
-                    ...msg,
-                    isOpen:true,
-                    status:response.data.state,
-                    message:response.data.message
-                })
-            }
+            
             setLoading(false)
         }).catch((response) => {
             console.log(response)
@@ -60,7 +76,10 @@ const SetPassword=()=>{
     }
     return(
         <MainFormContainer img={backgroundImg} heading="Reset Password" subheading="Reset your typ-A-thon account Password">
-            <Textbox var={pwdRef} type="Password" legend="New Password"/>
+            <Textbox var={pwdRef} type="Password" legend="New Password" onChange={(e)=>setPassword(e.target.value)}/>
+            <ul style={{listStyleType:'none',width:'100%'}}> 
+                {feedback.map((message, index) => ( <li key={index}>{message}</li> ))} 
+            </ul>
             <Textbox var={pwdReRef} type="Password" legend="Confirm Password"/>
             <Button onClick={handleReset} value="Submit"/>
         </MainFormContainer>

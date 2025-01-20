@@ -25,7 +25,16 @@ const Textbox=(props)=>{
     const today = new Date().toISOString().split('T')[0];
     return(
         <div className="textboxContainer">
-            <input autoFocus={props.autofocus&&props.autofocus} style={props.style&&props.style} defaultValue={props.type=='date'?today:''} max={props.max?props.max:today} type={props.type} ref={data} onFocus={focusText} onBlur={blurText}/>
+            <input 
+                autoFocus={props.autofocus&&props.autofocus} 
+                style={props.style&&props.style} 
+                defaultValue={props.type=='date'?today:''} 
+                max={props.max?props.max:today} 
+                type={props.type} ref={data} 
+                onFocus={focusText} 
+                onBlur={blurText}
+                onChange={props.onChange&&props.onChange}
+            />
             <p style={legend?focusStyle:blurStyle} >{props.legend}</p>
         </div>
     )
