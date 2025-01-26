@@ -8,7 +8,6 @@ import { Context } from '../../ContextAPI';
 import { Navigate, useNavigate } from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
-import Retry from '../../components/retry/Retry';
 import MainFormContainer from '../../components/mainFormContainer/MainFormContainer';
 import backgroundImg from './../../assets/login-form-image.png'
 
@@ -16,7 +15,6 @@ const Login=()=>{
     useAuthInterceptor()
     const {userDetails,setUserLocal,msg,setMsg} = useContext(Context)
     const [loading,setLoading] =useState(false)
-    const [retry,setRetry] =useState(false)
     const emailRef = useRef()
     const pwdRef = useRef()
     
@@ -43,15 +41,11 @@ const Login=()=>{
             }
             setLoading(false)
         }).catch((response) => {
-            console.log(response)
             setLoading(false)
-            setRetry(true)
         });
     }
     if(loading){
         return <Loading/>
-    }else if(retry){
-       return <Retry retry={handleLogin} to='/login'/>
     }
     if(userDetails){
         return <>

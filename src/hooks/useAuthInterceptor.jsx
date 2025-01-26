@@ -22,7 +22,6 @@ const useAuthInterceptor=()=>{
                 if(error.response.status==401){
                     localStorage.removeItem('USER_DETAILS')
                     setUserLocal("")
-                    
                     setMsg({
                         ...msg,
                         isOpen:true,
@@ -30,6 +29,22 @@ const useAuthInterceptor=()=>{
                         message:error.response.data.message
                     })
                     return error.response;
+                }else if(error.response.status === 500){
+                    setMsg({
+                        ...msg,
+                        isOpen:true,
+                        status:'Error',
+                        message:'Internal server Error.'
+                    })
+                }else if(error.response.status === 404){
+                    setMsg({
+                        ...msg,
+                        isOpen:true,
+                        status:'Error',
+                        message:'404: Page not found.'
+                    })
+                }else if(error.response.status === 422){
+                    return error.response
                 }
                 return Promise.reject(error);
             }catch(error){

@@ -13,13 +13,13 @@ import MainFormContainer from '../../components/mainFormContainer/MainFormContai
 import backgroundImg from './../../assets/register-form-image.jpeg'
 
 const Register=()=>{
-    const {userDetails,setUserLocal,msg,setMsg} = useContext(Context)
+    const {userDetails,msg,setMsg} = useContext(Context)
     const [loading,setLoading] =useState(false)
-    const [retry,setRetry] =useState(false)
     const nameRef = useRef()
     const emailRef = useRef()
     const tncRef = useRef(false)
     const handleRegister=()=>{
+        setLoading(true)
         api.post('/auth/register',{
             name:nameRef.current.value,
             email:emailRef.current.value
@@ -30,24 +30,21 @@ const Register=()=>{
                 status:data.state,
                 message:data.message
             })
-            setUserLocal(data)
+            emailRef.current.value=''
+            nameRef.current.value=''
+            nameRef.current.focus()
             setLoading(false)
-            console.log(data)
         }).catch(({response}) => {
+            setLoading(false)
             setMsg({
                 isOpen:true,
-                status:response.data.state,
-                message:response.data.message
+                status:response.data?response.data.state:'Error',
+                message:response.data?response.data.message:'Server Error. Try again'
             })
-            setLoading(false)
-            setRetry(true)
-            console.log(response);
         });
     }
     if(loading){
         return <Loading/>
-    } else if(retry){
-        return <Retry retry={handleRegister} to='/register'/>
      }
     if(userDetails){
         return <>
@@ -58,8 +55,12 @@ const Register=()=>{
         <MainFormContainer img={backgroundImg} heading="Register" subheading='Join typ-A-thon today by filling in your details'>
             <Textbox autofocus={true} var={nameRef} type="text" legend="Full Name"/>
             <Textbox var={emailRef} type="text" legend="Email"/>
-            <Checkbox checkedRef={tncRef} value='Agree' transparent={true}/>
-            <Hyperlink href="/tnc" value="Terms and Conditions"/>
+            <div style={{width:'100%',display:'flex',flexWrap:'wrap',alignItems:'center'}}>
+                <Checkbox checkedRef={tncRef} value='Agree' transparent={true}/>
+                <Hyperlink href="/tnc" value="Terms and Conditions"/>
+                <p style={{fontSize:'1.2em'}}>&nbsp;and&nbsp;</p>
+                <Hyperlink href="/privacy-policy" value="Privacy Policy"/>
+            </div>
             <Button onClick={handleRegister} value="Register"/>
             <p>
                 Have an account?&nbsp;

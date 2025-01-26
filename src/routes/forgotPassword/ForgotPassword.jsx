@@ -20,26 +20,18 @@ const FortgotPassword=()=>{
     const emailRef = useRef()
     
     const handleForgotPassword=()=>{
-        api.post('/auth/forgot-password',{
+        api.post('/auth/update-password',{
             email:emailRef.current.value
         }).then((response) =>{
-            if(response.data.access_token){
-                setMsg({
-                    ...msg,
-                    isOpen:true,
-                    status:response.data.state,
-                    message:response.data.message
-                })
-                // setUserLocal(response.data)
-            }else{
-                setMsg({
-                    ...msg,
-                    isOpen:true,
-                    status:response.data.state,
-                    message:response.data.message
-                })
-            }
+            setMsg({
+                ...msg,
+                isOpen:true,
+                status:response.data.state,
+                message:response.data.message
+            })
             setLoading(false)
+            emailRef.current.value=''
+            emailRef.current.focus()
         }).catch((response) => {
             console.log(response)
             setLoading(false)

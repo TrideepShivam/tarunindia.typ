@@ -7,7 +7,6 @@ import { Context } from '../../ContextAPI';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
-import Retry from '../../components/retry/Retry';
 import MainFormContainer from '../../components/mainFormContainer/MainFormContainer';
 import backgroundImg from '../../assets/new-password-form-image.png'
 
@@ -19,7 +18,6 @@ const SetPassword=()=>{
     const navigate = useNavigate()
     const {userDetails,setUserLocal,msg,setMsg} = useContext(Context)
     const [loading,setLoading] =useState(false)
-    const [retry,setRetry] =useState(false)
     const pwdRef = useRef()
     const pwdReRef = useRef()
     
@@ -35,39 +33,47 @@ const SetPassword=()=>{
     
     const validatePassword = (password) => { 
         const messages = []; 
-        console.log(messages);
         (!/[A-Z]/.test(password))&&messages.push('Password must contain at least one uppercase letter.');
         (!/[0-9]/.test(password))&&messages.push('Password must contain at least one number.');
         (!/[^A-Za-z0-9]/.test(password))&&messages.push('Password must contain at least one special character.');
         (messages.length === 0)&&messages.push('\u2713 Password is strong!');
-        console.log(messages)
-
         return messages; 
     }
 
     const handleReset=()=>{
+        setLoading(true)
+        const newPassword = pwdRef.current.value
+        const rePassword = pwdReRef.current.value
+        const regex = /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[A-Z])(?=.*[0-9])/; 
+        newPassword===rePassword&&regex.test(newPassword)?
         api.post('/auth/reset-password',{
-            password:pwdRef.current.value,
-            confirm_password:pwdReRef.current.value
+            id:id,
+            token:token,
+            password:newPassword,
+            password_confirmation:rePassword
         }).then((response) =>{
-                setMsg({
-                    ...msg,
-                    isOpen:true,
-                    status:response.data.state,
-                    message:response.data.message
-                })
-            
+            setMsg({
+                ...msg,
+                isOpen:true,
+                status:response.data.state,
+                message:response.data.message
+            })
+            navigate('/login')        
             setLoading(false)
         }).catch((response) => {
             console.log(response)
             setLoading(false)
-            setRetry(true)
-        });
+        }):
+        setMsg({
+            ...msg,
+            isOpen:true,
+            status:'Error',
+            message:'Follow the guidelines and passwords must be matched'
+        })
+        setLoading(false)
     }
     if(loading){
         return <Loading/>
-    }else if(retry){
-       return <Retry retry={handleReset} to='/login'/>
     }
     if(userDetails){
         return <>
