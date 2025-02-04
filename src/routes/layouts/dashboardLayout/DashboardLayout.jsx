@@ -97,9 +97,18 @@ const DashboardLayout=()=>{
                 "https://img.icons8.com/ios-filled/50/FFFFFF/test-account.png",
                 "https://img.icons8.com/ios-filled/50/000000/test-account.png"
             ]
+        },{
+            id:'1',value:'Pricing',href:'/dashboard/pricing',
+            action:()=>{
+                console.log("clicked pricing")
+            },
+            icons:[
+                "https://img.icons8.com/ios-filled/50/ffffff/tags.png",
+                "https://img.icons8.com/ios-filled/50/000000/tags.png"
+            ]
         },
         {
-            id:'0',value:'Settings',href:'/settings',
+            id:'2',value:'Settings',href:'/settings',
             action:()=>{
                 console.log("clicked settings")
             },
@@ -109,7 +118,7 @@ const DashboardLayout=()=>{
             ]
         },
         {
-            id:'0',value:'Logout',href:'/dashboard',
+            id:'3',value:'Logout',href:'/dashboard',
             action:()=>{
                     api.get('/auth/logout')
                     .then(({data})=>{

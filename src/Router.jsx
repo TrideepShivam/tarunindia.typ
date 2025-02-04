@@ -21,6 +21,7 @@ import NotFound from "./routes/error/NotFound";
 import Register from "./routes/register/Register";
 import ForgotPassword from "./routes/forgotPassword/ForgotPassword";
 import SetPassword from "./routes/forgotPassword/SetPassword";
+import Pricing from "./routes/pricing/Pricing";
 
 const Router = createBrowserRouter([
 
@@ -45,12 +46,6 @@ const Router = createBrowserRouter([
                 path:'/error',
                 element:<Error/>
             },{
-                path:'/about-us',
-                element:<Error/>
-            },{
-                path:'/contact-us',
-                element:<Error/>
-            },{
                 path:'/forgot-password',
                 element:<ForgotPassword />
             },{
@@ -59,6 +54,9 @@ const Router = createBrowserRouter([
             },{
                 path:'/reset-password',
                 element:<SetPassword />
+            },{
+                path:'/pricing',
+                element:<Pricing />
             }
 
         ]
@@ -70,6 +68,10 @@ const Router = createBrowserRouter([
             {
                 path:'/',
                 element:<Navigate to={'/'}/>
+            },
+            {
+                path:'/dashboard/pricing',
+                element:<Pricing />
             },
             {
                 path:'/dashboard',
