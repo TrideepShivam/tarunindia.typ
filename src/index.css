@@ -8,6 +8,8 @@
   --theme-color:#00aaff;/*dark*/
   --theme-color-reverse:#5500ff;/*light*/
   --transparent-color:rgba(0,0,0,.6);
+  --light-transparent-color:rgba(0,0,0,.4);
+  --dark-transparent-color:rgba(0,0,0,.8);
   --shadow:0em .1em .25em rgba(0,0,0,.5);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -27,6 +29,8 @@
   --text-color-light:#202020;
   --theme-color-reverse:#00aaff;
   --theme-color:#5500ff;
+  --light-transparent-color:rgba(255,255,255,.3);
+  --dark-transparent-color:rgba(255,255,255,.8);
   --transparent-color:rgba(255,255,255,.5);
 
 }

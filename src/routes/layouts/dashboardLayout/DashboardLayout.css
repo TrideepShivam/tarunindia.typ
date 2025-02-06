@@ -2,8 +2,8 @@
     width:100%;
     height: calc(94% - .5em);
     display:flex;
-    background-color: var(--transparent-color);
-    backdrop-filter: blur(15px);
+    background-color: var(--dark-transparent-color);
+    backdrop-filter: blur(10px);
 }
 .sideNavContainer{
     padding:0em .25em;
