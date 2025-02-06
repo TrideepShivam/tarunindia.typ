@@ -6,7 +6,8 @@
     flex-direction: column;
 }
 .formContainer{
-    background-color: var(--background-color);
+    background-color: var(--transparent-color);
+    backdrop-filter: blur(15px);
     min-height: 100vh;
     display: flex;
     justify-content: center;

@@ -5,8 +5,7 @@
 .parent {
     height: auto;
     width: 100%;
-    background-color:var(--background-color);
-
+    background-color:var(--transparent-color);
 }
 
 .blur h1 {
