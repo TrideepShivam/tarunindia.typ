@@ -9,6 +9,7 @@ import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import Loading from '../../components/loading/Loading';
 import Retry from '../../components/retry/Retry';
 import CardContainer from '../../components/cardContainer/CardContainer';
+import { format } from 'date-fns';
 
 const Dashboard=()=>{
   
@@ -17,7 +18,7 @@ const Dashboard=()=>{
     useAuthInterceptor()
     const [loading,setLoading] = useState(true)
     const [retry,setRetry] = useState(false)
-    const {lightMode,responsive} = useContext(Context)
+    const {lightMode,responsive,userDetails} = useContext(Context)
     const [wpm,setWpm] = useState([{
       value:"33.7",
       unit:"WPM",
@@ -158,11 +159,16 @@ const Dashboard=()=>{
     <>
         <p className="sectionHead">DASHBOARD</p>
         <div className="dashboardContent">
+          <div className="welcomeContainer">
+              <h1 className='highlight'>Namaste, {userDetails.user.name}</h1>
+              <h3>Welcome to Typathon</h3>
+              <p style={{textAlign:!responsive?'right':'left'}}>Joined on {format(new Date(userDetails.user.created_at), 'MMM d, yyyy')}</p>
+          </div>
           <CardContainer>
-              {wpm.map((item,index)=>
-                  <Card key={index} val={item} />
-              )}
               <TotalCard val={totalData} />
+              {wpm.map((item,index)=>
+                <Card key={index} val={item} />
+              )}
           </CardContainer>
             <div className="chartContainer" style={{width:responsive?"98%":"40%"}}>
                 <Chart

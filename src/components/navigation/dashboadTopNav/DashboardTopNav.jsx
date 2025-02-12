@@ -22,8 +22,6 @@ const DashboardTopNav=({userNavigator,sideNavOpen,setSideNavOpen})=>{
             </div>
             {!responsive&&<div className='navElement'>
                 <img width="40em" src={logo} alt="Logo" />
-                &nbsp;
-                <p className='highlight'>Trial</p>
             </div>}
             <div className='navElement'>
                 <Users userNavigator={userNavigator}/>

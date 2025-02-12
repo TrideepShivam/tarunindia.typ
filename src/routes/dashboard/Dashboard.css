@@ -5,6 +5,14 @@
     gap: 1em;
     animation:fromleftfade .5s;
 }
+.welcomeContainer{
+    width:90%;
+    padding:2em;
+    border-radius: 1em;
+    background:linear-gradient(var(--transparent-color),var(--dark-transparent-color)),url('../../assets/dashboard-welcome-dark.jpeg');
+    background-size: cover;
+    background-position: center bottom;
+}
 .chartContainer,.eventContainer{
     padding:1em;
     border-radius: 1em;
