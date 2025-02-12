@@ -9,9 +9,8 @@
     padding:0em .25em;
     display:flex;
 }
-.mainContentContainer{
+.mainDashboardContentContainer{
     height:var(100% - 1em);
-    position: relative;
     padding:.5em;
     overflow-y:auto;
 }

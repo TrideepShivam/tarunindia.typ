@@ -4,7 +4,7 @@ const Loading =()=>{
 
     return(
         <div className='loadingContainer'>
-            <svg width="260" height="260" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="120" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter2_i_598_142)">
             <rect x="104" y="148" width="50" height="50" rx="10" fill="#5000ff" class="svg-elem-1"></rect>
             <rect x="159.73" y="92" width="50" height="50" rx="10" fill="#5000ff" class="svg-elem-2"></rect>
@@ -44,6 +44,7 @@ const Loading =()=>{
             </filter>
             </defs>
             </svg>
+            <p>Loading...</p>
         </div>
     )
 }

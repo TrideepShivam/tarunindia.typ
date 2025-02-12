@@ -3,7 +3,6 @@
     min-height: 2.5em;
     padding:.25em 1em;
     height:6%;
-    position: relative;
     background:var(--light-back-color);
     display:flex;
     justify-content: space-between;

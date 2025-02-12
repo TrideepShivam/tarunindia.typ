@@ -158,7 +158,7 @@ const DashboardLayout=()=>{
                     </div>}
                 </div>}
                 <div 
-                    className="mainContentContainer" 
+                    className="mainDashboardContentContainer" 
                     style={{width:responsive?'100%':sideNavOpen?"calc(100% - 14.5em)":"calc(100% - 5em)"}}>
                     <Outlet/>
                 </div>
