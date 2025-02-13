@@ -1,23 +1,30 @@
 .playgroundContent{
     width:100%;
-    max-height: 100%;
     display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    flex-wrap: wrap;
     gap:1em;
     animation:fromleftfade .5s;
-    overflow-y: auto;
 }
-.playgroundContent .informationContainer{
-    width:45%;
-    padding:.5em;
+.playgroundInfoAndPendingContainer{
+    width:50%;
     display: flex;
     flex-direction: column;
-    gap:.5em;
+    gap:1em;
 }
-.playgroundContent .playForm{
-    width:40%;
+ .playgroundInformation{
+    padding:2em;
+    border-radius: 1em;
+    background:linear-gradient(var(--transparent-color),var(--dark-transparent-color)),url('../../assets/dashboard-welcome-light.jpeg');
+    background-size: cover;
+    background-position: center center;
+}
+.pendingTestContainer{
+    min-height: 40%;
+    padding:2em;
+    background-color: var(--light-back-color);
+    border-radius: 1em;
+}
+.playForm{
+    width: 40%;
     padding:2em;
     display:flex;
     flex-direction: column;
@@ -32,19 +39,7 @@
     font-size: 1.2em;
 }
 @media screen and (max-width:900px){
-    .playgroundContent .informationContainer{
-        width:calc(100% - 1em);
-        height: 100%;
-        position:absolute;
-        background-color: var(--transparent-color);
-        backdrop-filter: blur(15px);
-        top:0;
-        left:0;
-        z-index: 5;
-        animation:fromleftfade .5s;
-    }
-    .playgroundContent .playForm{
-        width:90%;
-        font-size: .9em;
-    }
+    .playgroundContent{flex-direction: column;padding:1em;}
+    .playgroundInfoAndPendingContainer{width:100%;padding:1em;}
+    .playForm{width: calc(100% - 2em);padding:1em;}
 }

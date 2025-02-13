@@ -14,9 +14,8 @@ import Retry from '../../components/retry/Retry';
 const Playground=()=>{
     useAuthInterceptor()
     const [loading,setLoading] = useState(true)
-    const [showIntro,setShowIntro] = useState(true)
     const [retry,setRetry] = useState(false)
-    const {setMsg,responsive} = useContext(Context)
+    const {setMsg} = useContext(Context)
     const navigate = useNavigate()
     const [dropdownLanguage,setDropdownLanguage] = useState([])//database
     const [dropdownLevel,setDropdownLevel] = useState([])//database
@@ -102,40 +101,29 @@ const Playground=()=>{
     <>
         <p className="sectionHead">PLAYGROUND</p>
         <div className="playgroundContent">
-            {showIntro&&<div className="informationContainer">
-                <h2 className="highlight">Instructions</h2>
-                <h3>Welcome to <span className="highlight">Tarun India Typing</span> App</h3>
-                <p>This form is designed to help you customize your typing test experience. By filling out the form, you can select the language you want to practice, choose the duration of the test, and pick your skill level. Whether you’re a beginner looking to improve your typing speed, an intermediate user aiming to enhance your accuracy, or someone who enjoys typing out stories, this form will tailor the test to your needs.</p>
-                <ol>
-                    <li>Choose <span className="highlight">language</span> among English, Hindi(Krutidev/Mangal).</li>
-                    <li>Set the <span className="highlight">duration</span> from 1, 5, 10 mins.</li>
-                    <li>Set the <span className="highlight">level</span> according to your practice level.</li>
-                    <li>Choose the <span className="highlight">Story</span> after selecting the language and the level.</li>
-                    <li>Unblock the <span className="highlight">Backspace</span> if you want to use the backspace.</li>
-                    <li>Unblock the <span className="highlight">Hilighting text</span> if you don't want to Highlight the text.</li>
-                </ol>
-                <h3>Now, Click to the <span className="highlight">Play</span> button and start your typing speed improvement journey!</h3>
-                {!responsive?<p><span className="highlight">Note:-</span> To change the keyboard layout for Hindi <span className="highlight">Mangal</span> font, please press <span className="highlight">ALT+SHIFT</span> from keyboard. For this you must have installed <span className="highlight">Indic Input 3</span> Software. You can download it from <Hyperlink onClick={()=>
-                    window.location.href="https://www.microsoft.com/en-in/bhashaindia/downloads?msockid=15f4967d9a2f6ebc02f784929b296f8e"
-                }value='here'/>. If you feel any difficulty please contact us on <span className="highlight">Support</span> Channel</p>:
-                <Button style={{margin:".8em"}} value={"Next"} onClick={()=>setShowIntro(false)}/>}
-            </div>}
+            <div className="playgroundInfoAndPendingContainer">
+                <div className="playgroundInformation">
+                    <h3>Welcome to <span className="highlight">Typathon!</span> App</h3>
+                    <p>This form is designed to help you customize your typing test experience. By filling out the form, you can select the language you want to practice, choose the duration of the test, and pick your skill level. Whether you’re a beginner looking to improve your typing speed, an intermediate user aiming to enhance your accuracy, or someone who enjoys typing out stories, this form will tailor the test to your needs.</p>
+                </div>
+                <div className="pendingTestContainer">
+                    <h2 className="sectionHead">Pending Tests</h2>
+                    <p>No pending tests available</p>
+                </div>
+            </div>
             <div className="playForm">
                 <h2 className="sectionHead">Play Form</h2>
                 <p><span className="highlight">Welcome!</span> Ready to take your typing skills to the next level? Let's get those fingers flying!</p>
-                {!showIntro&&<Hyperlink value={'Instruction'} onClick={()=>setShowIntro(true)}/>}
                 <Dropdown var={langRef} options={dropdownLanguage} legend="Language"/>
                 <Dropdown var={durationRef} options={dropdownDuration} legend="Duration"/>
                 <Dropdown var={levelRef} options={dropdownLevel} legend="Level"/>
                 <Dropdown var={storyRef} options={dropdownStory} legend="Story" onClick={storyCollection}/>
-                {
-                    conditions.map((item,index)=>
+                {conditions.map((item,index)=>
                     <div key={index} className="conditionContainer">
                         <p>{item}</p>
                         <ToggleButton var={index===0?backspaceRef:highlightRef}/>
                     </div>
-                    )
-                }
+                )}
                 <Button style={{margin:".8em"}} value={"Play"} onClick={handlePlay}/>
             </div>
         </div>
