@@ -1,0 +1,100 @@
+.pricingContainer{
+    align-self: flex-start;
+    width:100%;
+    display: flex;
+    gap:1em;
+    flex-direction: column;
+}
+.pricingHead{
+    width:calc(100% - 4em);
+    padding:2em;
+    min-height: 30em;
+    font-size: 1.2em;
+    display:flex;
+    gap:0.5em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background:linear-gradient(var(--transparent-color),var(--dark-transparent-color)),url('../../assets/pricing-image.jpeg');
+    background-attachment: fixed;
+    background-size: cover;
+    border-radius:0 0 100% 40%;
+    animation:borderanimation 50s infinite;
+}
+.price{
+    background: linear-gradient(to right, var(--theme-color) 15%, var(--theme-color-reverse));
+    color: transparent;
+    background-clip: text;
+    font-size: 10em;
+    margin: -.2em 0em -.1em 0em;
+    position: relative;
+}
+.price::after{
+    content: '/per day';
+    font-size: .1em;
+    color:var(--text-color);
+    position:absolute;
+    bottom:0em;
+    width:4em;
+}
+.comparisonContainer{
+    padding:2em;
+    display:flex;
+    gap:1em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.comparisonTable,.planContainer{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.comparisonTable table{
+    border:.1em solid var(--light-back-color);
+    border-collapse: collapse;
+    text-align: left;
+}
+.comparisonTable th,.comparisonTable td{
+    padding:.5em 1em;
+    font-size: 1.5em;
+}
+.comparisonTable thead{
+    color: var(--theme-color);
+}
+.comparisonContainer tbody tr td:first-child{
+    background-color: var(--light-back-color);
+}
+.comparisonContainer tbody tr td:last-child{
+    background-color: var(--theme-color-reverse);
+}
+
+@keyframes borderanimation{
+    0%{border-radius:0 0 100% 40%;}
+    17%{border-radius:0 0 80% 60%;}
+    34%{border-radius:0 0 60% 80%;}
+    51%{border-radius:0 0 40% 100%;}
+    68%{border-radius:0 0 60% 80%;}
+    85%{border-radius:0 0 80% 60%;}
+    100%{border-radius:0 0 100% 40%;}
+
+}
+@media screen and (max-width:900px) {
+    .pricingHead{
+        width:calc(100% - 2em);
+        padding:2em 1em;
+        align-items: flex-start;
+    }
+    .comparisonContainer{
+        padding:1em;
+        justify-content: flex-start;
+    }
+    .comparisonTable th,.comparisonTable td{
+        padding:.5em;
+        font-size: 1.2em;
+    }
+    .planContainer{
+        padding:1em;
+    }
+}

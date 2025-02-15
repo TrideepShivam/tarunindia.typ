@@ -28,9 +28,10 @@
     box-shadow: var(--shadow);
 }
 .trans-hover{
+    background-color: var(--light-back-color);
     color:var(--text-color);
     border-radius: 2em;
-    padding:.2em .8em .3em .8em;
+    padding:.3em .8em;
     text-decoration: none;
 
 }

@@ -1,8 +1,8 @@
 import './CardContainer.css'
  
-const CardContainer=({children})=>{
+const CardContainer=({children,style})=>{
     return(
-        <div className="cardMainContainer">
+        <div className="cardMainContainer" style={style&&style}>
             {children}
         </div>
     )
