@@ -23,8 +23,25 @@
     min-width: 10em;
     background-color: var(--light-back-color);
     padding:2em;
-    box-shadow: 0px .5px 5px var(--theme-color);
     animation:fromleftfade .5s;
+}
+.planCard.exclusive{
+    border:.5px solid var(--theme-color);
+    position: relative;
+    overflow:hidden
+}
+.planCard.exclusive::before {
+    content: "Exclusive Deal";
+    position: absolute;
+    top:1.5em;
+    left:-2.35em;
+    padding: .5em 2em;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    transform: rotate(-45deg);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 @media screen and (max-width:900px) {
 }

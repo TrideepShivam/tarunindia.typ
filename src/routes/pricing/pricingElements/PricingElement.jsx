@@ -37,13 +37,13 @@ const PricingElement=()=>{
         </CardContainer>
         {!loading?<div className="priceCardContainer">
             {data.map((item,index)=>
-                <div key={index} className="planCard">
+                <div key={index} className={index==data.length-1?'planCard exclusive':'planCard'}>
                     <h2>{item.language}</h2>
                     <h1 className='highlight'>{item.price}₹</h1>
                     <h3>{item.duration} Days</h3>
-                    <p>{parseFloat((item.price / day).toFixed(2))}₹ per day</p>
-                    <p>Unlimited access</p>
-                    <p>Free Event Tickets</p>
+                    <p><span className="highlight">{parseFloat((item.price / day).toFixed(2))}₹</span> per day</p>
+                    <p>{index==data.length-1?'Unlimited':item.language} access</p>
+                    <p>{index==data.length-1?'Free':'Paid'} Event Tickets</p>
                     <p>24/7 support</p>
                     <Button style={{width:'10em'}} value={'Buy Now'} onClick={()=>{}}/>
                 </div>
