@@ -3,6 +3,7 @@ import './Pricing.css'
 import { Context } from '../../ContextAPI'
 import { Navigate, useLocation } from 'react-router-dom'
 import PricingElement from './pricingElements/PricingElement'
+import Footer from '../../components/footer/Footer'
  
 const Pricing=()=>{
     const {userDetails,msg,setMsg} = useContext(Context)
@@ -81,6 +82,7 @@ const Pricing=()=>{
             <h1 className="sectionHead">Choose your plan</h1>
             <PricingElement/>
         </div>
+        <Footer/>
     </div>
     )
 }

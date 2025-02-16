@@ -1,0 +1,33 @@
+.footerContainer {
+    width: 100%;
+    background-color: var(--light-back-color);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.about,
+.contact {
+    width:30%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding:1rem 2%;
+    
+}
+.lastRibbon {
+    width: 92%;
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4% 0 4%;
+    align-items: center;
+}
+@media screen and (max-width:900px){
+    .footerContainer{
+        flex-direction: column;
+        align-items: center;
+    }
+    .about,.contact{width: 80%;}
+}

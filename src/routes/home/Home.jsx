@@ -18,6 +18,7 @@ import InstLogo from '../../assets/institute-logo.jpg'
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { Context } from '../../ContextAPI';
+import Footer from '../../components/footer/Footer';
 
 
 const Home = () => {
@@ -83,30 +84,7 @@ const Home = () => {
                     workflow.map((a, index) => <DotLineBox key={index} dot={a.dot} image={a.image} head={a.head} short={a.short} />)
                 }
             </div>
-            <div className="lastDiv">
-                <div className="about">
-                    <p className="sectionHead">ABOUT</p>
-                    <p>
-                        Welcome to <span className="highlight">Tarun India Typing</span>, your go-to platform for enhancing your typing skills! Our mission is to provide an engaging and effective way for users of all levels to improve their typing speed and accuracy. Whether you’re a beginner just starting out or an experienced typist looking to refine your skills, our customizable tests and user-friendly interface make practice enjoyable and productive. Join us on your journey to becoming a <span className="highlight">typing pro!</span>
-                    </p>
-                </div>
-                <div className="contact">
-                    <p className="sectionHead">CONTACT</p>
-                    <h2>TARUN INDIA INSTITUTE</h2>
-                    <p>In Front of Police Station, ward no-13,</p>
-                    <p>Madhepura, Bihar, India</p>    
-                    <p>852113</p>    
-                    <h3 className="highlight" style={{wordBreak:"break-all"}}>tarunindia1989@gmail.com</h3>
-                    <h3 className="highlight">9709483986</h3>
-                </div>
-                <div className="lastRibbon">
-                    <span className='highlight'><span>terms & services </span>
-                        <span>privacy policy</span></span>
-
-                    <span><span>copyright @ 2024</span><Hyperlink value=" tarunindia.in"></Hyperlink></span>
-                </div>
-            </div>
-
+            <Footer/>
         </div>
     )
 }
