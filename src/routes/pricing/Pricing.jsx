@@ -78,17 +78,17 @@ const Pricing=()=>{
                     <tbody>
                         <tr>
                             <td>1 min Testing</td>
-                            <td>Unpmited</td>
-                            <td>Unpmited</td>
+                            <td>Unlimited</td>
+                            <td>Unlimited</td>
                         </tr>
                         <tr>
                             <td>10 min Testing</td>
                             <td>1 per day</td>
-                            <td>Unpmited</td>
+                            <td>Unlimited</td>
                         </tr>
                         <tr>
                             <td>Advanced Analytics</td>
-                            <td>pmited</td>
+                            <td>limited</td>
                             <td>Full</td>
                         </tr>
                         <tr>
