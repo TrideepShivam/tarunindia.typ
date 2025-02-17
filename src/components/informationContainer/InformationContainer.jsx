@@ -7,7 +7,7 @@ const InformationContainer=({children})=>{
         <div className="informationContainer">
             <div className="information">
                 {children}
-                <p style={{textAlign:'right'}}>Team <br /><Hyperlink href='/' value='tarunindia.in'/></p>
+                <p style={{textAlign:'right'}}>Team <br /><Hyperlink href='/' value='Typathon'/></p>
             </div>
             <div className="commonInformation">
                 <p className="sectionHead">SCAN TO SUBSCRIBE US</p>
@@ -21,7 +21,7 @@ const InformationContainer=({children})=>{
                     <div>
                         <img width={'70%'} src={wa} alt="youtube" />
                         <div style={{display:'flex',alignItems:'center'}}>
-                            <img  src="https://img.icons8.com/color/40/whatsapp.png" alt="youtube" />
+                            <img  src="https://img.icons8.com/color/40/whatsapp.png" alt="whatsapp" />
                             <p>tarunindia.in</p>
                         </div>
                     </div>

@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react'
 import './Pricing.css'
+import certificate from './../../assets/certificate.jpg'
 import { Context } from '../../ContextAPI'
 import { Navigate, useLocation } from 'react-router-dom'
 import PricingElement from './pricingElements/PricingElement'
@@ -8,7 +9,7 @@ import Accordion from '../../components/accordion/Accordion'
 import Button from '../../components/button/Button'
  
 const Pricing=()=>{
-    const {userDetails,msg,setMsg} = useContext(Context)
+    const {userDetails,responsive} = useContext(Context)
     const location = useLocation()
     const faqs = [
         {
@@ -52,6 +53,15 @@ const Pricing=()=>{
             <h1>with <span className="highpght">Typathon</span></h1>
             <p>Yearly and Half Yearly plan is starting from</p>
             <h1 className='price'>5₹</h1>
+        </div>
+        <div className="freeSubscription">
+            <div className="detailsFreeSubscription">
+                <h1 className="sectionHead">Free Subscription</h1>
+                <h2>Unlock a Free Typathon Subscription with Your Typing or Computer Certificate!</h2>
+                <p>At Typathon, we believe in recognizing and rewarding your hard-earned skills. That's why we're offering an exclusive <span className="highlight">15 days</span> free subscription with full access of everything to users who upload their valid typing or computer certificates. Elevate your typing journey with Typathon's premium features, completely free of charge!</p>
+                <Button onClick={()=>window.location.href='https://wa.me/9546747447'} style={{width:'10em'}} value={'Contact Us'}/>
+            </div>
+            <img width={responsive?'100%':'40%'} src={certificate} alt="certificate" />
         </div>
         <div className="comparisonContainer">
             <h1 className="sectionHead">Why Premium</h1>
@@ -121,7 +131,7 @@ const Pricing=()=>{
             <p><strong>Cost Savings</strong>: Enjoy significant discounts with our bulk subscription rates, making high-quapty training affordable.</p>
             <p><strong>Enhanced Learning Experience</strong>: Provide your students with comprehensive typing skills that enhance both academic and professional performance.</p>
             <p><strong>Dedicated Support</strong>: Gain access to additional resources and priority support to ensure a successful training experience.</p>
-            <Button style={{width:'10em',margin:'1em'}} value={'Contact Us'}/>
+            <Button onClick={()=>window.location.href='https://wa.me/9546747447'} style={{width:'10em',margin:'1em'}} value={'Contact Us'}/>
         </div>
         <div className="faq">
             <h1 className="sectionHead">Frequently Asked Questions</h1>

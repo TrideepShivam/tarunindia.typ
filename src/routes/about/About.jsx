@@ -7,7 +7,7 @@ const About=()=>{
         <p className="sectionHead">ABOUT</p>
         <div className="aboutContent">
             <InformationContainer>
-                <p style={{textIndent:'2em'}}>Welcome to <span className="highlight">Tarun India Typing</span>, your go-to platform for enhancing your typing skills! Our mission is to provide an engaging and effective way for users of all levels to improve their typing speed and accuracy. Whether you’re a beginner just starting out or an experienced typist looking to refine your skills, our customizable tests and user-friendly interface make practice enjoyable and productive. Join us on your journey to becoming a typing pro! Here are some of the standout features:</p>
+                <p style={{textIndent:'2em'}}>Welcome to <span className="highlight">Typathon</span>, your go-to platform for enhancing your typing skills! Our mission is to provide an engaging and effective way for users of all levels to improve their typing speed and accuracy. Whether you’re a beginner just starting out or an experienced typist looking to refine your skills, our customizable tests and user-friendly interface make practice enjoyable and productive. Join us on your journey to becoming a typing pro! Here are some of the standout features:</p>
                 <p className="highlight">User-Friendly Interface:</p>
                 <p>Our intuitive and clean design ensures that you can easily navigate through the app and focus on improving your typing skills without any distractions.</p>
                 <p className="highlight">Comprehensive Support System:</p>

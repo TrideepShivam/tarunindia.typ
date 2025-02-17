@@ -16,8 +16,8 @@ const Footer=()=>{
                 <p>In Front of Police Station, ward no-13,</p>
                 <p>Madhepura, Bihar, India</p>    
                 <p>852113</p>    
-                <h3 className="highlight" style={{wordBreak:"break-all"}}>tarunindia1989@gmail.com</h3>
-                <h3 className="highlight">9709483986</h3>
+                <h3 className="highlight" style={{wordBreak:"break-all"}}>info@typathon.com</h3>
+                <h3 className="highlight">9546747447</h3>
             </div>
             <div className="lastRibbon">
                 <span className='highlight'>

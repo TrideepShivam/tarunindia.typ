@@ -153,9 +153,6 @@ const DashboardLayout=()=>{
             <div className="navContentContainer">
                 {(!responsive||sideNavOpen)&&<div onClick={()=>responsive&&setSideNavOpen(false)} className="sideNavContainer" style={{width:responsive?'':sideNavOpen?"14em":"4.5em"}}>
                     <SideNavigation sideNavOpen={sideNavOpen} sideMenu={sideMenu}/>
-                    {sideNavOpen&&<div style={{position:'absolute',bottom:'1em',left:responsive?'2.5em':'1.5em'}}>
-                        <Hyperlink href='/' value='tarunindia.in'/>
-                    </div>}
                 </div>}
                 <div 
                     className="mainDashboardContentContainer" 

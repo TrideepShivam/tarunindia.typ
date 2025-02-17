@@ -37,6 +37,17 @@
     bottom:0em;
     width:4em;
 }
+.freeSubscription{
+    width:calc(100% - 4em);
+    padding:4em 2em;
+    display: flex;
+    gap:1em;
+}
+.freeSubscription .detailsFreeSubscription{
+    display: flex;
+    gap:.5em;
+    flex-direction: column;
+}
 .comparisonContainer{
     padding:2em;
     display:flex;
@@ -116,7 +127,8 @@
     .planContainer{
         padding:1em;
     }
-    .bulkSubscription{
+    .bulkSubscription,.freeSubscription{
         background: none;
+        flex-direction: column;
     }
 }

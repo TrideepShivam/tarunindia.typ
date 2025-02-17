@@ -12,14 +12,14 @@ const Support=()=>{
                 <h3 className="sectionHead">Whatsapp:</h3>
                 <p>Prompt or Message your issue to us on Whatsapp.</p>
                 <div style={{display:'flex',gap:'.5em',alignItems:'center',marginBottom:'1em'}}>
-                    <img  src="https://img.icons8.com/color/40/whatsapp.png" alt="youtube" />
-                    <h2>9709483986</h2>
+                    <img  src="https://img.icons8.com/color/40/whatsapp.png" alt="whatsapp" />
+                    <h2>9546747447</h2>
                 </div>
                 <h3 className="sectionHead">Email:</h3>
                 <p>You can Email us you issues on.</p>
                 <div style={{display:'flex',gap:'.5em',alignItems:'center',marginBottom:'1em'}}>
                     <img  src="https://img.icons8.com/color/40/gmail.png" alt="youtube" />
-                    <h2>tarunindia1989@gmail.com</h2>
+                    <h2>info@typathon.com</h2>
                 </div>
                 <h3 className="sectionHead">Address:</h3>
                 <p>Discuss your issue Face to Face.</p>
