@@ -4,10 +4,41 @@ import { Context } from '../../ContextAPI'
 import { Navigate, useLocation } from 'react-router-dom'
 import PricingElement from './pricingElements/PricingElement'
 import Footer from '../../components/footer/Footer'
+import Accordion from '../../components/accordion/Accordion'
  
 const Pricing=()=>{
     const {userDetails,msg,setMsg} = useContext(Context)
     const location = useLocation()
+    const faqs = [
+        {
+            question: "What are the available pricing plans?",
+            answer: "Typathon offers several pricing plans according to the language you choose. Each plan comes with different languages and benefits to cater to various user needs."
+        },
+        {
+            question: "Can I try this before purchasing a plan?",
+            answer: "Yes, Typathon offers a free trial period for new users to experience the service before committing to a paid plan. In free plan you can get unlimited experiences of 1 minute test and 1 test per day for 10 minute testing."
+        },
+        {
+            question: "What features does the Premium plan offer?",
+            answer: "The Premium plan includes all features of the Fremium plan, plus access to advanced typing tests, progress tracking for multiple languages, and priority support. You will also get some advance analytics and free event tickets (only for all subjects plan)."
+        },
+        {
+            question: "Are there any discounts available?",
+            answer: "Yes, Typathon offers discounts for users who subscribe to annual or 6 months plans. You can get 5₹ per day from anual and half yearly plans. Please contact our support team for more details."
+        },
+        {
+            question: "What payment methods are accepted?",
+            answer: "Currently Typathon accepts only manual payment methods, first chat with us with you registered email id and choose the plan. After payment confirmaion with screenshot enjoy your plan.."
+        },
+        {
+            question: "Can I cancel my subscription at any time?",
+            answer: "No, you can not cancel your subscription once you have purchased. However, we have freemium plan to give demo of the platform so first try the platform and choose the plan according to your need."
+        },
+        {
+            question: "How can I contact customer support?",
+            answer: "You can contact our customer support team via email at info@typathon.com or through our whatsapp chat feature on 9546747447."
+        }
+    ];
     if(userDetails&&location.pathname=='/pricing'){
         return <>
             <Navigate to={'/dashboard/pricing'}/>
@@ -81,6 +112,12 @@ const Pricing=()=>{
         <div className="planContainer">
             <h1 className="sectionHead">Choose your plan</h1>
             <PricingElement/>
+        </div>
+        <div className="faq">
+            <h1 className="sectionHead">Frequently Asked Questions</h1>
+            {faqs.map((item,index)=>
+                <Accordion key={index} head={item.question} details={item.answer}/>
+            )}
         </div>
         <Footer/>
     </div>

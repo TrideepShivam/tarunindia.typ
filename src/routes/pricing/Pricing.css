@@ -69,7 +69,15 @@
 .comparisonContainer tbody tr td:last-child{
     background-color: var(--theme-color-reverse);
 }
-
+.faq{
+    width:calc(100% - 2em);
+    padding:1em;
+    display: flex;
+    gap:1em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 @keyframes borderanimation{
     0%{border-radius:0 0 100% 40%;}
     17%{border-radius:0 0 80% 60%;}
@@ -96,5 +104,9 @@
     }
     .planContainer{
         padding:1em;
+    }
+    .faq{
+        padding:0;
+        width:100%;
     }
 }

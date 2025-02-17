@@ -1,0 +1,25 @@
+.accordionContainer{
+    width:60%;
+}
+.accordionContainer .accordionHead{
+    background-color: var(--theme-color);
+    color: var(--background-color);
+    padding:0em 1.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 20px var(--background-color) inset;
+    border-radius: 1em;
+}
+.accordionContainer .accordionDetails{
+    border-radius: 1em;
+    background-color: var(--light-back-color);
+    padding:1em 2em;
+    animation:fromtopfade .5s;
+    z-index: -1;
+}
+@media screen and (max-width:900px) {
+    .accordionContainer{
+        width:100%;
+    }
+}
