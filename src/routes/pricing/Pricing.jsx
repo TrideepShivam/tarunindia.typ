@@ -1,10 +1,11 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import './Pricing.css'
 import { Context } from '../../ContextAPI'
 import { Navigate, useLocation } from 'react-router-dom'
 import PricingElement from './pricingElements/PricingElement'
 import Footer from '../../components/footer/Footer'
 import Accordion from '../../components/accordion/Accordion'
+import Button from '../../components/button/Button'
  
 const Pricing=()=>{
     const {userDetails,msg,setMsg} = useContext(Context)
@@ -16,7 +17,7 @@ const Pricing=()=>{
         },
         {
             question: "Can I try this before purchasing a plan?",
-            answer: "Yes, Typathon offers a free trial period for new users to experience the service before committing to a paid plan. In free plan you can get unlimited experiences of 1 minute test and 1 test per day for 10 minute testing."
+            answer: "Yes, Typathon offers a free trial period for new users to experience the service before committing to a paid plan. In free plan you can get unpmited experiences of 1 minute test and 1 test per day for 10 minute testing."
         },
         {
             question: "What features does the Premium plan offer?",
@@ -48,7 +49,7 @@ const Pricing=()=>{
     <div className='pricingContainer'>
         <div className="pricingHead">
             <h1>Boost your typing skill</h1>
-            <h1>with <span className="highlight">Typathon</span></h1>
+            <h1>with <span className="highpght">Typathon</span></h1>
             <p>Yearly and Half Yearly plan is starting from</p>
             <h1 className='price'>5₹</h1>
         </div>
@@ -67,17 +68,17 @@ const Pricing=()=>{
                     <tbody>
                         <tr>
                             <td>1 min Testing</td>
-                            <td>Unlimited</td>
-                            <td>Unlimited</td>
+                            <td>Unpmited</td>
+                            <td>Unpmited</td>
                         </tr>
                         <tr>
                             <td>10 min Testing</td>
                             <td>1 per day</td>
-                            <td>Unlimited</td>
+                            <td>Unpmited</td>
                         </tr>
                         <tr>
                             <td>Advanced Analytics</td>
-                            <td>Limited</td>
+                            <td>pmited</td>
                             <td>Full</td>
                         </tr>
                         <tr>
@@ -112,6 +113,15 @@ const Pricing=()=>{
         <div className="planContainer">
             <h1 className="sectionHead">Choose your plan</h1>
             <PricingElement/>
+        </div>
+        <div className="bulkSubscription">
+            <h1 className="sectionHead">Bulk Subscription</h1>
+            <h2>Empower Your Institution with Typathon's Exclusive Bulk Subscription Plan!</h2>
+            <h3>Exclusive Benefits of Our Bulk Subscription:</h3>
+            <p><strong>Cost Savings</strong>: Enjoy significant discounts with our bulk subscription rates, making high-quapty training affordable.</p>
+            <p><strong>Enhanced Learning Experience</strong>: Provide your students with comprehensive typing skills that enhance both academic and professional performance.</p>
+            <p><strong>Dedicated Support</strong>: Gain access to additional resources and priority support to ensure a successful training experience.</p>
+            <Button style={{width:'10em',margin:'1em'}} value={'Contact Us'}/>
         </div>
         <div className="faq">
             <h1 className="sectionHead">Frequently Asked Questions</h1>

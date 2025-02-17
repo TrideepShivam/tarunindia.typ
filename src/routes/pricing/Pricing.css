@@ -69,6 +69,17 @@
 .comparisonContainer tbody tr td:last-child{
     background-color: var(--theme-color-reverse);
 }
+.bulkSubscription{
+    width:calc(100% - 4em);
+    padding:4em 2em;
+    background: url('../../assets/bulk-subscription.png'),var(--light-back-color);
+    background-repeat: no-repeat;
+    background-position: right center;
+    display: flex;
+    gap:.5em;
+    flex-direction: column;
+}
+.bulkSubscription p{margin-left: 1em;}
 .faq{
     width:calc(100% - 2em);
     padding:1em;
@@ -105,8 +116,7 @@
     .planContainer{
         padding:1em;
     }
-    .faq{
-        padding:0;
-        width:100%;
+    .bulkSubscription{
+        background: none;
     }
 }

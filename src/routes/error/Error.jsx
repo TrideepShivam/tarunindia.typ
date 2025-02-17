@@ -9,7 +9,7 @@ const Error =()=>{
     const redirectedFrom = location.state&&location.state.from?location.state.from:'/dashboard'
     return(
         <div className='errorContainer'>
-            <img src={Logo} alt="logo" />
+            <img width={'100em'} src={Logo} alt="logo" />
             <p>{errMessage}</p>
             <Hyperlink value="Try again" href={redirectedFrom}/>
         </div>
