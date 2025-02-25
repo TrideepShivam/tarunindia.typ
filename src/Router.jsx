@@ -120,7 +120,7 @@ const Router = createBrowserRouter([
         ]
     },
     {
-        path:'/play',
+        path:'/play/:id',
         element:<Play/>
     },
     {

@@ -49,7 +49,7 @@ const LanguageConfirmation=({setTypingDisabled,setSkipIntro,language})=>{
     }
     const handleConfirm = ()=>{
         if(confirmRef.current.value==shownText()){
-            confirm()
+        confirm()
         }else{
             setMsg({
                 isOpen:true,

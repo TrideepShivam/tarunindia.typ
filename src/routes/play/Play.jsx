@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import './Play.css'
 import logo from '../../assets/logo-reverse.svg'
 import { Context } from '../../ContextAPI';
-import { useLocation, useNavigate } from 'react-router-dom';
+import {useNavigate, useParams } from 'react-router-dom';
 import api from '../../api';
 import Timer from '../../components/timer/Timer';
 import ToggleDarkLight from '../../components/toggleDarkLight/ToggleDarkLight';
@@ -17,24 +17,32 @@ import FullScreenBtn from '../../components/fullScreenBtn/FullScreenBtn';
  
 const Play=()=>{
     useAuthInterceptor()
-    const [skipIntro,setSkipIntro]= useState(true)
+    const {id} = useParams();
     const [loading,setLoading] =useState(true)
     const [retry,setRetry] = useState(false)
     const [pauseTimer,setPauseTimer] = useState(true)
-    const writtenStory = useRef("")
+    const [storyDetails,setStoryDetails] = useState({
+        language:'language',
+        time:0,
+        skipIntro:true,
+        backspace:true,
+        highlight:true,
+        story:['Text']
+    })
+    const [writtenStory,setWrittenStory]=useState("")
+
     const {userDetails,setMsg,connected,responsive} = useContext(Context)
     const [orient,setOrient] = useState(screen.orientation.type=='landscape-primary'?"landscape":"portrait")
-    const navigate = useNavigate()    
-    const location = useLocation()
-    const time = parseInt(location.state?location.state.time:'0')
-    const [story,setStory] = useState(['Text']);
+    const navigate = useNavigate()
     const [wordCount,setWordCount] = useState(0);
     const [typingDisabled,setTypingDisabled]=useState(true)
     const [wrong,setWrong] = useState(false)
-    const [second,setSecond] = useState(time*60)
+    const [second,setSecond] = useState(storyDetails.time*60)
+    const textAreaRef = useRef()
     const resultRef = useRef({
+        id:id,
         words:0,
-        duration:time,
+        duration:0,
         char_with_spaces:0,
         keystrokes:0,
         story_id:-1,
@@ -44,41 +52,57 @@ const Play=()=>{
         setOrient(screen.orientation.type=='landscape-primary'?"landscape":"portrait")
     }
     useEffect(()=>{
-        if(!location.state){//prohibiting direct /play url hit
+        setLoading(true)
+        const url = '/play/'+id
+        api.get(url)
+        .then(({data})=>{
+            setStoryDetails({
+                language:data.stories.language,
+                time:data.duration,
+                skipIntro:data.skipIntro,
+                story:data.stories.content.split(/(\s+)/),
+                backspace:data.backspace,
+                highlight:data.highlight
+            })
+            setWordCount(data.words)
+            setSecond((data.duration-data.done_duration)*60)
+            data.words>0&&setWrittenStory(data.written_text)
+            resultRef.current.mistakes=data.mistakes==null?{}:data.mistakes
+            resultRef.current.story_id=data.stories.id
+            resultRef.current.duration=data.duration
+            setLoading(false)
+            data.skipIntro&&setTypingDisabled(false)
+            
+        }).catch(({response})=>{
             setMsg({
                 isOpen:true,
-                status:'Error',
-                message:'Please fill the Play Form first.'
+                status:response.data.state,
+                message:response.data.message
             })
             navigate('/playground',{replace:true})
-        }else
-            api.post('/story',location.state.data)
-            .then(({data})=>{
-                setStory(data.storyDetails.content.split(/(\s+)/))
-                resultRef.current.story_id=data.storyDetails.id
-                setSkipIntro(data.skipIntro)
-                setLoading(false)
-                data.skipIntro&&setTypingDisabled(false)
-            }).catch(({response})=>{
-                setMsg({
-                    isOpen:true,
-                    status:response.data.state,
-                    message:response.data.message
-                })
-                navigate('/playground',{replace:true})
-            })
+        })
         screen.orientation.addEventListener('change', setOreintation)
         return () => {
             screen.orientation.removeEventListener('change', setOreintation);
         }
-    },[])
-    
+    },[])//we can add multiple useEffects
+    useEffect(()=>{
+        focusTextArea()
+    },[writtenStory,typingDisabled])
+    const focusTextArea = () => {
+        if (textAreaRef.current) {
+            textAreaRef.current.focus();
+            const length = textAreaRef.current.value.length;
+            textAreaRef.current.setSelectionRange(length, length);
+            // textAreaRef.current.scrollIntoView({ behavior: 'smooth'});
+        }
+    };
     const keyPrevention =(e)=>{
         let target = e.target
         if (target && target.value !== undefined) {
             const text = target.value;
             (e.key==='Enter'||(e.ctrlKey && e.key === 'v')) && e.preventDefault();
-            e.key === 'Backspace' && (text[text.length - 1] === ' ' || !location.state.backspace) && e.preventDefault();
+            e.key === 'Backspace' && (text[text.length - 1] === ' ' || !storyDetails.backspace) && e.preventDefault();
         }
     }
     const altCode={
@@ -114,14 +138,13 @@ const Play=()=>{
             // let currentWord = writtenText.slice(writtenStory.current.length,writtenText.length-1)//here we dont use length-1 we have to find previous space index then till that index we have to use it
             if(writtenText.length!=resultRef.current.words*2+1){
                 setWordCount(resultRef.current.words = wordCount+1)
-                let shownWord = story[wordCount*2].replace(/‍/g, "")//this solution reduces the time to compare
+                let shownWord = storyDetails.story[wordCount*2].replace(/‍/g, "")//this solution reduces the time to compare
                 let currentWord = writtenText[wordCount*2].replace(/‍/g, "")//replaced zwj with ""
                 console.log(currentWord,shownWord,currentWord.split(''),shownWord.split(''),currentWord===shownWord)
                 if(currentWord!==shownWord){
                     resultRef.current.mistakes[`${shownWord}`]=`${currentWord}`
                     setWrong(true)
                 }
-                writtenStory.current = writtenText
             }
         }else if(altCode[e.key]&&getFont()=='Mangal'){
             e.preventDefault()
@@ -134,6 +157,27 @@ const Play=()=>{
         if(/^[0-9a-zA-Z!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/? ]+$/.test(e.key)){
             resultRef.current.char_with_spaces+=1
         }
+    }
+    const checkpoint=(time)=>{
+        console.log('checkpoint on '+time)
+        
+        const url = '/checkpoint-test/'+id
+        api.post(url,{
+            done_duration:time,
+            words:resultRef.current.words,
+            keystrokes:resultRef.current.keystrokes,
+            mistakes:resultRef.current.mistakes,
+            written_text:writtenStory
+        })
+        .then(({data})=>{
+            setMsg({
+                isOpen:true,
+                status:data.state,
+                message:data.message
+            })
+        }).catch(({response})=>{
+            console.log(response)
+        })
     }
     const timeOut = ()=>{
         setLoading(true)
@@ -165,7 +209,7 @@ const Play=()=>{
         }
     }
     const getFont = ()=>{
-        let lang = location.state.data.language
+        let lang = storyDetails.language
         if(lang.toLowerCase()=='english')
             return 'arial'
         else
@@ -186,18 +230,25 @@ const Play=()=>{
 
     return(
     <div className='playContainer'>
-        {!skipIntro&&<LanguageConfirmation setTypingDisabled={setTypingDisabled} setSkipIntro={setSkipIntro} language={location.state.data.language}/>}
+        {!storyDetails.skipIntro&&<LanguageConfirmation setTypingDisabled={setTypingDisabled} setSkipIntro={
+            (value)=>{
+                setStoryDetails(prevDetails => ({
+                    ...prevDetails,
+                    skipIntro: value
+                }));
+            }
+        } language={storyDetails.language}/>}
 		<div className="contentContainer test">
 			<div className="textContainer" id="readable">
-                {!location.state.highlight?
+                {!storyDetails.highlight?
                     <p>{story}</p>:
-				    <TextContent language={getFont()} story={story} highlightingIndex={wordCount*2}/>
+				    <TextContent language={getFont()} story={storyDetails.story} highlightingIndex={wordCount*2}/>
                 }
 			</div>
             <hr className='divider' style={{borderColor:wrong?'tomato':'var(--theme-color)',width:'95%'}}/>
 			<div className="textContainer" id="writable">
 				<textarea 
-                    autoFocus
+                    value={writtenStory}
                     style={{fontFamily:getFont()}}
                     placeholder={getFont()=='Krutidev'?"Vkbi djsa---":"start typing..." }
                     onKeyDown={(e)=>keyPrevention(e)} 
@@ -205,7 +256,11 @@ const Play=()=>{
                     onInput={(e)=>removeSpecialChar(e)}
                     disabled={typingDisabled}
                     onContextMenu={(e)=>e.preventDefault()}
-                />
+                    onChange={(e)=>{
+                        setWrittenStory(e.target.value)
+                    }}
+                    ref={textAreaRef}
+                    />
 			</div>
 		</div>
 		<div className="contentContainer info">
@@ -215,12 +270,13 @@ const Play=()=>{
             </div>
             {!responsive&&<img width="100em" src={logo} alt="Logo" />}
 			<h2 id="userName">{userDetails.user.name.split(' ')[0].toUpperCase()}</h2>
-			<Timer percentage={(second/(parseInt(location.state.time)*60))*100} second={second} setSecond={setSecond} pause={pauseTimer} timeOut={timeOut}/>
+			<Timer time={storyDetails.time} second={second} setSecond={setSecond} pause={pauseTimer} timeOut={timeOut} checkpoint={checkpoint}/>
 			<WordCount value={wordCount}/>
 			<Button value={'Restart'} style={{width:'80%'}} onClick={()=>window.location.reload()}/>
 			<Button  value={!pauseTimer?'Pause':'Resume'} transparancy={true} onClick={()=>{
                 setPauseTimer(!pauseTimer)
                 setTypingDisabled(pauseTimer)
+                textAreaRef.current.focus()
             }}/>
 		</div>
 	</div>

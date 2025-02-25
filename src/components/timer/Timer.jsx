@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './Timer.css'
  
-const Timer=({percentage,second,setSecond,pause=false,timeOut})=>{
+const Timer=({time,second,setSecond,pause=false,timeOut,checkpoint})=>{
+    const [percentage,setPercentage] = useState(100)
     const getTime= ()=>{
         let min = Math.floor(second/60)
         let sec = second%60
@@ -11,7 +12,10 @@ const Timer=({percentage,second,setSecond,pause=false,timeOut})=>{
     }
 
     useEffect(()=>{
+        setPercentage((second/(parseInt(time)*60))*100)
         if(!pause){
+            if(((time*60-second)+1)%60==0)//+1 because we are checkpointing on 59,119,...
+                second>1&&checkpoint(time-(second-1)/60)//-1 because second is decreasing
             let interval
             if(second>0){
                 interval = setInterval(()=>{

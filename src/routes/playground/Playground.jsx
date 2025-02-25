@@ -8,7 +8,6 @@ import api from '../../api';
 import { Context } from '../../ContextAPI';
 import Loading from '../../components/loading/Loading';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
-import Hyperlink from '../../components/hyperlink/Hyperlink';
 import Retry from '../../components/retry/Retry';
  
 const Playground=()=>{
@@ -31,22 +30,25 @@ const Playground=()=>{
     const handlePlay=()=>{
         setLoading(true)
         if(langRef.current.value&&durationRef.current.value&&levelRef.current.value&&storyRef.current.value){
-            navigate('/play',{
-                state:{
-                    from:'/playground',
-                    time:durationRef.current.value,
-                    backspace:backspaceRef.current,
-                    highlight:highlightRef.current,
-                    data:{
-                        language:langRef.current.value,
-                        level:levelRef.current.value,
-                        story:storyRef.current.value
-                    }
-                }
+            
+            api.post('/initiate-test',{
+                story_id:dropdownStory.find(story => story.title === storyRef.current.value).id,
+                duration:parseInt(durationRef.current.value),
+                backspace:backspaceRef.current,
+                highlight:highlightRef.current
             })
-        document.documentElement.requestFullscreen()
-    }
-        else
+            .then(({data})=>{
+                const url = '/play/'+data
+                navigate(url)
+                
+            }).catch(({response})=>{
+                setMsg({
+                    isOpen:true,
+                    status:response.data.state,
+                    message:response.data.message
+                })
+            })
+        }else
             setMsg({
                 isOpen:true,
                 status:"Error",
@@ -65,7 +67,6 @@ const Playground=()=>{
                 ...data.levels
             ])
         }).catch(({response})=>{
-            console.log(response)
             setLoading(false)
             setRetry(true)
         })
@@ -79,8 +80,7 @@ const Playground=()=>{
             .then(({data})=>{
                 setDropdownStory([
                     ...data
-                ])
-                
+                ])                
             }).catch(({response})=>{
                 console.log(response)
             })
@@ -117,7 +117,7 @@ const Playground=()=>{
                 <Dropdown var={langRef} options={dropdownLanguage} legend="Language"/>
                 <Dropdown var={durationRef} options={dropdownDuration} legend="Duration"/>
                 <Dropdown var={levelRef} options={dropdownLevel} legend="Level"/>
-                <Dropdown var={storyRef} options={dropdownStory} legend="Story" onClick={storyCollection}/>
+                <Dropdown var={storyRef} options={dropdownStory.map(obj=>obj.title)} legend="Story" onClick={storyCollection}/>
                 {conditions.map((item,index)=>
                     <div key={index} className="conditionContainer">
                         <p>{item}</p>
