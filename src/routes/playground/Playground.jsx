@@ -9,6 +9,7 @@ import { Context } from '../../ContextAPI';
 import Loading from '../../components/loading/Loading';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import Retry from '../../components/retry/Retry';
+import PendingTests from './pendingTests/PendingTests';
  
 const Playground=()=>{
     useAuthInterceptor()
@@ -108,7 +109,7 @@ const Playground=()=>{
                 </div>
                 <div className="pendingTestContainer">
                     <h2 className="sectionHead">Pending Tests</h2>
-                    <p>No pending tests available</p>
+                    <PendingTests/>
                 </div>
             </div>
             <div className="playForm">

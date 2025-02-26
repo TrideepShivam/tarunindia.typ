@@ -160,7 +160,6 @@ const Play=()=>{
     }
     const checkpoint=(time)=>{
         console.log('checkpoint on '+time)
-        
         const url = '/checkpoint-test/'+id
         api.post(url,{
             done_duration:time,

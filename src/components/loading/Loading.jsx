@@ -44,7 +44,6 @@ const Loading =()=>{
             </filter>
             </defs>
             </svg>
-            <p>Loading...</p>
         </div>
     )
 }
