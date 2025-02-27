@@ -88,7 +88,7 @@ const Play=()=>{
     },[])//we can add multiple useEffects
     useEffect(()=>{
         focusTextArea()
-    },[writtenStory,typingDisabled])
+    },[typingDisabled])
     const focusTextArea = () => {
         if (textAreaRef.current) {
             textAreaRef.current.focus();
