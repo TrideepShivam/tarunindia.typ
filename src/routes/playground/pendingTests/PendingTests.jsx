@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './PendingTests.css'
 import { formatDistanceToNow } from 'date-fns';
 import Loading from '../../../components/loading/Loading';
 import api from '../../../api';
 import Hyperlink from '../../../components/hyperlink/Hyperlink';
- 
+import { Context } from '../../../ContextAPI';
+
 const PendingTests=()=>{
     const [loading,setLoading] = useState(false)
     const [pendingData,setPendingData] = useState()
-
+    const {setMsg} = useContext(Context)
     useEffect(()=>{
         fetchPendingTests()
     },[])
@@ -25,7 +26,7 @@ const PendingTests=()=>{
     }
     const deletePendingTest = (encryptedId) => {
         api.get(`/remove-pendings/${encryptedId}`)
-            .then((data) => {
+            .then(({data}) => {
                 setMsg({
                     isOpen:true,
                     status:data.state,
@@ -39,7 +40,7 @@ const PendingTests=()=>{
     }
 
     if(loading)
-        return <Loading/>
+        return <Loading type='rounded'/>
     return(
         !pendingData||pendingData.length==0?<p>No pending tests available</p>:
         <table className='pendingDataTable'>
