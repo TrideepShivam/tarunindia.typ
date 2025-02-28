@@ -39,7 +39,11 @@
     font-size: 1.2em;
 }
 @media screen and (max-width:900px){
-    .playgroundContent{flex-direction: column;padding:1em;}
-    .playgroundInfoAndPendingContainer{width:100%;padding:1em;}
+    .playgroundContent{
+        width:calc(100% - 1em);
+        flex-direction: column;padding:.5em;
+    }
+    .playgroundInfoAndPendingContainer{width:100%;}
+    .playgroundInformation,.pendingTestContainer{padding:1.5em;}
     .playForm{width: calc(100% - 2em);padding:1em;}
 }

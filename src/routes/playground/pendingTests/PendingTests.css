@@ -1,7 +1,7 @@
 .pendingDataTable{
     width:100%;
-    font-size: 1.1em;
+    font-size: 1em;
 }
 .pendingDataTable td{
-    padding:.4em 0em;
+    padding:.35em 0em;
 }
