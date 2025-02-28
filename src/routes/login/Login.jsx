@@ -13,32 +13,22 @@ import backgroundImg from './../../assets/login-form-image.png'
 
 const Login=()=>{
     useAuthInterceptor()
-    const {userDetails,setUserLocal,msg,setMsg} = useContext(Context)
+    const {userDetails,setUserLocal,setMsg} = useContext(Context)
     const [loading,setLoading] =useState(false)
     const emailRef = useRef()
     const pwdRef = useRef()
     
     const handleLogin=()=>{
+        setLoading(true)
         api.post('/auth/login',{
             email:emailRef.current.value,
             password:pwdRef.current.value
         }).then((response) =>{
-            if(response.data.access_token){
-                setMsg({
-                    ...msg,
-                    isOpen:true,
-                    status:response.data.state,
-                    message:response.data.message
-                })
-                setUserLocal(response.data)
-            }else{
-                setMsg({
-                    ...msg,
-                    isOpen:true,
-                    status:response.data.state,
-                    message:response.data.message
-                })
-            }
+            setMsg({
+                status:response.data.state,
+                message:response.data.message
+            })
+            setUserLocal(response.data)
             setLoading(false)
         }).catch((response) => {
             setLoading(false)

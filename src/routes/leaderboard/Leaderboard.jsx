@@ -8,7 +8,6 @@ const Leaderboard=()=>{
         <p className="sectionHead">LEADERBOARD</p>
         <div className="leaderboardContent">
             Coming soon
-            <button onClick={()=>setMsg({status:'Fail',message:'this is the msg'})}>click</button>
         </div>
     </>
     )
