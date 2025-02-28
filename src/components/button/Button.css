@@ -16,7 +16,7 @@
     background-image: none;
     color:var(--theme-color);
     box-shadow:none;
-    padding:.5em;
+    padding:.5em .1em;
 
 }
 .themeButton:hover{

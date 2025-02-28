@@ -1,5 +1,5 @@
 .confirmationBox{
-    padding:2em;
+    padding:1.5em;
     max-width: 25%;
     display:flex;
     flex-direction: column;
@@ -11,4 +11,10 @@
 }
 .confirmationBox p span{
     font-size: 1.1em;
+}
+@media screen and (max-width:900px){
+    .confirmationBox{
+        max-width: 90%;
+        font-size: .9em;
+    }
 }

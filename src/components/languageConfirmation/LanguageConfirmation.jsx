@@ -73,9 +73,9 @@ const LanguageConfirmation=({setTypingDisabled,setSkipIntro,language})=>{
                 ’ in the below input box:</p>
                 <Textbox style={{fontFamily:language.toLowerCase()=='krutidev'&&'krutidev'}} var={confirmRef} legend="Type"/>
                 <Checkbox checkedRef={checkedRef} value="Remember to skip" transparent={false}/>
-                <div style={{display:'flex',width:'100%',gap:'.2em'}}>
-                    <Button onClick={handleConfirm} value="Confirm"/>
-                    <Button onClick={confirm} style={{width:'50%'}} value="Skip" transparancy={true}/>
+                <div style={{display:'flex',gap:'.2em'}}>
+                    <Button style={{width:'10em'}} onClick={handleConfirm} value="Confirm"/>
+                    <Button onClick={confirm} value="Skip" transparancy={true}/>
                 </div>
             </div>
         </PopUpContainer>
