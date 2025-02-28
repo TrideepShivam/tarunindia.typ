@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import MsgBox from "./components/msgBox/MsgBox";
+import Notifier from "./components/msgBox/Notifier";
 
 export const Context = createContext()
 
@@ -8,7 +8,18 @@ const ContextAPI = ({children})=>{
     const [connected,setConnected] = useState(//if local then always true
         (baseUrl=='http://localhost:8000/api')?true:navigator.onLine
     )
-    const [msg,setMsg] = useState(false)//for messagebox
+    const [notifications,setNotifications] = useState([])
+    const setMsg = (obj)=>{//for messagebox
+        const id = new Date().toISOString()
+        const newObj = { ...obj, id }
+        setNotifications((prevNotifications) => [...prevNotifications, newObj])
+    }
+    const removeMsg = (id)=>{
+        setNotifications((prevNotifications) =>
+            prevNotifications.filter(notification => notification.id !== id)
+        )
+    }
+
     const [responsive,setResponsive]=useState(//for detecting mobile or tab
         navigator.userAgent.search('Mobile')>=0||navigator.userAgent.search('Tablet')>=0
     )
@@ -53,13 +64,12 @@ const ContextAPI = ({children})=>{
             setLightMode,
             userDetails,
             setUserLocal,
-            msg,
             setMsg,
             responsive,
             connected
         }}>
             {children}
-            {msg.isOpen&&<MsgBox setMsg={setMsg} data={msg}/>}
+            {notifications.length!=0&& <Notifier removeMsg={removeMsg} data={notifications}/>}
         </Context.Provider>
     )
 }
