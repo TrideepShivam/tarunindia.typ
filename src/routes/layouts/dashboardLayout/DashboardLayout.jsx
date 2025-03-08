@@ -5,14 +5,13 @@ import SideNavigation from '../../../components/navigation/sideNavigation/SideNa
 import { useContext, useState } from 'react';
 import api from '../../../api';
 import { Context } from '../../../ContextAPI';
-import useAuthInterceptor from '../../../hooks/useAuthInterceptor';
-import Hyperlink from '../../../components/hyperlink/Hyperlink';
+import PurchaseMsg from '../../../components/purchaseMsg/PurchaseMsg';
 
 
 const DashboardLayout=()=>{
     let darkThemeColor = import.meta.env.VITE_APP_DARK_THEME||'#00aaff'
     let lightThemeColor= import.meta.env.VITE_APP_LIGHT_THEME||'#5500ff'
-    const {userDetails,setUserLocal,setMsg,responsive} = useContext(Context)
+    const {userDetails,setUserLocal,setMsg,responsive,purchaseBoxOpen} = useContext(Context)
     const [sideNavOpen,setSideNavOpen]=useState(responsive?false:true)
     const sideMenu = [//0:green 1:blue 2:white 3:black
         {
@@ -158,6 +157,7 @@ const DashboardLayout=()=>{
                     style={{width:responsive?'100%':sideNavOpen?"calc(100% - 14.5em)":"calc(100% - 5em)"}}>
                     <Outlet/>
                 </div>
+                {purchaseBoxOpen&&<PurchaseMsg/>}
             </div>
         </>
     )

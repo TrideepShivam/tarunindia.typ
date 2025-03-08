@@ -1,0 +1,22 @@
+.purchaseMsgContainer{
+    max-height:60%;
+    padding:6em;
+    display:flex;
+    flex-direction: column;
+    gap:1em;
+    overflow-y: scroll;
+    background:linear-gradient(var(--dark-transparent-color),var(--dark-transparent-color)),url('../../assets/purchase.png');
+    background-position: center left;
+    background-size: 100%;
+    border:.1em solid var(--text-color-light);
+}
+@media only screen and (max-width:900px){
+    .purchaseMsgContainer{
+        width: calc(98% - 4em);
+        max-height: 98%;
+        padding: 4em 2em ;
+        gap:.5em;
+        font-size: .8em;
+    }
+    
+}

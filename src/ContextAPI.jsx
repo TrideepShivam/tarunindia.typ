@@ -57,7 +57,7 @@ const ContextAPI = ({children})=>{
             setUserDetails(false)
         }
     }
-
+    const [purchaseBoxOpen,setPurchaseBoxOpen] = useState(false)
     return(
         <Context.Provider value={{
             lightMode,
@@ -66,7 +66,9 @@ const ContextAPI = ({children})=>{
             setUserLocal,
             setMsg,
             responsive,
-            connected
+            connected,
+            purchaseBoxOpen,
+            setPurchaseBoxOpen
         }}>
             {children}
             {notifications.length!=0&& <Notifier removeMsg={removeMsg} data={notifications}/>}

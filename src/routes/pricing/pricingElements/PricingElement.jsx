@@ -8,7 +8,7 @@ import Hyperlink from '../../../components/hyperlink/Hyperlink'
 import Button from '../../../components/button/Button'
  
 const PricingElement=()=>{
-    const {setMsg,responsive} = useContext(Context)
+    const {setMsg,responsive,setPurchaseBoxOpen} = useContext(Context)
     const [loading,setLoading] =useState(false)
     const pricingDays=[365,180,90,30,15]
     const [day,setDay]=useState(pricingDays[0])
@@ -45,7 +45,7 @@ const PricingElement=()=>{
                     <p>{index==data.length-1?'Unlimited':item.language} access</p>
                     <p>{index==data.length-1?'Free':'Paid'} Event Tickets</p>
                     <p>24/7 support</p>
-                    <Button style={{width:'10em'}} value={'Buy Now'} onClick={()=>{}}/>
+                    <Button style={{width:'10em'}} value={'Buy Now'} onClick={()=>window.location.href="https://wa.me/9546747447?text=Hello%2C%20I%27m%20interested%20in%20your%20services%21"}/>
                 </div>
             )}
         </div>:<Loading/>}
