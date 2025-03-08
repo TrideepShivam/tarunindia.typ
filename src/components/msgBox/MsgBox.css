@@ -4,6 +4,7 @@
     position:fixed;
     bottom:0em;
     right:0em;
+    z-index: 10;
 }
 .msgContainer{
     min-width: 10em;

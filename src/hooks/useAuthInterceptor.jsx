@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 
 const useAuthInterceptor=()=>{
-    const {setUserLocal,msg,setMsg,connected} = useContext(Context)
+    const {setUserLocal,setPurchaseBoxOpen,setMsg,connected} = useContext(Context)
     const location = useLocation()
     const navigate = useNavigate()
     useEffect(()=>{
@@ -36,6 +36,8 @@ const useAuthInterceptor=()=>{
                         status:'Error',
                         message:'404: Page not found.'
                     })
+                }else if(error.response.status === 403){
+                    setPurchaseBoxOpen(true)
                 }else if(error.response.status === 422){
                     return error.response
                 }

@@ -120,7 +120,7 @@ const Pricing=()=>{
                 </table>
             </div>
         </div>
-        <div className="planContainer">
+        <div className="planContainer" id='plans'>
             <h1 className="sectionHead">Choose your plan</h1>
             <PricingElement/>
         </div>
