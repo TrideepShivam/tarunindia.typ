@@ -24,6 +24,11 @@
     padding: 0 4% 0 4%;
     align-items: center;
 }
+
+.about{
+    text-align: justify;
+}
+
 @media screen and (max-width:900px){
     .footerContainer{
         flex-direction: column;
