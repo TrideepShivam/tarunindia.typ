@@ -15,7 +15,7 @@ const Dashboard=()=>{
     useAuthInterceptor()
     const [loading,setLoading] = useState(true)
     const [retry,setRetry] = useState(false)
-    const {lightMode,responsive,userDetails} = useContext(Context)
+    const {responsive,userDetails} = useContext(Context)
     const [wpm,setWpm] = useState([{
       value:"33.7",
       unit:"WPM",
@@ -47,7 +47,7 @@ const Dashboard=()=>{
                   more: false
                 },
                 {
-                  value: data.last_7_days.length>0?data.last_7_days[0].avg_wpm:0,
+                  value: data.length>0?data[0].avg_wpm:0,
                   unit: "WPM",
                   cardHead: "Last Attempt",
                   more: false
@@ -62,8 +62,8 @@ const Dashboard=()=>{
               })
               setLoading(false)
 
-      }).catch(({response})=>{
-        console.log(response)
+      }).catch((error)=>{
+        console.log(error)
         setLoading(false)
         setRetry(true)
       })

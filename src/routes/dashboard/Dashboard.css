@@ -17,8 +17,6 @@
     padding:1em;
     border-radius: 1em;
     background:var(--light-back-color);
-}
-.eventContainer{
     display:flex;
     justify-content: center;
     align-items: center;

@@ -31,7 +31,7 @@
     background-color: var(--light-back-color);
     color:var(--text-color);
     border-radius: 2em;
-    padding:.3em .8em;
+    padding:.4em 1em .5em 1em;
     text-decoration: none;
 
 }
