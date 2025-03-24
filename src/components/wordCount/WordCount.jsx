@@ -1,13 +1,12 @@
-import './WordCount.css'
- 
-const WordCount=({value})=>{
+import './WordCount.css';
 
-    return(
+const WordCount = ({ value }) => {
+    return (
         <div className="wordContainer">
-			<p className="highlight">{value>1?'Words':'Word'}</p>
-			<h1>{value}</h1>
-		</div>
-    )
-}
+            <p className="highlight">{value > 1 ? 'Words' : 'Word'}</p>
+            <h1>{value}</h1>
+        </div>
+    );
+};
 
 export default WordCount;

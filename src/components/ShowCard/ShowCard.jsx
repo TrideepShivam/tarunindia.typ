@@ -1,7 +1,6 @@
 import './ShowCard.css';
-const ShowCard=(props)=>
-{
-    return(
+const ShowCard = (props) => {
+    return (
         <>
             <div className="multiColorBorder" style={props.style && props.style}>
                 <div className="field">
@@ -11,5 +10,5 @@ const ShowCard=(props)=>
             </div>
         </>
     );
-}
+};
 export default ShowCard;

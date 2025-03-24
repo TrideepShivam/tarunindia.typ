@@ -3,7 +3,7 @@ import './TextContent.css';
 import PropTypes from 'prop-types';
 
 const TextContent = ({ language, story, highlightingIndex }) => {
-    const typedContent = highlightingIndex === 0 ? "" : story.slice(0, highlightingIndex).join("");
+    const typedContent = highlightingIndex === 0 ? '' : story.slice(0, highlightingIndex).join('');
     const highlightedContent = story[highlightingIndex];
     const restContent = story.slice(highlightingIndex + 1, story.length);
 
@@ -14,9 +14,9 @@ const TextContent = ({ language, story, highlightingIndex }) => {
     }, [highlightingIndex]);
 
     return (
-        <p className='textContent' style={{ fontFamily: language || 'arial' }}>
-            <span className='typedContent'>{typedContent}</span>
-            <span className='highlightedContent'>{highlightedContent}</span>
+        <p className="textContent" style={{ fontFamily: language || 'arial' }}>
+            <span className="typedContent">{typedContent}</span>
+            <span className="highlightedContent">{highlightedContent}</span>
             {restContent}
         </p>
     );
@@ -25,7 +25,7 @@ const TextContent = ({ language, story, highlightingIndex }) => {
 TextContent.propTypes = {
     language: PropTypes.string,
     story: PropTypes.array.isRequired,
-    highlightingIndex: PropTypes.number
+    highlightingIndex: PropTypes.number,
 };
 
 export default TextContent;
