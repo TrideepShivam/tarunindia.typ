@@ -55,7 +55,7 @@ const AccuracyWpmChart = () => {
     });
     useEffect(() => {
         setLoading(true);
-        api.post('/advance-analytics', {
+        api.post('/graph-details', {
             days: testDays[days],
         })
             .then(({ data }) => {

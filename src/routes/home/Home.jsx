@@ -26,7 +26,8 @@ const Home = () => {
     let feature = [
         {
             header: 'USER FRIENDLY',
-            content: 'A user-friendly interface to make your typing practice easier to use and grow',
+            content:
+                'A user-friendly interface designed to make your typing practice easier, smoother, and more effective!',
         },
         {
             header: 'MANGAL FONT',
@@ -41,7 +42,7 @@ const Home = () => {
         {
             header: 'SUPPORT SYSTEM',
             content:
-                '12+ hrs supporting team to cover all the inconveniences during your app use. Nothing can distract you from your goals. ',
+                '12+ hrs supported team to cover all the inconveniences during app use. Nothing can distract you from your goals.',
         },
     ];
     const workflow = [
@@ -64,7 +65,7 @@ const Home = () => {
         {
             head: 'SUPPORT',
             content:
-                '12+ hrs supporting team to cover all the inconveniences during your app use. Nothing can distract you from your goals. ',
+                '12+ hrs supported team to cover all the inconveniences during app use. Nothing can distract you from your goals.',
         },
     ];
     return (
