@@ -11,7 +11,7 @@ const AccuracyWpmChart = () => {
     let darkThemeColor = import.meta.env.VITE_APP_DARK_THEME || '#00aaff';
     let lightThemeColor = import.meta.env.VITE_APP_LIGHT_THEME || '#5500ff';
     const { responsive, lightMode } = useContext(Context);
-    const [retry, setRetry] = useState(false)
+    const [retry, setRetry] = useState(false);
     const testDays = [7, 30, 180, 365];
     const [days, setDays] = useState(0);
     const [loading, setLoading] = useState(false);
