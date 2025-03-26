@@ -40,3 +40,23 @@
     background-color: var(--transparent-color);
 
 }
+.premium{
+    position: relative;
+    background-color: var(--transparent-color);
+    color:var(--theme-color);
+    border-radius: 2em;
+    padding:.4em 1em .5em 1em;
+    text-decoration: none;
+    border:1px solid transparent;
+}
+.premium::after{
+    content: "★"; /* Add a premium icon (like a star) */
+    color: gold; /* Set the icon's color */
+    position:absolute;
+    right:-.1em;
+    top:-.1em;
+    transition: 1s;
+}
+.premium:hover::after{
+    transform: rotate(360deg);
+}

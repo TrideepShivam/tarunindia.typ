@@ -145,7 +145,7 @@ const AccuracyWpmChart = () => {
 
     return (
         <div className="chartContainer" style={{ width: responsive ? '98%' : '40%' }}>
-            <CardContainer style={{ justifyContent: !responsive ? 'center' : 'left' }}>
+            <CardContainer>
                 {testDays.map((item, index) => (
                     <Hyperlink
                         key={index}
@@ -154,6 +154,11 @@ const AccuracyWpmChart = () => {
                         onClick={() => setDays(index)}
                     />
                 ))}
+                <Hyperlink
+                    style={{ marginLeft: 'auto', whiteSpace: 'nowrap' }}
+                    type="premium"
+                    value="Advance Analytics"
+                />
             </CardContainer>
             {!loading ? (
                 <Chart
