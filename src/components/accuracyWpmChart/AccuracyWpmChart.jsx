@@ -157,6 +157,7 @@ const AccuracyWpmChart = () => {
                 <Hyperlink
                     style={{ marginLeft: 'auto', whiteSpace: 'nowrap' }}
                     type="premium"
+                    href="/advance-analytics"
                     value="Advance Analytics"
                 />
             </CardContainer>
