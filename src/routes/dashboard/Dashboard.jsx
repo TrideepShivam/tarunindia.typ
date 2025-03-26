@@ -16,28 +16,7 @@ const Dashboard = () => {
     const [loading, setLoading] = useState(true);
     const [retry, setRetry] = useState(false);
     const { responsive, userDetails } = useContext(Context);
-    const [wpm, setWpm] = useState([
-        {
-            value: '33.7',
-            unit: 'WPM',
-            cardHead: 'Average',
-            more: false,
-        },
-        {
-            value: '31',
-            unit: 'WPM',
-            cardHead: 'Last Attempt',
-            more: false,
-        },
-    ]);
-
-    const [totalData, setTotalData] = useState({
-        value: '1147',
-        unit: 'WPM',
-        todayCount: '2',
-        cardHead: 'Total Attempts',
-        queryQsn: 'Today Attempts:',
-    });
+    const [wpm, setWpm] = useState([]);
 
     useEffect(() => {
         api.get('/dashboard')
@@ -50,19 +29,24 @@ const Dashboard = () => {
                         more: false,
                     },
                     {
-                        value: data.length > 0 ? data[0].avg_wpm : 0,
+                        value: data.last_attempt_wpm.wpm,
                         unit: 'WPM',
                         cardHead: 'Last Attempt',
                         more: false,
                     },
+                    {
+                        value: data.avg_total_today.total_tests,
+                        unit: 'Tests',
+                        cardHead: 'Total Attempts',
+                        more: false,
+                    },
+                    {
+                        value: data.avg_total_today.today_tests,
+                        unit: 'Tests',
+                        cardHead: 'Today Attempts',
+                        more: false,
+                    },
                 ]);
-                setTotalData({
-                    value: data.avg_total_today.total_tests,
-                    unit: 'WPM',
-                    todayCount: data.avg_total_today.today_tests,
-                    cardHead: 'Total Attempts',
-                    queryQsn: 'Today Attempts:',
-                });
                 setLoading(false);
             })
             .catch((error) => {
@@ -90,13 +74,12 @@ const Dashboard = () => {
                     </p>
                 </div>
                 <CardContainer>
-                    <TotalCard val={totalData} />
                     {wpm.map((item, index) => (
                         <Card key={index} val={item} />
                     ))}
                 </CardContainer>
                 <AccuracyWpmChart />
-                <div className="eventContainer" style={{ width: responsive ? '98%' : '51%' }}>
+                <div className="eventContainer" style={{ width: responsive ? '98%' : '40%' }}>
                     Events are comming soon
                 </div>
             </div>

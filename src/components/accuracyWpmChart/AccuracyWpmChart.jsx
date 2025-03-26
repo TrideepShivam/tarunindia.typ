@@ -144,7 +144,7 @@ const AccuracyWpmChart = () => {
     };
 
     return (
-        <div className="chartContainer" style={{ width: responsive ? '98%' : '40%' }}>
+        <div className="chartContainer" style={{ width: responsive ? '98%' : '50%' }}>
             <CardContainer>
                 {testDays.map((item, index) => (
                     <Hyperlink
