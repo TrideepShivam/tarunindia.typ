@@ -1,8 +1,6 @@
-import { useContext } from 'react';
 import './Leaderboard.css';
-import { Context } from './../../ContextAPI';
 const Leaderboard = () => {
-    const { setMsg } = useContext(Context);
+    // const { setMsg } = useContext(Context);
     return (
         <>
             <p className="sectionHead">LEADERBOARD</p>

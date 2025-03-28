@@ -16,7 +16,7 @@ const SetPassword = () => {
     const [feedback, setFeedback] = useState([]);
     const { id, token } = useParams();
     const navigate = useNavigate();
-    const { userDetails, setUserLocal, msg, setMsg } = useContext(Context);
+    const { userDetails, msg, setMsg } = useContext(Context);
     const [loading, setLoading] = useState(false);
     const pwdRef = useRef();
     const pwdReRef = useRef();

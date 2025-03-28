@@ -13,7 +13,7 @@ const Profile = () => {
                     <img height="100px" width="100px" alt="soon" />
                     <div className="textArea">
                         {allTextField.map((a) => (
-                            <Textbox legend={a}></Textbox>
+                            <Textbox key={a} legend={a}></Textbox>
                         ))}
                     </div>
                 </div>

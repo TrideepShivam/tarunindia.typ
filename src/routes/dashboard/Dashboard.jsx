@@ -1,5 +1,4 @@
 import Card from '../../components/card/Card';
-import TotalCard from '../../components/card/totalCard/TotalCard';
 import './Dashboard.css';
 import { useContext, useEffect, useState } from 'react';
 import { Context } from '../../ContextAPI';
