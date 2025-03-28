@@ -3,12 +3,14 @@
     cursor: pointer;
     margin:.5em;
 }
+
 .dropdownContainer .legend,.dropdownContainer img{
     position: absolute;
     background:var(--light-back-color);
-    padding:0em .2em;
+    padding:0 .2em;
     z-index: 0;
 }
+
 .dropdownContainer img{
     padding:.5em;
     background-color: var(--light-back-color);
@@ -17,6 +19,7 @@
     transform: rotate(-90deg);
     border-radius: 50%;
 }
+
 .dropdownContainer input{
     position: relative;
     width:calc(100% - .8em);
@@ -30,6 +33,7 @@
     z-index: 1;
     cursor:pointer;
 }
+
 .dropdownContainer .options{
     width:calc(100% - 1.5em);
     max-height: 15em;
@@ -44,10 +48,12 @@
     animation:fromtopfade .1s;
     overflow-y: scroll;
 }
+
 .dropdownContainer .options p{
     padding:.4em;
     font-size: 1.2em;
 }
+
 .dropdownContainer .options p:hover{
     color: var(--theme-color);
 }

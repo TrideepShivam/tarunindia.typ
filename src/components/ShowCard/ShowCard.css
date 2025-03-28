@@ -12,6 +12,7 @@
       align-items: center;
 }
 .multiColorBorder:hover{--x:100%;}
+
 .field
 {
  height: 12em;
@@ -23,11 +24,13 @@
  text-wrap:pretty;
  color: var(--text-color);
 }
+
 .field p
 {
     font-size: large;
     color:var(--text-color-light);
 }
+
 .field h2
 {
     margin:.2em 0;

@@ -2,6 +2,7 @@
     padding:.2em;
     border-radius: 50%;
 }
+
 .time{
     width:6em;
     height:6em;
@@ -13,7 +14,8 @@
     background:var(--light-back-color);
     border-radius: 50%;
 }
-@media screen and (max-width:900px){
+
+@media screen and (width <=900px){
     .time{
         width:5em;
         height:5em;

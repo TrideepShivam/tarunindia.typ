@@ -7,17 +7,22 @@
     background-color: var(--background-color);
     border:.1em solid var(--text-color-light);
 }
+
 .errors{
     overflow-y: scroll;
+
     /* scrolled error container */
 }
+
 .popUpContainer .errors tbody{
     font-size: 1.2em;
 }
+
 .details table td{
     padding:.2em 1em;
 }
-@media only screen and (max-width:900px){
+
+@media only screen and (width <=900px){
     .popUpContainer .details{
         flex-direction: column;
         width: calc(98% - 2em);
@@ -25,6 +30,7 @@
         padding: 1em;
         border: 0.1em solid transparent;
     }
+
     .errors{
         overflow-y: visible;
     }

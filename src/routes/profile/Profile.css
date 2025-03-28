@@ -1,8 +1,9 @@
 *
 {
-    margin: 0px;
-    outline: 0px;
+    margin: 0;
+    outline: 0;
 }
+
 .containerBox
 {
     width: 100%;
@@ -11,6 +12,7 @@
     gap: 40px;
     
 }
+
 .inputImage
 {
     width: 100%;
@@ -19,6 +21,7 @@
     display: grid;
     grid-template-columns: 1fr 4fr;
 }
+
 .textArea
 {
     display: flex;
@@ -27,6 +30,7 @@
     align-items: space-around;
     height: 100%;
 }
+
 /* img
 {
    height: 80%;
@@ -34,8 +38,9 @@
     border: 1px solid green;
 } */
 .bodyBox{
-    padding: 0% 4% 0% 4%;
+    padding: 0% 4%;
 }
+
 /* .textboxContainer input{
     
     width: 30vw;
@@ -52,9 +57,10 @@
     flex-direction: column;
     align-items: center;
 }
+
 .achivement span{
     color:var(--text-color);
     border-bottom: .05em solid var(--theme-color);
-    padding: 0px 3px 2px 3px;
+    padding: 0 3px 2px;
     letter-spacing: 1px;
 }

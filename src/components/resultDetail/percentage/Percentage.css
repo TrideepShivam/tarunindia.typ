@@ -2,9 +2,11 @@
     width:300px;
     height: 300px;
 }
+
 .congratulation{
     position:absolute;
 }
+
 .outer{
     width:15em;
     height:15em;
@@ -15,6 +17,7 @@
     animation:appearfromright .5s ease-in-out;
     background-color: var(--background-color);
 }
+
 .inner{
     width:90%;
     height:90%;

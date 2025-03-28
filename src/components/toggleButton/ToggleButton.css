@@ -6,9 +6,10 @@
     position: relative;
     margin:1em;
 }
+
 .toggleButtonContainer .toggleButton{
     background-color: white;
-    box-shadow: .1em .1em .1em rgba(0,0,0,.5);
+    box-shadow: .1em .1em .1em rgb(0 0 0 / 50%);
     cursor: pointer;
     width:1.8em;
     height:1.8em;

@@ -8,19 +8,23 @@
     justify-content: flex-start;
     text-wrap: nowrap;
 }
+
 .topContainer{
     display: flex;
     align-items: flex-end;
 }
+
 .cardValue{
     font-size:5em;
 }
+
 .cardUnit{
     margin: 0;
     color:var(--theme-color);
     font-size:1em;
 }
-@media only screen and (max-width:820px) {
+
+@media only screen and (width <=820px) {
     .cardContainer{
         min-width:auto;
         width:auto;

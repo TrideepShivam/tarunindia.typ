@@ -2,10 +2,11 @@
     padding:.5em;
     margin:1em;
     position:fixed;
-    bottom:0em;
-    right:0em;
+    bottom:0;
+    right:0;
     z-index: 10;
 }
+
 .msgContainer{
     min-width: 10em;
     max-width: 20em;
@@ -19,23 +20,27 @@
     animation:fadeIn .5s;
     overflow: hidden;
     position: relative;
-    box-shadow: 0px 0px 10px rgba(0,0,0,.2);
+    box-shadow: 0 0 10px rgb(0 0 0 / 20%);
     border:.01em solid var(--text-color-light)
 }
+
 .msgContainer p{
-    padding:0em 1em;
+    padding:0 1em;
 }
+
 .msgContainer .counter{
     width:100%;
     position:absolute;
-    bottom: 0px;
+    bottom: 0;
     height:.1em;
 }
+
 @keyframes fadeIn{
     0%{opacity:0;transform:translateX(5em)}
-    100%{opacity:1;transform:translateX(0px)}
+    100%{opacity:1;transform:translateX(0)}
 }
-@media only screen and (max-width:820px){
+
+@media only screen and (width <=820px){
     .notificationContainer{
         font-size: .8em;
         top:1em;

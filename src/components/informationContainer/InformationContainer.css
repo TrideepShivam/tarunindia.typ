@@ -4,12 +4,14 @@
     gap:1em;
     justify-content: space-between;
 }
+
 .informationContainer .information{
     width:60%;
     display: flex;
     flex-direction: column;
     gap:.5em;
 }
+
 .informationContainer .commonInformation{
     width:30%;
     display: flex;
@@ -17,16 +19,18 @@
     gap:.5em;
     flex-direction: column;
 }
+
 .commonInformation .qrcontainer{
     display: flex;
     flex-wrap: wrap;
     gap:1em;
 }
 
-@media only screen and (max-width:800px){
+@media only screen and (width <=800px){
     .informationContainer{
         flex-direction: column;
     }
+
     .informationContainer .information,.informationContainer .commonInformation{
         width:100%;
     }

@@ -4,12 +4,14 @@
     gap:1em;
     animation:fromleftfade .5s;
 }
+
 .playgroundInfoAndPendingContainer{
     width:50%;
     display: flex;
     flex-direction: column;
     gap:1em;
 }
+
  .playgroundInformation{
     padding:2em;
     border-radius: 1em;
@@ -17,12 +19,14 @@
     background-size: cover;
     background-position: center center;
 }
+
 .pendingTestContainer{
     min-height: 40%;
     padding:2em;
     background-color: var(--light-back-color);
     border-radius: 1em;
 }
+
 .playForm{
     width: 40%;
     padding:2em;
@@ -31,14 +35,16 @@
     border-radius: 1em;
     background-color: var(--light-back-color);
 }
+
 .conditionContainer{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding:0em .5em;
+    padding:0 .5em;
     font-size: 1.2em;
 }
-@media screen and (max-width:900px){
+
+@media screen and (width <=900px){
     .playgroundContent{
         width:calc(100% - 1em);
         flex-direction: column;padding:.5em;

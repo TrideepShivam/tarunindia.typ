@@ -6,11 +6,13 @@
     gap:1em;
     animation:fromleftfade .5s;
 }
+
 .resultTableContainer{
     width:99%;
     min-height: 25em;
     background:var(--light-back-color);
 }
+
 .resultTableContainer table{
     width:100%;
     padding:.5em;
