@@ -6,6 +6,7 @@
     cursor: pointer;
     padding:.7em .6em .4em;
 }
+
 .circleButton:hover{
     background-color: var(--transparent-color);
 }

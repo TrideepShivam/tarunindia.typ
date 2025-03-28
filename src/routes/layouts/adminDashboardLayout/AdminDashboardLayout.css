@@ -3,28 +3,34 @@
     height: calc(94% - .5em);
     display:flex;
 }
+
 .sideNavContainer{
-    padding:0em .25em;
+    padding:0 .25em;
     display:flex;
 }
+
 .mainAdminContentContainer{
     height:var(100% - 1em);
     padding:.5em;
     overflow-y:auto;
 }
+
 .sectionHead{
-    padding:0em .5em;
-    margin: .2em 0em;
+    padding:0 .5em;
+    margin: .2em 0;
     border-left:.1em solid var(--theme-color);
 }
+
 .divider{
     border:.2em solid var(--theme-color);
 }
+
 @font-face {
 	font-family: Krutidev;
 	src: url('./../../../assets/fonts/k010.ttf');
 	src: local('k010'), url('./../../../assets/fonts/k010.woff') format('woff'), url('./../../../assets/fonts/k010.ttf') format('truetype');
 }
+
 @font-face {
 	font-family: Mangal;
 	src: url('./../../../assets/fonts/mangal.ttf');

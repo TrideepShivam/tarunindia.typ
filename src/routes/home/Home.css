@@ -2,6 +2,7 @@
     letter-spacing: .05em;
 
 }
+
 .parent {
     height: auto;
     width: 100%;
@@ -31,6 +32,7 @@
     flex-direction: column;
     gap: 3em;
 }
+
 .whyBox
 {
     width: 90%;
@@ -40,6 +42,7 @@
     align-items: center;
     gap:2em;
 }
+
 .whyDetail
 {
     height: 52%;
@@ -50,31 +53,33 @@
     align-items: justify;
     
 }
+
 .whoWeAre
 {
     min-height: 80vh;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    padding: 2% 0% 2% 0%;
+    padding: 2% 0%;
     gap:5%;
 
 }
+
 .detailWho,.imageWho{
     width: 28%;
     height:90%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
     line-height: 2.1em;
     word-spacing: .15em;
     align-items: center;
-    padding: 0% 9vw 0% 9vw;
+    padding: 0% 9vw;
     gap: 1em;
 
     
 }
+
 .socialMedia{
     display: flex;
     justify-content: flex-start;
@@ -96,17 +101,18 @@
 .workFlow {
     height: auto;
     width: 90%;
-    
     padding: 2% 5%;
 }
 
-@media screen and (max-width:900px){
+@media screen and (width <=900px){
     .blur h3,.blur p{
         font-size: 1.5em;
     }
+
     .blur h1{
         font-size: 500%;
     }
+
     .imageWho{
         display: none;
     }

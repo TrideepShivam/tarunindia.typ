@@ -1,18 +1,20 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
+
   --background-color:#101010;
   --light-back-color:#1a1a1a;
   --text-color:#fefeff;
-  --text-color-light:#9999aa;
-  --theme-color:#00aaff;/*dark*/
-  --theme-color-reverse:#5500ff;/*light*/
-  --transparent-color:rgba(0,0,0,.6);
-  --light-transparent-color:rgba(0,0,0,.4);
-  --dark-transparent-color:rgba(0,0,0,.8);
-  --shadow:0em .1em .25em rgba(0,0,0,.5);
+  --text-color-light:#99a;
+  --theme-color:#0af;/* dark */
+  --theme-color-reverse:#50f;/* light */
+  --transparent-color:rgb(0 0 0 / 60%);
+  --light-transparent-color:rgb(0 0 0 / 40%);
+  --dark-transparent-color:rgb(0 0 0 / 80%);
+  --shadow:0em .1em .25em rgb(0 0 0 / 50%);
+
   font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
@@ -22,25 +24,29 @@
 ::-webkit-scrollbar-track{background:var(--background-color);}
 ::-webkit-scrollbar-thumb{background:var(--text-color-light);}
 ::-webkit-calendar-picker-indicator{filter: invert(80%);cursor: pointer;}
+
 .dark-theme{
   --background-color:#e5e5e5;
   --light-back-color:#eaeaea;
   --text-color:#101010;
   --text-color-light:#202020;
-  --theme-color-reverse:#00aaff;
-  --theme-color:#5500ff;
-  --light-transparent-color:rgba(255,255,255,.3);
-  --dark-transparent-color:rgba(255,255,255,.8);
-  --transparent-color:rgba(255,255,255,.5);
+  --theme-color-reverse:#0af;
+  --theme-color:#50f;
+  --light-transparent-color:rgb(255 255 255 / 30%);
+  --dark-transparent-color:rgb(255 255 255 / 80%);
+  --transparent-color:rgb(255 255 255 / 50%);
 
 }
 body,html{width:100%;height:100vh;}
+
 body,h1,h2,h3,p{
   margin: 0;
 }
+
 p{
   font-size:1.1em;
 }
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -53,6 +59,7 @@ h1 {
   color:var(--text-color);
   overflow-y: auto;
 }
+
 .highlight{
   color:var(--theme-color);
 }
@@ -64,33 +71,38 @@ h1 {
 @keyframes fromleftfade {
   0%{
     opacity:0;
-    transform:translatex(-1em);
+    transform:translateX(-1em);
   }
   30%{opacity:0;}
+
   100%{
     opacity:1;
-    transform:translatex(0em);
+    transform:translateX(0);
   }
 }
+
 @keyframes fromrightfade {
   0%{
     opacity:0;
-    transform:translatex(1em);
+    transform:translateX(1em);
   }
   30%{opacity:0;}
+
   100%{
     opacity:1;
-    transform:translatex(0em);
+    transform:translateX(0);
   }
 }
+
 @keyframes fromtopfade {
   0%{
     opacity:0;
-    transform:translatey(-1em);
+    transform:translateY(-1em);
   }
   30%{opacity:0;}
+
   100%{
     opacity:1;
-    transform:translatey(0em);
+    transform:translateY(0);
   }
 }
