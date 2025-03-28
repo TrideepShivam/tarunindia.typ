@@ -21,18 +21,18 @@ const LanguageConfirmation = ({ setTypingDisabled, setSkipIntro, language }) => 
         }
     };
     const { lightMode, setMsg } = useContext(Context);
-    const img = (
-        <img
-            width="25"
-            height="25"
-            src={
-                !lightMode
-                    ? 'https://img.icons8.com/ios-filled/25/000000/delete-sign--v1.png'
-                    : 'https://img.icons8.com/ios-filled/25/ffffff/delete-sign--v1.png'
-            }
-            alt="back"
-        />
-    );
+    // const img = (
+    //     <img
+    //         width="25"
+    //         height="25"
+    //         src={
+    //             !lightMode
+    //                 ? 'https://img.icons8.com/ios-filled/25/000000/delete-sign--v1.png'
+    //                 : 'https://img.icons8.com/ios-filled/25/ffffff/delete-sign--v1.png'
+    //         }
+    //         alt="back"
+    //     />
+    // );
 
     const confirm = () => {
         setSkipIntro(true);

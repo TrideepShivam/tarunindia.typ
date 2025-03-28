@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import './Hyperlink.css';
 
 const Hyperlink = (props) => {
-    const typeCollection = ['trans-hover', 'bordered-theme', 'anchor', 'themed', 'premium'];
+    // const typeCollection = ['trans-hover', 'bordered-theme', 'anchor', 'themed', 'premium'];
     return (
         <Link
             style={props.style && props.style}

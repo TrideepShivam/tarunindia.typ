@@ -16,7 +16,6 @@ import Profile from './routes/profile/Profile';
 import Admin from './routes/admin/Admin';
 import AdminDashboard from './routes/admin/dashboard/Dashboard';
 import Error from './routes/error/Error';
-import RegisterTrial from './routes/register/RegisterTrial';
 import NotFound from './routes/error/NotFound';
 import Register from './routes/register/Register';
 import ForgotPassword from './routes/forgotPassword/ForgotPassword';

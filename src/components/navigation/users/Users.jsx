@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import './Users.css';
 import { Context } from '../../../ContextAPI';
 import Profile from '../../../assets/pexels.jpg';

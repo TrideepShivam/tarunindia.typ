@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import './Pricing.css';
 import certificate from './../../assets/certificate.jpg';
 import { Context } from '../../ContextAPI';

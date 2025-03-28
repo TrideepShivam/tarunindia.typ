@@ -8,7 +8,6 @@ import { Context } from '../../ContextAPI';
 import { Navigate } from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
 import Checkbox from '../../components/checkbox/Checkbox';
-import Retry from '../../components/retry/Retry';
 import MainFormContainer from '../../components/mainFormContainer/MainFormContainer';
 import backgroundImg from './../../assets/register-form-image.jpeg';
 

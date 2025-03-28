@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import './TopNavigation.css';
 import logo from '../../../assets/logo-reverse.svg';
 import ToggleDarkLight from '../../toggleDarkLight/ToggleDarkLight';

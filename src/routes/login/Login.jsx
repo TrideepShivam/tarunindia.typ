@@ -1,11 +1,11 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import Button from '../../components/button/Button';
 import Hyperlink from '../../components/hyperlink/Hyperlink';
 import Textbox from '../../components/textbox/Textbox';
 import './Login.css';
 import api from '../../api';
 import { Context } from '../../ContextAPI';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import MainFormContainer from '../../components/mainFormContainer/MainFormContainer';
@@ -32,7 +32,7 @@ const Login = () => {
                 setUserLocal(response.data);
                 setLoading(false);
             })
-            .catch((response) => {
+            .catch(() => {
                 setLoading(false);
             });
     };

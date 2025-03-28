@@ -8,7 +8,7 @@ import Hyperlink from '../../../components/hyperlink/Hyperlink';
 import Button from '../../../components/button/Button';
 
 const PricingElement = () => {
-    const { setMsg, responsive, setPurchaseBoxOpen } = useContext(Context);
+    const { setMsg, responsive } = useContext(Context);
     const [loading, setLoading] = useState(false);
     const pricingDays = [365, 180, 90, 30, 15];
     const [day, setDay] = useState(pricingDays[0]);
