@@ -7,12 +7,14 @@
     flex-direction: column;
     align-items: center;
 }
+
 .priceCardContainer{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap:1em;
 }
+
 .planCard{
     display: flex;
     gap:1em;
@@ -25,11 +27,13 @@
     padding:2em;
     animation:fromleftfade .5s;
 }
+
 .planCard.exclusive{
     border:.5px solid var(--theme-color);
     position: relative;
     overflow:hidden
 }
+
 .planCard.exclusive::before {
     content: "Exclusive Deal";
     position: absolute;
@@ -41,7 +45,8 @@
     font-size: 12px;
     font-weight: bold;
     transform: rotate(-45deg);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgb(0 0 0 / 10%);
 }
-@media screen and (max-width:900px) {
+
+@media screen and (width <=900px) {
 }
