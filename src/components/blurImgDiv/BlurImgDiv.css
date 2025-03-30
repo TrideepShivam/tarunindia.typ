@@ -6,6 +6,7 @@
     background-attachment: fixed;
     background-position: center;
 }
+
 .blur{
     width: inherit;
     display: flex;
@@ -13,12 +14,11 @@
     align-items: center;
     flex-direction: column;
     backdrop-filter: blur(3px);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgb(0 0 0 / 50%);
 }
 
-@media screen and (max-width:800px){
+@media screen and (width <=800px){
     .blur{
-       
         align-items: flex-start;
         padding:0 6vw;
         line-height: 20PX;

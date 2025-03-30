@@ -10,7 +10,8 @@
     background-size: 100%;
     border:.1em solid var(--text-color-light);
 }
-@media only screen and (max-width:900px){
+
+@media only screen and (width <=900px){
     .purchaseMsgContainer{
         width: calc(98% - 4em);
         max-height: 98%;

@@ -3,7 +3,7 @@ import { Context } from '../../ContextAPI';
 import { useContext } from 'react';
 const DotLineBox = (props) => {
     let res = window.innerWidth;
-    const { lightMode, setLightMode } = useContext(Context);
+    const { lightMode } = useContext(Context);
     let currentImg = !lightMode ? props.image.light : props.image.dark;
     return (
         <div

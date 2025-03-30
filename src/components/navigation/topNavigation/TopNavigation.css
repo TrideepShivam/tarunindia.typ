@@ -3,7 +3,7 @@
     padding:.5em;
     font-size: 1.2em;
     position:fixed;
-    top:0em;
+    top:0;
     color:var(--text-color);
     display:flex;
     justify-content: space-between;
@@ -11,6 +11,7 @@
     text-align: center;
     z-index: 2;
 }
+
 .navSlab
 {   margin-left: 5em;
     padding:.4em 1.5em;
@@ -24,16 +25,17 @@
     text-decoration: none;
     box-shadow: var(--shadow);
 }
+
 .topNavigation .navMenuButton{
     color:var(--theme-color);
     font-size: 1.5em;
     cursor: pointer;
 }
 
-@media only screen and (max-width:900px){
+@media only screen and (width <=900px){
     .navSlab{
         margin:0;
-        border-radius: 0em;
+        border-radius: 0;
         width:calc(100% - 2.8em);
         height:100vh;
         flex-direction: column;

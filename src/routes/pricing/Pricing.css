@@ -5,6 +5,7 @@
     gap:1em;
     flex-direction: column;
 }
+
 .pricingHead{
     width:calc(100% - 4em);
     padding:2em;
@@ -21,33 +22,38 @@
     border-radius:0 0 100% 40%;
     animation:borderanimation 50s infinite;
 }
+
 .price{
     background: linear-gradient(to right, var(--theme-color) 15%, var(--theme-color-reverse));
     color: transparent;
     background-clip: text;
     font-size: 10em;
-    margin: -.2em 0em -.1em 0em;
+    margin: -.2em 0 -.1em;
     position: relative;
 }
+
 .price::after{
     content: '/per day';
     font-size: .1em;
     color:var(--text-color);
     position:absolute;
-    bottom:0em;
+    bottom:0;
     width:4em;
 }
+
 .freeSubscription{
     width:calc(100% - 4em);
     padding:4em 2em;
     display: flex;
     gap:1em;
 }
+
 .freeSubscription .detailsFreeSubscription{
     display: flex;
     gap:.5em;
     flex-direction: column;
 }
+
 .comparisonContainer{
     padding:2em;
     display:flex;
@@ -56,30 +62,37 @@
     justify-content: center;
     align-items: center;
 }
+
 .comparisonTable,.planContainer{
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 .comparisonTable table{
     border:.1em solid var(--light-back-color);
     border-collapse: collapse;
     text-align: left;
 }
+
 .comparisonTable th,.comparisonTable td{
     padding:.5em 1em;
     font-size: 1.5em;
 }
+
 .comparisonTable thead{
     color: var(--theme-color);
 }
+
 .comparisonContainer tbody tr td:first-child{
     background-color: var(--light-back-color);
 }
+
 .comparisonContainer tbody tr td:last-child{
     background-color: var(--theme-color-reverse);
 }
+
 .bulkSubscription{
     width:calc(100% - 4em);
     padding:4em 2em;
@@ -91,6 +104,7 @@
     flex-direction: column;
 }
 .bulkSubscription p{margin-left: 1em;}
+
 .faq{
     width:calc(100% - 2em);
     padding:1em;
@@ -100,6 +114,7 @@
     justify-content: center;
     align-items: center;
 }
+
 @keyframes borderanimation{
     0%{border-radius:0 0 100% 40%;}
     17%{border-radius:0 0 80% 60%;}
@@ -110,23 +125,28 @@
     100%{border-radius:0 0 100% 40%;}
 
 }
-@media screen and (max-width:900px) {
+
+@media screen and (width <=900px) {
     .pricingHead{
         width:calc(100% - 2em);
         padding:2em 1em;
         align-items: flex-start;
     }
+
     .comparisonContainer{
         padding:1em;
         justify-content: flex-start;
     }
+
     .comparisonTable th,.comparisonTable td{
         padding:.5em;
         font-size: 1.2em;
     }
+
     .planContainer{
         padding:1em;
     }
+
     .bulkSubscription,.freeSubscription{
         background: none;
         flex-direction: column;

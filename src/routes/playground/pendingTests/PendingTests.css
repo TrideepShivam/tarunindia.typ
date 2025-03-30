@@ -2,6 +2,7 @@
     width:100%;
     font-size: 1em;
 }
+
 .pendingDataTable td{
-    padding:.35em 0em;
+    padding:.35em 0;
 }

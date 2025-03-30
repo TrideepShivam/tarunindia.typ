@@ -9,10 +9,12 @@
     background-color: var(--background-color);
     border:.01em solid var(--text-color-light);
 }
+
 .confirmationBox p span{
     font-size: 1.1em;
 }
-@media screen and (max-width:900px){
+
+@media screen and (width <=900px){
     .confirmationBox{
         max-width: 90%;
         font-size: .9em;

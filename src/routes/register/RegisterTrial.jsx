@@ -1,4 +1,3 @@
-import Button from '../../components/button/Button';
 import Hyperlink from '../../components/hyperlink/Hyperlink';
 import InformationContainer from '../../components/informationContainer/InformationContainer';
 import './Register.css';
