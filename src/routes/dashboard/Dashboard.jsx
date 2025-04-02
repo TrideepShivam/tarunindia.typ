@@ -9,6 +9,7 @@ import Retry from '../../components/retry/Retry';
 import CardContainer from '../../components/cardContainer/CardContainer';
 import { format } from 'date-fns';
 import AccuracyWpmChart from '../../components/accuracyWpmChart/AccuracyWpmChart';
+import Hyperlink from '../../components/hyperlink/Hyperlink';
 
 const Dashboard = () => {
     useAuthInterceptor();
@@ -66,18 +67,24 @@ const Dashboard = () => {
             <p className="sectionHead">DASHBOARD</p>
             <div className="dashboardContent">
                 <div className="welcomeContainer">
-                    <h1 className="highlight">Namaste, {userDetails.user.name}</h1>
+                    <h1 className="highlight">Namaste, {userDetails.user.name.split(' ')[0]}</h1>
                     <h3>Welcome to Typathon</h3>
-                    <p style={{ textAlign: !responsive ? 'right' : 'left' }}>
+                    <p style={{ float: !responsive ? 'right' : 'left' }}>
                         Joined on {format(new Date(userDetails.user.created_at), 'MMM d, yyyy')}
                     </p>
+                    <Hyperlink
+                        style={{ marginTop: '.5em', float: 'left' }}
+                        type="premium"
+                        href="/advance-analytics"
+                        value="Advance Analytics"
+                    />
                 </div>
                 <CardContainer>
                     {wpm.map((item, index) => (
                         <Card key={index} val={item} />
                     ))}
                 </CardContainer>
-                <AccuracyWpmChart />
+                <AccuracyWpmChart width={'50%'} />
                 <div className="eventContainer" style={{ width: responsive ? '98%' : '40%' }}>
                     Events are comming soon
                 </div>

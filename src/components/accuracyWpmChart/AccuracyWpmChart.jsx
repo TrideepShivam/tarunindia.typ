@@ -6,8 +6,10 @@ import Chart from 'react-apexcharts';
 import api from '../../api';
 import CardContainer from '../cardContainer/CardContainer';
 import Hyperlink from '../hyperlink/Hyperlink';
+import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 
-const AccuracyWpmChart = () => {
+const AccuracyWpmChart = ({ width }) => {
+    useAuthInterceptor();
     let darkThemeColor = import.meta.env.VITE_APP_DARK_THEME || '#00aaff';
     let lightThemeColor = import.meta.env.VITE_APP_LIGHT_THEME || '#5500ff';
     const { responsive, lightMode } = useContext(Context);
@@ -122,7 +124,7 @@ const AccuracyWpmChart = () => {
                 console.log(response);
                 setLoading(false);
             });
-    }, [days]);
+    }, [days, lightMode]);
     const generateData = (existingData, startDate, days) => {
         const newData = [];
 
@@ -142,7 +144,7 @@ const AccuracyWpmChart = () => {
     };
 
     return (
-        <div className="chartContainer" style={{ width: responsive ? '98%' : '50%' }}>
+        <div className="chartContainer" style={{ width: responsive ? '98%' : width, height: 'calc(100% - 3.5em)' }}>
             <CardContainer>
                 {testDays.map((item, index) => (
                     <Hyperlink
@@ -152,23 +154,19 @@ const AccuracyWpmChart = () => {
                         onClick={() => setDays(index)}
                     />
                 ))}
-                <Hyperlink
-                    style={{ marginLeft: 'auto', whiteSpace: 'nowrap' }}
-                    type="premium"
-                    href="/advance-analytics"
-                    value="Advance Analytics"
-                />
             </CardContainer>
-            {!loading ? (
-                <Chart
-                    options={chartData.options}
-                    series={chartData.series}
-                    type="area"
-                    height={'100%'} // Customize the chart height
-                />
-            ) : (
-                <Loading type="circle" />
-            )}
+            <div className="chart">
+                {!loading ? (
+                    <Chart
+                        options={chartData.options}
+                        series={chartData.series}
+                        type="area"
+                        height={'100%'} // Customize the chart height
+                    />
+                ) : (
+                    <Loading type="circle" />
+                )}
+            </div>
         </div>
     );
 };

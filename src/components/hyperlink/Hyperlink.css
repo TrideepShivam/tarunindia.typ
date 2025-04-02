@@ -37,7 +37,7 @@
     background-color: var(--light-back-color);
     color:var(--text-color);
     border-radius: 2em;
-    padding:.4em 1em .5em;
+    padding:.5em 1.2em;
     text-decoration: none;
 
 }
