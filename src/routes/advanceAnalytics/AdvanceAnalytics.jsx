@@ -9,14 +9,16 @@ import AccuracyWpmChart from '../../components/accuracyWpmChart/AccuracyWpmChart
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import api from '../../api';
 import Card from '../../components/card/Card';
+import Loading from '../../components/loading/Loading';
 
 const AdvanceAnalytics = () => {
     useAuthInterceptor();
-    const { userDetails } = useContext(Context);
+    const [loading, setLoading] = useState(true);
+    const { userDetails, responsive } = useContext(Context);
     const [cardData, setCardData] = useState([]);
     const [seriesData, setSeriesData] = useState([]);
     useEffect(() => {
-        api.get('/advance-analytics')
+        api.post('/advance-analytics')
             .then(({ data }) => {
                 setCardData([
                     {
@@ -39,9 +41,16 @@ const AdvanceAnalytics = () => {
                     },
                 ]);
                 setSeriesData(data[1]);
+                setLoading(false);
             })
-            .catch(({ response }) => {});
+            .catch(({ response }) => {
+                setLoading(false);
+            });
     }, []);
+
+    if (loading) {
+        return <Loading />;
+    }
     return (
         <div className="analyticsContainer">
             <div className="analyticsHeader">
@@ -52,9 +61,13 @@ const AdvanceAnalytics = () => {
                 </div>
             </div>
             <div className="candidateDetails">
-                <h1 className="highlight">{userDetails.user.name}</h1>
-                <h3>Advance Analytics</h3>
-                <p>Joined on {format(new Date(userDetails.user.created_at), 'MMM d, yyyy')}</p>
+                <h1 className="sectionHead" style={{ float: !responsive ? 'left' : 'none' }}>
+                    Advance Analytics
+                </h1>
+                <div style={{ float: !responsive ? 'right' : 'none', textAlign: !responsive ? 'right' : 'left' }}>
+                    <h2 className="highlight">{userDetails.user.name}</h2>
+                    <p>Joined on {format(new Date(userDetails.user.created_at), 'MMM d, yyyy')}</p>
+                </div>
             </div>
             <div className="reportContainer">
                 <div className="item1">
