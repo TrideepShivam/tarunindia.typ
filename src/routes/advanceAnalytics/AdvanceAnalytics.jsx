@@ -11,6 +11,7 @@ import api from '../../api';
 import Card from '../../components/card/Card';
 import Loading from '../../components/loading/Loading';
 import Navigation from '../../components/navigation/sideNavigation/navigation/Navigation';
+import Tags from '../../components/tags/tags';
 
 const AdvanceAnalytics = () => {
     useAuthInterceptor();
@@ -18,11 +19,15 @@ const AdvanceAnalytics = () => {
     const { userDetails, responsive, lightMode } = useContext(Context);
     const [cardData, setCardData] = useState([]);
     const [seriesData, setSeriesData] = useState([]);
-    const arrow = !lightMode
-        ? 'https://img.icons8.com/ios-filled/25/000000/back.png'
-        : 'https://img.icons8.com/ios-filled/25/ffffff/back.png';
+    const [openFilter, setOpenFilter] = useState(false);
+    const [languageFilter, setLanguageFilter] = useState('Mangal');
+    const [durationFilter, setDurationFilter] = useState(5);
     useEffect(() => {
-        api.post('/advance-analytics')
+        setLoading(true);
+        api.post('/advance-analytics', {
+            duration: durationFilter,
+            language: languageFilter,
+        })
             .then(({ data }) => {
                 setCardData([
                     {
@@ -50,7 +55,7 @@ const AdvanceAnalytics = () => {
             .catch(({ response }) => {
                 setLoading(false);
             });
-    }, []);
+    }, [durationFilter, languageFilter]);
 
     if (loading) {
         return <Loading />;
@@ -71,8 +76,10 @@ const AdvanceAnalytics = () => {
                     }}
                     sideNavOpen={true}
                 />
-                <div style={{ display: 'flex' }}>
-                    <Hyperlink value={'Filter'} type="trans-hover" />
+                <div style={{ display: 'flex', alignItems: 'center', gap: '.2em' }}>
+                    {languageFilter && <Tags onClick={() => setLanguageFilter()} value={languageFilter} />}
+                    {durationFilter && <Tags onClick={() => setDurationFilter()} value={durationFilter + ' min'} />}
+                    <Hyperlink onClick={() => setOpenFilter(true)} value={'Filter'} type="bordered-theme" />
                     <ToggleDarkLight />
                 </div>
             </div>

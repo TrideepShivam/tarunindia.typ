@@ -1,0 +1,21 @@
+.tagsContainer{
+    display:flex;
+    gap:.2em;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 2em;
+    padding:.3em .5em .3em 1em;
+    font-size: .8em;
+    border:.1em solid var(--text-color-light);
+}
+
+.tagsContainer img{
+    padding: .5em;
+    border-radius: 50%;
+    background-color: var(--background-color);
+    cursor: pointer;
+}
+
+.tagsContainer img:hover{
+    background-color: var(--light-back-color);
+}
