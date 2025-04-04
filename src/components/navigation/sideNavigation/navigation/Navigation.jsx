@@ -25,7 +25,7 @@ const Navigation = (props) => {
                 onMouseLeave={() => setShowtooltip(false)}
                 className="navigation"
                 to={props.menu.href}
-                onClick={() => props.setClickedMenu(props.id)}
+                onClick={() => props.setClickedMenu && props.setClickedMenu(props.id)}
             >
                 <img width="30px" src={color.clicked} alt="menu" />
                 {props.sideNavOpen && <span style={{ color: color.text }}>{props.menu.value}</span>}

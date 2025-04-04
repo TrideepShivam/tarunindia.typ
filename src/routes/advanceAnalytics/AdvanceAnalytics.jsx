@@ -10,13 +10,17 @@ import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import api from '../../api';
 import Card from '../../components/card/Card';
 import Loading from '../../components/loading/Loading';
+import Navigation from '../../components/navigation/sideNavigation/navigation/Navigation';
 
 const AdvanceAnalytics = () => {
     useAuthInterceptor();
     const [loading, setLoading] = useState(true);
-    const { userDetails, responsive } = useContext(Context);
+    const { userDetails, responsive, lightMode } = useContext(Context);
     const [cardData, setCardData] = useState([]);
     const [seriesData, setSeriesData] = useState([]);
+    const arrow = !lightMode
+        ? 'https://img.icons8.com/ios-filled/25/000000/back.png'
+        : 'https://img.icons8.com/ios-filled/25/ffffff/back.png';
     useEffect(() => {
         api.post('/advance-analytics')
             .then(({ data }) => {
@@ -54,7 +58,19 @@ const AdvanceAnalytics = () => {
     return (
         <div className="analyticsContainer">
             <div className="analyticsHeader">
-                <Hyperlink href="/dashboard" value="dashboard" type="bordered-theme" />
+                <Navigation
+                    menu={{
+                        href: '/dashboard',
+                        value: 'Dashboard',
+                        icons: [
+                            `https://img.icons8.com/ios-glyphs/30/eeeeee/back.png`,
+                            `https://img.icons8.com/ios-glyphs/30/121212/back.png`,
+                            'https://img.icons8.com/ios-glyphs/30/fefeff/back.png',
+                            'https://img.icons8.com/ios-glyphs/30/101010/back.png',
+                        ],
+                    }}
+                    sideNavOpen={true}
+                />
                 <div style={{ display: 'flex' }}>
                     <Hyperlink value={'Filter'} type="trans-hover" />
                     <ToggleDarkLight />
