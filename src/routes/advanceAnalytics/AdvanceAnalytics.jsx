@@ -94,7 +94,7 @@ const AdvanceAnalytics = () => {
             </div>
             <div className="reportContainer">
                 <div className="item1">
-                    <AccuracyWpmChart width={'95%'} />
+                    <AccuracyWpmChart width={'95%'} language={languageFilter} duration={durationFilter} />
                 </div>
                 {cardData.map((ele, index) => (
                     <div key={index} className={`item${index + 2}`}>

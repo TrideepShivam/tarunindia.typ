@@ -8,14 +8,14 @@ import CardContainer from '../cardContainer/CardContainer';
 import Hyperlink from '../hyperlink/Hyperlink';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 
-const AccuracyWpmChart = ({ width }) => {
+const AccuracyWpmChart = ({ width, language, duration }) => {
     useAuthInterceptor();
     let darkThemeColor = import.meta.env.VITE_APP_DARK_THEME || '#00aaff';
     let lightThemeColor = import.meta.env.VITE_APP_LIGHT_THEME || '#5500ff';
     const { responsive, lightMode } = useContext(Context);
     const testDays = [7, 30, 180, 365];
     const [days, setDays] = useState(0);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [chartData, setChartData] = useState({
         series: [
             {
@@ -58,6 +58,8 @@ const AccuracyWpmChart = ({ width }) => {
         setLoading(true);
         api.post('/graph-details', {
             days: testDays[days],
+            language: language,
+            duration: duration,
         })
             .then(({ data }) => {
                 console.log(data);
