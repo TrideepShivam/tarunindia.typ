@@ -11,7 +11,7 @@
     color:var(--theme-color);
     border:.1em solid var(--theme-color);
     border-radius: 2em;
-    padding:.3em 1em;
+    padding:.4em 1em .5em;
     text-decoration: none;
 }
 
@@ -27,6 +27,7 @@
     border-radius: 2em;
     padding:.4em 1em .5em;
     text-decoration: none;
+    border:.1em solid transparent;
 }
 
 .themed:hover{

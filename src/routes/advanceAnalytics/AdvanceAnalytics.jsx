@@ -12,6 +12,8 @@ import Card from '../../components/card/Card';
 import Loading from '../../components/loading/Loading';
 import Navigation from '../../components/navigation/sideNavigation/navigation/Navigation';
 import Tags from '../../components/tags/tags';
+import Filter from '../../components/filter/Filter';
+import { Navigate } from 'react-router-dom';
 
 const AdvanceAnalytics = () => {
     useAuthInterceptor();
@@ -20,8 +22,8 @@ const AdvanceAnalytics = () => {
     const [cardData, setCardData] = useState([]);
     const [seriesData, setSeriesData] = useState([]);
     const [openFilter, setOpenFilter] = useState(false);
-    const [languageFilter, setLanguageFilter] = useState('Mangal');
-    const [durationFilter, setDurationFilter] = useState(5);
+    const [languageFilter, setLanguageFilter] = useState();
+    const [durationFilter, setDurationFilter] = useState();
     useEffect(() => {
         setLoading(true);
         api.post('/advance-analytics', {
@@ -60,6 +62,9 @@ const AdvanceAnalytics = () => {
     if (loading) {
         return <Loading />;
     }
+    if (!userDetails) {
+        return <Navigate to={'/login'} />;
+    }
     return (
         <div className="analyticsContainer">
             <div className="analyticsHeader">
@@ -77,9 +82,20 @@ const AdvanceAnalytics = () => {
                     sideNavOpen={true}
                 />
                 <div style={{ display: 'flex', alignItems: 'center', gap: '.2em' }}>
+                    {openFilter && (
+                        <Filter
+                            setOpenFilter={setOpenFilter}
+                            data={{
+                                language: languageFilter,
+                                duration: durationFilter,
+                            }}
+                            setLanguageFilter={setLanguageFilter}
+                            setDurationFilter={setDurationFilter}
+                        />
+                    )}
                     {languageFilter && <Tags onClick={() => setLanguageFilter()} value={languageFilter} />}
                     {durationFilter && <Tags onClick={() => setDurationFilter()} value={durationFilter + ' min'} />}
-                    <Hyperlink onClick={() => setOpenFilter(true)} value={'Filter'} type="bordered-theme" />
+                    <Hyperlink onClick={() => setOpenFilter(!openFilter)} value={'Filter'} type="bordered-theme" />
                     <ToggleDarkLight />
                 </div>
             </div>

@@ -1,0 +1,9 @@
+.filterContainer{
+    max-width: 25em;
+    display: flex;
+    flex-direction: column;
+    gap:.5em;
+    padding:2.5em;
+    background-color: var(--background-color);
+    border:.1em solid var(--text-color-light);
+}
