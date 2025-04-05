@@ -282,6 +282,7 @@ const Play = () => {
                             setWrittenStory(e.target.value);
                         }}
                         ref={textAreaRef}
+                        spellCheck={false}
                     />
                 </div>
             </div>
