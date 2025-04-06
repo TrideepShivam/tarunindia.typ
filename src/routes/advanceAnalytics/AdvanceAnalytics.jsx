@@ -11,7 +11,7 @@ import api from '../../api';
 import Card from '../../components/card/Card';
 import Loading from '../../components/loading/Loading';
 import Navigation from '../../components/navigation/sideNavigation/navigation/Navigation';
-import Tags from '../../components/tags/tags';
+import Tags from '../../components/tags/Tags';
 import Filter from '../../components/filter/Filter';
 import { Navigate } from 'react-router-dom';
 
