@@ -22,6 +22,7 @@ import ForgotPassword from './routes/forgotPassword/ForgotPassword';
 import SetPassword from './routes/forgotPassword/SetPassword';
 import Pricing from './routes/pricing/Pricing';
 import AdvanceAnalytics from './routes/advanceAnalytics/AdvanceAnalytics';
+import InProgress from './routes/inProgress/InProgress';
 
 const Router = createBrowserRouter([
     {
@@ -130,6 +131,18 @@ const Router = createBrowserRouter([
     {
         path: '/advance-analytics',
         element: <AdvanceAnalytics />,
+    },
+    {
+        path: '/about-us',
+        element: <InProgress />,
+    },
+    {
+        path: '/contact-us',
+        element: <InProgress />,
+    },
+    {
+        path: '/contents',
+        element: <InProgress />,
     },
     {
         path: '*',
