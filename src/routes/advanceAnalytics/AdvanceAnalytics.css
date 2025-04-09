@@ -18,12 +18,12 @@
     width:calc(100% - 3em);
     display: grid;
     grid-template-areas: 
-        "item2 item1 item1 item1"
-        "item3 item1 item1 item1"
-        "item4 item1 item1 item1"
-        "item5 item5 item5 item5"; /* Item 5 spans across all columns */
+        "item2 item5 item1 item1"
+        "item3 item6 item1 item1"
+        "item4 item7 item1 item1"
+        "item8 item8 item8 item8"; /* Item 5 spans across all columns */
 
-    grid-template-columns: 20% 30% 25% 25%; /* Column sizes */ 
+    grid-template-columns: 20% 20% 30% 30%; /* Column sizes */ 
     gap:1em;
 }
 
@@ -45,4 +45,16 @@
 
 .reportContainer .item5{
     grid-area:item5;
+}
+
+.reportContainer .item6{
+    grid-area:item6;
+}
+
+.reportContainer .item7{
+    grid-area:item7;
+}
+
+.reportContainer .item8{
+    grid-area:item8;
 }

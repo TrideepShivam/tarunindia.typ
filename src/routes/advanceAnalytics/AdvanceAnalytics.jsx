@@ -33,6 +33,24 @@ const AdvanceAnalytics = () => {
             .then(({ data }) => {
                 setCardData([
                     {
+                        value: data[0].avg_total_today.avg_wpm,
+                        unit: 'WPM',
+                        cardHead: 'Average WPM',
+                        more: false,
+                    },
+                    {
+                        value: data[0].avg_total_today.avg_kpm,
+                        unit: 'KPM',
+                        cardHead: 'Average KPM',
+                        more: false,
+                    },
+                    {
+                        value: data[0].avg_total_today.avg_accuracy,
+                        unit: '%',
+                        cardHead: 'Average Accuracy',
+                        more: false,
+                    },
+                    {
                         value: data[0].avg_total_today.highest_wpm,
                         unit: 'WPM',
                         cardHead: 'Highest WPM',
@@ -117,7 +135,7 @@ const AdvanceAnalytics = () => {
                         <Card val={ele} />
                     </div>
                 ))}
-                <div className="item5">
+                <div className="item8">
                     <HeatMapChart seriesData={seriesData} />
                 </div>
             </div>

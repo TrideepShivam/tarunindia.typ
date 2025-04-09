@@ -42,6 +42,21 @@ const HeatMapChart = ({ seriesData }) => {
             width: 1, // Set border width
             colors: [!lightMode ? '#fff' : '#000'], // Dark border line color
         },
+        xaxis: {
+            title: {
+                text: 'Daily test Counts', // X-axis title text
+                style: {
+                    color: lightMode ? '#fff' : '#000', // X-axis title color based on mode
+                    fontSize: '14px', // Font size
+                },
+            },
+            labels: {
+                style: {
+                    colors: lightMode ? '#fff' : '#000', // X-axis labels color based on mode
+                    fontSize: '12px', // Font size for labels
+                },
+            },
+        },
         yaxis: {
             labels: {
                 style: {
