@@ -20,7 +20,7 @@ const LanguageConfirmation = ({ setTypingDisabled, setSkipIntro, language }) => 
             return 'Tarun India';
         }
     };
-    const { lightMode, setMsg } = useContext(Context);
+    const { setMsg } = useContext(Context);
     // const img = (
     //     <img
     //         width="25"

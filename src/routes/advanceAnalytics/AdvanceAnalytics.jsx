@@ -18,7 +18,7 @@ import { Navigate } from 'react-router-dom';
 const AdvanceAnalytics = () => {
     useAuthInterceptor();
     const [loading, setLoading] = useState(true);
-    const { userDetails, responsive, lightMode } = useContext(Context);
+    const { userDetails, responsive } = useContext(Context);
     const [cardData, setCardData] = useState([]);
     const [seriesData, setSeriesData] = useState([]);
     const [openFilter, setOpenFilter] = useState(false);
@@ -72,7 +72,7 @@ const AdvanceAnalytics = () => {
                 setSeriesData(data[1]);
                 setLoading(false);
             })
-            .catch(({ response }) => {
+            .catch(() => {
                 setLoading(false);
             });
     }, [durationFilter, languageFilter]);

@@ -12,7 +12,6 @@ import Leaderboard from './routes/leaderboard/Leaderboard';
 import Support from './routes/support/Support';
 import About from './routes/about/About';
 import Play from './routes/play/Play';
-import Profile from './routes/profile/Profile';
 import Admin from './routes/admin/Admin';
 import AdminDashboard from './routes/admin/dashboard/Dashboard';
 import Error from './routes/error/Error';
