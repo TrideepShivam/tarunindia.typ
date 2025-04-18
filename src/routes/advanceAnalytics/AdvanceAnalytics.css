@@ -72,3 +72,7 @@
     color: var(--background-color);
     border-radius: 1rem;
 }
+
+.reportContainer > .cardContainer {
+    min-width: unset;
+}
