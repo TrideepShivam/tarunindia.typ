@@ -14,31 +14,31 @@ const Pricing = () => {
     const faqs = [
         {
             question: 'What are the available pricing plans?',
-            answer: 'Typathon offers several pricing plans according to the language you choose. Each plan comes with different languages and benefits to cater to various user needs.',
+            answer: 'Typathon offers several pricing plans based on the language you choose. Each plan comes with different languages and benefits to cater to various user needs.',
         },
         {
             question: 'Can I try this before purchasing a plan?',
-            answer: 'Yes, Typathon offers a free trial period for new users to experience the service before committing to a paid plan. In free plan you can get unpmited experiences of 1 minute test and 1 test per day for 10 minute testing.',
+            answer: 'Yes, Typathon offers a free trial for new users to experience the service before committing to a paid plan. In the free plan, you get unlimited experiences of 1 minute test and 1 test per day for 10 minute testing.',
         },
         {
             question: 'What features does the Premium plan offer?',
-            answer: 'The Premium plan includes all features of the Fremium plan, plus access to advanced typing tests, progress tracking for multiple languages, and priority support. You will also get some advance analytics and free event tickets (only for all subjects plan).',
+            answer: 'The Premium plan includes all the features of the Freemium plan, plus access to advanced typing tests, progress tracking for multiple languages, and priority support. You’ll also get advanced analytics and free event tickets (available only in the all-subjects plan).',
         },
         {
             question: 'Are there any discounts available?',
-            answer: 'Yes, Typathon offers discounts for users who subscribe to annual or 6 months plans. You can get ₹5 per day from anual and half yearly plans. Please contact our support team for more details.',
+            answer: 'Yes, Typathon offers discounts for users who subscribe to annual or 6-month plans. You can enjoy rates as low as ₹5 per day with yearly or half-yearly subscriptions. Please contact our support team for more details.',
         },
         {
             question: 'What payment methods are accepted?',
-            answer: 'Currently Typathon accepts only manual payment methods, first chat with us with you registered email id and choose the plan. After payment confirmaion with screenshot enjoy your plan.',
+            answer: 'Currently, Typathon accepts only manual payment methods. First, chat with us with you registered email id and choose the plan. After payment confirmaion with screenshot enjoy your plan.',
         },
         {
             question: 'Can I cancel my subscription at any time?',
-            answer: 'No, you can not cancel your subscription once you have purchased. However, we have freemium plan to give demo of the platform so first try the platform and choose the plan according to your need.',
+            answer: 'No, subscriptions cannot be canceled once purchased. However, we offer a Freemium plan to let you try out the platform before making a decision. Choose a plan that best fits your needs after trying the demo.',
         },
         {
             question: 'How can I contact customer support?',
-            answer: 'You can contact our customer support team via email at info@typathon.com or through our whatsapp chat feature on 9546747447.',
+            answer: 'You can reach our customer support team via email at info@typathon.com or through our WhatsApp chat at 9546747447.',
         },
     ];
     if (userDetails && location.pathname == '/pricing') {
