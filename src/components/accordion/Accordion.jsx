@@ -11,11 +11,10 @@ const Accordion = ({ head, details }) => {
         : 'https://img.icons8.com/ios-glyphs/30/000000/forward.png';
 
     return (
-        <div className="accordionContainer">
+        <div className="accordionContainer" onClick={() => setOpenSection(!openSection)}>
             <div className="accordionHead">
                 <p>{head}</p>
                 <Button
-                    onClick={() => setOpenSection(!openSection)}
                     style={{ width: '1.5em' }}
                     transparancy={true}
                     value={

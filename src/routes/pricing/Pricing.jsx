@@ -30,7 +30,7 @@ const Pricing = () => {
         },
         {
             question: 'What payment methods are accepted?',
-            answer: 'Currently Typathon accepts only manual payment methods, first chat with us with you registered email id and choose the plan. After payment confirmaion with screenshot enjoy your plan..',
+            answer: 'Currently Typathon accepts only manual payment methods, first chat with us with you registered email id and choose the plan. After payment confirmaion with screenshot enjoy your plan.',
         },
         {
             question: 'Can I cancel my subscription at any time?',
