@@ -58,21 +58,3 @@
 .reportContainer .item8 {
     grid-area: item8;
 }
-
-.apexcharts-menu-open {
-    background-color: var(--background-color);
-    color: var(--theme-color);
-    border: 0.1em solid var(--theme-color);
-    text-decoration: none;
-    text-align: center;
-}
-
-.apexcharts-menu-item:hover {
-    background: var(--theme-color);
-    color: var(--background-color);
-    border-radius: 1rem;
-}
-
-.reportContainer > .cardContainer {
-    min-width: unset;
-}
