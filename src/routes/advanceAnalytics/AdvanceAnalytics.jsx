@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import HeatMapChart from '../../components/heatMapChart/HeatMapChart';
 import ToggleDarkLight from '../../components/toggleDarkLight/ToggleDarkLight';
-import './AdvanceAnalytics.css';
 import { Context } from '../../ContextAPI';
 import Hyperlink from '../../components/hyperlink/Hyperlink';
 import { format } from 'date-fns';
@@ -14,6 +13,7 @@ import Navigation from '../../components/navigation/sideNavigation/navigation/Na
 import Tags from '../../components/tags/Tags';
 import Filter from '../../components/filter/Filter';
 import { Navigate } from 'react-router-dom';
+import './AdvanceAnalytics.css';
 
 const AdvanceAnalytics = () => {
     useAuthInterceptor();

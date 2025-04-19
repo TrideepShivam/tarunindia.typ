@@ -58,3 +58,15 @@
 .reportContainer .item8 {
     grid-area: item8;
 }
+
+.reportContainer .cardContainer {
+    min-width: unset;
+}
+
+.reportContainer .apexcharts-toolbar {
+    display: none;
+}
+
+.trans-hover {
+    margin-left: 1em;
+}
