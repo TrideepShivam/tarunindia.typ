@@ -25,7 +25,9 @@ const Dropdown = (props) => {
         color: 'var(--theme-color)',
         zIndex: '1',
     };
-    let data = props.var ? props.var : useRef();
+    const internalRef = useRef();
+    let data = props.var || internalRef;
+
     const focusText = () => {
         setLegend(true);
         setOptions(true);
