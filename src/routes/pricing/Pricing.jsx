@@ -26,7 +26,7 @@ const Pricing = () => {
         },
         {
             question: 'Are there any discounts available?',
-            answer: 'Yes, Typathon offers discounts for users who subscribe to annual or 6 months plans. You can get 5₹ per day from anual and half yearly plans. Please contact our support team for more details.',
+            answer: 'Yes, Typathon offers discounts for users who subscribe to annual or 6 months plans. You can get ₹5 per day from anual and half yearly plans. Please contact our support team for more details.',
         },
         {
             question: 'What payment methods are accepted?',
@@ -56,7 +56,7 @@ const Pricing = () => {
                     with <span className="highpght">Typathon</span>
                 </h1>
                 <p>Yearly and Half Yearly plan is starting from</p>
-                <h1 className="price">5₹</h1>
+                <h1 className="price">₹5</h1>
             </div>
             <div className="freeSubscription">
                 <div className="detailsFreeSubscription">
