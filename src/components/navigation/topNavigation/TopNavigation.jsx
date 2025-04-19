@@ -21,7 +21,7 @@ const TopNavigation = () => {
         />
     );
     const topNavMenu = [
-        { name: 'Home', path: '/' },
+        // { name: 'Home', path: '/' },
         { name: 'Contents', path: '/contents' }, // TODO: replace with when required https://tarunindia.in/courses
         { name: 'About', path: '/about-us' },
         { name: 'Contact', path: '/contact-us' },
