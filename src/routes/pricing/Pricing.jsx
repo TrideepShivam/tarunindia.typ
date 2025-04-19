@@ -96,7 +96,7 @@ const Pricing = () => {
                             </tr>
                             <tr>
                                 <td>10 min Testing</td>
-                                <td>1 per day</td>
+                                <td>1 time/day</td>
                                 <td>Unlimited</td>
                             </tr>
                             <tr>

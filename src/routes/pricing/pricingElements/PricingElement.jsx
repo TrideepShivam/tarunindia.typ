@@ -50,7 +50,7 @@ const PricingElement = () => {
                             <h1 className="highlight">₹{item.price}</h1>
                             <h3>{item.duration} Days</h3>
                             <p>
-                                <span className="highlight">₹{parseFloat((item.price / day).toFixed(2))}</span> per day
+                                <span className="highlight">₹{parseFloat((item.price / day).toFixed(2))}</span>/day
                             </p>
                             <p>{index == data.length - 1 ? 'Unlimited' : item.language} access</p>
                             <p>{index == data.length - 1 ? 'Free' : 'Paid'} Event Tickets</p>
