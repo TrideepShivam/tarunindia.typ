@@ -33,7 +33,7 @@
 }
 
 .price::after{
-    content: '/per day';
+    content: '/day';
     font-size: .1em;
     color:var(--text-color);
     position:absolute;
