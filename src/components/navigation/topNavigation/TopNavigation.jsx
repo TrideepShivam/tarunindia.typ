@@ -5,13 +5,9 @@ import Hyperlink from '../../hyperlink/Hyperlink';
 import { useContext, useState } from 'react';
 import { Context } from '../../../ContextAPI';
 import CircleButton from '../../circleButton/CircleButton';
-import { useLocation } from 'react-router-dom';
-
 const TopNavigation = () => {
     const { responsive, lightMode } = useContext(Context);
     const [navOpen, setNavOpen] = useState(false);
-    const location = useLocation();
-
     const closeBtn = (
         <img
             width="25"
@@ -44,18 +40,15 @@ const TopNavigation = () => {
                                 onClick={() => setNavOpen(false)}
                             />
                         )}
-                        {topNavMenu.map((a, index) => {
-                            if (a.path === '/' && location.pathname === '/') return null; // Don't show Home link on the home page
-                            return (
-                                <Hyperlink
-                                    type={a.name === 'Pricing' ? 'bordered-theme' : 'trans-hover'}
-                                    key={index}
-                                    href={a.path}
-                                    value={a.name}
-                                    onClick={() => setNavOpen(false)}
-                                />
-                            );
-                        })}
+                        {topNavMenu.map((a, index) => (
+                            <Hyperlink
+                                type={a.name == 'Pricing' ? 'bordered-theme' : 'trans-hover'}
+                                key={index}
+                                href={a.path}
+                                value={a.name}
+                                onClick={() => setNavOpen(false)}
+                            />
+                        ))}
                         {responsive && (
                             <Hyperlink
                                 type="themed"
