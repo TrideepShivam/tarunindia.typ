@@ -107,6 +107,14 @@ const Router = createBrowserRouter([
                 path: '/about',
                 element: <About />,
             },
+            {
+                path: '/profile',
+                element: <InProgress value="Back to Dashboard" href="/dashboard" />,
+            },
+            {
+                path: '/settings',
+                element: <InProgress value="Back to Dashboard" href="/dashboard" />,
+            },
         ],
     },
     {
