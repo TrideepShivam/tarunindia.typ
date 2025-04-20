@@ -33,7 +33,7 @@ const Footer = () => {
                 </span>
                 <span>
                     <span>copyright @ 2024 </span>
-                    <Hyperlink href={'www.typathon.com'} value="typathon.com" />
+                    <Hyperlink href={'https://www.typathon.com'} value="typathon.com" />
                 </span>
             </div>
         </div>

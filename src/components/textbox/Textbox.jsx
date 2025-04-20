@@ -14,7 +14,9 @@ const Textbox = (props) => {
         fontSize: '1em',
         color: 'var(--theme-color)',
     };
-    let data = props.var ? props.var : useRef();
+    const internalRef = useRef();
+    let data = props.var || internalRef;
+
     const focusText = () => {
         setLegend(true);
     };

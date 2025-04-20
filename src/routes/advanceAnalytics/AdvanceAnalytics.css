@@ -1,8 +1,8 @@
-.analyticsContainer{
-    padding:1em;
+.analyticsContainer {
+    padding: 1em;
 }
 
-.analyticsHeader{
+.analyticsHeader {
     position: relative;
     width: 100%;
     display: flex;
@@ -10,51 +10,63 @@
     align-items: center;
 }
 
-.candidateDetails{
+.candidateDetails {
     width: 100%;
 }
 
-.reportContainer{
-    width:calc(100% - 3em);
+.reportContainer {
+    width: calc(100% - 3em);
     display: grid;
-    grid-template-areas: 
-        "item2 item5 item1 item1"
-        "item3 item6 item1 item1"
-        "item4 item7 item1 item1"
-        "item8 item8 item8 item8"; /* Item 5 spans across all columns */
+    grid-template-areas:
+        'item2 item5 item1 item1'
+        'item3 item6 item1 item1'
+        'item4 item7 item1 item1'
+        'item8 item8 item8 item8'; /* Item 5 spans across all columns */
 
-    grid-template-columns: 20% 20% 30% 30%; /* Column sizes */ 
-    gap:1em;
+    grid-template-columns: 20% 20% 30% 30%; /* Column sizes */
+    gap: 1em;
 }
 
-.reportContainer .item1{
-    grid-area:item1;
+.reportContainer .item1 {
+    grid-area: item1;
 }
 
-.reportContainer .item2{
-    grid-area:item2;
+.reportContainer .item2 {
+    grid-area: item2;
 }
 
-.reportContainer .item3{
-    grid-area:item3;
+.reportContainer .item3 {
+    grid-area: item3;
 }
 
-.reportContainer .item4{
-    grid-area:item4;
+.reportContainer .item4 {
+    grid-area: item4;
 }
 
-.reportContainer .item5{
-    grid-area:item5;
+.reportContainer .item5 {
+    grid-area: item5;
 }
 
-.reportContainer .item6{
-    grid-area:item6;
+.reportContainer .item6 {
+    grid-area: item6;
 }
 
-.reportContainer .item7{
-    grid-area:item7;
+.reportContainer .item7 {
+    grid-area: item7;
 }
 
-.reportContainer .item8{
-    grid-area:item8;
+.reportContainer .item8 {
+    grid-area: item8;
+}
+
+.reportContainer .cardContainer {
+    min-width: unset;
+}
+
+.reportContainer .apexcharts-toolbar {
+    display: none;
+}
+
+.trans-hover {
+    margin-left: 1em;
 }

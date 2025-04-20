@@ -7,7 +7,7 @@ const BlurImgDiv = (props) => {
             style={Object.assign({ backgroundImage: `url(${props.image})` }, props.style && props.style)}
         >
             <div className="blur" style={props.adjust && props.adjust}>
-                {...props.children}
+                {props.children}
             </div>
         </div>
     );

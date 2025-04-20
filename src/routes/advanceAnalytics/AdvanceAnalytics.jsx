@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import HeatMapChart from '../../components/heatMapChart/HeatMapChart';
 import ToggleDarkLight from '../../components/toggleDarkLight/ToggleDarkLight';
-import './AdvanceAnalytics.css';
 import { Context } from '../../ContextAPI';
 import Hyperlink from '../../components/hyperlink/Hyperlink';
 import { format } from 'date-fns';
@@ -14,11 +13,12 @@ import Navigation from '../../components/navigation/sideNavigation/navigation/Na
 import Tags from '../../components/tags/Tags';
 import Filter from '../../components/filter/Filter';
 import { Navigate } from 'react-router-dom';
+import './AdvanceAnalytics.css';
 
 const AdvanceAnalytics = () => {
     useAuthInterceptor();
     const [loading, setLoading] = useState(true);
-    const { userDetails, responsive, lightMode } = useContext(Context);
+    const { userDetails, responsive } = useContext(Context);
     const [cardData, setCardData] = useState([]);
     const [seriesData, setSeriesData] = useState([]);
     const [openFilter, setOpenFilter] = useState(false);
@@ -72,7 +72,7 @@ const AdvanceAnalytics = () => {
                 setSeriesData(data[1]);
                 setLoading(false);
             })
-            .catch(({ response }) => {
+            .catch(() => {
                 setLoading(false);
             });
     }, [durationFilter, languageFilter]);

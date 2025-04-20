@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import PopUpContainer from '../popUpContainer/PopUpContainer';
 import './Filter.css';
 import { Context } from '../../ContextAPI';

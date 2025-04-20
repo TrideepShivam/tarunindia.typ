@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import Chart from 'react-apexcharts';
 import { Context } from '../../ContextAPI';
 
