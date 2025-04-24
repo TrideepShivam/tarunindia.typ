@@ -1,66 +1,447 @@
-*
-{
+* {
+    box-sizing: border-box;
     margin: 0;
     outline: 0;
 }
 
-.containerBox
-{
+.profile-container {
+    color: var(--text-color);
+    padding: 1em;
     width: 100%;
-    min-height: 100%;
-    display: grid;
-    gap: 40px;
-    
-}
-
-.inputImage
-{
-    width: 100%;
-    height: 40vh;
-   gap: 5%;
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-}
-
-.textArea
-{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: space-around;
     height: 100%;
+    overflow: hidden auto;
+    background-color: #0c0c0c;
 }
 
-/* img
-{
-   height: 80%;
-   width: 95%;
-    border: 1px solid green;
-} */
-.bodyBox{
-    padding: 0% 4%;
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.5em;
+    margin: 0.2em 0;
+    border-left: 0.1em solid var(--theme-color);
 }
 
-/* .textboxContainer input{
-    
-    width: 30vw;
+.profile-header h2 {
+    font-size: 1.125em;
+    font-weight: bold;
+    letter-spacing: 0.0625em;
+    color: #fff;
 }
-.textboxContainer input{
-    
-    border-bottom:.05em solid var(--text-color);
-} */
-.achivement
-{
+
+.profile-actions {
+    display: flex;
+    gap: 0.625em;
+}
+
+.save-btn,
+.edit-btn {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 0.875em;
+    background-color: transparent;
+}
+
+.save-btn {
+    color: #0af;
+    margin-right: 0.5em;
+}
+
+.edit-btn {
+    color: #0af;
+}
+
+.profile-content {
+    display: flex;
+    gap: 1em;
     width: 100%;
-    height: max-content;
+}
+
+.profile-left {
+    width: 12.5em;
+    min-width: 10em;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 1.25em;
 }
 
-.achivement span{
-    color:var(--text-color);
-    border-bottom: .05em solid var(--theme-color);
-    padding: 0 3px 2px;
-    letter-spacing: 1px;
+.profile-image-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 0.625em;
+}
+
+.profile-image {
+    width: 100%;
+    height: 6.25em;
+    background-color: #1e2124;
+    background-size: cover;
+    background-position: center;
+    border-radius: 0.25em;
+    overflow: hidden;
+    position: relative;
+}
+
+.profile-image-container:hover {
+    opacity: 0.5;
+}
+
+.profile-image-actions {
+    display: none;
+    position: absolute;
+    top: 1em;
+    flex-direction: column;
+    width: 100%;
+    gap: 1em;
+    background-color: #0c0c0c;
+}
+
+.profile-image-container:hover .profile-image-actions {
+    display: flex;
+}
+
+.change-btn,
+.remove-btn {
+    padding: 0.3125em 0;
+    border: none;
+    font-size: 0.875em;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    background-color: transparent;
+    transition: all 0.2s ease;
+    color: #0af;
+}
+
+.change-btn:hover,
+.remove-btn:hover {
+    text-decoration: underline;
+}
+
+.public-profile-btn {
+    background-color: transparent;
+    border: none;
+    color: #0af;
+    padding: 0.5em 0;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    font-size: 0.875em;
+    margin-bottom: 0.625em;
+}
+
+.bio-label {
+    margin-bottom: 0.5em;
+}
+
+.bio-label p {
+    font-size: 0.875em;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.bio-group {
+    position: relative;
+    width: 50%;
+    padding-top: 1.5em;
+}
+
+.bio-input {
+    width: 100%;
+    min-height: 6em;
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.0625em solid #333;
+    color: var(--text-color);
+    padding: 0.375em 0;
+    font-size: 0.875em;
+    resize: vertical;
+}
+
+.bio-display {
+    width: 100%;
+    min-height: 6em;
+    font-size: 0.875em;
+    color: var(--text-color);
+    word-wrap: break-word;
+    line-height: 1.4;
+    border-bottom: 0.0625em solid #333;
+    padding-bottom: 0.375em;
+}
+
+.bio-actions {
+    display: flex;
+    gap: 0.625em;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.profile-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.875em;
+    max-width: calc(100% - 13.5em);
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25em;
+    width: 100%;
+    overflow: hidden;
+}
+
+.form-row {
+    display: flex;
+    gap: 1.25em;
+    margin-bottom: 1em;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    flex: 1;
+    position: relative;
+    margin-bottom: 0.625em;
+    min-width: 0;
+}
+
+.form-group input,
+.textboxContainer input {
+    width: 100%;
+    max-width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.0625em solid #333;
+    color: var(--text-color);
+    padding: 0.375em 0;
+    font-size: 0.875em;
+}
+
+.bio-email-row {
+    display: flex;
+    gap: 1.25em;
+    margin: 0;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.email-contact-group {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.email-wrapper,
+.contact-wrapper {
+    position: relative;
+}
+
+.email-wrapper input,
+.contact-wrapper input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.0625em solid #333;
+    color: var(--text-color);
+    padding: 0.375em 0;
+    font-size: 0.875em;
+}
+
+.verify-btn {
+    background-color: transparent;
+    border: none;
+    color: #0af;
+    padding: 0;
+    cursor: pointer;
+    font-size: 0.75em;
+    white-space: nowrap;
+    position: absolute;
+    right: 0;
+    bottom: 0.375em;
+}
+
+.typing-details {
+    background-color: rgb(30 30 30 / 50%);
+    border-radius: 0.5em;
+    padding: 1.25em;
+    margin-top: 1em;
+    width: 100%;
+}
+
+.typing-details h3 {
+    font-size: 0.875em;
+    margin-bottom: 1.25em;
+    letter-spacing: 0.0625em;
+    text-align: center;
+    color: #ccc;
+}
+
+.typing-modes {
+    display: flex;
+    justify-content: center;
+    gap: 0.625em;
+    margin-bottom: 1.25em;
+    flex-wrap: wrap;
+}
+
+.mode-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--text-color);
+    padding: 0.375em 0.75em;
+    border-radius: 1.25em;
+    cursor: pointer;
+    font-size: 0.75em;
+    transition: all 0.3s ease;
+}
+
+.mode-btn.active {
+    background-color: #0af;
+    color: #fff;
+}
+
+.typing-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625em;
+    width: 100%;
+    overflow: hidden;
+}
+
+.stats-header,
+.stats-row {
+    display: grid;
+    grid-template-columns: 7em 1fr 1fr 1fr;
+    text-align: center;
+    padding: 0.5em 0;
+    align-items: center;
+    width: 100%;
+}
+
+.stats-header {
+    border-bottom: 0.0625em solid #333;
+    font-size: 0.75em;
+    color: #0af;
+    padding-bottom: 0.625em;
+}
+
+.time-label {
+    font-size: 0.75em;
+    color: #0af;
+    text-align: left;
+}
+
+.stat-value {
+    font-size: 0.875em;
+    color: #ccc;
+}
+
+.achievements-section {
+    background-color: rgb(30 30 30 / 50%);
+    border-radius: 0.5em;
+    padding: 1.25em;
+    width: 100%;
+    overflow: hidden;
+}
+
+.achievements-section h3 {
+    font-size: 1em;
+    margin-bottom: 0.9375em;
+    letter-spacing: 0.0625em;
+    text-align: center;
+}
+
+.achievements-content {
+    min-height: 6.25em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #888;
+}
+
+.textboxContainer p {
+    color: var(--text-color-light);
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+@media screen and (width <= 64em) {
+    .profile-content {
+        gap: 0.75em;
+    }
+
+    .profile-left {
+        width: 10em;
+    }
+
+    .profile-right {
+        max-width: calc(100% - 10.75em);
+    }
+}
+
+@media screen and (width <= 48em) {
+    .profile-content {
+        flex-direction: column;
+    }
+
+    .profile-left {
+        width: 100%;
+        flex-flow: row wrap;
+    }
+
+    .profile-right {
+        max-width: 100%;
+    }
+
+    .profile-image-container {
+        width: 12.5em;
+    }
+
+    .bio-email-row {
+        flex-direction: column;
+    }
+
+    .bio-group,
+    .email-contact-group {
+        width: 100%;
+    }
+
+    .bio-group {
+        margin-bottom: 1.5em;
+    }
+}
+
+@media screen and (width <= 30em) {
+    .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5em;
+    }
+
+    .profile-left {
+        flex-direction: column;
+    }
+
+    .profile-image-container {
+        width: 100%;
+    }
+
+    .stats-header,
+    .stats-row {
+        grid-template-columns: 5em 1fr 1fr 1fr;
+        font-size: 0.75em;
+    }
+
+    .form-row {
+        gap: 0.75em;
+    }
 }
