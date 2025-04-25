@@ -12,7 +12,8 @@
         "prettier:fix": "prettier --write '**/*.{js,jsx,ts,tsx}'",
         "prepare": "husky",
         "lint:css": "stylelint \"src/**/*.css\" --quiet",
-        "lint:css:fix": "stylelint \"src/**/*.css\" --quiet --fix"
+        "lint:css:fix": "stylelint \"src/**/*.css\" --quiet --fix",
+        "format": "prettier --write '**/*.{js,jsx,ts,tsx}' && stylelint 'src/**/*.css' --quiet --fix"
     },
     "dependencies": {
         "apexcharts": "^3.52.0",

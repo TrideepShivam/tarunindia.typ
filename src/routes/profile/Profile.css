@@ -1,35 +1,53 @@
-*
-{
+/* * {
     margin: 0;
     outline: 0;
+} */
+
+.profile {
+    padding: 0% 4%;
+
+    .profileContainer {
+        width: 100%;
+        min-height: 100%;
+        display: grid;
+        gap: 40px;
+
+        .profileImage {
+            width: 100%;
+            height: 40vh;
+            gap: 5%;
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+
+            .textArea {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: space-around;
+                height: 100%;
+
+                .textboxContainer {
+                    width: 45%;
+                }
+            }
+        }
+
+        .achivement {
+            width: 100%;
+            height: max-content;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
 }
 
-.containerBox
-{
-    width: 100%;
-    min-height: 100%;
-    display: grid;
-    gap: 40px;
-    
-}
-
-.inputImage
-{
-    width: 100%;
-    height: 40vh;
-   gap: 5%;
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-}
-
-.textArea
-{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: space-around;
-    height: 100%;
-}
+/* .achivement span {
+            color: var(--text-color);
+            border-bottom: 0.05em solid var(--theme-color);
+            padding: 0 3px 2px;
+            letter-spacing: 1px;
+        } */
 
 /* img
 {
@@ -37,9 +55,6 @@
    width: 95%;
     border: 1px solid green;
 } */
-.bodyBox{
-    padding: 0% 4%;
-}
 
 /* .textboxContainer input{
     
@@ -49,18 +64,3 @@
     
     border-bottom:.05em solid var(--text-color);
 } */
-.achivement
-{
-    width: 100%;
-    height: max-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.achivement span{
-    color:var(--text-color);
-    border-bottom: .05em solid var(--theme-color);
-    padding: 0 3px 2px;
-    letter-spacing: 1px;
-}
