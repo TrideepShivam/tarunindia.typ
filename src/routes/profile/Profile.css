@@ -1,10 +1,11 @@
-/* * {
-    margin: 0;
-    outline: 0;
-} */
-
 .profile {
     padding: 0% 4%;
+
+    .profileHeader {
+        padding: 0 0.5em;
+        margin: 0.2em 0;
+        border-left: 0.1em solid var(--theme-color);
+    }
 
     .profileContainer {
         width: 100%;
@@ -26,41 +27,110 @@
                 align-items: space-around;
                 height: 100%;
 
+                .textAreaSavaEdit {
+                    display: flex;
+                    justify-content: end;
+                    width: 100%;
+                    gap: 1em;
+                    z-index: 2;
+
+                    button {
+                        width: min-content;
+                    }
+                }
+
                 .textboxContainer {
                     width: 45%;
                 }
             }
         }
 
-        .achivement {
-            width: 100%;
-            height: max-content;
+        .contactInfo {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex-direction: row;
+
+            .bio {
+                width: 50%;
+                position: relative;
+
+                .bioSaveEdit {
+                    position: absolute;
+                    display: flex;
+                    justify-content: end;
+                    right: 2em;
+                    z-index: 2;
+                    gap: 1em;
+
+                    button {
+                        width: min-content;
+                    }
+                }
+            }
+
+            .contact {
+                width: 50%;
+
+                .email,
+                .phone {
+                    display: flex;
+                    width: 100%;
+                    gap: 0.5em;
+                }
+
+                .email > button,
+                .phone > button {
+                    width: min-content;
+                }
+            }
+        }
+
+        .typingDetails {
+            background-color: var(--light-back-color);
+            border-radius: 0.5em;
+            padding: 1.25em;
+            width: 90%;
+            margin: auto;
+
+            h3 {
+                margin-bottom: 1.25em;
+                text-align: center;
+                color: var(--text-color);
+            }
+
+            .typingModes {
+                display: flex;
+                justify-content: center;
+                gap: 2em;
+                margin-bottom: 1em;
+            }
+
+            .typingStats {
+                display: flex;
+                flex-direction: column;
+
+                .statsHeader,
+                .statsRow {
+                    display: grid;
+                    grid-template-columns: 8em 1fr 1fr 1fr;
+                    padding: 0.5em 0;
+                }
+
+                .statsHeader {
+                    color: var(--theme-color);
+                }
+
+                .statsRow {
+                    color: var(--text-color);
+                }
+            }
+        }
+
+        .achivement {
+            text-align: center;
+
+            .achivementDetails {
+                margin: 2em 0;
+            }
         }
     }
 }
-
-/* .achivement span {
-            color: var(--text-color);
-            border-bottom: 0.05em solid var(--theme-color);
-            padding: 0 3px 2px;
-            letter-spacing: 1px;
-        } */
-
-/* img
-{
-   height: 80%;
-   width: 95%;
-    border: 1px solid green;
-} */
-
-/* .textboxContainer input{
-    
-    width: 30vw;
-}
-.textboxContainer input{
-    
-    border-bottom:.05em solid var(--text-color);
-} */

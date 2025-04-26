@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
-import './Textbox.css';
+import './Textarea.css';
 
-const Textbox = (props) => {
+const Textarea = (props) => {
     const [legend, setLegend] = useState(props.legendStyle ? props.legendStyle : false);
     const blurStyle = {
         top: '0em',
@@ -19,22 +19,23 @@ const Textbox = (props) => {
     const focusText = () => {
         setLegend(true);
     };
+
     const blurText = () => {
         setLegend(data.current.value ? true : false);
     };
-    const today = new Date().toISOString().split('T')[0];
+
     return (
-        <div className="textboxContainer">
-            <input
+        <div className="textareaContainer">
+            <textarea
                 autoFocus={props.autofocus && props.autofocus}
                 style={props.style && props.style}
-                defaultValue={props.type == 'date' ? today : ''}
-                max={props.max ? props.max : today}
-                type={props.type}
                 ref={data}
+                rows={props.rows || 4}
                 onFocus={focusText}
                 onBlur={blurText}
                 onChange={props.onChange && props.onChange}
+                maxLength={props.maxLength}
+                placeholder={props.placeholder || ''}
                 disabled={props.disabled}
             />
             <p style={legend ? focusStyle : blurStyle}>{props.legend}</p>
@@ -42,4 +43,4 @@ const Textbox = (props) => {
     );
 };
 
-export default Textbox;
+export default Textarea;
