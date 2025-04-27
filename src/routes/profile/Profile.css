@@ -20,6 +20,17 @@
             display: grid;
             grid-template-columns: 1fr 4fr;
 
+            .profileImageContainer {
+                margin-top: 2em;
+            }
+
+            .profileImageText {
+                display: flex;
+                justify-content: center;
+                margin-top: 1em;
+                color: var(--theme-color);
+            }
+
             .textArea {
                 display: flex;
                 flex-wrap: wrap;
@@ -60,6 +71,7 @@
                     right: 2em;
                     z-index: 2;
                     gap: 1em;
+                    top: -1em;
 
                     button {
                         width: min-content;

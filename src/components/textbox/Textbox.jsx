@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import './Textbox.css';
 
 const Textbox = (props) => {
@@ -23,6 +23,11 @@ const Textbox = (props) => {
         setLegend(data.current.value ? true : false);
     };
     const today = new Date().toISOString().split('T')[0];
+    useEffect(() => {
+        if (props.value) {
+            setLegend(true);
+        }
+    }, [props.value]);
     return (
         <div className="textboxContainer">
             <input
@@ -36,6 +41,7 @@ const Textbox = (props) => {
                 onBlur={blurText}
                 onChange={props.onChange && props.onChange}
                 disabled={props.disabled}
+                value={props?.value}
             />
             <p style={legend ? focusStyle : blurStyle}>{props.legend}</p>
         </div>

@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import './Textarea.css';
 
 const Textarea = (props) => {
@@ -23,6 +23,11 @@ const Textarea = (props) => {
     const blurText = () => {
         setLegend(data.current.value ? true : false);
     };
+    useEffect(() => {
+        if (props.value) {
+            setLegend(true);
+        }
+    }, [props.value]);
 
     return (
         <div className="textareaContainer">
@@ -37,6 +42,7 @@ const Textarea = (props) => {
                 maxLength={props.maxLength}
                 placeholder={props.placeholder || ''}
                 disabled={props.disabled}
+                value={props?.value}
             />
             <p style={legend ? focusStyle : blurStyle}>{props.legend}</p>
         </div>
