@@ -208,6 +208,41 @@ describe('All Visible Literals on Home Page', () => {
         },
     ];
 
+    const loginPageLiterals = [
+        'Login',
+        'Access your typ-A-thon account by entering your credentials',
+        'typathon.com',
+        'Email',
+        'Password',
+        'Forgot Password?',
+        'Register',
+        'Login',
+        "Don't have an account?",
+    ];
+
+    const registerPageLiterals = [
+        'Register',
+        'Join typ-A-thon today by filling in your details',
+        'typathon.com',
+        'Full Name',
+        'Email',
+        'Agree',
+        'Terms and Conditions',
+        'Privacy Policy',
+        'Have an account?',
+        'Login',
+    ];
+
+    const forgotPasswordLiterals = [
+        'Forgot Password',
+        'Trouble logging in? Enter your email to generate new one',
+        'typathon.com',
+        'Email',
+        'Submit',
+        'Or',
+        'Login',
+    ];
+
     beforeEach(() => {
         cy.visit('/');
     });
@@ -280,5 +315,52 @@ describe('All Visible Literals on Home Page', () => {
             cy.wait(500);
             cy.contains(answer).should('be.visible');
         });
+    });
+
+    it('displays all the necessary elements on the login page', () => {
+        cy.contains('Get Started').click();
+        cy.url().should('include', '/login');
+        cy.wait(500);
+
+        loginPageLiterals.forEach((text) => {
+            cy.contains(text).should('be.visible');
+        });
+
+        cy.get('.themeButton').contains('Login').should('be.visible');
+        cy.get('a').contains('Forgot Password?').should('have.attr', 'href', '/forgot-password');
+        cy.get('a').contains('Register').should('have.attr', 'href', '/register');
+        cy.get('.formDetails h1').contains('Login').should('be.visible');
+        cy.get('.formDetails p')
+            .contains('Access your typ-A-thon account by entering your credentials')
+            .should('be.visible');
+        cy.get('.formDetails p.highlight').contains('typathon.com').should('be.visible');
+    });
+
+    it('displays all the necessary elements on the register page', () => {
+        cy.contains('Get Started').click();
+        cy.contains('Register').click();
+        cy.url().should('include', '/register');
+        cy.wait(500);
+        registerPageLiterals.forEach((text) => {
+            cy.contains(text).should('be.visible');
+        });
+
+        cy.get('.themeButton').contains('Register').should('be.visible');
+        cy.get('a').contains('Terms and Conditions').should('have.attr', 'href', '/tnc');
+        cy.get('a').contains('Privacy Policy').should('have.attr', 'href', '/privacy-policy');
+        cy.get('a').contains('Login').should('have.attr', 'href', '/login');
+    });
+
+    it('displays all necessary elements on the forgot password page', () => {
+        cy.contains('Get Started').click();
+        cy.contains('Forgot Password?').click();
+        cy.url().should('include', '/forgot-password');
+        cy.wait(500);
+        forgotPasswordLiterals.forEach((text) => {
+            cy.contains(text).should('be.visible');
+        });
+
+        cy.get('.themeButton').contains('Submit').should('be.visible');
+        cy.get('a').contains('Login').should('have.attr', 'href', '/login');
     });
 });
