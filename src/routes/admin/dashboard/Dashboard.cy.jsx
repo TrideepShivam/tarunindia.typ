@@ -1,8 +1,8 @@
 import React from 'react';
 import { mount } from 'cypress/react';
 import Dashboard from './Dashboard';
-import { Context } from '../../../ContextAPI'; // Adjust this path as per your project
-import '../../../index.css'; // Load global styles if needed
+import { Context } from '../../../ContextAPI';
+import '../../../index.css';
 
 describe('Dashboard Component', () => {
     const mountWithContext = (lightModeValue) => {

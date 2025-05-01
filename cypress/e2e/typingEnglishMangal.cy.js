@@ -1,6 +1,6 @@
 describe('Typing test for English and Mangal', () => {
     beforeEach(() => {
-        cy.visit('http://localhost:3000');
+        cy.visit('/');
     });
 
     it('should log in, complete actions, and log out', () => {
@@ -33,9 +33,9 @@ describe('Typing test for English and Mangal', () => {
         // Select dropdown options
         const selectDropdown = (index, value) => {
             cy.get('.dropdownContainer input[readonly]').eq(index).click();
-            cy.wait(500); // wait after dropdown opens
+            cy.wait(500);
             cy.get(`.dropdownContainer p:contains("${value}")`).click();
-            cy.wait(500); // wait after selection
+            cy.wait(500);
         };
 
         // Selecting options
@@ -78,7 +78,6 @@ describe('Typing test for English and Mangal', () => {
                 });
         });
 
-        // Wait before logout
         cy.wait(5000);
 
         // Click on Playground navigation
@@ -121,12 +120,10 @@ describe('Typing test for English and Mangal', () => {
                                 typeCharByChar(index + 1);
                             });
                     };
-
                     typeCharByChar();
                 });
         });
 
-        // Wait before logout
         cy.wait(5000);
 
         // Log out
