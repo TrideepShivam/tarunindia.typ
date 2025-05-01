@@ -1,66 +1,148 @@
-*
-{
-    margin: 0;
-    outline: 0;
-}
-
-.containerBox
-{
-    width: 100%;
-    min-height: 100%;
-    display: grid;
-    gap: 40px;
-    
-}
-
-.inputImage
-{
-    width: 100%;
-    height: 40vh;
-   gap: 5%;
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-}
-
-.textArea
-{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: space-around;
-    height: 100%;
-}
-
-/* img
-{
-   height: 80%;
-   width: 95%;
-    border: 1px solid green;
-} */
-.bodyBox{
+.profile {
     padding: 0% 4%;
-}
 
-/* .textboxContainer input{
-    
-    width: 30vw;
-}
-.textboxContainer input{
-    
-    border-bottom:.05em solid var(--text-color);
-} */
-.achivement
-{
-    width: 100%;
-    height: max-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+    .profileHeader {
+        padding: 0 0.5em;
+        margin: 0.2em 0;
+        border-left: 0.1em solid var(--theme-color);
+    }
 
-.achivement span{
-    color:var(--text-color);
-    border-bottom: .05em solid var(--theme-color);
-    padding: 0 3px 2px;
-    letter-spacing: 1px;
+    .profileContainer {
+        width: 100%;
+        min-height: 100%;
+        display: grid;
+        gap: 40px;
+
+        .profileImage {
+            width: 100%;
+            height: 40vh;
+            gap: 5%;
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+
+            .profileImageContainer {
+                margin-top: 2em;
+            }
+
+            .profileImageText {
+                display: flex;
+                justify-content: center;
+                margin-top: 1em;
+                color: var(--theme-color);
+            }
+
+            .textArea {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: space-around;
+                height: 100%;
+
+                .textAreaSavaEdit {
+                    display: flex;
+                    justify-content: end;
+                    width: 100%;
+                    gap: 1em;
+                    z-index: 2;
+
+                    button {
+                        width: min-content;
+                    }
+                }
+
+                .textboxContainer {
+                    width: 45%;
+                }
+            }
+        }
+
+        .contactInfo {
+            display: flex;
+            flex-direction: row;
+
+            .bio {
+                width: 50%;
+                position: relative;
+
+                .bioSaveEdit {
+                    position: absolute;
+                    display: flex;
+                    justify-content: end;
+                    right: 2em;
+                    z-index: 2;
+                    gap: 1em;
+                    top: -1em;
+
+                    button {
+                        width: min-content;
+                    }
+                }
+            }
+
+            .contact {
+                width: 50%;
+
+                .email,
+                .phone {
+                    display: flex;
+                    width: 100%;
+                    gap: 0.5em;
+                }
+
+                .email > button,
+                .phone > button {
+                    width: min-content;
+                }
+            }
+        }
+
+        .typingDetails {
+            background-color: var(--light-back-color);
+            border-radius: 0.5em;
+            padding: 1.25em;
+            width: 90%;
+            margin: auto;
+
+            h3 {
+                margin-bottom: 1.25em;
+                text-align: center;
+                color: var(--text-color);
+            }
+
+            .typingModes {
+                display: flex;
+                justify-content: center;
+                gap: 2em;
+                margin-bottom: 1em;
+            }
+
+            .typingStats {
+                display: flex;
+                flex-direction: column;
+
+                .statsHeader,
+                .statsRow {
+                    display: grid;
+                    grid-template-columns: 8em 1fr 1fr 1fr;
+                    padding: 0.5em 0;
+                }
+
+                .statsHeader {
+                    color: var(--theme-color);
+                }
+
+                .statsRow {
+                    color: var(--text-color);
+                }
+            }
+        }
+
+        .achivement {
+            text-align: center;
+
+            .achivementDetails {
+                margin: 2em 0;
+            }
+        }
+    }
 }

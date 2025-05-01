@@ -12,7 +12,10 @@
         "prettier:fix": "prettier --write '**/*.{js,jsx,ts,tsx}'",
         "prepare": "husky",
         "lint:css": "stylelint \"src/**/*.css\" --quiet",
-        "lint:css:fix": "stylelint \"src/**/*.css\" --quiet --fix"
+        "lint:css:fix": "stylelint \"src/**/*.css\" --quiet --fix",
+        "format": "prettier --write '**/*.{js,jsx,ts,tsx}' && stylelint 'src/**/*.css' --quiet --fix",
+        "cypress": "cypress open",
+        "cypress:run": "cypress run"
     },
     "dependencies": {
         "apexcharts": "^3.52.0",
@@ -32,11 +35,13 @@
         "@types/react": "^18.2.66",
         "@types/react-dom": "^18.2.22",
         "@vitejs/plugin-react": "^4.2.1",
+        "cypress": "^14.3.2",
         "eslint": "^8.57.0",
         "eslint-plugin-react": "^7.34.1",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-react-refresh": "^0.4.6",
         "prettier": "3.5.3",
+        "start-server-and-test": "^2.0.11",
         "stylelint": "^16.17.0",
         "stylelint-config-standard": "^37.0.0",
         "vite": "^5.2.0"

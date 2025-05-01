@@ -22,6 +22,7 @@ import SetPassword from './routes/forgotPassword/SetPassword';
 import Pricing from './routes/pricing/Pricing';
 import AdvanceAnalytics from './routes/advanceAnalytics/AdvanceAnalytics';
 import InProgress from './routes/inProgress/InProgress';
+import Profile from './routes/profile/Profile';
 
 const Router = createBrowserRouter([
     {
@@ -109,7 +110,7 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/profile',
-                element: <InProgress value="Back to Dashboard" href="/dashboard" />,
+                element: <Profile />,
             },
             {
                 path: '/settings',

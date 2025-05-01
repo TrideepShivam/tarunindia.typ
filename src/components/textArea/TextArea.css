@@ -1,0 +1,28 @@
+.textareaContainer {
+    width: 90%;
+    position: relative;
+    margin: 0.5em;
+
+    p {
+        position: absolute;
+    }
+
+    textarea {
+        width: 100%;
+        background-color: transparent;
+        padding: 0.4em 0;
+        font-size: 1.6em;
+        color: var(--text-color);
+        border: none;
+        outline: none;
+        position: relative;
+        z-index: 1;
+        border-bottom: 0.1em solid var(--text-color);
+        resize: vertical;
+        min-height: 4em;
+    }
+
+    textarea:focus {
+        border-bottom: 0.1em solid var(--theme-color);
+    }
+}
