@@ -7,9 +7,10 @@ import api from '../../api';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import Loading from '../loading/Loading';
 import { Context } from '../../ContextAPI';
-const ProfileImage = ({ url = 'https://img.icons8.com/papercut/250/test-account.png' }) => {
+import Logo from '../../assets/logo-reverse.svg';
+const ProfileImage = ({ url = Logo }) => {
     useAuthInterceptor();
-    const { setMsg } = useContext(Context);
+    const { setMsg, userDetails, setUserLocal } = useContext(Context);
     const [loading, setLoading] = useState(false);
     const [edit, setEdit] = useState(false);
     const [imageSrc, setImageSrc] = useState(null);
@@ -55,6 +56,10 @@ const ProfileImage = ({ url = 'https://img.icons8.com/papercut/250/test-account.
                     setMsg({
                         status: response.data.state,
                         message: response.data.message,
+                    });
+                    setUserLocal({
+                        ...userDetails,
+                        profile_pic_url: response.data.profile_pic_url,
                     });
                     setLoading(false);
                 })
