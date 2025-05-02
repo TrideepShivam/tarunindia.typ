@@ -255,7 +255,7 @@ const Play = () => {
             <div className="contentContainer test">
                 <div className="textContainer" id="readable">
                     {!storyDetails.highlight ? (
-                        <p>{story}</p>
+                        <p>{storyDetails.story}</p>
                     ) : (
                         <TextContent
                             language={getFont()}
