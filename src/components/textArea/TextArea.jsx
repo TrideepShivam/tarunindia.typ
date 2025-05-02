@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import './Textarea.css';
+import './TextArea.css';
 
 const Textarea = (props) => {
     const [legend, setLegend] = useState(props.legendStyle ? props.legendStyle : false);
