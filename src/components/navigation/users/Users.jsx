@@ -1,7 +1,7 @@
 import { useContext, useRef, useState } from 'react';
 import './Users.css';
 import { Context } from '../../../ContextAPI';
-import Profile from '../../../assets/pexels.jpg';
+import Profile from '../../../assets/logo-reverse.svg';
 import UserNavigation from './userNavigation/UserNavigation';
 import useWindowEvents from '../../../hooks/useWindowEvents';
 
@@ -31,7 +31,7 @@ const Users = ({ userNavigator }) => {
                         width="150em"
                         height="150em"
                         src={userDetails.profile_pic_url ? userDetails.profile_pic_url : Profile}
-                        alt=""
+                        alt="profile_pic"
                     />
                     {userNavigator.map((item, index) => (
                         <UserNavigation item={item} key={index} />
