@@ -6,28 +6,28 @@ import CircleButton from '../circleButton/CircleButton';
 import PopUpContainer from '../popUpContainer/PopUpContainer';
 import { istConverter } from '../../utils/resultUtils';
 
-const testdetails = {
-    wpm: 0,
-    kpm: 0,
-    words: 0,
-    duration: 1,
-    language: 'english',
-    characters: 0,
-    story: '',
-    date: '',
-    accuracy: 80,
-    errors: {
-        '[The]': '[the]',
-        '[ago,]': '[ago]',
-        '[devastating]': '[devestating]',
-        '[in]': '[ins]',
-        '[spell]': '[spel]',
-        '[there]': '[thare]',
-        '[thirsty]': '[thersty]',
-        '[time]': '[tim]',
-        '[water.]': '[watar]',
-    },
-};
+// const testdetails = {
+//     wpm: 0,
+//     kpm: 0,
+//     words: 0,
+//     duration: 1,
+//     language: 'english',
+//     characters: 0,
+//     story: '',
+//     date: '',
+//     accuracy: 80,
+//     errors: {
+//         '[The]': '[the]',
+//         '[ago,]': '[ago]',
+//         '[devastating]': '[devestating]',
+//         '[in]': '[ins]',
+//         '[spell]': '[spel]',
+//         '[there]': '[thare]',
+//         '[thirsty]': '[thersty]',
+//         '[time]': '[tim]',
+//         '[water.]': '[watar]',
+//     },
+// };
 const ResultDetail = ({ details, setDetails }) => {
     const { lightMode } = useContext(Context);
     const img = (
