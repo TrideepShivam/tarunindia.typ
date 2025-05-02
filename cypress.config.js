@@ -8,7 +8,7 @@ export default defineConfig({
         },
     },
     e2e: {
-        setupNodeEvents(on, config) {},
+        setupNodeEvents() {},
         baseUrl: 'http://localhost:3000',
     },
 });

@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import Cropper from 'react-easy-crop';
 import PopUpContainer from '../popUpContainer/PopUpContainer';
 import Hyperlink from '../hyperlink/Hyperlink';
@@ -58,7 +58,7 @@ const ProfileImage = ({ url = 'https://img.icons8.com/papercut/250/test-account.
                     });
                     setLoading(false);
                 })
-                .catch((error) => {
+                .catch(() => {
                     setLoading(false);
                     setCroppedImage(url);
                 });

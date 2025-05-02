@@ -256,11 +256,13 @@ describe('All Visible Literals on Home Page', () => {
     it('should show all bottom section literals after scrolling', () => {
         cy.wait(500);
         bottomLiterals.forEach((text) => {
-            cy.contains(new RegExp(text, 'i')).scrollIntoView({ duration: 400 }).should('exist').and('be.visible');
+            cy.contains(new RegExp(text, 'i')).scrollIntoView({ duration: 400 });
+            cy.contains(new RegExp(text, 'i')).should('exist').and('be.visible');
         });
 
         largeLiterals.forEach((text) => {
-            cy.contains(text, { matchCase: false }).scrollIntoView().should('exist').and('be.visible');
+            cy.contains(text, { matchCase: false }).scrollIntoView();
+            cy.contains(text, { matchCase: false }).should('exist').and('be.visible');
         });
     });
 

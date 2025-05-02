@@ -30,7 +30,6 @@ const Search = (props) => {
     );
     const yymmdd = (d) => {
         const date = new Date(d);
-        console.log(d);
         const formattedYear = date.getFullYear().toString();
         const formattedMonth = (date.getMonth() + 1).toString().padStart(2, '0');
         const formattedDay = date.getDate().toString().padStart(2, '0');

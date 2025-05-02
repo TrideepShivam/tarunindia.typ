@@ -5,131 +5,103 @@ describe('Typing test for English and Mangal', () => {
 
     it('should log in, complete actions, and log out', () => {
         cy.contains('Get Started').click();
-        cy.wait(2000);
 
         // Fill in email and password
-        cy.get('.formContents')
-            .find('input')
-            .eq(0)
-            .clear()
-            .type('trideepshivam@gmail.com', { delay: 100 })
-            .should('have.value', 'trideepshivam@gmail.com');
+        cy.get('.formContents input').eq(0).as('emailInput');
 
-        cy.get('.formContents')
-            .find('input')
-            .eq(1)
-            .clear()
-            .type('Shivam@123', { delay: 100 })
-            .should('have.value', 'Shivam@123');
+        cy.get('@emailInput').should('be.visible');
+        cy.get('@emailInput').clear();
+        cy.get('@emailInput').type('trideepshivam@gmail.com', { delay: 100 });
+        cy.get('@emailInput').should('have.value', 'trideepshivam@gmail.com');
 
-        // Click Login button
-        cy.get('.formContents').find('button[type="submit"]').click();
-        cy.wait(2000);
+        cy.get('.formContents input').eq(1).as('passwordInput');
+        cy.get('@passwordInput').should('be.visible');
+        cy.get('@passwordInput').clear();
+        cy.get('@passwordInput').type('Shivam@123', { delay: 100 });
+        cy.get('@passwordInput').should('have.value', 'Shivam@123');
 
-        // Click on Playground navigation
-        cy.get('a.navigation[href="/playground"]').click();
-        cy.wait(2000);
+        // Submit login
+        cy.get('.formContents button[type="submit"]').click();
 
-        // Select dropdown options
+        // Go to Playground
+        cy.get('a.navigation[href="/playground"]').should('be.visible').click();
+
+        // Helper function to select from dropdowns
         const selectDropdown = (index, value) => {
             cy.get('.dropdownContainer input[readonly]').eq(index).click();
-            cy.wait(500);
-            cy.get(`.dropdownContainer p:contains("${value}")`).click();
-            cy.wait(500);
+            cy.contains('.dropdownContainer p', value).click();
         };
 
-        // Selecting options
+        // === English Typing Test ===
         selectDropdown(0, 'English');
         selectDropdown(1, '1 min');
         selectDropdown(2, 'Beginner');
         selectDropdown(3, 'A thirsty crow');
 
-        // Click Play button
         cy.get('button.themeButton').click();
-        cy.wait(2000);
 
-        // Click Skip button
-        cy.contains('Skip', { timeout: 10000 }).should('be.visible').click();
-        cy.wait(1000);
+        cy.contains('Skip', { timeout: 10000 }).should('be.visible');
+        cy.contains('Skip').click();
 
-        // Get the text content and type it in the textarea
-        cy.get('p.textContent').then(($text) => {
-            const textToType = $text.text();
-            const maxChars = 100;
+        // Type from text content
+        cy.get('p.textContent')
+            .invoke('text')
+            .then((text) => {
+                const limitedText = text.slice(0, 100);
 
-            // Slice the text to max 100 characters
-            const limitedText = textToType.slice(0, maxChars);
+                cy.get('textarea[placeholder="start typing..."]').click();
 
-            // Get the textarea and type character-by-character
-            cy.get('textarea[placeholder="start typing..."]')
-                .click()
-                .then(($textarea) => {
-                    // Manually type each character with a delay
-                    const typeCharByChar = (index = 0) => {
-                        if (index >= limitedText.length) return;
+                let index = 0;
 
-                        cy.wrap($textarea)
-                            .type(limitedText[index], { delay: 500 })
-                            .then(() => {
-                                typeCharByChar(index + 1);
-                            });
-                    };
-                    typeCharByChar();
-                });
-        });
+                const typeCharByChar = () => {
+                    if (index >= limitedText.length) return;
 
-        cy.wait(5000);
+                    cy.get('textarea[placeholder="start typing..."]')
+                        .type(limitedText[index], { delay: 500 })
+                        .then(() => {
+                            index++;
+                            typeCharByChar();
+                        });
+                };
 
-        // Click on Playground navigation
-        cy.get('a.navigation[href="/playground"]').click();
-        cy.wait(3000);
+                typeCharByChar();
+            });
 
-        // Selecting options
+        // === Mangal Typing Test ===
+        cy.get('a.navigation[href="/playground"]').should('be.visible').click();
+
         selectDropdown(0, 'Mangal');
         selectDropdown(1, '1 min');
         selectDropdown(2, 'Beginner');
         selectDropdown(3, 'कंप्यूटर और आज का युग');
 
-        // Click Play button
         cy.get('button.themeButton').click();
-        cy.wait(2000);
 
-        // Click Skip button
-        cy.contains('Skip', { timeout: 10000 }).should('be.visible').click();
-        cy.wait(1000);
+        cy.contains('Skip', { timeout: 10000 }).should('be.visible');
+        cy.contains('Skip').click();
 
-        // Get the text content and type it in the textarea
-        cy.get('p.textContent').then(($text) => {
-            const textToType = $text.text();
-            const maxChars = 100;
-
-            // Slice the text to max 100 characters
-            const limitedText = textToType.slice(0, maxChars);
-
-            // Get the textarea and type character-by-character
-            cy.get('textarea[placeholder="start typing..."]')
-                .click()
-                .then(($textarea) => {
-                    // Manually type each character with a delay
-                    const typeCharByChar = (index = 0) => {
-                        if (index >= limitedText.length) return;
-
-                        cy.wrap($textarea)
-                            .type(limitedText[index], { delay: 500 })
-                            .then(() => {
-                                typeCharByChar(index + 1);
-                            });
-                    };
-                    typeCharByChar();
-                });
-        });
-
-        cy.wait(5000);
+        cy.get('p.textContent')
+            .invoke('text')
+            .then((text) => {
+                const limitedText = text.slice(0, 100);
+                cy.get('textarea[placeholder="start typing..."]')
+                    .click()
+                    .then(($textarea) => {
+                        const typeCharByChar = (index = 0) => {
+                            if (index >= limitedText.length) return;
+                            cy.wrap($textarea)
+                                .type(limitedText[index], { delay: 500 })
+                                .then(() => {
+                                    typeCharByChar(index + 1);
+                                });
+                        };
+                        typeCharByChar();
+                    });
+            });
 
         // Log out
-        cy.get('div.userContainer', { timeout: 10000 }).should('be.visible').click();
-        cy.wait(1000);
+        cy.get('div.userContainer', { timeout: 10000 }).should('be.visible');
+        cy.get('div.userContainer').click();
         cy.contains('Logout').click();
-        cy.wait(2000);
     });
 });

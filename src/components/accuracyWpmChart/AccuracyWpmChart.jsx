@@ -62,8 +62,6 @@ const AccuracyWpmChart = ({ width, language, duration }) => {
             duration: duration,
         })
             .then(({ data }) => {
-                console.log(data);
-
                 const updatedData = generateData(data, new Date(), testDays[days]); //replace with 0 if not available that date
                 const daysOfWeek = updatedData
                     .map((item) => item.date)
