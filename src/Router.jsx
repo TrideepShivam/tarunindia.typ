@@ -153,6 +153,10 @@ const Router = createBrowserRouter([
         element: <InProgress />,
     },
     {
+        path: '/storage/*',
+        element: <Navigate to="https://typathon.com/storage/" replace />,
+    },
+    {
         path: '*',
         element: <NotFound />,
     },
