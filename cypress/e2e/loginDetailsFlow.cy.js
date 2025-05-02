@@ -152,6 +152,114 @@ describe('Typing test for English and Mangal', () => {
         },
     ];
 
+    const dashboardLiterals = [
+        'DASHBOARD',
+        'Welcome to Typathon',
+        'Advance Analytics',
+        'Average',
+        'WPM',
+        'Last Attempt',
+        'Total Attempts',
+        'Today Attempts',
+        'Tests',
+        'Progress Report',
+        '7D',
+        '30D',
+        '180D',
+        '365D',
+        'Accuracy',
+    ];
+
+    const playgroundLiterals = [
+        'PLAYGROUND',
+        'Welcome to',
+        'Typathon!',
+        'App',
+        'This form is designed to help you customize your typing test experience. By filling out the form, you can select the language you want to practice, choose the duration of the test, and pick your skill level. Whether you’re a beginner looking to improve your typing speed, an intermediate user aiming to enhance your accuracy, or someone who enjoys typing out stories, this form will tailor the test to your needs.',
+        'Pending Tests',
+        'Play Form',
+        'Welcome!',
+        "Ready to take your typing skills to the next level? Let's get those fingers flying!",
+        'Language',
+        'Duration',
+        'Level',
+        'Story',
+        'Backspace',
+        'Hightlight Text',
+        'Play',
+    ];
+
+    const resultsLiterals = [
+        'RESULTS',
+        'Average WPM',
+        'WPM',
+        'Average KPM',
+        'KPM',
+        'Average Accuracy',
+        '%',
+        'ACCURACY (%)',
+        'TIME',
+        'Errors',
+        'Duration',
+        'Language',
+        'Details',
+    ];
+
+    const supportLiterals = [
+        'SUPPORT',
+        'Need Help? We’re Here for You!',
+        'Our support system is designed to assist you with any questions or issues you may encounter while using our Typing Test Web App. Whether you need help with setting up your test, understanding your results, or troubleshooting technical problems, our dedicated support team is ready to provide you with prompt and effective assistance. Simply reach out to us through:',
+        'Whatsapp:',
+        'Prompt or Message your issue to us on Whatsapp.',
+        '9546747447',
+        'Email:',
+        'You can Email us you issues on.',
+        'info@typathon.com',
+        'Address:',
+        'Discuss your issue Face to Face.',
+        'Tarun India Institute',
+        'In front of police station, ward-13',
+        'Madhepura, Bihar, India',
+        '852113',
+        'We’ll ensure you get the help you need to make the most of your typing practice. Nothing can be your Obstactle to',
+        'Learn, Grow and Earn!',
+        'Team',
+        'Typathon',
+        'SCAN TO SUBSCRIBE US',
+        'Get Notified via',
+        'Youtube',
+        'and',
+        'Whatsapp',
+        'channel.',
+        'tarunindia.in',
+        '@tarunindiainstitute',
+    ];
+
+    const aboutLiterals = [
+        'Welcome to Typathon, your go-to platform for enhancing your typing skills! Our mission is to provide an engaging and effective way for users of all levels to improve their typing speed and accuracy. Whether you’re a beginner just starting out or an experienced typist looking to refine your skills, our customizable tests and user-friendly interface make practice enjoyable and productive. Join us on your journey to becoming a typing pro! Here are some of the standout features:',
+        'User-Friendly Interface:',
+        'Our intuitive and clean design ensures that you can easily navigate through the app and focus on improving your typing skills without any distractions.',
+        'Comprehensive Support System:',
+        'Need help? Our dedicated support team is always ready to assist you with any questions or issues you may encounter.',
+        'Mangal Font Facility:',
+        'For those who prefer typing in Hindi, we offer the Mangal font, making it easier and more comfortable to practice typing in your preferred language.',
+        'Engaging Events:',
+        'Participate in various typing events and challenges to keep your practice sessions exciting and competitive.',
+        'Progress Tracking:',
+        'Monitor your improvement over time with our graphical progress tracking feature. See how your speed and accuracy evolve with each test you take.',
+        'Whether you’re a beginner just starting out or an experienced typist looking to refine your skills, our customizable tests and user-friendly interface make practice enjoyable and productive. Join us on your journey to becoming a typing pro!',
+        'Team',
+        'Typathon',
+        'SCAN TO SUBSCRIBE US',
+        'Get Notified via',
+        'Youtube',
+        'and',
+        'Whatsapp',
+        'channel.',
+        'tarunindia.in',
+        '@tarunindiainstitute',
+    ];
+
     beforeEach(() => {
         cy.visit('/');
     });
@@ -181,7 +289,12 @@ describe('Typing test for English and Mangal', () => {
             cy.get('.sideNavigation').contains('span', item).should('be.visible');
         });
 
-        // Show profile Details
+        // Show Dashboard literals
+        dashboardLiterals.forEach((item) => {
+            cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
+        });
+
+        // Show Profile items
         cy.get('div.userContainer', { timeout: 1000 }).should('be.visible');
         cy.get('div.userContainer').click();
 
@@ -189,23 +302,21 @@ describe('Typing test for English and Mangal', () => {
             cy.get('.user').contains('span', item).should('be.visible');
         });
 
+        // Show Profile details
         cy.contains('Profile').click();
         cy.wait(500);
         profileLiterals.forEach((text) => {
             cy.contains(text).should('be.visible');
         });
 
-        cy.get('div.userContainer', { timeout: 1000 }).should('be.visible');
+        // Show Pricing details
+        cy.get('div.userContainer', { timeout: 500 }).should('be.visible');
         cy.get('div.userContainer').click();
-
         cy.contains('Pricing').click();
-
         cy.wait(500);
         priceTexts.forEach((text) => {
             cy.contains(text).should('exist');
         });
-
-        // Additional element checks
         cy.get('table').should('exist');
         cy.get('.planCard').should('have.length.at.least', 1);
         cy.get('img[alt="certificate"]').should('exist');
@@ -217,20 +328,21 @@ describe('Typing test for English and Mangal', () => {
             cy.contains(answer).should('be.visible');
         });
 
-        // Settings
-
+        // Show Settings details
         cy.get('div.userContainer', { timeout: 1000 }).should('be.visible');
         cy.get('div.userContainer').click();
-
         cy.contains('Settings').click();
-
         cy.url().should('include', '/settings');
         cy.get('.inProgressContainer').should('exist');
         cy.contains('Back to Dashboard').click();
         cy.url().should('eq', Cypress.config().baseUrl + '/dashboard');
 
-        // // Go to Playground
-        // cy.get('a.navigation[href="/playground"]').should('be.visible').click();
+        // Go to Playground
+        cy.get('a.navigation[href="/playground"]').should('be.visible').click();
+        cy.wait(500);
+        playgroundLiterals.forEach((item) => {
+            cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
+        });
 
         // // Helper function to select from dropdowns
         // const selectDropdown = (index, value) => {
@@ -256,9 +368,7 @@ describe('Typing test for English and Mangal', () => {
         //         const limitedText = text.slice(0, 100);
 
         //         cy.get('textarea[placeholder="start typing..."]').click();
-
         //         let index = 0;
-
         //         const typeCharByChar = () => {
         //             if (index >= limitedText.length) return;
 
@@ -269,7 +379,6 @@ describe('Typing test for English and Mangal', () => {
         //                     typeCharByChar();
         //                 });
         //         };
-
         //         typeCharByChar();
         //     });
 
@@ -304,6 +413,42 @@ describe('Typing test for English and Mangal', () => {
         //                 typeCharByChar();
         //             });
         //     });
+
+        // Go to Events
+        cy.get('a.navigation[href="/events"]').should('be.visible').click();
+        cy.wait(500);
+        cy.contains('events', { matchCase: false }).should('be.visible');
+        cy.contains('Coming soon', { matchCase: false }).should('be.visible');
+        cy.wait(500);
+
+        // Go to Leaderboard
+        cy.get('a.navigation[href="/leaderboard"]').should('be.visible').click();
+        cy.wait(500);
+        cy.contains('leaderboard', { matchCase: false }).should('be.visible');
+        cy.contains('Coming soon', { matchCase: false }).should('be.visible');
+
+        // Go to Results
+        cy.wait(500);
+        cy.get('a.navigation[href="/results"]').should('be.visible').click();
+        resultsLiterals.forEach((item) => {
+            cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
+        });
+
+        // Go to Support
+        cy.wait(500);
+        cy.get('a.navigation[href="/support"]').should('be.visible').click();
+        cy.wait(500);
+        supportLiterals.forEach((item) => {
+            cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
+        });
+
+        // Go to About
+        cy.wait(500);
+        cy.get('a.navigation[href="/about"]').should('be.visible').click();
+        cy.wait(500);
+        aboutLiterals.forEach((item) => {
+            cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
+        });
 
         // Log out
         cy.get('div.userContainer', { timeout: 10000 }).should('be.visible');
