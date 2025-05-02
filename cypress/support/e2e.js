@@ -18,7 +18,7 @@ import './commands';
 
 // cypress/support/e2e.js
 
-Cypress.on('uncaught:exception', (err, runnable) => {
+Cypress.on('uncaught:exception', (err) => {
     if (err.message.includes('Permissions check failed')) {
         return false; // Ignore this error globally
     }

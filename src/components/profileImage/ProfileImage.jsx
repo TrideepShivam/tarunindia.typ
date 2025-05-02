@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import Cropper from 'react-easy-crop';
 import PopUpContainer from '../popUpContainer/PopUpContainer';
 import Hyperlink from '../hyperlink/Hyperlink';
@@ -63,7 +63,7 @@ const ProfileImage = ({ url = Logo }) => {
                     });
                     setLoading(false);
                 })
-                .catch((error) => {
+                .catch(() => {
                     setLoading(false);
                     setCroppedImage(url);
                 });
