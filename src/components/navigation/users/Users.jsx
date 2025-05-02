@@ -26,7 +26,13 @@ const Users = ({ userNavigator }) => {
             />
             {openUser && (
                 <div className="user">
-                    <img className="userProfilePic" width="150em" height="150em" src={Profile} alt="" />
+                    <img
+                        className="userProfilePic"
+                        width="150em"
+                        height="150em"
+                        src={userDetails.profile_pic_url ? userDetails.profile_pic_url : Profile}
+                        alt=""
+                    />
                     {userNavigator.map((item, index) => (
                         <UserNavigation item={item} key={index} />
                     ))}
