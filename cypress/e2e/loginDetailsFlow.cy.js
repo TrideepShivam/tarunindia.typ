@@ -267,7 +267,8 @@ describe('Typing test for English and Mangal', () => {
     it('should log in, complete actions, and log out', () => {
         cy.contains('Get Started').click();
 
-        // Fill in email and password
+        // Filling email and password
+        cy.log('Filling email and password');
         cy.get('.formContents input').eq(0).as('emailInput');
 
         cy.get('@emailInput').should('be.visible');
@@ -282,19 +283,23 @@ describe('Typing test for English and Mangal', () => {
         cy.get('@passwordInput').should('have.value', 'Shivam@123');
 
         // Submit login
+        cy.log('Submitting login form');
         cy.get('.formContents button[type="submit"]').click();
 
-        // Show Menu Items
+        // Checking Menu Items
+        cy.log('Checking menu items');
         menuItems.forEach((item) => {
             cy.get('.sideNavigation').contains('span', item).should('be.visible');
         });
 
-        // Show Dashboard literals
+        // Checking Dashboard literals
+        cy.log('Checking dashboard literals');
         dashboardLiterals.forEach((item) => {
             cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
         });
 
-        // Show Profile items
+        // Checking Profile items
+        cy.log('Checking profile items');
         cy.get('div.userContainer', { timeout: 1000 }).should('be.visible');
         cy.get('div.userContainer').click();
 
@@ -302,14 +307,16 @@ describe('Typing test for English and Mangal', () => {
             cy.get('.user').contains('span', item).should('be.visible');
         });
 
-        // Show Profile details
+        // Checking Profile details
+        cy.log('Checking profile details');
         cy.contains('Profile').click();
         cy.wait(500);
         profileLiterals.forEach((text) => {
             cy.contains(text).should('be.visible');
         });
 
-        // Show Pricing details
+        // Checking Pricing details
+        cy.log('Checking pricing details');
         cy.get('div.userContainer', { timeout: 500 }).should('be.visible');
         cy.get('div.userContainer').click();
         cy.contains('Pricing').click();
@@ -328,7 +335,8 @@ describe('Typing test for English and Mangal', () => {
             cy.contains(answer).should('be.visible');
         });
 
-        // Show Settings details
+        // Checking Settings details
+        cy.log('Checking settings details');
         cy.get('div.userContainer', { timeout: 1000 }).should('be.visible');
         cy.get('div.userContainer').click();
         cy.contains('Settings').click();
@@ -338,83 +346,74 @@ describe('Typing test for English and Mangal', () => {
         cy.url().should('eq', Cypress.config().baseUrl + '/dashboard');
 
         // Go to Playground
+        cy.log('Checking playground details');
         cy.get('a.navigation[href="/playground"]').should('be.visible').click();
         cy.wait(500);
         playgroundLiterals.forEach((item) => {
             cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
         });
 
-        // // Helper function to select from dropdowns
-        // const selectDropdown = (index, value) => {
-        //     cy.get('.dropdownContainer input[readonly]').eq(index).click();
-        //     cy.contains('.dropdownContainer p', value).click();
-        // };
+        // Checking the dropdowns
+        cy.log('Checking the dropdowns');
+        const selectDropdown = (index, value) => {
+            cy.get('.dropdownContainer input[readonly]').eq(index).click();
+            cy.contains('.dropdownContainer p', value).click();
+        };
 
-        // // === English Typing Test ===
-        // selectDropdown(0, 'English');
-        // selectDropdown(1, '1 min');
-        // selectDropdown(2, 'Beginner');
-        // selectDropdown(3, 'A thirsty crow');
+        // === English Typing Test ===
+        cy.log('Starting English typing test');
+        selectDropdown(0, 'English');
+        selectDropdown(1, '1 min');
+        selectDropdown(2, 'Beginner');
+        selectDropdown(3, 'A thirsty crow');
 
-        // cy.get('button.themeButton').click();
+        cy.get('button.themeButton').click();
 
-        // cy.contains('Skip', { timeout: 10000 }).should('be.visible');
-        // cy.contains('Skip').click();
+        cy.contains('Skip', { timeout: 10000 }).should('be.visible');
+        cy.contains('Skip').click();
 
-        // // Type from text content
-        // cy.get('p.textContent')
-        //     .invoke('text')
-        //     .then((text) => {
-        //         const limitedText = text.slice(0, 100);
+        cy.get('p.textContent')
+            .invoke('text')
+            .then((text) => {
+                const words = text.split(' ').slice(0, 20).join(' ');
 
-        //         cy.get('textarea[placeholder="start typing..."]').click();
-        //         let index = 0;
-        //         const typeCharByChar = () => {
-        //             if (index >= limitedText.length) return;
+                cy.get('textarea[placeholder="start typing..."]')
+                    .type(words, { delay: 500 })
+                    .then(() => {
+                        cy.wait(15000);
+                    });
+            });
 
-        //             cy.get('textarea[placeholder="start typing..."]')
-        //                 .type(limitedText[index], { delay: 500 })
-        //                 .then(() => {
-        //                     index++;
-        //                     typeCharByChar();
-        //                 });
-        //         };
-        //         typeCharByChar();
-        //     });
+        cy.wait(3000);
 
-        // // === Mangal Typing Test ===
-        // cy.get('a.navigation[href="/playground"]').should('be.visible').click();
+        // === Mangal Typing Test ===
+        cy.log('Starting Mangal typing test');
+        cy.get('a.navigation[href="/playground"]').should('be.visible').click();
 
-        // selectDropdown(0, 'Mangal');
-        // selectDropdown(1, '1 min');
-        // selectDropdown(2, 'Beginner');
-        // selectDropdown(3, 'कंप्यूटर और आज का युग');
+        selectDropdown(0, 'Mangal');
+        selectDropdown(1, '1 min');
+        selectDropdown(2, 'Beginner');
+        selectDropdown(3, 'कंप्यूटर और आज का युग');
 
-        // cy.get('button.themeButton').click();
+        cy.get('button.themeButton').click();
 
-        // cy.contains('Skip', { timeout: 10000 }).should('be.visible');
-        // cy.contains('Skip').click();
+        cy.contains('Skip', { timeout: 10000 }).should('be.visible');
+        cy.contains('Skip').click();
 
-        // cy.get('p.textContent')
-        //     .invoke('text')
-        //     .then((text) => {
-        //         const limitedText = text.slice(0, 100);
-        //         cy.get('textarea[placeholder="start typing..."]')
-        //             .click()
-        //             .then(($textarea) => {
-        //                 const typeCharByChar = (index = 0) => {
-        //                     if (index >= limitedText.length) return;
-        //                     cy.wrap($textarea)
-        //                         .type(limitedText[index], { delay: 500 })
-        //                         .then(() => {
-        //                             typeCharByChar(index + 1);
-        //                         });
-        //                 };
-        //                 typeCharByChar();
-        //             });
-        //     });
+        cy.get('p.textContent')
+            .invoke('text')
+            .then((text) => {
+                const words = text.split(' ').slice(0, 20).join(' ');
+
+                cy.get('textarea[placeholder="start typing..."]')
+                    .type(words, { delay: 500 })
+                    .then(() => {
+                        cy.wait(15000);
+                    });
+            });
 
         // Go to Events
+        cy.log('Checking events details');
         cy.get('a.navigation[href="/events"]').should('be.visible').click();
         cy.wait(500);
         cy.contains('events', { matchCase: false }).should('be.visible');
@@ -422,12 +421,14 @@ describe('Typing test for English and Mangal', () => {
         cy.wait(500);
 
         // Go to Leaderboard
+        cy.log('Checking leaderboard details');
         cy.get('a.navigation[href="/leaderboard"]').should('be.visible').click();
         cy.wait(500);
         cy.contains('leaderboard', { matchCase: false }).should('be.visible');
         cy.contains('Coming soon', { matchCase: false }).should('be.visible');
 
         // Go to Results
+        cy.log('Checking results details');
         cy.wait(500);
         cy.get('a.navigation[href="/results"]').should('be.visible').click();
         resultsLiterals.forEach((item) => {
@@ -435,6 +436,7 @@ describe('Typing test for English and Mangal', () => {
         });
 
         // Go to Support
+        cy.log('Checking support details');
         cy.wait(500);
         cy.get('a.navigation[href="/support"]').should('be.visible').click();
         cy.wait(500);
@@ -443,6 +445,7 @@ describe('Typing test for English and Mangal', () => {
         });
 
         // Go to About
+        cy.log('Checking about details');
         cy.wait(500);
         cy.get('a.navigation[href="/about"]').should('be.visible').click();
         cy.wait(500);
@@ -451,6 +454,7 @@ describe('Typing test for English and Mangal', () => {
         });
 
         // Log out
+        cy.log('Logging out');
         cy.get('div.userContainer', { timeout: 10000 }).should('be.visible');
         cy.get('div.userContainer').click();
         cy.contains('Logout').click();
