@@ -1,12 +1,14 @@
 import './Error.css';
 import Logo from '../../assets/logo-reverse.svg';
 import Hyperlink from '../../components/hyperlink/Hyperlink';
+import { useRouteError } from 'react-router-dom';
 
-const NotFound = () => {
+const NotFound = ({ label = 'Something went Wrong' }) => {
+    const error = useRouteError();
     return (
         <div className="errorContainer">
             <img width={'100em'} src={Logo} alt="logo" />
-            <p>404: Page not Found</p>
+            <p>{label}</p>
             <Hyperlink value="Back to Home" href="/" />
         </div>
     );

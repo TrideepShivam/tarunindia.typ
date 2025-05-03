@@ -28,90 +28,34 @@ const Router = createBrowserRouter([
     {
         path: '/',
         element: <LoginRegisterLayout />,
+        errorElement: <NotFound />,
         children: [
-            {
-                path: '/',
-                element: <Home />,
-            },
-            {
-                path: '/login',
-                element: <Login />,
-            },
-            {
-                path: '/register',
-                // element:<RegisterTrial/>
-                element: <Register />,
-            },
-            {
-                path: '/admin',
-                element: <Admin />,
-            },
-            {
-                path: '/error',
-                element: <Error />,
-            },
-            {
-                path: '/forgot-password',
-                element: <ForgotPassword />,
-            },
-            {
-                path: '/reset-password/:id/:token',
-                element: <SetPassword />,
-            },
-            {
-                path: '/reset-password',
-                element: <SetPassword />,
-            },
-            {
-                path: '/pricing',
-                element: <Pricing />,
-            },
+            { path: '/', element: <Home /> },
+            { path: '/login', element: <Login /> },
+            { path: '/register', element: <Register /> },
+            { path: '/admin', element: <Admin /> },
+            { path: '/error', element: <Error /> },
+            { path: '/forgot-password', element: <ForgotPassword /> },
+            { path: '/reset-password/:id/:token', element: <SetPassword /> },
+            { path: '/reset-password', element: <SetPassword /> },
+            { path: '/pricing', element: <Pricing /> },
         ],
     },
     {
         path: '/',
         element: <DashboardLayout />,
+        errorElement: <NotFound />,
         children: [
-            {
-                path: '/',
-                element: <Navigate to={'/'} />,
-            },
-            {
-                path: '/dashboard/pricing',
-                element: <Pricing />,
-            },
-            {
-                path: '/dashboard',
-                element: <Dashboard />,
-            },
-            {
-                path: '/playground',
-                element: <Playground />,
-            },
-            {
-                path: '/events',
-                element: <Events />,
-            },
-            {
-                path: '/leaderboard',
-                element: <Leaderboard />,
-            },
-            {
-                path: '/results',
-                element: <Results />,
-            },
-            {
-                path: '/support',
-                element: <Support />,
-            },
-            {
-                path: '/about',
-                element: <About />,
-            },
-            {
-                path: '/profile',
-                element: <Profile />,
-            },
+            { path: '/', element: <Navigate to={'/'} /> },
+            { path: '/dashboard/pricing', element: <Pricing /> },
+            { path: '/dashboard', element: <Dashboard /> },
+            { path: '/playground', element: <Playground /> },
+            { path: '/events', element: <Events /> },
+            { path: '/leaderboard', element: <Leaderboard /> },
+            { path: '/results', element: <Results /> },
+            { path: '/support', element: <Support /> },
+            { path: '/about', element: <About /> },
+            { path: '/profile', element: <Profile /> },
             {
                 path: '/settings',
                 element: <InProgress value="Back to Dashboard" href="/dashboard" />,
@@ -122,23 +66,19 @@ const Router = createBrowserRouter([
         path: '/',
         element: <AdminDashboardLayout />,
         children: [
-            {
-                path: '/admin',
-                element: <Navigate to={'/admin'} />,
-            },
-            {
-                path: '/admin/dashboard',
-                element: <AdminDashboard />,
-            },
+            { path: '/admin', element: <Navigate to={'/admin'} /> },
+            { path: '/admin/dashboard', element: <AdminDashboard /> },
         ],
     },
     {
         path: '/play/:id',
         element: <Play />,
+        errorElement: <NotFound />,
     },
     {
         path: '/advance-analytics',
         element: <AdvanceAnalytics />,
+        errorElement: <NotFound />,
     },
     {
         path: '/about-us',
@@ -153,12 +93,8 @@ const Router = createBrowserRouter([
         element: <InProgress />,
     },
     {
-        path: '/storage/*',
-        element: <Navigate to="https://typathon.com/storage/" replace />,
-    },
-    {
         path: '*',
-        element: <NotFound />,
+        element: <NotFound label="404: Page not Found" />,
     },
 ]);
 
