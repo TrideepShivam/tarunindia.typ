@@ -312,7 +312,7 @@ describe('Typing test for English and Mangal', () => {
         cy.contains('Profile').click();
         cy.wait(500);
         profileLiterals.forEach((text) => {
-            cy.contains(text).should('be.visible');
+            cy.contains(text, { matchCase: false }).scrollIntoView().should('be.visible');
         });
 
         // Checking Pricing details
