@@ -1,34 +1,21 @@
 .profile {
-    padding: 0% 4%;
-
-    .profileHeader {
-        padding: 0 0.5em;
-        margin: 0.2em 0;
-        border-left: 0.1em solid var(--theme-color);
-    }
+    padding-right: 2em;
 
     .profileContainer {
         width: 100%;
         min-height: 100%;
         display: grid;
-        gap: 40px;
+        gap: 5em;
 
         .profileImage {
             width: 100%;
-            height: 40vh;
-            gap: 5%;
             display: grid;
             grid-template-columns: 1fr 4fr;
 
-            .profileImageContainer {
-                margin-top: 2em;
-            }
-
-            .profileImageText {
-                display: flex;
+            .profileImageSection {
+                display:flex;
+                flex-direction: column;
                 justify-content: center;
-                margin-top: 1em;
-                color: var(--theme-color);
             }
 
             .textArea {
