@@ -1,18 +1,19 @@
-import { useContext, useEffect, useState } from 'react';
-import HeatMapChart from '../../components/heatMapChart/HeatMapChart';
-import ToggleDarkLight from '../../components/toggleDarkLight/ToggleDarkLight';
-import { Context } from '../../ContextAPI';
-import Hyperlink from '../../components/hyperlink/Hyperlink';
 import { format } from 'date-fns';
-import AccuracyWpmChart from '../../components/accuracyWpmChart/AccuracyWpmChart';
-import useAuthInterceptor from '../../hooks/useAuthInterceptor';
+import { useContext, useEffect, useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import api from '../../api';
+import AccuracyWpmChart from '../../components/accuracyWpmChart/AccuracyWpmChart';
 import Card from '../../components/card/Card';
+import Filter from '../../components/filter/Filter';
+import HeatMapChart from '../../components/heatMapChart/HeatMapChart';
+import Hyperlink from '../../components/hyperlink/Hyperlink';
 import Loading from '../../components/loading/Loading';
 import Navigation from '../../components/navigation/sideNavigation/navigation/Navigation';
 import Tags from '../../components/tags/Tags';
-import Filter from '../../components/filter/Filter';
-import { Navigate } from 'react-router-dom';
+import ToggleDarkLight from '../../components/toggleDarkLight/ToggleDarkLight';
+import { Context } from '../../ContextAPI';
+import useAuthInterceptor from '../../hooks/useAuthInterceptor';
+
 import './AdvanceAnalytics.css';
 
 const AdvanceAnalytics = () => {

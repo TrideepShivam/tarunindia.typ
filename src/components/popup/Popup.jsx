@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import Textbox from '../textbox/Textbox';
 import Hyperlink from '../hyperlink/Hyperlink';
+import Textbox from '../textbox/Textbox';
+
 import './Popup.css';
 
 const Popup = ({

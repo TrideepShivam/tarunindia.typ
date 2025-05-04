@@ -1,9 +1,10 @@
 import { useContext } from 'react';
-import './PurchaseMsg.css';
-import PopUpContainer from '../popUpContainer/PopUpContainer';
-import Hyperlink from '../hyperlink/Hyperlink';
 import { Context } from '../../ContextAPI';
 import Button from '../button/Button';
+import Hyperlink from '../hyperlink/Hyperlink';
+import PopUpContainer from '../popUpContainer/PopUpContainer';
+
+import './PurchaseMsg.css';
 
 const PurchaseMsg = () => {
     const { setPurchaseBoxOpen } = useContext(Context);

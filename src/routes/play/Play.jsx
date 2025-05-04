@@ -1,19 +1,20 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import './Play.css';
-import logo from '../../assets/logo-reverse.svg';
-import { Context } from '../../ContextAPI';
 import { useNavigate, useParams } from 'react-router-dom';
 import api from '../../api';
+import logo from '../../assets/logo-reverse.svg';
+import Button from '../../components/button/Button';
+import FullScreenBtn from '../../components/fullScreenBtn/FullScreenBtn';
+import LanguageConfirmation from '../../components/languageConfirmation/LanguageConfirmation';
+import Loading from '../../components/loading/Loading';
+import Retry from '../../components/retry/Retry';
+import TextContent from '../../components/textContent/TextContent';
 import Timer from '../../components/timer/Timer';
 import ToggleDarkLight from '../../components/toggleDarkLight/ToggleDarkLight';
 import WordCount from '../../components/wordCount/WordCount';
-import Button from '../../components/button/Button';
-import TextContent from '../../components/textContent/TextContent';
-import Loading from '../../components/loading/Loading';
+import { Context } from '../../ContextAPI';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
-import LanguageConfirmation from '../../components/languageConfirmation/LanguageConfirmation';
-import Retry from '../../components/retry/Retry';
-import FullScreenBtn from '../../components/fullScreenBtn/FullScreenBtn';
+
+import './Play.css';
 
 const Play = () => {
     useAuthInterceptor();

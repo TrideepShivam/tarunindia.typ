@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
-import './TextContent.css';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+
+import './TextContent.css';
 
 const TextContent = ({ language, story, highlightingIndex }) => {
     const typedContent = highlightingIndex === 0 ? '' : story.slice(0, highlightingIndex).join('');

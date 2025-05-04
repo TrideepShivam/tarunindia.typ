@@ -1,10 +1,11 @@
+import { useContext, useState } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import './AdminDashboardLayout.css';
+import api from '../../../api';
 import DashboardTopNav from '../../../components/navigation/dashboadTopNav/DashboardTopNav';
 import SideNavigation from '../../../components/navigation/sideNavigation/SideNavigation';
-import { useContext, useState } from 'react';
-import api from '../../../api';
 import { Context } from '../../../ContextAPI';
+
+import './AdminDashboardLayout.css';
 
 const DashboardLayout = () => {
     const [sideNavOpen, setSideNavOpen] = useState(true);

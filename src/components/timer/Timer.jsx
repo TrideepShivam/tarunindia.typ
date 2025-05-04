@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import './Timer.css';
 
 const Timer = ({ time, second, setSecond, pause = false, timeOut, checkpoint }) => {

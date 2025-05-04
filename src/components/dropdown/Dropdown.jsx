@@ -1,7 +1,7 @@
-import { useContext, useRef } from 'react';
-import './Dropdown.css';
-import { useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { Context } from '../../ContextAPI';
+
+import './Dropdown.css';
 
 const Dropdown = (props) => {
     const { lightMode } = useContext(Context);

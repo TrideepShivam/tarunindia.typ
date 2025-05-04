@@ -1,24 +1,25 @@
-import './Home.css';
-import Button from '../../components/button/Button';
-import ShowCard from '../../components/ShowCard/ShowCard';
-import BlurImgDiv from '../../components/blurImgDiv/BlurImgDiv';
-import Hyperlink from '../../components/hyperlink/Hyperlink';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import designer1 from '../../assets/Designer1.jpeg.jpg';
 import designer2 from '../../assets/Designer2.jpeg.jpg';
-import DotLineBox from '../../components/dotLineBox/DotLineBox';
-import why11 from '../../assets/login-dark.png';
-import why12 from '../../assets/login-light.png';
 import why21 from '../../assets/form-dark.png';
 import why22 from '../../assets/form-light.png';
+import InstLogo from '../../assets/institute-logo.jpg';
+import why11 from '../../assets/login-dark.png';
+import why12 from '../../assets/login-light.png';
 import why31 from '../../assets/play-dark.png';
 import why32 from '../../assets/play-light.png';
 import why41 from '../../assets/report-dark.png';
 import why42 from '../../assets/report-light.png';
-import InstLogo from '../../assets/institute-logo.jpg';
-import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { Context } from '../../ContextAPI';
+import BlurImgDiv from '../../components/blurImgDiv/BlurImgDiv';
+import Button from '../../components/button/Button';
+import DotLineBox from '../../components/dotLineBox/DotLineBox';
 import Footer from '../../components/footer/Footer';
+import Hyperlink from '../../components/hyperlink/Hyperlink';
+import ShowCard from '../../components/ShowCard/ShowCard';
+import { Context } from '../../ContextAPI';
+
+import './Home.css';
 
 const Home = () => {
     const navigate = useNavigate();

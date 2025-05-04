@@ -1,6 +1,7 @@
-import './Retry.css';
 import logo from '../../assets/logo-reverse.svg';
 import Hyperlink from '../hyperlink/Hyperlink';
+
+import './Retry.css';
 
 const Retry = ({ retry, to }) => {
     return (

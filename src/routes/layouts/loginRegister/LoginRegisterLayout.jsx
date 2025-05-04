@@ -1,7 +1,8 @@
 import { Outlet } from 'react-router-dom';
-import './LoginRegisterLayout.css';
 import TopNavigation from '../../../components/navigation/topNavigation/TopNavigation';
 import useScrollToTop from '../../../hooks/useScrollToTop';
+
+import './LoginRegisterLayout.css';
 
 const LoginRegisterLayout = () => {
     useScrollToTop();

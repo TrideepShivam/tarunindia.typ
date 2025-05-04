@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import api from '../api';
 import { Context } from '../ContextAPI';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 const useAuthInterceptor = () => {
     const { setUserLocal, setPurchaseBoxOpen, setMsg, connected } = useContext(Context);

@@ -1,10 +1,11 @@
 import Hyperlink from '../../components/hyperlink/Hyperlink';
 import InformationContainer from '../../components/informationContainer/InformationContainer';
-import './Register.css';
 import Hi from './../../assets/hi.png';
-import Tnc from './../../assets/tncTrial.png';
 import NameId from './../../assets/nameId.png';
 import Pwd from './../../assets/pwdGiven.png';
+import Tnc from './../../assets/tncTrial.png';
+
+import './Register.css';
 
 const RegisterTrial = () => {
     return (

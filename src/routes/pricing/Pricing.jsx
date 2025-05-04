@@ -1,12 +1,13 @@
 import { useContext } from 'react';
-import './Pricing.css';
-import certificate from './../../assets/certificate.jpg';
-import { Context } from '../../ContextAPI';
 import { Navigate, useLocation } from 'react-router-dom';
-import PricingElement from './pricingElements/PricingElement';
-import Footer from '../../components/footer/Footer';
 import Accordion from '../../components/accordion/Accordion';
 import Button from '../../components/button/Button';
+import Footer from '../../components/footer/Footer';
+import { Context } from '../../ContextAPI';
+import certificate from './../../assets/certificate.jpg';
+import PricingElement from './pricingElements/PricingElement';
+
+import './Pricing.css';
 
 const Pricing = () => {
     const { userDetails, responsive } = useContext(Context);

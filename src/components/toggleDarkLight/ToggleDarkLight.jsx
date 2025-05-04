@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
-import './ToggleDarkLight.css';
 import { Context } from '../../ContextAPI';
+
+import './ToggleDarkLight.css';
 
 const ToggleDarkLight = () => {
     const { lightMode, setLightMode } = useContext(Context);

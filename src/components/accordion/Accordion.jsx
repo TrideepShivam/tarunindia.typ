@@ -1,7 +1,8 @@
 import { useContext, useState } from 'react';
-import './Accordion.css';
-import Button from '../button/Button';
 import { Context } from '../../ContextAPI';
+import Button from '../button/Button';
+
+import './Accordion.css';
 
 const Accordion = ({ head, details }) => {
     const [openSection, setOpenSection] = useState(false);

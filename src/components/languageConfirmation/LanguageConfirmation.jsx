@@ -1,12 +1,13 @@
 import { useContext, useRef } from 'react';
-import PopUpContainer from '../popUpContainer/PopUpContainer';
-import './LanguageConfirmation.css';
-import { Context } from '../../ContextAPI';
-import Textbox from '../textbox/Textbox';
-import Checkbox from '../checkbox/Checkbox';
-import Button from '../button/Button';
-import Hyperlink from '../hyperlink/Hyperlink';
 import api from '../../api';
+import { Context } from '../../ContextAPI';
+import Button from '../button/Button';
+import Checkbox from '../checkbox/Checkbox';
+import Hyperlink from '../hyperlink/Hyperlink';
+import PopUpContainer from '../popUpContainer/PopUpContainer';
+import Textbox from '../textbox/Textbox';
+
+import './LanguageConfirmation.css';
 
 const LanguageConfirmation = ({ setTypingDisabled, setSkipIntro, language }) => {
     const confirmRef = useRef('');

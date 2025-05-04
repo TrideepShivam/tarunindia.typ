@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
-import './Navigation.css';
 import { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Context } from '../../../../ContextAPI';
+
+import './Navigation.css';
 
 const Navigation = (props) => {
     let darkThemeColor = import.meta.env.VITE_APP_DARK_THEME || '#00aaff';

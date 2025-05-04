@@ -1,9 +1,10 @@
 import { useContext, useRef, useState } from 'react';
-import './Users.css';
-import { Context } from '../../../ContextAPI';
 import Profile from '../../../assets/logo-reverse.svg';
-import UserNavigation from './userNavigation/UserNavigation';
+import { Context } from '../../../ContextAPI';
 import useWindowEvents from '../../../hooks/useWindowEvents';
+import UserNavigation from './userNavigation/UserNavigation';
+
+import './Users.css';
 
 const Users = ({ userNavigator }) => {
     const { lightMode, userDetails } = useContext(Context);
