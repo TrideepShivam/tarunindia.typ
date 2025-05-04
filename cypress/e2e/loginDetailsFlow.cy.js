@@ -353,6 +353,43 @@ describe('Typing test for English and Mangal', () => {
             cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
         });
 
+        // Check if typing test is pending
+        cy.log('Checking if typing test is pending');
+        cy.get('body').then(($body) => {
+            if (
+                ($body.text().includes('English') || $body.text().includes('Mangal')) &&
+                $body.text().includes('1 min')
+            ) {
+                cy.get('a.bordered-theme')
+                    .contains('Play')
+                    .then(($el) => {
+                        if ($el.is(':visible')) {
+                            cy.wrap($el).click();
+                            cy.url().should('include', '/play/');
+                        }
+                    });
+
+                cy.contains('Skip', { timeout: 10000 }).should('be.visible');
+                cy.contains('Skip').click();
+
+                cy.get('p.textContent')
+                    .invoke('text')
+                    .then((text) => {
+                        const words = text.split(' ').slice(0, 20).join(' ');
+
+                        cy.get('textarea[placeholder="start typing..."]')
+                            .type(words, { delay: 500 })
+                            .then(() => {
+                                cy.wait(15000);
+                            });
+                    });
+
+                cy.log('Checking playground details');
+                cy.get('a.navigation[href="/playground"]').should('be.visible').click();
+                cy.wait(500);
+            }
+        });
+
         // Checking the dropdowns
         cy.log('Checking the dropdowns');
         const selectDropdown = (index, value) => {
