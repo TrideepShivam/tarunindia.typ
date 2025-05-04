@@ -1,6 +1,7 @@
 import { useContext } from 'react';
-import './Tags.css';
 import { Context } from '../../ContextAPI';
+
+import './Tags.css';
 
 const Tags = ({ value, onClick }) => {
     const { lightMode } = useContext(Context);

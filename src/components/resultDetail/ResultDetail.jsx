@@ -1,10 +1,12 @@
 import { useContext } from 'react';
-import Percentage from './percentage/Percentage';
-import './ResultDetail.css';
 import { Context } from '../../ContextAPI';
+import { istConverter } from '../../utils/resultUtils';
 import CircleButton from '../circleButton/CircleButton';
 import PopUpContainer from '../popUpContainer/PopUpContainer';
-import { istConverter } from '../../utils/resultUtils';
+
+import Percentage from './percentage/Percentage';
+
+import './ResultDetail.css';
 
 // const testdetails = {
 //     wpm: 0,

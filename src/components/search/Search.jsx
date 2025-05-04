@@ -1,13 +1,14 @@
 import { useContext, useRef, useState } from 'react';
-import { Context } from '../../ContextAPI';
-import './Search.css';
-import CircleButton from '../circleButton/CircleButton';
-import Textbox from '../textbox/Textbox';
-import Button from '../button/Button';
 import api from '../../api';
-import Loading from '../loading/Loading';
+import { Context } from '../../ContextAPI';
+import Button from '../button/Button';
+import CircleButton from '../circleButton/CircleButton';
 import Hyperlink from '../hyperlink/Hyperlink';
+import Loading from '../loading/Loading';
 import PopUpContainer from '../popUpContainer/PopUpContainer';
+import Textbox from '../textbox/Textbox';
+
+import './Search.css';
 
 const Search = (props) => {
     const { lightMode } = useContext(Context);

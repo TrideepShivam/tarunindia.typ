@@ -1,10 +1,11 @@
-import { useContext, useEffect, useState } from 'react';
-import './PendingTests.css';
 import { formatDistanceToNow } from 'date-fns';
-import Loading from '../../../components/loading/Loading';
+import { useContext, useEffect, useState } from 'react';
 import api from '../../../api';
 import Hyperlink from '../../../components/hyperlink/Hyperlink';
+import Loading from '../../../components/loading/Loading';
 import { Context } from '../../../ContextAPI';
+
+import './PendingTests.css';
 
 const PendingTests = () => {
     const [loading, setLoading] = useState(false);

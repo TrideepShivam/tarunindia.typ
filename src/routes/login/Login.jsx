@@ -1,15 +1,16 @@
 import { useContext, useRef, useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import api from '../../api';
 import Button from '../../components/button/Button';
 import Hyperlink from '../../components/hyperlink/Hyperlink';
-import Textbox from '../../components/textbox/Textbox';
-import './Login.css';
-import api from '../../api';
-import { Context } from '../../ContextAPI';
-import { Navigate } from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
-import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import MainFormContainer from '../../components/mainFormContainer/MainFormContainer';
+import Textbox from '../../components/textbox/Textbox';
+import { Context } from '../../ContextAPI';
+import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import backgroundImg from './../../assets/login-form-image.png';
+
+import './Login.css';
 
 const Login = () => {
     useAuthInterceptor();

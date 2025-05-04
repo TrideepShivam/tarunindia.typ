@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
-import './PricingElement.css';
-import { Context } from '../../../ContextAPI';
-import Loading from '../../../components/loading/Loading';
 import api from '../../../api';
+import Button from '../../../components/button/Button';
 import CardContainer from '../../../components/cardContainer/CardContainer';
 import Hyperlink from '../../../components/hyperlink/Hyperlink';
-import Button from '../../../components/button/Button';
+import Loading from '../../../components/loading/Loading';
+import { Context } from '../../../ContextAPI';
+
+import './PricingElement.css';
 
 const PricingElement = () => {
     const { setMsg, responsive } = useContext(Context);

@@ -1,9 +1,10 @@
-import './DashboardTopNav.css';
-import logo from '../../../assets/logo-reverse.svg';
 import { useContext } from 'react';
+import logo from '../../../assets/logo-reverse.svg';
 import { Context } from '../../../ContextAPI';
-import Users from '../users/Users';
 import ToggleDarkLight from '../../toggleDarkLight/ToggleDarkLight';
+import Users from '../users/Users';
+
+import './DashboardTopNav.css';
 
 const DashboardTopNav = ({ userNavigator, sideNavOpen, setSideNavOpen }) => {
     const { lightMode, responsive } = useContext(Context);

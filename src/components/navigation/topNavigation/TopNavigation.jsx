@@ -1,10 +1,12 @@
-import './TopNavigation.css';
-import logo from '../../../assets/logo-reverse.svg';
-import ToggleDarkLight from '../../toggleDarkLight/ToggleDarkLight';
-import Hyperlink from '../../hyperlink/Hyperlink';
 import { useContext, useState } from 'react';
+import logo from '../../../assets/logo-reverse.svg';
 import { Context } from '../../../ContextAPI';
 import CircleButton from '../../circleButton/CircleButton';
+import Hyperlink from '../../hyperlink/Hyperlink';
+import ToggleDarkLight from '../../toggleDarkLight/ToggleDarkLight';
+
+import './TopNavigation.css';
+
 const TopNavigation = () => {
     const { responsive, lightMode } = useContext(Context);
     const [navOpen, setNavOpen] = useState(false);

@@ -1,15 +1,16 @@
 import { useContext, useRef, useState } from 'react';
-import Button from '../../components/button/Button';
-import Hyperlink from '../../components/hyperlink/Hyperlink';
-import Textbox from '../../components/textbox/Textbox';
-import './Register.css';
-import api from '../../api';
-import { Context } from '../../ContextAPI';
 import { Navigate } from 'react-router-dom';
-import Loading from '../../components/loading/Loading';
+import api from '../../api';
+import Button from '../../components/button/Button';
 import Checkbox from '../../components/checkbox/Checkbox';
+import Hyperlink from '../../components/hyperlink/Hyperlink';
+import Loading from '../../components/loading/Loading';
 import MainFormContainer from '../../components/mainFormContainer/MainFormContainer';
+import Textbox from '../../components/textbox/Textbox';
+import { Context } from '../../ContextAPI';
 import backgroundImg from './../../assets/register-form-image.jpeg';
+
+import './Register.css';
 
 const Register = () => {
     const { userDetails, msg, setMsg } = useContext(Context);

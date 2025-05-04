@@ -1,8 +1,9 @@
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import Router from './Router';
 import { RouterProvider } from 'react-router-dom';
 import ContextAPI from './ContextAPI';
+import Router from './Router';
+
+import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <ContextAPI>

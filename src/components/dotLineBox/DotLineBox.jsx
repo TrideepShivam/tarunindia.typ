@@ -1,6 +1,8 @@
-import './DotLineBox.css';
-import { Context } from '../../ContextAPI';
 import { useContext } from 'react';
+import { Context } from '../../ContextAPI';
+
+import './DotLineBox.css';
+
 const DotLineBox = (props) => {
     let res = window.innerWidth;
     const { lightMode } = useContext(Context);

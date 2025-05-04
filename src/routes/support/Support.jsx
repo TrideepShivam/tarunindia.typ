@@ -1,5 +1,6 @@
-import './Support.css';
 import InformationContainer from '../../components/informationContainer/InformationContainer';
+
+import './Support.css';
 
 const Support = () => {
     return (

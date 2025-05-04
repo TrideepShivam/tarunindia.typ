@@ -1,11 +1,12 @@
+import { useContext, useState } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import './DashboardLayout.css';
+import api from '../../../api';
 import DashboardTopNav from '../../../components/navigation/dashboadTopNav/DashboardTopNav';
 import SideNavigation from '../../../components/navigation/sideNavigation/SideNavigation';
-import { useContext, useState } from 'react';
-import api from '../../../api';
-import { Context } from '../../../ContextAPI';
 import PurchaseMsg from '../../../components/purchaseMsg/PurchaseMsg';
+import { Context } from '../../../ContextAPI';
+
+import './DashboardLayout.css';
 
 const DashboardLayout = () => {
     let darkThemeColor = import.meta.env.VITE_APP_DARK_THEME || '#00aaff';

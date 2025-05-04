@@ -1,28 +1,28 @@
-import { Navigate, createBrowserRouter } from 'react-router-dom';
-import Home from './routes/home/Home';
-import LoginRegisterLayout from './routes/layouts/loginRegister/LoginRegisterLayout';
-import Login from './routes/login/Login';
-import Dashboard from './routes/dashboard/Dashboard';
-import Playground from './routes/playground/Playground';
-import Results from './routes/results/Results';
-import DashboardLayout from './routes/layouts/dashboardLayout/DashboardLayout';
-import AdminDashboardLayout from './routes/layouts/adminDashboardLayout/AdminDashboardLayout';
-import Events from './routes/events/Events';
-import Leaderboard from './routes/leaderboard/Leaderboard';
-import Support from './routes/support/Support';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import About from './routes/about/About';
-import Play from './routes/play/Play';
 import Admin from './routes/admin/Admin';
 import AdminDashboard from './routes/admin/dashboard/Dashboard';
+import AdvanceAnalytics from './routes/advanceAnalytics/AdvanceAnalytics';
+import Dashboard from './routes/dashboard/Dashboard';
 import Error from './routes/error/Error';
 import NotFound from './routes/error/NotFound';
-import Register from './routes/register/Register';
+import Events from './routes/events/Events';
 import ForgotPassword from './routes/forgotPassword/ForgotPassword';
 import SetPassword from './routes/forgotPassword/SetPassword';
-import Pricing from './routes/pricing/Pricing';
-import AdvanceAnalytics from './routes/advanceAnalytics/AdvanceAnalytics';
+import Home from './routes/home/Home';
 import InProgress from './routes/inProgress/InProgress';
+import AdminDashboardLayout from './routes/layouts/adminDashboardLayout/AdminDashboardLayout';
+import DashboardLayout from './routes/layouts/dashboardLayout/DashboardLayout';
+import LoginRegisterLayout from './routes/layouts/loginRegister/LoginRegisterLayout';
+import Leaderboard from './routes/leaderboard/Leaderboard';
+import Login from './routes/login/Login';
+import Play from './routes/play/Play';
+import Playground from './routes/playground/Playground';
+import Pricing from './routes/pricing/Pricing';
 import Profile from './routes/profile/Profile';
+import Register from './routes/register/Register';
+import Results from './routes/results/Results';
+import Support from './routes/support/Support';
 
 const Router = createBrowserRouter([
     {

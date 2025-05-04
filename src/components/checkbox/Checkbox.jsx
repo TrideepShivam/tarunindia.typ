@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import './Checkbox.css';
 
 const Checkbox = ({ checkedRef, value, transparent = true }) => {

@@ -1,7 +1,8 @@
-import './Error.css';
+import { useLocation } from 'react-router-dom';
 import Logo from '../../assets/logo-reverse.svg';
 import Hyperlink from '../../components/hyperlink/Hyperlink';
-import { useLocation } from 'react-router-dom';
+
+import './Error.css';
 
 const Error = () => {
     const location = useLocation();

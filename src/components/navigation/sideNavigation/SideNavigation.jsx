@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import Navigation from './navigation/Navigation';
-import './SideNavigation.css';
 import { useLocation } from 'react-router-dom';
+import Navigation from './navigation/Navigation';
+
+import './SideNavigation.css';
 
 const SideNavigation = ({ sideMenu, sideNavOpen }) => {
     const [clickedMenu, setClickedMenu] = useState(0);

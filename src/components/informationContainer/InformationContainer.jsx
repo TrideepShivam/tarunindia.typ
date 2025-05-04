@@ -1,7 +1,9 @@
-import './InformationContainer.css';
-import yt from './../../assets/yt-qr.png';
-import wa from './../../assets/wa-qr.png';
 import Hyperlink from '../hyperlink/Hyperlink';
+import wa from './../../assets/wa-qr.png';
+import yt from './../../assets/yt-qr.png';
+
+import './InformationContainer.css';
+
 const InformationContainer = ({ children }) => {
     return (
         <div className="informationContainer">

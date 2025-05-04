@@ -1,11 +1,12 @@
 import { useContext, useState } from 'react';
-import PopUpContainer from '../popUpContainer/PopUpContainer';
-import './Filter.css';
 import { Context } from '../../ContextAPI';
-import CircleButton from '../circleButton/CircleButton';
-import CardContainer from '../cardContainer/CardContainer';
-import Hyperlink from '../hyperlink/Hyperlink';
 import Button from '../button/Button';
+import CardContainer from '../cardContainer/CardContainer';
+import CircleButton from '../circleButton/CircleButton';
+import Hyperlink from '../hyperlink/Hyperlink';
+import PopUpContainer from '../popUpContainer/PopUpContainer';
+
+import './Filter.css';
 
 const Filter = ({ setOpenFilter, data, setLanguageFilter, setDurationFilter }) => {
     const { lightMode } = useContext(Context);

@@ -1,13 +1,15 @@
 import { useCallback, useContext, useState } from 'react';
 import Cropper from 'react-easy-crop';
-import PopUpContainer from '../popUpContainer/PopUpContainer';
-import Hyperlink from '../hyperlink/Hyperlink';
-import './ProfileImage.css';
 import api from '../../api';
-import useAuthInterceptor from '../../hooks/useAuthInterceptor';
-import Loading from '../loading/Loading';
-import { Context } from '../../ContextAPI';
 import Logo from '../../assets/logo-reverse.svg';
+import { Context } from '../../ContextAPI';
+import useAuthInterceptor from '../../hooks/useAuthInterceptor';
+import Hyperlink from '../hyperlink/Hyperlink';
+import Loading from '../loading/Loading';
+import PopUpContainer from '../popUpContainer/PopUpContainer';
+
+import './ProfileImage.css';
+
 const ProfileImage = ({ url = Logo }) => {
     useAuthInterceptor();
     const { setMsg, userDetails, setUserLocal } = useContext(Context);

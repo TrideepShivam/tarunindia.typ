@@ -1,12 +1,13 @@
 import { useContext, useEffect, useState } from 'react';
-import './AccuracyWpmChart.css';
-import { Context } from '../../ContextAPI';
-import Loading from '../loading/Loading';
 import Chart from 'react-apexcharts';
 import api from '../../api';
+import { Context } from '../../ContextAPI';
+import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import CardContainer from '../cardContainer/CardContainer';
 import Hyperlink from '../hyperlink/Hyperlink';
-import useAuthInterceptor from '../../hooks/useAuthInterceptor';
+import Loading from '../loading/Loading';
+
+import './AccuracyWpmChart.css';
 
 const AccuracyWpmChart = ({ width, language, duration }) => {
     useAuthInterceptor();

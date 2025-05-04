@@ -1,14 +1,15 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import Button from '../../components/button/Button';
-import Textbox from '../../components/textbox/Textbox';
-import './setAndForgot.css';
-import api from '../../api';
-import { Context } from '../../ContextAPI';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
-import Loading from '../../components/loading/Loading';
-import useAuthInterceptor from '../../hooks/useAuthInterceptor';
-import MainFormContainer from '../../components/mainFormContainer/MainFormContainer';
+import api from '../../api';
 import backgroundImg from '../../assets/new-password-form-image.png';
+import Button from '../../components/button/Button';
+import Loading from '../../components/loading/Loading';
+import MainFormContainer from '../../components/mainFormContainer/MainFormContainer';
+import Textbox from '../../components/textbox/Textbox';
+import { Context } from '../../ContextAPI';
+import useAuthInterceptor from '../../hooks/useAuthInterceptor';
+
+import './setAndForgot.css';
 
 const SetPassword = () => {
     useAuthInterceptor();

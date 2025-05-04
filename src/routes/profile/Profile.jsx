@@ -1,14 +1,15 @@
-import { useState, useEffect } from 'react';
-import Textbox from '../../components/textbox/Textbox';
-import Textarea from '../../components/textArea/TextArea';
-import Button from '../../components/button/Button';
-import Popup from '../../components/popup/Popup';
-import Hyperlink from '../../components/hyperlink/Hyperlink';
-import ProfileImage from '../../components/profileImage/ProfileImage';
-import Loading from '../../components/loading/Loading';
+import { useEffect, useState } from 'react';
 import api from '../../api';
-import './Profile.css';
+import Button from '../../components/button/Button';
+import Hyperlink from '../../components/hyperlink/Hyperlink';
+import Loading from '../../components/loading/Loading';
+import Popup from '../../components/popup/Popup';
+import ProfileImage from '../../components/profileImage/ProfileImage';
+import Textarea from '../../components/textArea/TextArea';
+import Textbox from '../../components/textbox/Textbox';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
+
+import './Profile.css';
 
 const Profile = () => {
     const allTextField = [

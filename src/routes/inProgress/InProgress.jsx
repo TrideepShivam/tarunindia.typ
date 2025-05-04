@@ -1,6 +1,7 @@
-import './InProgress.css';
 import Logo from '../../assets/logo-reverse.svg';
 import Hyperlink from '../../components/hyperlink/Hyperlink';
+
+import './InProgress.css';
 
 const InProgress = ({ value = 'Back to Home', href = '/' }) => {
     return (

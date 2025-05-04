@@ -1,16 +1,17 @@
-import { Navigate } from 'react-router-dom';
-import Button from '../../components/button/Button';
-import MainFormContainer from '../../components/mainFormContainer/MainFormContainer';
-import Textbox from '../../components/textbox/Textbox';
-import './setAndForgot.css';
-import Retry from '../../components/retry/Retry';
-import Loading from '../../components/loading/Loading';
 import { useContext, useRef, useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import api from '../../api';
+import Button from '../../components/button/Button';
+import Hyperlink from '../../components/hyperlink/Hyperlink';
+import Loading from '../../components/loading/Loading';
+import MainFormContainer from '../../components/mainFormContainer/MainFormContainer';
+import Retry from '../../components/retry/Retry';
+import Textbox from '../../components/textbox/Textbox';
 import { Context } from '../../ContextAPI';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import backgroundImg from './../../assets/forgot-password-image.png';
-import Hyperlink from '../../components/hyperlink/Hyperlink';
-import api from '../../api';
+
+import './setAndForgot.css';
 
 const FortgotPassword = () => {
     useAuthInterceptor();

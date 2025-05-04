@@ -1,17 +1,18 @@
-import { useContext, useEffect, useState } from 'react';
-import Card from '../../components/card/Card';
-import './Results.css';
-import ResultDetail from '../../components/resultDetail/ResultDetail';
-import Button from '../../components/button/Button';
-import api from '../../api';
-import Loading from '../../components/loading/Loading';
-import CircleButton from '../../components/circleButton/CircleButton';
-import { Context } from '../../ContextAPI';
-import Search from '../../components/search/Search';
-import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import { formatDistanceToNow } from 'date-fns';
-import Retry from '../../components/retry/Retry';
+import { useContext, useEffect, useState } from 'react';
+import api from '../../api';
+import Button from '../../components/button/Button';
+import Card from '../../components/card/Card';
 import CardContainer from '../../components/cardContainer/CardContainer';
+import CircleButton from '../../components/circleButton/CircleButton';
+import Loading from '../../components/loading/Loading';
+import ResultDetail from '../../components/resultDetail/ResultDetail';
+import Retry from '../../components/retry/Retry';
+import Search from '../../components/search/Search';
+import { Context } from '../../ContextAPI';
+import useAuthInterceptor from '../../hooks/useAuthInterceptor';
+
+import './Results.css';
 
 const Results = () => {
     useAuthInterceptor();

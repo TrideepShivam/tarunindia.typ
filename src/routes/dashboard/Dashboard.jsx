@@ -1,15 +1,16 @@
-import Card from '../../components/card/Card';
-import './Dashboard.css';
+import { format } from 'date-fns';
 import { useContext, useEffect, useState } from 'react';
-import { Context } from '../../ContextAPI';
 import api from '../../api';
-import useAuthInterceptor from '../../hooks/useAuthInterceptor';
+import AccuracyWpmChart from '../../components/accuracyWpmChart/AccuracyWpmChart';
+import Card from '../../components/card/Card';
+import CardContainer from '../../components/cardContainer/CardContainer';
+import Hyperlink from '../../components/hyperlink/Hyperlink';
 import Loading from '../../components/loading/Loading';
 import Retry from '../../components/retry/Retry';
-import CardContainer from '../../components/cardContainer/CardContainer';
-import { format } from 'date-fns';
-import AccuracyWpmChart from '../../components/accuracyWpmChart/AccuracyWpmChart';
-import Hyperlink from '../../components/hyperlink/Hyperlink';
+import { Context } from '../../ContextAPI';
+import useAuthInterceptor from '../../hooks/useAuthInterceptor';
+
+import './Dashboard.css';
 
 const Dashboard = () => {
     useAuthInterceptor();

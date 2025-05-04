@@ -1,4 +1,5 @@
 import InformationContainer from '../../components/informationContainer/InformationContainer';
+
 import './About.css';
 
 const About = () => {

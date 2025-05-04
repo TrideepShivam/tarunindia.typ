@@ -1,5 +1,6 @@
-import './Percentage.css';
 import yay from './../../../assets/yay.gif';
+
+import './Percentage.css';
 
 const Percentage = (props) => {
     const percentageColor = props.value < 95 ? 'tomato' : 'var(--theme-color)';
