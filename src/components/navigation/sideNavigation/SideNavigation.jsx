@@ -8,10 +8,9 @@ const SideNavigation = ({ sideMenu, sideNavOpen }) => {
     const [clickedMenu, setClickedMenu] = useState(0);
     var location = useLocation();
     useEffect(() => {
-        sideMenu.map((item, index) => {
-            item.href == location.pathname && setClickedMenu(index);
-        });
-    });
+        const index = sideMenu.findIndex((item) => item.href === location.pathname);
+        setClickedMenu(index !== -1 ? index : null);
+    }, [location.pathname]);
     return (
         <div className="sideNavigation" style={{ borderColor: sideNavOpen ? 'transparent' : 'var(--theme-color)' }}>
             {sideMenu.map((item, index) => (

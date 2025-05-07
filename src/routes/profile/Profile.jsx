@@ -49,7 +49,7 @@ const Profile = () => {
     const [editableFields, setEditableFields] = useState({});
 
     useEffect(() => {
-        api.post(`/profile`)
+        api.get(`/profile`)
             .then(({ data }) => {
                 const [firstName, ...lastNameParts] = data?.name?.split(' ') || [];
                 console.log(data);
@@ -98,7 +98,7 @@ const Profile = () => {
                     <div className="profileImage">
                         <div className="profileImageSection">
                             <ProfileImage url={data.profile_pic_url} />
-                            <Hyperlink value="Public profile" style={{ marginLeft: '2.5em' }} />
+                            <Hyperlink value="Public profile" style={{ marginLeft: '2em' }} />
                         </div>
                         <div className="textArea">
                             <div className="textAreaSavaEdit">
