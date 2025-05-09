@@ -52,7 +52,6 @@ const Profile = () => {
         api.get(`/profile`)
             .then(({ data }) => {
                 const [firstName, ...lastNameParts] = data?.name?.split(' ') || [];
-                console.log(data);
                 setData({
                     ...data,
                     firstName,
@@ -97,7 +96,7 @@ const Profile = () => {
                 <div className="profileContainer">
                     <div className="profileImage">
                         <div className="profileImageSection">
-                            <ProfileImage url={data.profile_pic_url} />
+                            <ProfileImage url={data.profile_pic_url && data.profile_pic_url} />
                             <Hyperlink value="Public profile" style={{ marginLeft: '2em' }} />
                         </div>
                         <div className="textArea">

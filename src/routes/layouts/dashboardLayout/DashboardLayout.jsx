@@ -126,7 +126,7 @@ const DashboardLayout = () => {
         {
             id: '3',
             value: 'Logout',
-            href: '/dashboard',
+            href: '#',
             action: () => {
                 api.get('/auth/logout')
                     .then(({ data }) => {
