@@ -1,0 +1,91 @@
+.publicProfile {
+    width: calc(100% - 4em);
+    padding:5em 2em 2em;
+    display: grid;
+    grid-template-areas:
+        'item1 item2 item3'
+        'item4 item4 item4'
+        'item5 item5 item5'; /* Item 5 spans across all columns */
+
+    grid-template-columns: 15% 45% 35%; /* Column sizes */
+    gap: 1em;
+
+    .profileImageSection {
+        padding:1em;
+        grid-area: item1;
+
+        .profileImage{
+            width: 100%;
+            border-radius: 50%;
+        }
+
+        .linkContainer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .contactInfo {
+        grid-area: item2;
+        display: flex;
+        flex-direction: column;
+        gap:.2em;
+    }
+
+    .profileCardContainer{
+        grid-area: item3;
+    }
+
+    .typingDetails {
+            background-color: var(--light-back-color);
+            border-radius: 0.5em;
+            padding: 1.25em;
+            width: 90%;
+            margin: auto;
+            grid-area: item4;
+
+            h3 {
+                margin-bottom: 1.25em;
+                text-align: center;
+                color: var(--text-color);
+            }
+
+            .typingModes {
+                display: flex;
+                justify-content: center;
+                gap: 2em;
+                margin-bottom: 1em;
+            }
+
+            .typingStats {
+                display: flex;
+                flex-direction: column;
+
+                .statsHeader,
+                .statsRow {
+                    display: grid;
+                    grid-template-columns: 8em 1fr 1fr 1fr;
+                    padding: 0.5em 0;
+                }
+
+                .statsHeader {
+                    color: var(--theme-color);
+                }
+
+                .statsRow {
+                    color: var(--text-color);
+                }
+            }
+    }
+
+    .achivement {
+            text-align: center;
+            grid-area: item5;
+
+            .achivementDetails {
+                margin: 2em 0;
+            }
+    }
+
+}
