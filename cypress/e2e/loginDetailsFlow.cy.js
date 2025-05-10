@@ -259,6 +259,24 @@ describe('Typing test for English and Mangal', () => {
         '@tarunindiainstitute',
     ];
 
+    const updatedValues = [
+        'UpdatedFirst',
+        'UpdatedLast',
+        'https://instagram.com/updated',
+        'https://twitter.com/updated',
+        'https://facebook.com/updated',
+        'https://youtube.com/updated',
+    ];
+
+    const wrongUpdatedValues = ['UpdatedFirst', 'UpdatedLast', 'instagram', 'twitter', 'facebook', 'youtube'];
+
+    const wrongValuesError = [
+        'facebook: The facebook must be a valid URL.',
+        'instagram: The instagram must be a valid URL.',
+        'twitter: The twitter must be a valid URL.',
+        'youtube: The youtube must be a valid URL.',
+    ];
+
     beforeEach(() => {
         cy.visit('/');
     });
@@ -284,6 +302,7 @@ describe('Typing test for English and Mangal', () => {
         // Submit login
         cy.log('Submitting login form');
         cy.get('.formContents button[type="submit"]').click();
+        cy.contains('Logged in successfully').should('be.visible');
 
         // Checking Menu Items
         cy.log('Checking menu items');
@@ -313,6 +332,67 @@ describe('Typing test for English and Mangal', () => {
         profileLiterals.forEach((text) => {
             cy.contains(text, { matchCase: false }).scrollIntoView().should('be.visible');
         });
+
+        // Save Correct Profile details
+        cy.log('Saving correct profile details');
+        cy.get('.textArea')
+            .first()
+            .within(() => {
+                cy.get('.textAreaSavaEdit button').contains('Edit').click();
+
+                updatedValues.forEach((val, index) => {
+                    cy.get('.textboxContainer').eq(index).find('input').should('not.be.disabled').clear().type(val);
+                });
+                cy.get('.textAreaSavaEdit button').contains('Save').click();
+            });
+        cy.contains('Personal data updated successfully').should('be.visible');
+
+        // Check that all updated values are visible
+        updatedValues.forEach((value, index) => {
+            cy.get('.textArea')
+                .first()
+                .within(() => {
+                    cy.get('.textboxContainer').eq(index).find('input').should('have.value', value);
+                });
+        });
+
+        // Save Wrong Profile details
+        cy.log('Saving wrong profile details');
+        cy.get('.textArea')
+            .first()
+            .within(() => {
+                cy.get('.textAreaSavaEdit button').contains('Edit').click();
+                wrongUpdatedValues.forEach((val, index) => {
+                    cy.get('.textboxContainer').eq(index).find('input').should('not.be.disabled').clear().type(val);
+                });
+                cy.get('.textAreaSavaEdit button').contains('Save').click();
+            });
+        // Check that all Errors are visible
+        wrongValuesError.forEach((text) => {
+            cy.contains(text, { matchCase: false }).scrollIntoView().should('be.visible');
+        });
+
+        // Save Bio details
+        cy.log('Saving bio details');
+        cy.get('.bio')
+            .first()
+            .within(() => {
+                cy.get('.bioSaveEdit button').contains('Edit').click();
+                cy.get('.textareaContainer textarea')
+                    .should('not.be.disabled')
+                    .clear()
+                    .type('This is an updated bio for testing.');
+                cy.get('.bioSaveEdit button').contains('Save').click();
+            });
+        cy.contains('Bio updated successfully').should('be.visible');
+
+        // Verify Bio details
+        cy.get('.bio')
+            .first()
+            .within(() => {
+                cy.get('.textareaContainer textarea').should('have.value', 'This is an updated bio for testing.');
+            });
+        cy.wait(8000);
 
         // Checking Pricing details
         cy.log('Checking pricing details');
@@ -494,5 +574,6 @@ describe('Typing test for English and Mangal', () => {
         cy.get('div.userContainer', { timeout: 10000 }).should('be.visible');
         cy.get('div.userContainer').click();
         cy.contains('Logout').click();
+        cy.contains('Successfully logged out').should('be.visible');
     });
 });
