@@ -49,7 +49,7 @@ const Profile = () => {
     const [editableFields, setEditableFields] = useState({});
 
     useEffect(() => {
-        api.get(`/profile`)
+        api.get('/profile')
             .then(({ data }) => {
                 const [firstName, ...lastNameParts] = data?.name?.split(' ') || [];
                 setData({
@@ -64,6 +64,47 @@ const Profile = () => {
                 console.log(response);
             });
     }, []);
+
+    const handleBioSave = () => {
+        setLoading(true);
+        setIsBioEditing(true);
+        api.post('/update-bio', { bio: editableFields.bio || data?.bio })
+            .then(({ data: updatedData }) => {
+                setData((prevData) => ({
+                    ...prevData,
+                    bio: updatedData.bio,
+                }));
+                setIsBioEditing(true);
+                setLoading(false);
+            })
+            .catch(({ response }) => {
+                setLoading(false);
+                console.log(response);
+            });
+    };
+
+    const handlePersonalDetailsSave = () => {
+        const personalDetails = allTextField.reduce((details, { key }) => {
+            details[key] = editableFields[key] || data?.[key] || '';
+            return details;
+        }, {});
+
+        personalDetails.name = `${personalDetails.firstName} ${personalDetails.lastName}`.trim();
+        setLoading(true);
+        api.post('/update-personal-details', personalDetails)
+            .then(({ data: updatedData }) => {
+                setData((prevData) => ({
+                    ...prevData,
+                    ...updatedData,
+                }));
+                setIsTextAreaEditing(true);
+                setLoading(false);
+            })
+            .catch(({ response }) => {
+                setLoading(false);
+                console.log(response);
+            });
+    };
 
     const getFieldValue = (key) => {
         if (!data) return '';
@@ -107,6 +148,7 @@ const Profile = () => {
                                     transparancy={true}
                                     onClick={() => {
                                         setIsTextAreaEditing(true);
+                                        handlePersonalDetailsSave();
                                     }}
                                 />
                                 <Button
@@ -138,6 +180,7 @@ const Profile = () => {
                                     transparancy={true}
                                     onClick={() => {
                                         setIsBioEditing(true);
+                                        handleBioSave();
                                     }}
                                 />
                                 <Button
