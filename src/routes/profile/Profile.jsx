@@ -99,6 +99,7 @@ const Profile = () => {
 
                 if (typeof error === 'string') {
                     setMsg({
+                        status: personalData.data.state,
                         message: error,
                     });
                 } else if (typeof error === 'object' && error !== null) {
