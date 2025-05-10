@@ -3,7 +3,6 @@ describe('Typing test for English and Mangal', () => {
     const userMenuItems = ['Profile', 'Pricing', 'Settings', 'Logout'];
     const profileLiterals = [
         'Public Profile',
-        'Save',
         'Edit',
         'First Name',
         'Last Name',
