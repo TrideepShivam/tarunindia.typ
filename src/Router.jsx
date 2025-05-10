@@ -23,6 +23,7 @@ import Profile from './routes/profile/Profile';
 import Register from './routes/register/Register';
 import Results from './routes/results/Results';
 import Support from './routes/support/Support';
+import PublicProfile from './routes/profile/PublicProfile';
 
 const Router = createBrowserRouter([
     {
@@ -39,6 +40,7 @@ const Router = createBrowserRouter([
             { path: '/reset-password/:id/:token', element: <SetPassword /> },
             { path: '/reset-password', element: <SetPassword /> },
             { path: '/pricing', element: <Pricing /> },
+            { path: '/profile/:id', element: <PublicProfile /> },
         ],
     },
     {
