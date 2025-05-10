@@ -31,6 +31,7 @@
         display: flex;
         flex-direction: column;
         gap:.2em;
+        padding:1em;
     }
 
     .profileCardContainer{
@@ -38,45 +39,7 @@
     }
 
     .typingDetails {
-            background-color: var(--light-back-color);
-            border-radius: 0.5em;
-            padding: 1.25em;
-            width: 90%;
-            margin: auto;
-            grid-area: item4;
-
-            h3 {
-                margin-bottom: 1.25em;
-                text-align: center;
-                color: var(--text-color);
-            }
-
-            .typingModes {
-                display: flex;
-                justify-content: center;
-                gap: 2em;
-                margin-bottom: 1em;
-            }
-
-            .typingStats {
-                display: flex;
-                flex-direction: column;
-
-                .statsHeader,
-                .statsRow {
-                    display: grid;
-                    grid-template-columns: 8em 1fr 1fr 1fr;
-                    padding: 0.5em 0;
-                }
-
-                .statsHeader {
-                    color: var(--theme-color);
-                }
-
-                .statsRow {
-                    color: var(--text-color);
-                }
-            }
+        grid-area: item4;
     }
 
     .achivement {

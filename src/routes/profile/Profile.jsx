@@ -151,7 +151,12 @@ const Profile = () => {
                     <div className="profileImage">
                         <div className="profileImageSection">
                             <ProfileImage url={data.profile_pic_url && data.profile_pic_url} />
-                            <Hyperlink value="Public profile" style={{ marginLeft: '2em' }} />
+                            <Hyperlink
+                                href={`/profile/${data.id}`}
+                                target={'_blank'}
+                                value="Public profile"
+                                style={{ marginLeft: '2em' }}
+                            />
                         </div>
                         <div className="textArea">
                             <div className="textAreaSavaEdit">

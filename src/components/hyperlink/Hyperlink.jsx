@@ -10,6 +10,7 @@ const Hyperlink = (props) => {
             className={!props.type ? 'anchor' : props.type}
             to={props.href && props.href}
             onClick={props.onClick ? props.onClick : ''}
+            target={props.target && props.target}
         >
             {props.value}
         </Link>

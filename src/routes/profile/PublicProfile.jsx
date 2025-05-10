@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 
 import './PublicProfile.css';
 import { format } from 'date-fns';
+import TypingDetails from './typingDetails/TypingDetails';
 
 const PublicProfile = () => {
     const { id } = useParams();
@@ -103,28 +104,7 @@ const PublicProfile = () => {
                 </div>
                 <div className="profileCardContainer"></div>
                 <div className="typingDetails">
-                    <h3>TYPING DETAILS</h3>
-                    <div className="typingModes">
-                        <Hyperlink key="english" type="bordered-theme" value="English" onClick={() => {}} />
-                        <Hyperlink key="krutidev" type="bordered-theme" value="Krutidev" onClick={() => {}} />
-                        <Hyperlink key="mangal" type="bordered-theme" value="Mangal" onClick={() => {}} />
-                    </div>
-                    <div className="typingStats">
-                        <div className="statsHeader">
-                            <div className="statLabel"></div>
-                            <div className="statLabel">KPM (AVG)</div>
-                            <div className="statLabel">WPM (AVG)</div>
-                            <div className="statLabel">ACCURACY</div>
-                        </div>
-                        {typingStats.map((stat, index) => (
-                            <div className="statsRow" key={index}>
-                                <div className="statValue">{stat.time}</div>
-                                <div className="statValue">{stat.kpm}</div>
-                                <div className="statValue">{stat.wpm}</div>
-                                <div className="statValue">{stat.accuracy}</div>
-                            </div>
-                        ))}
-                    </div>
+                    <TypingDetails data={data.avg_test_details} />
                 </div>
                 <div className="achivement">
                     <span>ACHIEVEMENTS</span>
