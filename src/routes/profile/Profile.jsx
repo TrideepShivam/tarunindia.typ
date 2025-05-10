@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import api from '../../api';
+import { Context } from '../../ContextAPI';
+import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import Button from '../../components/button/Button';
 import Hyperlink from '../../components/hyperlink/Hyperlink';
 import Loading from '../../components/loading/Loading';
@@ -7,7 +9,6 @@ import Popup from '../../components/popup/Popup';
 import ProfileImage from '../../components/profileImage/ProfileImage';
 import Textarea from '../../components/textArea/TextArea';
 import Textbox from '../../components/textbox/Textbox';
-import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 
 import './Profile.css';
 
@@ -41,6 +42,7 @@ const Profile = () => {
         },
     ];
     useAuthInterceptor();
+    const { setMsg } = useContext(Context);
     const [otpOpenFor, setOtpOpenFor] = useState(null);
     const [isTextAreaEditing, setIsTextAreaEditing] = useState(true);
     const [isBioEditing, setIsBioEditing] = useState(true);
@@ -63,17 +65,17 @@ const Profile = () => {
                 setLoading(false);
                 console.log(response);
             });
-    }, []);
+    }, [loading]);
 
     const handleBioSave = () => {
         setLoading(true);
         setIsBioEditing(true);
         api.post('/update-bio', { bio: editableFields.bio || data?.bio })
-            .then(({ data: updatedData }) => {
-                setData((prevData) => ({
-                    ...prevData,
-                    bio: updatedData.bio,
-                }));
+            .then((bio) => {
+                setMsg({
+                    status: bio.data.state,
+                    message: bio.data.message,
+                });
                 setIsBioEditing(true);
                 setLoading(false);
             })
@@ -92,11 +94,22 @@ const Profile = () => {
         personalDetails.name = `${personalDetails.firstName} ${personalDetails.lastName}`.trim();
         setLoading(true);
         api.post('/update-personal-details', personalDetails)
-            .then(({ data: updatedData }) => {
-                setData((prevData) => ({
-                    ...prevData,
-                    ...updatedData,
-                }));
+            .then((personalData) => {
+                const error = personalData?.data?.message;
+
+                if (typeof error === 'string') {
+                    setMsg({
+                        message: error,
+                    });
+                } else if (typeof error === 'object' && error !== null) {
+                    Object.entries(error).forEach(([title, messages]) => {
+                        setMsg({
+                            status: personalData.data.state,
+                            message: `${title}: ${messages}`,
+                        });
+                    });
+                }
+
                 setIsTextAreaEditing(true);
                 setLoading(false);
             })
@@ -143,20 +156,16 @@ const Profile = () => {
                         <div className="textArea">
                             <div className="textAreaSavaEdit">
                                 <Button
-                                    key="save"
-                                    value="Save"
+                                    key="toggleEdit"
+                                    value={isTextAreaEditing ? 'Edit' : 'Save'}
                                     transparancy={true}
                                     onClick={() => {
-                                        setIsTextAreaEditing(true);
-                                        handlePersonalDetailsSave();
-                                    }}
-                                />
-                                <Button
-                                    key="edit"
-                                    value="Edit"
-                                    transparancy={true}
-                                    onClick={() => {
-                                        setIsTextAreaEditing(false);
+                                        if (isTextAreaEditing) {
+                                            setIsTextAreaEditing(false);
+                                        } else {
+                                            setIsTextAreaEditing(true);
+                                            handlePersonalDetailsSave();
+                                        }
                                     }}
                                 />
                             </div>
@@ -175,20 +184,16 @@ const Profile = () => {
                         <div className="bio">
                             <div className="bioSaveEdit">
                                 <Button
-                                    key="save"
-                                    value="Save"
+                                    key="toggleBioEdit"
+                                    value={isBioEditing ? 'Edit' : 'Save'}
                                     transparancy={true}
                                     onClick={() => {
-                                        setIsBioEditing(true);
-                                        handleBioSave();
-                                    }}
-                                />
-                                <Button
-                                    key="edit"
-                                    value="Edit"
-                                    transparancy={true}
-                                    onClick={() => {
-                                        setIsBioEditing(false);
+                                        if (isBioEditing) {
+                                            setIsBioEditing(false);
+                                        } else {
+                                            setIsBioEditing(true);
+                                            handleBioSave();
+                                        }
                                     }}
                                 />
                             </div>
