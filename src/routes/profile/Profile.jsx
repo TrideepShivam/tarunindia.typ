@@ -95,7 +95,7 @@ const Profile = () => {
         setLoading(true);
         api.post('/update-personal-details', personalDetails)
             .then((personalData) => {
-                const error = personalData?.data?.message;
+                const error = personalData.data.message;
 
                 if (typeof error === 'string') {
                     setMsg({
