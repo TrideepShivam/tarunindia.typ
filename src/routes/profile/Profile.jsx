@@ -9,6 +9,7 @@ import Popup from '../../components/popup/Popup';
 import ProfileImage from '../../components/profileImage/ProfileImage';
 import Textarea from '../../components/textArea/TextArea';
 import Textbox from '../../components/textbox/Textbox';
+import TypingDetails from '../../routes/profile/typingDetails/TypingDetails';
 
 import './Profile.css';
 
@@ -21,26 +22,7 @@ const Profile = () => {
         { label: 'Facebook', key: 'facebook' },
         { label: 'Youtube', key: 'youtube' },
     ];
-    const typingStats = [
-        {
-            time: '1 MINUTE',
-            kpm: 176,
-            wpm: 31,
-            accuracy: 94.3,
-        },
-        {
-            time: '5 MINUTE',
-            kpm: 177,
-            wpm: 32,
-            accuracy: 95.3,
-        },
-        {
-            time: '10 MINUTE',
-            kpm: 178,
-            wpm: 33,
-            accuracy: 96.3,
-        },
-    ];
+
     useAuthInterceptor();
     const { setMsg, setUserLocal, userDetails } = useContext(Context);
     const [otpOpenFor, setOtpOpenFor] = useState(null);
@@ -67,15 +49,31 @@ const Profile = () => {
             });
     }, [loading]);
 
+    const handleNotification = (data) => {
+        const status = data.state;
+        const message = data.message;
+
+        if (typeof message === 'string') {
+            setMsg({
+                status: status,
+                message: message,
+            });
+        } else if (typeof message === 'object' && message !== null) {
+            Object.entries(message).forEach(([title, messages]) => {
+                setMsg({
+                    status: status,
+                    message: `${title}: ${messages}`,
+                });
+            });
+        }
+    };
+
     const handleBioSave = () => {
         setLoading(true);
         setIsBioEditing(true);
         api.post('/update-bio', { bio: editableFields.bio || data?.bio })
             .then((bio) => {
-                setMsg({
-                    status: bio.data.state,
-                    message: bio.data.message,
-                });
+                handleNotification(bio.data);
                 setIsBioEditing(true);
                 setLoading(false);
             })
@@ -95,21 +93,7 @@ const Profile = () => {
         setLoading(true);
         api.post('/update-personal-details', personalDetails)
             .then((personalData) => {
-                const error = personalData.data.message;
-
-                if (typeof error === 'string') {
-                    setMsg({
-                        message: error,
-                    });
-                } else if (typeof error === 'object' && error !== null) {
-                    Object.entries(error).forEach(([title, messages]) => {
-                        setMsg({
-                            status: personalData.data.state,
-                            message: `${title}: ${messages}`,
-                        });
-                    });
-                }
-
+                handleNotification(personalData.data);
                 setIsTextAreaEditing(true);
                 setLoading(false);
                 setUserLocal({
@@ -252,30 +236,7 @@ const Profile = () => {
                             />
                         </div>
                     </div>
-                    <div className="typingDetails">
-                        <h3>TYPING DETAILS</h3>
-                        <div className="typingModes">
-                            <Hyperlink key="english" type="bordered-theme" value="English" onClick={() => {}} />
-                            <Hyperlink key="krutidev" type="bordered-theme" value="Krutidev" onClick={() => {}} />
-                            <Hyperlink key="mangal" type="bordered-theme" value="Mangal" onClick={() => {}} />
-                        </div>
-                        <div className="typingStats">
-                            <div className="statsHeader">
-                                <div className="statLabel"></div>
-                                <div className="statLabel">KPM (AVG)</div>
-                                <div className="statLabel">WPM (AVG)</div>
-                                <div className="statLabel">ACCURACY</div>
-                            </div>
-                            {typingStats.map((stat, index) => (
-                                <div className="statsRow" key={index}>
-                                    <div className="statValue">{stat.time}</div>
-                                    <div className="statValue">{stat.kpm}</div>
-                                    <div className="statValue">{stat.wpm}</div>
-                                    <div className="statValue">{stat.accuracy}</div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+                    <TypingDetails data={data?.avg_test_details} />
                     <div className="achivement">
                         <span>ACHIEVEMENTS</span>
                         <div className="achivementDetails">No Data Found</div>

@@ -13,10 +13,10 @@
             grid-template-columns: 1fr 4fr;
 
             .profileImageSection {
-                display:flex;
+                display: flex;
                 flex-direction: column;
                 justify-content: center;
-                gap:1em;
+                gap: 1em;
             }
 
             .textArea {
@@ -80,47 +80,6 @@
                 .email > button,
                 .phone > button {
                     width: min-content;
-                }
-            }
-        }
-
-        .typingDetails {
-            background-color: var(--light-back-color);
-            border-radius: 0.5em;
-            padding: 1.25em;
-            width: 90%;
-            margin: auto;
-
-            h3 {
-                margin-bottom: 1.25em;
-                text-align: center;
-                color: var(--text-color);
-            }
-
-            .typingModes {
-                display: flex;
-                justify-content: center;
-                gap: 2em;
-                margin-bottom: 1em;
-            }
-
-            .typingStats {
-                display: flex;
-                flex-direction: column;
-
-                .statsHeader,
-                .statsRow {
-                    display: grid;
-                    grid-template-columns: 8em 1fr 1fr 1fr;
-                    padding: 0.5em 0;
-                }
-
-                .statsHeader {
-                    color: var(--theme-color);
-                }
-
-                .statsRow {
-                    color: var(--text-color);
                 }
             }
         }
