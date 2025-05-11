@@ -1,0 +1,54 @@
+.publicProfile {
+    width: calc(100% - 4em);
+    padding:5em 2em 2em;
+    display: grid;
+    grid-template-areas:
+        'item1 item2 item3'
+        'item4 item4 item4'
+        'item5 item5 item5'; /* Item 5 spans across all columns */
+
+    grid-template-columns: 15% 45% 35%; /* Column sizes */
+    gap: 1em;
+
+    .profileImageSection {
+        padding:1em;
+        grid-area: item1;
+
+        .profileImage{
+            width: 100%;
+            border-radius: 50%;
+        }
+
+        .linkContainer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .contactInfo {
+        grid-area: item2;
+        display: flex;
+        flex-direction: column;
+        gap:.2em;
+        padding:1em;
+    }
+
+    .profileCardContainer{
+        grid-area: item3;
+    }
+
+    .typingDetails {
+        grid-area: item4;
+    }
+
+    .achivement {
+            text-align: center;
+            grid-area: item5;
+
+            .achivementDetails {
+                margin: 2em 0;
+            }
+    }
+
+}

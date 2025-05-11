@@ -1,0 +1,20 @@
+.typingDetailsTable{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: var(--light-back-color);
+    border-radius: 1em;
+    padding:.5em 0;
+
+    table{
+        width: 90%;
+        padding:.5em;
+        font-size: 1.2em;
+        
+        td{
+            padding:.5em;
+        }
+    }
+
+}
