@@ -24,7 +24,7 @@ const Profile = () => {
     ];
 
     useAuthInterceptor();
-    const { setMsg } = useContext(Context);
+    const { setMsg, setUserLocal, userDetails } = useContext(Context);
     const [otpOpenFor, setOtpOpenFor] = useState(null);
     const [isTextAreaEditing, setIsTextAreaEditing] = useState(true);
     const [isBioEditing, setIsBioEditing] = useState(true);
@@ -96,6 +96,13 @@ const Profile = () => {
                 handleNotification(personalData.data);
                 setIsTextAreaEditing(true);
                 setLoading(false);
+                setUserLocal({
+                    ...userDetails,
+                    user: {
+                        ...userDetails.user,
+                        name: personalDetails.name,
+                    },
+                });
             })
             .catch(({ response }) => {
                 setLoading(false);
