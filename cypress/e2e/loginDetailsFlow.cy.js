@@ -14,13 +14,14 @@ describe('Typing test for English and Mangal', () => {
         'Email',
         'Contact No',
         'Verify',
-        'TYPING DETAILS',
+        'Test Details',
         'English',
         'Krutidev',
         'Mangal',
-        // 'KPM (AVG)',
-        // 'WPM (AVG)',
-        // 'ACCURACY',
+        'KPM (AVG)',
+        'WPM (AVG)',
+        'ACCURACY (AVG)',
+        'TOTAL TESTS',
     ];
 
     const priceTexts = [
@@ -302,6 +303,7 @@ describe('Typing test for English and Mangal', () => {
         // Submit login
         cy.log('Submitting login form');
         cy.get('.formContents button[type="submit"]').click();
+        cy.contains('Success').should('be.visible');
         cy.contains('Logged in successfully').should('be.visible');
 
         // Checking Menu Items
@@ -345,6 +347,7 @@ describe('Typing test for English and Mangal', () => {
                 });
                 cy.get('.textAreaSavaEdit button').contains('Save').click();
             });
+        cy.contains(/success/i).should('be.visible');
         cy.contains('Personal data updated successfully').should('be.visible');
 
         // Check that all updated values are visible
@@ -384,6 +387,7 @@ describe('Typing test for English and Mangal', () => {
                     .type('This is an updated bio for testing.');
                 cy.get('.bioSaveEdit button').contains('Save').click();
             });
+        cy.contains(/success/i).should('be.visible');
         cy.contains('Bio updated successfully').should('be.visible');
 
         // Verify Bio details
@@ -392,6 +396,23 @@ describe('Typing test for English and Mangal', () => {
             .within(() => {
                 cy.get('.textareaContainer textarea').should('have.value', 'This is an updated bio for testing.');
             });
+
+        // Save Bio details > 255 characters
+        cy.get('.bio')
+            .first()
+            .within(() => {
+                cy.get('.bioSaveEdit button').contains('Edit').click();
+                cy.get('.textareaContainer textarea')
+                    .should('not.be.disabled')
+                    .clear()
+                    .type(
+                        'Frontend Developer skilled in HTML, CSS, JavaScript, and React. Passionate about building responsive, user-friendly interfaces. Quick learner, team player, and always exploring new tech. Seeking opportunities to grow and contribute to impactful web projects.',
+                    );
+                cy.get('.bioSaveEdit button').contains('Save').click();
+            });
+        cy.contains('Error').should('be.visible');
+        cy.contains('bio: The bio must not be greater than 255 characters.').should('be.visible');
+
         cy.wait(8000);
 
         // Checking Pricing details
@@ -574,6 +595,7 @@ describe('Typing test for English and Mangal', () => {
         cy.get('div.userContainer', { timeout: 10000 }).should('be.visible');
         cy.get('div.userContainer').click();
         cy.contains('Logout').click();
+        cy.contains('Success').should('be.visible');
         cy.contains('Successfully logged out').should('be.visible');
     });
 });
