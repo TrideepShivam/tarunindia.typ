@@ -43,7 +43,7 @@ const ProfileImage = ({ url = Logo }) => {
     }, []);
 
     const saveCroppedImage = async () => {
-        if (imageSrc && cropPixels) {
+        if (imageSrc && cropPixels && cropPixels.width && cropPixels.height) {
             const croppedImageUrl = await getCroppedImg(imageSrc, cropPixels);
             setCroppedImage(croppedImageUrl);
             setImageSrc(null);
@@ -75,6 +75,7 @@ const ProfileImage = ({ url = Logo }) => {
     function getCroppedImg(imageSrc, cropPixels) {
         return new Promise((resolve) => {
             const image = new Image();
+            image.crossOrigin = 'anonymous'; //for cross origin support
             image.src = imageSrc;
             image.onload = () => {
                 const canvas = document.createElement('canvas');
