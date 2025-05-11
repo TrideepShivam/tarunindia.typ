@@ -10,6 +10,7 @@ import ProfileImage from '../../components/profileImage/ProfileImage';
 import Textarea from '../../components/textArea/TextArea';
 import Textbox from '../../components/textbox/Textbox';
 import TypingDetails from '../../routes/profile/typingDetails/TypingDetails';
+import { handleNotification } from '../../utils/notificationUtils';
 
 import './Profile.css';
 
@@ -49,31 +50,14 @@ const Profile = () => {
             });
     }, [loading]);
 
-    const handleNotification = (data) => {
-        const status = data.state;
-        const message = data.message;
-
-        if (typeof message === 'string') {
-            setMsg({
-                status: status,
-                message: message,
-            });
-        } else if (typeof message === 'object' && message !== null) {
-            Object.entries(message).forEach(([title, messages]) => {
-                setMsg({
-                    status: status,
-                    message: `${title}: ${messages}`,
-                });
-            });
-        }
-    };
-
     const handleBioSave = () => {
+        const updatedBio = editableFields.bio !== undefined ? editableFields.bio : data?.bio || '';
+
         setLoading(true);
         setIsBioEditing(true);
-        api.post('/update-bio', { bio: editableFields.bio || data?.bio })
+        api.post('/update-bio', { bio: updatedBio })
             .then((bio) => {
-                handleNotification(bio.data);
+                handleNotification(bio.data, setMsg);
                 setIsBioEditing(true);
                 setLoading(false);
             })
@@ -85,15 +69,16 @@ const Profile = () => {
 
     const handlePersonalDetailsSave = () => {
         const personalDetails = allTextField.reduce((details, { key }) => {
-            details[key] = editableFields[key] || data?.[key] || '';
+            details[key] = editableFields[key] !== undefined ? editableFields[key] : data?.[key] || '';
             return details;
         }, {});
 
         personalDetails.name = `${personalDetails.firstName} ${personalDetails.lastName}`.trim();
+
         setLoading(true);
         api.post('/update-personal-details', personalDetails)
             .then((personalData) => {
-                handleNotification(personalData.data);
+                handleNotification(personalData.data, setMsg);
                 setIsTextAreaEditing(true);
                 setLoading(false);
                 setUserLocal({
