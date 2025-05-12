@@ -269,13 +269,14 @@ describe('Typing test for English and Mangal', () => {
         'https://youtube.com/updated',
     ];
 
-    const wrongUpdatedValues = ['UpdatedFirst', 'UpdatedLast', 'instagram', 'twitter', 'facebook', 'youtube'];
+    const wrongUpdatedValues = [' ', ' ', 'instagram', 'twitter', 'facebook', 'youtube'];
 
     const wrongValuesError = [
         'facebook: The facebook must be a valid URL.',
         'instagram: The instagram must be a valid URL.',
         'twitter: The twitter must be a valid URL.',
         'youtube: The youtube must be a valid URL.',
+        'name: The name field is required.',
     ];
 
     beforeEach(() => {
