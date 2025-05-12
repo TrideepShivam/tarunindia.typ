@@ -81,13 +81,14 @@ const Profile = () => {
                 handleNotification(personalData.data, setMsg);
                 setIsTextAreaEditing(true);
                 setLoading(false);
-                setUserLocal({
-                    ...userDetails,
-                    user: {
-                        ...userDetails.user,
-                        name: personalDetails.name,
-                    },
-                });
+                personalData.status === 200 &&
+                    setUserLocal({
+                        ...userDetails,
+                        user: {
+                            ...userDetails.user,
+                            name: personalDetails.name,
+                        },
+                    });
             })
             .catch(({ response }) => {
                 setLoading(false);
