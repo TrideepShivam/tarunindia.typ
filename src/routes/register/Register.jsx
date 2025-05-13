@@ -13,7 +13,7 @@ import backgroundImg from './../../assets/register-form-image.jpeg';
 import './Register.css';
 
 const Register = () => {
-    const { userDetails, msg, setMsg } = useContext(Context);
+    const { userDetails, setMsg } = useContext(Context);
     const [loading, setLoading] = useState(false);
     const [isRequested, setIsRequested] = useState(false);
     const [email, setEmail] = useState('');
@@ -29,8 +29,6 @@ const Register = () => {
         })
             .then((response) => {
                 setMsg({
-                    ...msg,
-                    isOpen: true,
                     status: response.data.state,
                     message: response.data.message,
                 });
@@ -46,7 +44,6 @@ const Register = () => {
             .catch(({ response }) => {
                 setLoading(false);
                 setMsg({
-                    isOpen: true,
                     status: response.data ? response.data.state : 'Error',
                     message: response.data ? response.data.message : 'Server Error. Try again',
                 });
