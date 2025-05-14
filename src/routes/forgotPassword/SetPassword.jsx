@@ -14,10 +14,10 @@ import './setAndForgot.css';
 const SetPassword = () => {
     useAuthInterceptor();
     const [password, setPassword] = useState('');
-    const [feedback, setFeedback] = useState([]);
+    const [isStrong, setIsStrong] = useState(false);
     const { id, token } = useParams();
     const navigate = useNavigate();
-    const { userDetails, msg, setMsg } = useContext(Context);
+    const { userDetails, setMsg } = useContext(Context);
     const [loading, setLoading] = useState(false);
     const pwdRef = useRef();
     const pwdReRef = useRef();
@@ -30,24 +30,15 @@ const SetPassword = () => {
                     from: '/login',
                 },
             });
-        setFeedback(validatePassword(password));
+        const regex = /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[A-Z])(?=.*[0-9])/;
+        setIsStrong(regex.test(password) && password.length > 8);
     }, [password]);
-
-    const validatePassword = (password) => {
-        const messages = [];
-        !/[A-Z]/.test(password) && messages.push('Password must contain at least one uppercase letter.');
-        !/[0-9]/.test(password) && messages.push('Password must contain at least one number.');
-        !/[^A-Za-z0-9]/.test(password) && messages.push('Password must contain at least one special character.');
-        messages.length === 0 && messages.push('\u2713 Password is strong!');
-        return messages;
-    };
 
     const handleReset = () => {
         setLoading(true);
         const newPassword = pwdRef.current.value;
         const rePassword = pwdReRef.current.value;
-        const regex = /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[A-Z])(?=.*[0-9])/;
-        newPassword === rePassword && regex.test(newPassword)
+        newPassword === rePassword && isStrong
             ? api
                   .post('/auth/reset-password', {
                       id: id,
@@ -57,8 +48,6 @@ const SetPassword = () => {
                   })
                   .then((response) => {
                       setMsg({
-                          ...msg,
-                          isOpen: true,
                           status: response.data.state,
                           message: response.data.message,
                       });
@@ -70,10 +59,8 @@ const SetPassword = () => {
                       setLoading(false);
                   })
             : setMsg({
-                  ...msg,
-                  isOpen: true,
                   status: 'Error',
-                  message: 'Follow the guidelines and passwords must be matched',
+                  message: 'Password is not matched',
               });
         setLoading(false);
     };
@@ -93,12 +80,32 @@ const SetPassword = () => {
             heading="Reset Password"
             subheading="Reset your typ-A-thon account Password"
         >
-            <Textbox var={pwdRef} type="Password" legend="New Password" onChange={(e) => setPassword(e.target.value)} />
-            <ul style={{ listStyleType: 'none', width: '100%' }}>
-                {feedback.map((message, index) => (
-                    <li key={index}>{message}</li>
-                ))}
-            </ul>
+            <p style={{ textAlign: 'left', margin: '0 1em' }}>
+                <span className="highlight">Note: </span>Password must be at least 8 character long and must contains at
+                least one UPPERCASE letter, one Special Character (@,#,$,%,^,&) and one digit (0-9)
+            </p>
+            <Textbox
+                style={{ borderColor: password.length !== 0 ? (isStrong ? '#03c04a' : 'tomato') : 'inherit' }}
+                var={pwdRef}
+                type="Password"
+                legend="New Password"
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            <div style={{ display: 'flex', width: '90%' }}>
+                {password.length != 0 ? (
+                    <>
+                        <img
+                            width="25"
+                            height="25"
+                            src={`https://img.icons8.com/color/48/${isStrong ? 'verified-account--v1.png' : 'cancel--v1.png'}`}
+                            alt="x"
+                        />
+                        <p>&nbsp;{isStrong ? 'Strong' : 'Weak'} password</p>
+                    </>
+                ) : (
+                    <p>Follow the guideline.</p>
+                )}
+            </div>
             <Textbox var={pwdReRef} type="Password" legend="Confirm Password" />
             <Button onClick={handleReset} value="Submit" />
         </MainFormContainer>

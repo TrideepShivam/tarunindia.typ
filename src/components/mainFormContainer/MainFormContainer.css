@@ -8,6 +8,7 @@
 }
 
 .formDetails{
+    min-width: 40%;
     display: flex;
     gap:.2em;
     flex-direction: column;
@@ -25,7 +26,7 @@
     gap:.5em;
     padding:6em 2em;
     border-radius:.5em;
-    background-color: var(--dark-transparent-color);
+    background-color: var(--transparent-color);
 }
 
 @media only screen and (width <=900px){
@@ -39,7 +40,7 @@
 
     .formDetails{
         justify-content: center;
-        align-items: center;
+        text-align: center;
         padding:0 2em;
     }
 
