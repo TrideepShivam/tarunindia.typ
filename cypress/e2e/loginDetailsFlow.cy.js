@@ -279,6 +279,23 @@ describe('Typing test for English and Mangal', () => {
         'name: The name field is required.',
     ];
 
+    const publicProfileLiterals = [
+        'Home',
+        'Contents',
+        'About',
+        'Contact',
+        'Pricing',
+        'Get Started',
+        'Joined Typathon on',
+        'Test Details',
+        'WPM (AVG)',
+        'KPM (AVG)',
+        'ACCURACY (AVG)',
+        'TOTAL TESTS',
+        'ACHIEVEMENTS',
+        'UpdatedFirst',
+    ];
+
     beforeEach(() => {
         cy.visit('/');
     });
@@ -414,7 +431,14 @@ describe('Typing test for English and Mangal', () => {
         cy.contains('Error').should('be.visible');
         cy.contains('bio: The bio must not be greater than 255 characters.').should('be.visible');
 
-        cy.wait(8000);
+        // Go to Public Profile
+        cy.log('Checking public profile details');
+        cy.contains('Public profile').invoke('removeAttr', 'target').click(); // Remove target="_blank" so the link opens in the same tab
+        cy.wait(100);
+        publicProfileLiterals.forEach((item) => {
+            cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
+        });
+        cy.contains('Get Started').click();
 
         // Checking Pricing details
         cy.log('Checking pricing details');
