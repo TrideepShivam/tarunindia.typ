@@ -31,9 +31,14 @@ const Profile = () => {
     const [isBioEditing, setIsBioEditing] = useState(true);
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [editableFields, setEditableFields] = useState({});
+    const [saving, setSaving] = useState(false);
 
     useEffect(() => {
+        fetchProfileData();
+    }, []);
+
+    const fetchProfileData = () => {
+        setLoading(true);
         api.get('/profile')
             .then(({ data }) => {
                 const [firstName, ...lastNameParts] = data?.name?.split(' ') || [];
@@ -42,46 +47,46 @@ const Profile = () => {
                     firstName,
                     lastName: lastNameParts.join(' '),
                 });
-                setLoading(false);
             })
             .catch(({ response }) => {
-                setLoading(false);
                 console.log(response);
+            })
+            .finally(() => {
+                setLoading(false);
             });
-    }, [loading]);
+    };
 
     const handleBioSave = () => {
-        const updatedBio = editableFields.bio !== undefined ? editableFields.bio : data?.bio || '';
-
-        setLoading(true);
+        setSaving(true);
         setIsBioEditing(true);
-        api.post('/update-bio', { bio: updatedBio })
+        api.post('/update-bio', { bio: data.bio })
             .then((bio) => {
                 handleNotification(bio.data, setMsg);
                 setIsBioEditing(true);
-                setLoading(false);
+                fetchProfileData();
             })
             .catch(({ response }) => {
-                setLoading(false);
                 console.log(response);
+            })
+            .finally(() => {
+                setSaving(false);
             });
     };
 
     const handlePersonalDetailsSave = () => {
+        setSaving(true);
         const personalDetails = allTextField.reduce((details, { key }) => {
-            details[key] = editableFields[key] !== undefined ? editableFields[key] : data?.[key] || '';
+            details[key] = data[key] || '';
             return details;
         }, {});
 
         personalDetails.name = `${personalDetails.firstName} ${personalDetails.lastName}`.trim();
 
-        setLoading(true);
         api.post('/update-personal-details', personalDetails)
             .then((personalData) => {
                 handleNotification(personalData.data, setMsg);
                 setIsTextAreaEditing(true);
-                setLoading(false);
-                personalData.status === 200 &&
+                if (personalData.status === 200) {
                     setUserLocal({
                         ...userDetails,
                         user: {
@@ -89,24 +94,19 @@ const Profile = () => {
                             name: personalDetails.name,
                         },
                     });
+                    fetchProfileData();
+                }
             })
             .catch(({ response }) => {
-                setLoading(false);
                 console.log(response);
+            })
+            .finally(() => {
+                setSaving(false);
             });
     };
 
-    const getFieldValue = (key) => {
-        if (!data) return '';
-
-        if (editableFields[key] !== undefined) {
-            return editableFields[key];
-        }
-        return data?.[key] || '';
-    };
-
     const handleFieldChange = (key, value) => {
-        setEditableFields((prev) => ({
+        setData((prev) => ({
             ...prev,
             [key]: value,
         }));
@@ -115,11 +115,13 @@ const Profile = () => {
     const handleVerifyClick = (type) => {
         setOtpOpenFor(type);
     };
+
     const handleOtpSubmit = () => {};
 
     if (loading) {
         return <Loading />;
     }
+
     return (
         <>
             <p className="sectionHead">PROFILE</p>
@@ -141,6 +143,7 @@ const Profile = () => {
                                     key="toggleEdit"
                                     value={isTextAreaEditing ? 'Edit' : 'Save'}
                                     transparancy={true}
+                                    disabled={saving}
                                     onClick={() => {
                                         if (isTextAreaEditing) {
                                             setIsTextAreaEditing(false);
@@ -155,8 +158,8 @@ const Profile = () => {
                                 <Textbox
                                     key={label}
                                     legend={label}
-                                    disabled={isTextAreaEditing}
-                                    value={getFieldValue(key)}
+                                    disabled={isTextAreaEditing || saving}
+                                    value={data[key] || ''}
                                     onChange={(e) => handleFieldChange(key, e.target.value)}
                                 />
                             ))}
@@ -169,6 +172,7 @@ const Profile = () => {
                                     key="toggleBioEdit"
                                     value={isBioEditing ? 'Edit' : 'Save'}
                                     transparancy={true}
+                                    disabled={saving}
                                     onClick={() => {
                                         if (isBioEditing) {
                                             setIsBioEditing(false);
@@ -182,27 +186,34 @@ const Profile = () => {
                             <Textarea
                                 legend="Bio"
                                 rows={4}
-                                disabled={isBioEditing}
-                                value={editableFields.bio !== undefined ? editableFields.bio : data?.bio || ''}
+                                disabled={isBioEditing || saving}
+                                value={data.bio || ''}
                                 onChange={(e) => handleFieldChange('bio', e.target.value)}
                             />
                         </div>
                         <div className="contact textArea">
                             <div className="email">
-                                <Textbox legend="Email" value={data?.email} />
+                                <Textbox legend="Email" value={data?.email} disabled={true} onChange={() => {}} />
                                 <Button
                                     key="emailVerify"
                                     value={'Verify' ?? 'Verified'}
                                     transparancy={true}
+                                    disabled={saving}
                                     onClick={() => handleVerifyClick('email')}
                                 />
                             </div>
                             <div className="phone">
-                                <Textbox legend="Contact No" value={data?.contact} />
+                                <Textbox
+                                    legend="Contact No"
+                                    value={data?.contact}
+                                    disabled={true}
+                                    onChange={() => {}}
+                                />
                                 <Button
                                     key="phoneVerify"
                                     value={'Verify' ?? 'Verified'}
                                     transparancy={true}
+                                    disabled={saving}
                                     onClick={() => handleVerifyClick('contact')}
                                 />
                             </div>
