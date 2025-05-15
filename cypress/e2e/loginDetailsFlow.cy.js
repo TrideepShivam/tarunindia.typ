@@ -542,7 +542,7 @@ describe('Typing test for English and Mangal', () => {
                 cy.get('textarea[placeholder="start typing..."]')
                     .type(words, { delay: 500 })
                     .then(() => {
-                        cy.wait(15000);
+                        cy.wait(8000);
                     });
             });
 

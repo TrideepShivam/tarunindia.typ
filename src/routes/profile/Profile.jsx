@@ -11,6 +11,7 @@ import Textarea from '../../components/textArea/TextArea';
 import Textbox from '../../components/textbox/Textbox';
 import TypingDetails from '../../routes/profile/typingDetails/TypingDetails';
 import { handleNotification } from '../../utils/notificationUtils';
+import Share from '../../components/share/Share';
 
 import './Profile.css';
 
@@ -165,6 +166,7 @@ const Profile = () => {
                             ))}
                         </div>
                     </div>
+                    <Share className="profile" />
                     <div className="contactInfo">
                         <div className="bio">
                             <div className="bioSaveEdit">

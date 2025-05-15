@@ -227,7 +227,8 @@ describe('All Visible Literals on Home Page', () => {
         'Full Name',
         'Email',
         'Agree',
-        'Terms and Conditions',
+        'TnC',
+        'and',
         'Privacy Policy',
         'Have an account?',
         'Login',
@@ -239,7 +240,7 @@ describe('All Visible Literals on Home Page', () => {
         'typathon.com',
         'Email',
         'Submit',
-        'Or',
+        'or',
         'Login',
     ];
 
@@ -348,7 +349,7 @@ describe('All Visible Literals on Home Page', () => {
         });
 
         cy.get('.themeButton').contains('Register').should('be.visible');
-        cy.get('a').contains('Terms and Conditions').should('have.attr', 'href', '/tnc');
+        cy.get('a').contains('TnC').should('have.attr', 'href', '/tnc');
         cy.get('a').contains('Privacy Policy').should('have.attr', 'href', '/privacy-policy');
         cy.get('a').contains('Login').should('have.attr', 'href', '/login');
     });
