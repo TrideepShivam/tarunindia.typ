@@ -24,6 +24,7 @@ import Register from './routes/register/Register';
 import Results from './routes/results/Results';
 import Support from './routes/support/Support';
 import PublicProfile from './routes/profile/PublicProfile';
+import Try from './routes/try/Try';
 
 const Router = createBrowserRouter([
     {
@@ -75,6 +76,11 @@ const Router = createBrowserRouter([
     {
         path: '/play/:id',
         element: <Play />,
+        errorElement: <NotFound />,
+    },
+    {
+        path: '/try',
+        element: <Try />,
         errorElement: <NotFound />,
     },
     {
