@@ -18,10 +18,10 @@ describe('Typing test for English and Mangal', () => {
         'English',
         'Krutidev',
         'Mangal',
-        'KPM (AVG)',
-        'WPM (AVG)',
-        'ACCURACY (AVG)',
-        'TOTAL TESTS',
+        'KPM',
+        'WPM',
+        'ACCURACY',
+        'Tests',
     ];
 
     const priceTexts = [
@@ -288,10 +288,10 @@ describe('Typing test for English and Mangal', () => {
         'Get Started',
         'Joined Typathon on',
         'Test Details',
-        'WPM (AVG)',
-        'KPM (AVG)',
-        'ACCURACY (AVG)',
-        'TOTAL TESTS',
+        'KPM',
+        'WPM',
+        'ACCURACY',
+        'Tests',
         'ACHIEVEMENTS',
         'UpdatedFirst',
     ];
@@ -348,7 +348,7 @@ describe('Typing test for English and Mangal', () => {
         // Checking Profile details
         cy.log('Checking profile details');
         cy.contains('Profile').click();
-        cy.wait(500);
+        cy.wait(100);
         profileLiterals.forEach((text) => {
             cy.contains(text, { matchCase: false }).scrollIntoView().should('be.visible');
         });
@@ -445,7 +445,7 @@ describe('Typing test for English and Mangal', () => {
         cy.get('div.userContainer', { timeout: 500 }).should('be.visible');
         cy.get('div.userContainer').click();
         cy.contains('Pricing').click();
-        cy.wait(500);
+        cy.wait(200);
         priceTexts.forEach((text) => {
             cy.contains(text).should('exist');
         });
@@ -453,10 +453,10 @@ describe('Typing test for English and Mangal', () => {
         cy.get('.planCard').should('have.length.at.least', 1);
         cy.get('img[alt="certificate"]').should('exist');
 
-        cy.wait(500);
+        cy.wait(200);
         faqItems.forEach(({ question, answer }) => {
             cy.contains(question).click();
-            cy.wait(500);
+            cy.wait(200);
             cy.contains(answer).should('be.visible');
         });
 
@@ -473,7 +473,7 @@ describe('Typing test for English and Mangal', () => {
         // Go to Playground
         cy.log('Checking playground details');
         cy.get('a.navigation[href="/playground"]').should('be.visible').click();
-        cy.wait(500);
+        cy.wait(200);
         playgroundLiterals.forEach((item) => {
             cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
         });
@@ -511,7 +511,7 @@ describe('Typing test for English and Mangal', () => {
 
                 cy.log('Checking playground details');
                 cy.get('a.navigation[href="/playground"]').should('be.visible').click();
-                cy.wait(500);
+                cy.wait(200);
             }
         });
 
@@ -577,21 +577,21 @@ describe('Typing test for English and Mangal', () => {
         // Go to Events
         cy.log('Checking events details');
         cy.get('a.navigation[href="/events"]').should('be.visible').click();
-        cy.wait(500);
+        cy.wait(200);
         cy.contains('events', { matchCase: false }).should('be.visible');
         cy.contains('Coming soon', { matchCase: false }).should('be.visible');
-        cy.wait(500);
+        cy.wait(200);
 
         // Go to Leaderboard
         cy.log('Checking leaderboard details');
         cy.get('a.navigation[href="/leaderboard"]').should('be.visible').click();
-        cy.wait(500);
+        cy.wait(200);
         cy.contains('leaderboard', { matchCase: false }).should('be.visible');
         cy.contains('Coming soon', { matchCase: false }).should('be.visible');
 
         // Go to Results
         cy.log('Checking results details');
-        cy.wait(500);
+        cy.wait(200);
         cy.get('a.navigation[href="/results"]').should('be.visible').click();
         resultsLiterals.forEach((item) => {
             cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
@@ -599,18 +599,18 @@ describe('Typing test for English and Mangal', () => {
 
         // Go to Support
         cy.log('Checking support details');
-        cy.wait(500);
+        cy.wait(200);
         cy.get('a.navigation[href="/support"]').should('be.visible').click();
-        cy.wait(500);
+        cy.wait(200);
         supportLiterals.forEach((item) => {
             cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
         });
 
         // Go to About
         cy.log('Checking about details');
-        cy.wait(500);
+        cy.wait(200);
         cy.get('a.navigation[href="/about"]').should('be.visible').click();
-        cy.wait(500);
+        cy.wait(200);
         aboutLiterals.forEach((item) => {
             cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
         });
