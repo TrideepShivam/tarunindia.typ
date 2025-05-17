@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import api from '../../api';
 import backgroundImg from '../../assets/new-password-form-image.png';
 import Button from '../../components/button/Button';
@@ -19,7 +19,7 @@ const SetPassword = () => {
     const [isStrong, setIsStrong] = useState(false);
     const { id, token } = useParams();
     const navigate = useNavigate();
-    const { userDetails, setMsg } = useContext(Context);
+    const { setMsg } = useContext(Context);
     const [loading, setLoading] = useState(false);
     const pwdRef = useRef();
     const pwdReRef = useRef();

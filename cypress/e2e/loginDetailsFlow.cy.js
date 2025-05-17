@@ -15,13 +15,10 @@ describe('Typing test for English and Mangal', () => {
         'Contact No',
         'Verify',
         'Test Details',
-        'English',
-        'Krutidev',
-        'Mangal',
-        'KPM (AVG)',
-        'WPM (AVG)',
-        'ACCURACY (AVG)',
-        'TOTAL TESTS',
+        'KPM',
+        'WPM',
+        'ACCURACY',
+        'Tests',
     ];
 
     const priceTexts = [
@@ -279,6 +276,23 @@ describe('Typing test for English and Mangal', () => {
         'name: The name field is required.',
     ];
 
+    const publicProfileLiterals = [
+        'Home',
+        'Contents',
+        'About',
+        'Contact',
+        'Pricing',
+        'Get Started',
+        'Joined Typathon on',
+        'Test Details',
+        'KPM',
+        'WPM',
+        'ACCURACY',
+        'Tests',
+        'ACHIEVEMENTS',
+        'UpdatedFirst',
+    ];
+
     beforeEach(() => {
         cy.visit('/');
     });
@@ -292,14 +306,14 @@ describe('Typing test for English and Mangal', () => {
 
         cy.get('@emailInput').should('be.visible');
         cy.get('@emailInput').clear();
-        cy.get('@emailInput').type('trideepshivam@gmail.com', { delay: 100 });
-        cy.get('@emailInput').should('have.value', 'trideepshivam@gmail.com');
+        cy.get('@emailInput').type('kumarrituraj2000@gmail.com', { delay: 100 });
+        cy.get('@emailInput').should('have.value', 'kumarrituraj2000@gmail.com');
 
         cy.get('.formContents input').eq(1).as('passwordInput');
         cy.get('@passwordInput').should('be.visible');
         cy.get('@passwordInput').clear();
-        cy.get('@passwordInput').type('Shivam@123', { delay: 100 });
-        cy.get('@passwordInput').should('have.value', 'Shivam@123');
+        cy.get('@passwordInput').type('OPENpassword@123', { delay: 100 });
+        cy.get('@passwordInput').should('have.value', 'OPENpassword@123');
 
         // Submit login
         cy.log('Submitting login form');
@@ -331,7 +345,7 @@ describe('Typing test for English and Mangal', () => {
         // Checking Profile details
         cy.log('Checking profile details');
         cy.contains('Profile').click();
-        cy.wait(500);
+        cy.wait(100);
         profileLiterals.forEach((text) => {
             cy.contains(text, { matchCase: false }).scrollIntoView().should('be.visible');
         });
@@ -414,14 +428,21 @@ describe('Typing test for English and Mangal', () => {
         cy.contains('Error').should('be.visible');
         cy.contains('bio: The bio must not be greater than 255 characters.').should('be.visible');
 
-        cy.wait(8000);
+        // Go to Public Profile
+        cy.log('Checking public profile details');
+        cy.contains('Public profile').invoke('removeAttr', 'target').click(); // Remove target="_blank" so the link opens in the same tab
+        cy.wait(100);
+        publicProfileLiterals.forEach((item) => {
+            cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
+        });
+        cy.contains('Get Started').click();
 
         // Checking Pricing details
         cy.log('Checking pricing details');
         cy.get('div.userContainer', { timeout: 500 }).should('be.visible');
         cy.get('div.userContainer').click();
         cy.contains('Pricing').click();
-        cy.wait(500);
+        cy.wait(200);
         priceTexts.forEach((text) => {
             cy.contains(text).should('exist');
         });
@@ -429,10 +450,10 @@ describe('Typing test for English and Mangal', () => {
         cy.get('.planCard').should('have.length.at.least', 1);
         cy.get('img[alt="certificate"]').should('exist');
 
-        cy.wait(500);
+        cy.wait(200);
         faqItems.forEach(({ question, answer }) => {
             cy.contains(question).click();
-            cy.wait(500);
+            cy.wait(200);
             cy.contains(answer).should('be.visible');
         });
 
@@ -449,7 +470,7 @@ describe('Typing test for English and Mangal', () => {
         // Go to Playground
         cy.log('Checking playground details');
         cy.get('a.navigation[href="/playground"]').should('be.visible').click();
-        cy.wait(500);
+        cy.wait(200);
         playgroundLiterals.forEach((item) => {
             cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
         });
@@ -487,7 +508,7 @@ describe('Typing test for English and Mangal', () => {
 
                 cy.log('Checking playground details');
                 cy.get('a.navigation[href="/playground"]').should('be.visible').click();
-                cy.wait(500);
+                cy.wait(200);
             }
         });
 
@@ -518,7 +539,7 @@ describe('Typing test for English and Mangal', () => {
                 cy.get('textarea[placeholder="start typing..."]')
                     .type(words, { delay: 500 })
                     .then(() => {
-                        cy.wait(15000);
+                        cy.wait(8000);
                     });
             });
 
@@ -553,21 +574,21 @@ describe('Typing test for English and Mangal', () => {
         // Go to Events
         cy.log('Checking events details');
         cy.get('a.navigation[href="/events"]').should('be.visible').click();
-        cy.wait(500);
+        cy.wait(200);
         cy.contains('events', { matchCase: false }).should('be.visible');
         cy.contains('Coming soon', { matchCase: false }).should('be.visible');
-        cy.wait(500);
+        cy.wait(200);
 
         // Go to Leaderboard
         cy.log('Checking leaderboard details');
         cy.get('a.navigation[href="/leaderboard"]').should('be.visible').click();
-        cy.wait(500);
+        cy.wait(200);
         cy.contains('leaderboard', { matchCase: false }).should('be.visible');
         cy.contains('Coming soon', { matchCase: false }).should('be.visible');
 
         // Go to Results
         cy.log('Checking results details');
-        cy.wait(500);
+        cy.wait(200);
         cy.get('a.navigation[href="/results"]').should('be.visible').click();
         resultsLiterals.forEach((item) => {
             cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
@@ -575,18 +596,18 @@ describe('Typing test for English and Mangal', () => {
 
         // Go to Support
         cy.log('Checking support details');
-        cy.wait(500);
+        cy.wait(200);
         cy.get('a.navigation[href="/support"]').should('be.visible').click();
-        cy.wait(500);
+        cy.wait(200);
         supportLiterals.forEach((item) => {
             cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
         });
 
         // Go to About
         cy.log('Checking about details');
-        cy.wait(500);
+        cy.wait(200);
         cy.get('a.navigation[href="/about"]').should('be.visible').click();
-        cy.wait(500);
+        cy.wait(200);
         aboutLiterals.forEach((item) => {
             cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
         });
