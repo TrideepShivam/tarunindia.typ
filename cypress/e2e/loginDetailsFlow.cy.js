@@ -15,9 +15,6 @@ describe('Typing test for English and Mangal', () => {
         'Contact No',
         'Verify',
         'Test Details',
-        'English',
-        'Krutidev',
-        'Mangal',
         'KPM',
         'WPM',
         'ACCURACY',
@@ -309,14 +306,14 @@ describe('Typing test for English and Mangal', () => {
 
         cy.get('@emailInput').should('be.visible');
         cy.get('@emailInput').clear();
-        cy.get('@emailInput').type('trideepshivam@gmail.com', { delay: 100 });
-        cy.get('@emailInput').should('have.value', 'trideepshivam@gmail.com');
+        cy.get('@emailInput').type('kumarrituraj2000@gmail.com', { delay: 100 });
+        cy.get('@emailInput').should('have.value', 'kumarrituraj2000@gmail.com');
 
         cy.get('.formContents input').eq(1).as('passwordInput');
         cy.get('@passwordInput').should('be.visible');
         cy.get('@passwordInput').clear();
-        cy.get('@passwordInput').type('Shivam@123', { delay: 100 });
-        cy.get('@passwordInput').should('have.value', 'Shivam@123');
+        cy.get('@passwordInput').type('OPENpassword@123', { delay: 100 });
+        cy.get('@passwordInput').should('have.value', 'OPENpassword@123');
 
         // Submit login
         cy.log('Submitting login form');
