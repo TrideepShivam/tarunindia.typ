@@ -8,9 +8,12 @@ import ToggleDarkLight from '../../components/toggleDarkLight/ToggleDarkLight';
 import WordCount from '../../components/wordCount/WordCount';
 import { Context } from '../../ContextAPI';
 import Hyperlink from '../../components/hyperlink/Hyperlink';
-
-import './Try.css';
 import Textbox from '../../components/textbox/Textbox';
+import Percentage from '../../components/resultDetail/percentage/Percentage';
+import Card from '../../components/card/Card';
+import CardContainer from '../../components/cardContainer/CardContainer';
+import './Try.css';
+
 const stories = {
     English: `A long time ago, during a devastating spell of dry weather, there was a thirsty crow who was desperate for a drink of water. The poor crow flew and flew in search of a means to quench his thirst. From one place to another place he went, until, at long last, when he could fly no further, he came upon a large pitcher of water at the base of a tree. Overjoyed, the thirsty crow thrust its jet-black beak inside to drink his fill. But, alas! the pitcher had a narrow neck. Try as he might, the despairing crow couldn't get his head far enough inside. To his dismay, he realized the water was out of reach. The thirsty crow cried out and flapped his wings in anguish. He attempted to knock the pitcher over. But to no avail. It was too heavy for his weary, dehydrated body to budge. The crow was on the verge of exhaustion and ready to fly elsewhere. But then an idea came to him. Around the base of the pitcher he seen some small round pebbles. Picking them up, one by one, the thirsty crow dropped them into the pitcher. Again and again he placed these stones inside. And with every extra pebble, the water level began to rise. His idea worked. Eventually, after much toil, the water rose so high inside the pitcher that the clever crow was able to drink his fill and state his thirst for good. Then he flew away for his work.`,
     Krutidev: `vkt gekjs ns'k esa lekt dh feykoV lc ls cM+h 'k=q gSA feykoV rFkk feykoV [kksj dk pksyh&nkeu dk lkFk gSA lekt esa euq\"; feykoV[kksj gksus dh rjQ D;ksa c<+rk gS og ,slk D;ksa lksprk gS] fd feykoV djuh pkfg;sA euq\"; vkfn dky ls gh ykyp dk f'kdkj gSA fdUrq vk\/kqfud le; esa ykyp bruk c<+ x;k gS fd mlds fdlh xyr dk;Z ls vxj fdlh dh tku Hkh pyh tk, rks mldks bldh fpUrk ugha] cfYd mldh tsc Hkjuh pkfg,A vkt [kkus&ihus dh gj oLrq esa feykoV ik;h tkrh gSA nw\/k esa feykoV] ?kh esa feykoV] elkyksa esa feykoV bR;kfnA feykoV [kksj udyh nokb;k\u00a1 cukus rFkk mlesa feykoV djus esa Hkh ugha pwdrs] tcfd mudks irk gS fd muds bl dk;Z ls yksxksa dh tku dks [krjk gks tkrk gSA feykoV djuk ,d vijk\/k gS bls jksduk ljdkj dk drZO; gsA ijUrq bls jksdus ds fy, tks deZpkjh j[ks gq, gSa] og Hkh feykoV [kksj dk lkFk nsrs gSA mudh vPNh [kklh jde olwyrs gSaA gj 'kgj esa LokLF; vf\/kdkjh gksrs gSa] ijUrq og yksx gj ,d ls eghuk Hkj iSlk olwyrs gSaA tc ckM+ gh [ksrksa dks [kk;s rks [ksrh dh j[kokyh dkSu djsA vHkh dqN fnu igys lu~ 1998 esa gh] tc fnYyh esa Hkkjrh; turk ikVhZ dk 'kklu Fkk rks ljlksa ds rsy esa bruh feykoV gqbZ] fd dkQh yksx bldk f'kdkj gks x,A fnYyh ds vLirku ejhtksa ls Hkj x;s] lSdMksa dh tkus pyh xbZA ml le; rsy 80 #i;s fdyks rd fcd x;kA rsy ds cukus okyksa us ml rsy dks QSad fn;kA dqN fnuksa ds okLrs mudk rsy fcduk can gks x;kA ljdkj dks iSlk pkfg, FkkA`,
@@ -111,8 +114,8 @@ const Try = () => {
         }
     };
     const timeOut = () => {
-        setSwitchPage(true);
         setTypingDisabled(true);
+        setSwitchPage(true);
     };
     const getFont = () => {
         return language.font;
@@ -173,11 +176,92 @@ const Try = () => {
         );
     } else if (switchPage && second == 0) {
         return (
-            <div>
-                <h1>words: {resultRef.current.words}</h1>
-                <h1>keystrokes: {resultRef.current.char_with_spaces}</h1>
-                <h1> duration: {resultRef.current.duration}</h1>
-                <h1>mistakes: {resultRef.current.keystrokes}</h1>
+            <div className="tryResultContainer">
+                <div className="tryResult">
+                    <Percentage
+                        value={
+                            resultRef.current.words != 0
+                                ? ((resultRef.current.words - Object.keys(resultRef.current.mistakes).length) /
+                                      resultRef.current.words) *
+                                  100
+                                : 0
+                        }
+                        text="Accuracy"
+                        label="%"
+                    />
+                    <div className="tryErrorContainer">
+                        <h2>
+                            Well done, <span className="highlight">{name.split(' ')[0].toUpperCase()}</span>
+                        </h2>
+                        <p className="sectionHead">Total Errors</p>
+                        <h1>{Object.keys(resultRef.current.mistakes).length}</h1>
+                        <p className="sectionHead">Errors</p>
+                        {Object.keys(resultRef.current.mistakes).length !== 0 ? (
+                            Object.entries(resultRef.current.mistakes).map(([key, value]) => (
+                                <div key={key}>
+                                    <p>
+                                        [<span style={{ fontFamily: getFont() }}>{key}</span>] [
+                                        <span style={{ color: 'tomato', fontFamily: getFont() }}>{value}</span>]
+                                    </p>
+                                </div>
+                            ))
+                        ) : (
+                            <p>No Mistakes found</p>
+                        )}
+                    </div>
+                    <CardContainer>
+                        <Card
+                            val={{
+                                value: language.language,
+                                unit: '',
+                                cardHead: 'Language',
+                                more: false,
+                            }}
+                        />
+                        <Card
+                            val={{
+                                value: resultRef.current.words - Object.keys(resultRef.current.mistakes).length,
+                                unit: 'WPM',
+                                cardHead: 'Words per min',
+                                more: false,
+                            }}
+                        />
+                        <Card
+                            val={{
+                                value: resultRef.current.keystrokes,
+                                unit: 'KPM',
+                                cardHead: 'Keystrokes per min',
+                                more: false,
+                            }}
+                        />
+                        <Card
+                            val={{
+                                value: resultRef.current.words,
+                                unit: '',
+                                cardHead: 'Total words',
+                                more: false,
+                            }}
+                        />
+                    </CardContainer>
+                    <div>
+                        <p>
+                            <Hyperlink href={'/login'} value="Login" /> to access more features
+                        </p>
+                        <p>Mangal Font is also available.</p>
+                        <Hyperlink href={'/'} value="typathon.com" />
+                    </div>
+                </div>
+                <div className="tryResultButtonContainer">
+                    <Hyperlink href={'/'} type="themed" value="Know more" />
+                    <Hyperlink
+                        href={'#'}
+                        type="bordered-theme"
+                        value="Try again"
+                        onClick={() => {
+                            window.location.reload();
+                        }}
+                    />
+                </div>
             </div>
         );
     } else if (orient == 'portrait') {
