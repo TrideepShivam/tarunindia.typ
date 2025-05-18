@@ -1,0 +1,59 @@
+.shareContainer > .circleButton {
+    color: var(--text-color);
+    background: var(--background-color);
+    border-radius: 2em;
+    padding:.5em;
+    z-index: 2;
+}
+
+.popUpContainer .popUpContent {
+    position: relative;
+    color: var(--text-color);
+    padding: 1.5em 3em 3em;
+    background: var(--background-color);
+    border-radius: 0.5em;
+    min-width: 15em;
+
+    .shareNavigationContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+        border-radius: 2em;
+        padding: 1em 0.2em 0.5em;
+        background: var(--background-color);
+
+        .shareNavigation {
+            border-radius: 3em;
+            color: var(--text-color);
+            padding: 0.6em 1em;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font: inherit;
+            transition: background 0.2s;
+            outline: none;
+
+            img {
+                width: 2em;
+                height: 2em;
+            }
+
+            span {
+                padding: 0 0.5em;
+                font-size: 1.2em;
+                color: var(--text-color);
+                font-weight: 500;
+                letter-spacing: 0.02em;
+            }
+        }
+
+        .shareNavigation:hover,
+        .shareNavigation:focus {
+            background-color: var(--light-back-color);
+        }
+    }
+}

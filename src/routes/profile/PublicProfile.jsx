@@ -12,26 +12,6 @@ import TypingDetails from './typingDetails/TypingDetails';
 
 const PublicProfile = () => {
     const { id } = useParams();
-    const typingStats = [
-        {
-            time: '1 MINUTE',
-            kpm: 176,
-            wpm: 31,
-            accuracy: 94.3,
-        },
-        {
-            time: '5 MINUTE',
-            kpm: 177,
-            wpm: 32,
-            accuracy: 95.3,
-        },
-        {
-            time: '10 MINUTE',
-            kpm: 178,
-            wpm: 33,
-            accuracy: 96.3,
-        },
-    ];
     useAuthInterceptor();
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
