@@ -50,5 +50,13 @@
                 margin: 2em 0;
             }
     }
+}
 
+@media screen and (width <=900px) {
+    .publicProfile{
+        display: flex;
+        flex-direction: column;
+        padding:1em .25em;
+        width:calc(100% - .5em);
+    }
 }

@@ -1,17 +1,20 @@
+import { useContext } from 'react';
 import './TypingDetails.css';
+import { Context } from '../../../ContextAPI';
 
 const TypingDetails = ({ data }) => {
+    const { responsive } = useContext(Context);
     return (
         <div className="typingDetailsTable">
-            <h2>Test Details</h2>
+            <h2>Test Details (AVG)</h2>
             <table>
                 <thead>
                     <tr className="highlight">
                         <td></td>
-                        <td>WPM (AVG)</td>
-                        <td>KPM (AVG)</td>
-                        <td>ACCURACY (AVG)</td>
-                        <td>TOTAL TESTS</td>
+                        <td>WPM</td>
+                        <td>KPM</td>
+                        <td>{responsive ? 'ACC' : 'ACCURACY'}</td>
+                        <td>Tests</td>
                     </tr>
                 </thead>
                 <tbody>

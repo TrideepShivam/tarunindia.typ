@@ -227,7 +227,8 @@ describe('All Visible Literals on Home Page', () => {
         'Full Name',
         'Email',
         'Agree',
-        'Terms and Conditions',
+        'TnC',
+        'and',
         'Privacy Policy',
         'Have an account?',
         'Login',
@@ -239,7 +240,7 @@ describe('All Visible Literals on Home Page', () => {
         'typathon.com',
         'Email',
         'Submit',
-        'Or',
+        'or',
         'Login',
     ];
 
@@ -254,9 +255,9 @@ describe('All Visible Literals on Home Page', () => {
     });
 
     it('should show all bottom section literals after scrolling', () => {
-        cy.wait(500);
+        cy.wait(100);
         bottomLiterals.forEach((text) => {
-            cy.contains(new RegExp(text, 'i')).scrollIntoView({ duration: 400 });
+            cy.contains(new RegExp(text, 'i')).scrollIntoView({ duration: 100 });
             cy.contains(new RegExp(text, 'i')).should('exist').and('be.visible');
         });
 
@@ -267,7 +268,7 @@ describe('All Visible Literals on Home Page', () => {
     });
 
     it('should navigate to /contents when "Contents" is clicked', () => {
-        cy.wait(500);
+        cy.wait(100);
         cy.contains('Contents').click();
         cy.url().should('include', '/contents');
         cy.get('.inProgressContainer').should('exist');
@@ -276,7 +277,7 @@ describe('All Visible Literals on Home Page', () => {
     });
 
     it('should navigate to /about-us when "About" is clicked', () => {
-        cy.wait(500);
+        cy.wait(100);
         cy.contains('About').click();
         cy.url().should('include', '/about-us');
         cy.get('.inProgressContainer').should('exist');
@@ -285,19 +286,19 @@ describe('All Visible Literals on Home Page', () => {
     });
 
     it('should navigate to /contact-us when "Contact" is clicked', () => {
-        cy.wait(500);
+        cy.wait(100);
         cy.contains('Contact').click();
         cy.url().should('include', '/contact-us');
         cy.get('.inProgressContainer').should('exist');
         cy.contains('Back to Home').click();
         cy.url().should('eq', Cypress.config().baseUrl + '/');
-        cy.wait(500);
+        cy.wait(100);
     });
 
     it('navigates to /pricing and displays all key sections', () => {
         cy.contains('Pricing').click();
         cy.url().should('include', '/pricing');
-        cy.wait(500);
+        cy.wait(100);
         priceTexts.forEach((text) => {
             cy.contains(text).should('exist');
         });
@@ -311,10 +312,10 @@ describe('All Visible Literals on Home Page', () => {
     it('displays correct answers for each FAQ item when clicked', () => {
         cy.contains('Pricing').click();
         cy.url().should('include', '/pricing');
-        cy.wait(500);
+        cy.wait(100);
         faqItems.forEach(({ question, answer }) => {
             cy.contains(question).click();
-            cy.wait(500);
+            cy.wait(200);
             cy.contains(answer).should('be.visible');
         });
     });
@@ -322,7 +323,7 @@ describe('All Visible Literals on Home Page', () => {
     it('displays all the necessary elements on the login page', () => {
         cy.contains('Get Started').click();
         cy.url().should('include', '/login');
-        cy.wait(500);
+        cy.wait(100);
 
         loginPageLiterals.forEach((text) => {
             cy.contains(text).should('be.visible');
@@ -342,13 +343,13 @@ describe('All Visible Literals on Home Page', () => {
         cy.contains('Get Started').click();
         cy.contains('Register').click();
         cy.url().should('include', '/register');
-        cy.wait(500);
+        cy.wait(100);
         registerPageLiterals.forEach((text) => {
             cy.contains(text).should('be.visible');
         });
 
         cy.get('.themeButton').contains('Register').should('be.visible');
-        cy.get('a').contains('Terms and Conditions').should('have.attr', 'href', '/tnc');
+        cy.get('a').contains('TnC').should('have.attr', 'href', '/tnc');
         cy.get('a').contains('Privacy Policy').should('have.attr', 'href', '/privacy-policy');
         cy.get('a').contains('Login').should('have.attr', 'href', '/login');
     });
@@ -357,7 +358,7 @@ describe('All Visible Literals on Home Page', () => {
         cy.contains('Get Started').click();
         cy.contains('Forgot Password?').click();
         cy.url().should('include', '/forgot-password');
-        cy.wait(500);
+        cy.wait(100);
         forgotPasswordLiterals.forEach((text) => {
             cy.contains(text).should('be.visible');
         });

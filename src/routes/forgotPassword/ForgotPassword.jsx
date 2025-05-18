@@ -5,46 +5,46 @@ import Button from '../../components/button/Button';
 import Hyperlink from '../../components/hyperlink/Hyperlink';
 import Loading from '../../components/loading/Loading';
 import MainFormContainer from '../../components/mainFormContainer/MainFormContainer';
-import Retry from '../../components/retry/Retry';
 import Textbox from '../../components/textbox/Textbox';
 import { Context } from '../../ContextAPI';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
-import backgroundImg from './../../assets/forgot-password-image.png';
+import backgroundImg from './../../assets/forgot-password-image.jpeg';
 
 import './setAndForgot.css';
 
 const FortgotPassword = () => {
     useAuthInterceptor();
-    const { userDetails, msg, setMsg } = useContext(Context);
+    const { userDetails, setMsg } = useContext(Context);
     const [loading, setLoading] = useState(false);
-    const [retry, setRetry] = useState(false);
+    const [email, setEmail] = useState('');
+    const [isRequested, setIsRequested] = useState(false);
     const emailRef = useRef();
 
     const handleForgotPassword = () => {
+        setEmail(emailRef.current.value);
+        setLoading(true);
         api.post('/auth/update-password', {
             email: emailRef.current.value,
         })
             .then((response) => {
                 setMsg({
-                    ...msg,
-                    isOpen: true,
                     status: response.data.state,
                     message: response.data.message,
                 });
+                if (response.status == 200) {
+                    setIsRequested(true);
+                } else {
+                    emailRef.current.value = '';
+                    emailRef.current.focus();
+                }
                 setLoading(false);
-                emailRef.current.value = '';
-                emailRef.current.focus();
             })
-            .catch((response) => {
-                console.log(response);
+            .catch(() => {
                 setLoading(false);
-                setRetry(true);
             });
     };
     if (loading) {
         return <Loading />;
-    } else if (retry) {
-        return <Retry retry={handleForgotPassword} to="/login" />;
     }
     if (userDetails) {
         return (
@@ -59,12 +59,35 @@ const FortgotPassword = () => {
             heading="Forgot Password"
             subheading="Trouble logging in? Enter your email to generate new one"
         >
-            <Textbox autofocus={true} var={emailRef} type="text" legend="Email" />
-            <Button onClick={handleForgotPassword} value="Submit" />
-            <p>
-                Or&nbsp;
-                <Hyperlink href="/login" value="Login" />
-            </p>
+            {!isRequested ? (
+                <>
+                    <Textbox autofocus={true} var={emailRef} type="text" legend="Email" />
+                    <Button onClick={handleForgotPassword} value="Submit" />
+                    <p>or</p>
+                    <Hyperlink href="/login" value="Login" />
+                </>
+            ) : (
+                <>
+                    <h1 className="highlight">Thank You</h1>
+                    <p>Password reset Link will be sent to</p>
+                    <Hyperlink
+                        value={email}
+                        href="#"
+                        type="trans-hover"
+                        style={{ border: '.5px solid var(--text-color-light)', fontWeight: 'bold' }}
+                    />
+                    <p>
+                        If mail is not delivered, Check your <span className="highlight">Spam</span> list
+                    </p>
+                    <p>
+                        Waiting time upto <span className="highlight">5 mins</span>
+                    </p>
+                    <div style={{ display: 'flex', gap: '1em', alignItems: 'center' }}>
+                        <Hyperlink type="bordered-theme" href="/login" value="Login" />
+                        <Hyperlink href="#" onClick={() => setIsRequested(false)} value="Try Again" />
+                    </div>
+                </>
+            )}
         </MainFormContainer>
     );
 };

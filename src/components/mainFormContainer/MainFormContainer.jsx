@@ -5,7 +5,7 @@ const MainFormContainer = (props) => {
         <div
             className="mainFormContainer"
             style={{
-                background: `linear-gradient(0deg, var(--transparent-color), var(--transparent-color)), url(${props.img})`,
+                background: `linear-gradient(0deg, var(--dark-transparent-color), var(--transparent-color)), url(${props.img})`,
                 backgroundSize: '50em',
             }}
         >
