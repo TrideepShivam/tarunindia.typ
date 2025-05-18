@@ -180,7 +180,7 @@ const Try = () => {
         return (
             <div className="tryResultContainer">
                 <div className="tryResult">
-                    <Share shareTitle="Share result" />
+                    <Share shareTitle="Share result" className="tryResult" />
                     <Percentage
                         value={
                             resultRef.current.words != 0
