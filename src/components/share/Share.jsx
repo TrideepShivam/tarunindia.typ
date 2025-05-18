@@ -9,6 +9,7 @@ const Share = ({
     className = 'profile',
     shareTitle = 'Share your results',
     shareableUrl = 'https://www.typathon.com/',
+    style = { top: '.5em', right: '.5em' },
 }) => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -83,11 +84,7 @@ const Share = ({
 
     return (
         <div className="shareContainer">
-            <CircleButton
-                onClick={() => setIsOpen(true)}
-                value={<span>🔗 Share</span>}
-                style={{ top: 'unset', right: 'unset' }}
-            />
+            <CircleButton onClick={() => setIsOpen(true)} value={<span>🔗 {shareTitle}</span>} style={style} />
             {isOpen && (
                 <PopUpContainer>
                     <div className="popUpContent">

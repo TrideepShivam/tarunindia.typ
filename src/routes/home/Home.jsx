@@ -79,13 +79,17 @@ const Home = () => {
                 <h1>Tarun India Typing</h1>
                 <h3>A typing test Platform to Learn, Grow & Earn</h3>
                 <p>
-                    <Hyperlink href="/register" value="Register"></Hyperlink> for Free
+                    <Hyperlink href="/register" value="Register" /> for Free
                 </p>
-                <Button
-                    onClick={() => window.scrollTo(0, responsive ? 700 : 600)}
-                    value="Explore"
-                    style={{ width: 22 + 'vh' }}
-                ></Button>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '.5em' }}>
+                    <Button onClick={() => window.scrollTo(0, responsive ? 700 : 600)} value="Explore"></Button>
+                    <Hyperlink
+                        style={{ padding: '.6em 4em', fontSize: '1.2em' }}
+                        type="bordered-theme"
+                        href="/try"
+                        value="Try"
+                    />
+                </div>
             </BlurImgDiv>
 
             <div className="feature">

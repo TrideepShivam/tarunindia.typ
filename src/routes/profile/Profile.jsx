@@ -126,6 +126,7 @@ const Profile = () => {
     return (
         <>
             <p className="sectionHead">PROFILE</p>
+            <Share className="profile" />
             <div className="profile">
                 <div className="profileContainer">
                     <div className="profileImage">
@@ -166,7 +167,6 @@ const Profile = () => {
                             ))}
                         </div>
                     </div>
-                    <Share className="profile" />
                     <div className="contactInfo">
                         <div className="bio">
                             <div className="bioSaveEdit">

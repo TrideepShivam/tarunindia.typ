@@ -33,9 +33,10 @@
     }
 
     .tryResult{
-        width: 40%;
+        position:relative;
+        width: 60%;
         display: flex;
-        gap:.5em;
+        gap:1em;
         padding:2em;
         flex-wrap: wrap;
         border:.5px solid var(--text-color-light);
@@ -43,7 +44,7 @@
         background-size: cover;
 
         .tryErrorContainer{
-            max-height: 20em;
+            max-height: 15em;
             min-width: 20em;
             overflow-y: auto;
         }
