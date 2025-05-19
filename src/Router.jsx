@@ -79,7 +79,7 @@ const Router = createBrowserRouter([
         errorElement: <NotFound />,
     },
     {
-        path: '/try',
+        path: '/demo',
         element: <Try />,
         errorElement: <NotFound />,
     },

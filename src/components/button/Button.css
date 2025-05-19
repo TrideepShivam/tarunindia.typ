@@ -1,7 +1,6 @@
 .themeButton{
-    padding:1em;
+    padding:1em 1.8em;
     font-size: 1.2em;
-    width:calc(100% - 2em);
     border:none;
     outline:none;
     color:white;

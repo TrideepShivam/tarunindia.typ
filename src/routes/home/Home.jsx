@@ -81,13 +81,12 @@ const Home = () => {
                 <p>
                     <Hyperlink href="/register" value="Register" /> for Free
                 </p>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '.5em' }}>
-                    <Button onClick={() => window.scrollTo(0, responsive ? 700 : 600)} value="Explore"></Button>
+                <div style={{ fontSize:'1.5em',paddingTop:'.5em'}}>
                     <Hyperlink
-                        style={{ padding: '.6em 4em', fontSize: '1.2em' }}
-                        type="bordered-theme"
-                        href="/try"
-                        value="Try"
+                        type='themed'
+                        href="/demo"
+                        value="Demo"
+                        icon="https://img.icons8.com/ios/18/color/external-link.png"
                     />
                 </div>
             </BlurImgDiv>
