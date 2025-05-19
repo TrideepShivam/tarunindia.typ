@@ -34,6 +34,10 @@
     box-shadow: var(--shadow);
 }
 
+.themed:hover .hyperlinkIcon{
+    transform:translate(.1em,-.1em);
+}
+
 .trans-hover{
     background-color: var(--light-back-color);
     color:var(--text-color);

@@ -1,7 +1,20 @@
 import { useEffect, useState } from 'react';
-
 import './FullScreenBtn.css';
 
+export const exitFullscreen = () => {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+        /* Firefox */
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+        /* Chrome, Safari and Opera */
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+        /* IE/Edge */
+        document.msExitFullscreen();
+    }
+};
 const FullScreenBtn = () => {
     const [showTooltip, setShowtooltip] = useState(false);
     const [fullScreen, setFullScreen] = useState(true);
@@ -9,20 +22,7 @@ const FullScreenBtn = () => {
     useEffect(() => {
         fullScreen ? document.documentElement.requestFullscreen() : exitFullscreen();
     }, [fullScreen]);
-    const exitFullscreen = () => {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        } else if (document.mozCancelFullScreen) {
-            /* Firefox */
-            document.mozCancelFullScreen();
-        } else if (document.webkitExitFullscreen) {
-            /* Chrome, Safari and Opera */
-            document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) {
-            /* IE/Edge */
-            document.msExitFullscreen();
-        }
-    };
+
     return (
         <div
             className="fullScreenContainer"

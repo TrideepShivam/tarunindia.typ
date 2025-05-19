@@ -1,13 +1,13 @@
 .themeButton{
-    padding:1em;
+    padding:1em 1.8em;
     font-size: 1.2em;
-    width:calc(100% - 2em);
     border:none;
     outline:none;
     color:white;
     border-radius: .5em;
     cursor: pointer;
     letter-spacing: .1em;
+    white-space: nowrap;
     box-shadow: inset 0 0 .5em var(--background-color);
     background-image:linear-gradient(to left,var(--theme-color),var(--theme-color-reverse));
 }

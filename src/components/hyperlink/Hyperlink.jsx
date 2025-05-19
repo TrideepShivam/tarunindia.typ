@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom';
-
 import './Hyperlink.css';
+import { useContext } from 'react';
+import { Context } from '../../ContextAPI';
 
 const Hyperlink = (props) => {
-    // const typeCollection = ['trans-hover', 'bordered-theme', 'anchor', 'themed', 'premium'];
+    const { lightMode } = useContext(Context);
+    const iconSrc = props.icon?.includes('color')
+        ? props.icon.replace('color', lightMode ? '000000' : 'ffffff')
+        : props.icon;
+
     return (
         <Link
             style={props.style && props.style}
@@ -12,7 +17,8 @@ const Hyperlink = (props) => {
             onClick={props.onClick ? props.onClick : ''}
             target={props.target && props.target}
         >
-            {props.value}
+            {props.value}&nbsp;
+            {props.icon && <img className="hyperlinkIcon" src={iconSrc} alt="icon" />}
         </Link>
     );
 };
