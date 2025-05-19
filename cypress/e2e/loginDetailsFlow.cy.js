@@ -539,11 +539,35 @@ describe('Typing test for English and Mangal', () => {
                 cy.get('textarea[placeholder="start typing..."]')
                     .type(words, { delay: 500 })
                     .then(() => {
-                        cy.wait(8000);
+                        cy.wait(10000);
                     });
             });
 
-        cy.wait(3000);
+        // === Mangal Krutidev Test ===
+        cy.log('Starting Krutidev typing test');
+        cy.get('a.navigation[href="/playground"]').should('be.visible').click();
+
+        selectDropdown(0, 'Krutidev');
+        selectDropdown(1, '1 min');
+        selectDropdown(2, 'Beginner');
+        selectDropdown(3, 'समाज की मिलावट');
+
+        cy.get('button.themeButton').click();
+
+        cy.contains('Skip', { timeout: 10000 }).should('be.visible');
+        cy.contains('Skip').click();
+
+        cy.get('p.textContent')
+            .invoke('text')
+            .then((text) => {
+                const words = text.split(' ').slice(0, 20).join(' ');
+
+                cy.get('textarea[placeholder="Vkbi djsa---"]')
+                    .type(words, { delay: 500 })
+                    .then(() => {
+                        cy.wait(14000);
+                    });
+            });
 
         // === Mangal Typing Test ===
         cy.log('Starting Mangal typing test');

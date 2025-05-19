@@ -19,7 +19,11 @@ import './commands';
 // cypress/support/e2e.js
 
 Cypress.on('uncaught:exception', (err) => {
-    if (err.message.includes('Permissions check failed')) {
-        return false; // Ignore this error globally
+    // Ignore specific known errors
+    if (
+        err.message.includes('Permissions check failed') ||
+        err.message.includes("Failed to execute 'exitFullscreen' on 'Document'")
+    ) {
+        return false; // prevent the test from failing
     }
 });

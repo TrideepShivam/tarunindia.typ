@@ -1,19 +1,20 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import FullScreenBtn, { exitFullscreen } from '../../components/fullScreenBtn/FullScreenBtn';
+import { Context } from '../../ContextAPI';
 import logo from '../../assets/logo-reverse.svg';
 import Button from '../../components/button/Button';
-import TextContent from '../../components/textContent/TextContent';
-import Timer from '../../components/timer/Timer';
-import ToggleDarkLight from '../../components/toggleDarkLight/ToggleDarkLight';
-import WordCount from '../../components/wordCount/WordCount';
-import { Context } from '../../ContextAPI';
-import Hyperlink from '../../components/hyperlink/Hyperlink';
-import Textbox from '../../components/textbox/Textbox';
-import Percentage from '../../components/resultDetail/percentage/Percentage';
 import Card from '../../components/card/Card';
 import CardContainer from '../../components/cardContainer/CardContainer';
-import './Try.css';
+import FullScreenBtn, { exitFullscreen } from '../../components/fullScreenBtn/FullScreenBtn';
+import Hyperlink from '../../components/hyperlink/Hyperlink';
 import Share from '../../components/share/Share';
+import Textbox from '../../components/textbox/Textbox';
+import ToggleDarkLight from '../../components/toggleDarkLight/ToggleDarkLight';
+import TextContent from '../../components/textContent/TextContent';
+import Timer from '../../components/timer/Timer';
+import WordCount from '../../components/wordCount/WordCount';
+import Percentage from '../../components/resultDetail/percentage/Percentage';
+
+import './Try.css';
 
 const stories = {
     English: `A long time ago, during a devastating spell of dry weather, there was a thirsty crow who was desperate for a drink of water. The poor crow flew and flew in search of a means to quench his thirst. From one place to another place he went, until, at long last, when he could fly no further, he came upon a large pitcher of water at the base of a tree. Overjoyed, the thirsty crow thrust its jet-black beak inside to drink his fill. But, alas! the pitcher had a narrow neck. Try as he might, the despairing crow couldn't get his head far enough inside. To his dismay, he realized the water was out of reach. The thirsty crow cried out and flapped his wings in anguish. He attempted to knock the pitcher over. But to no avail. It was too heavy for his weary, dehydrated body to budge. The crow was on the verge of exhaustion and ready to fly elsewhere. But then an idea came to him. Around the base of the pitcher he seen some small round pebbles. Picking them up, one by one, the thirsty crow dropped them into the pitcher. Again and again he placed these stones inside. And with every extra pebble, the water level began to rise. His idea worked. Eventually, after much toil, the water rose so high inside the pitcher that the clever crow was able to drink his fill and state his thirst for good. Then he flew away for his work.`,

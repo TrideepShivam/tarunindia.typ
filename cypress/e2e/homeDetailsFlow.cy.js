@@ -12,7 +12,45 @@ describe('All Visible Literals on Home Page', () => {
         'Tarun India Typing',
         'A typing test Platform to Learn, Grow & Earn',
         'Register',
-        'Explore',
+        'for Free',
+        'Demo',
+    ];
+
+    const demoLiterals = [
+        'Welcome to',
+        'Typathon',
+        'Take',
+        '1 min',
+        'typing test for English and Krutidev',
+        'Enter Your Name',
+        'Choose Language',
+        'English',
+        'Krutidev',
+        'Start',
+        'Go to Home',
+        'Mangal font',
+        'is available after',
+        'Login',
+    ];
+
+    const resultLiterals = [
+        'Share result',
+        'Accuracy',
+        '%',
+        'Well done,',
+        'Total Errors',
+        'Errors',
+        'Language',
+        'Words per min',
+        'Keystrokes per min',
+        'Total words',
+        'Login',
+        'Mangal Font is also available.',
+        'typathon.com',
+        'WPM',
+        'KPM',
+        'Try again',
+        'Know more',
     ];
 
     const bottomLiterals = [
@@ -265,6 +303,101 @@ describe('All Visible Literals on Home Page', () => {
             cy.contains(text, { matchCase: false }).scrollIntoView();
             cy.contains(text, { matchCase: false }).should('exist').and('be.visible');
         });
+    });
+
+    it('Try Demo Typing', () => {
+        cy.wait(100);
+        cy.contains('Demo').click();
+        cy.url().should('include', '/demo');
+        demoLiterals.forEach((text) => {
+            cy.contains(new RegExp(text, 'i')).should('be.visible');
+        });
+        cy.contains('Go to Home').click();
+        cy.url().should('include', '/');
+        cy.contains('Demo').click();
+        cy.url().should('include', '/demo');
+        cy.contains('Login ').click();
+        cy.url().should('include', '/login');
+        cy.contains('Home').click();
+        cy.url().should('include', '/');
+        cy.contains('Demo').click();
+        cy.url().should('include', '/demo');
+
+        // Test for English typing
+        cy.get('.textboxContainer input').type('Kumar').should('have.value', 'Kumar');
+        cy.contains('button', 'Start').click();
+
+        cy.get('p.textContent')
+            .invoke('text')
+            .then((text) => {
+                const words = text.split(' ').slice(0, 20).join(' ');
+                cy.get('textarea[placeholder="start typing..."]')
+                    .type(words, { delay: 500 })
+                    .then(() => {
+                        cy.wait(8000);
+                    });
+            });
+
+        resultLiterals.forEach((text) => {
+            cy.contains(new RegExp(text, 'i')).scrollIntoView({ duration: 50 });
+            cy.contains(new RegExp(text, 'i')).should('exist').and('be.visible');
+        });
+        cy.contains('KUMAR').scrollIntoView({ duration: 50 }).should('exist').and('be.visible');
+        cy.contains('English').scrollIntoView({ duration: 50 }).should('exist').and('be.visible');
+        cy.contains('Share result').scrollIntoView({ duration: 50 }).should('exist').and('be.visible').click();
+
+        cy.get('.popUpContent')
+            .should('exist')
+            .within(() => {
+                cy.contains('Share result');
+                cy.contains('DOWNLOAD');
+                cy.contains('COPY LINK');
+                cy.contains('FACEBOOK');
+                cy.contains('LINKEDIN');
+            });
+
+        cy.get('.popUpContent .circleButton').click();
+        cy.contains('Try again').scrollIntoView({ duration: 50 }).should('exist').and('be.visible').click();
+
+        // Test for Krutidev typing
+        cy.get('.textboxContainer input').type('Shivam').should('have.value', 'Shivam');
+        cy.get('a.bordered-theme').contains('Krutidev').click();
+        cy.contains('button', 'Start').click();
+
+        cy.get('p.textContent')
+            .invoke('text')
+            .then((text) => {
+                const words = text.split(' ').slice(0, 20).join(' ');
+                cy.get('textarea[placeholder="Vkbi djsa---"]')
+                    .type(words, { delay: 500 })
+                    .then(() => {
+                        cy.contains('Pause').click();
+                        cy.wait(1000);
+                        cy.contains('Resume').click();
+                        cy.wait(12000);
+                    });
+            });
+
+        resultLiterals.forEach((text) => {
+            cy.contains(new RegExp(text, 'i')).scrollIntoView({ duration: 50 });
+            cy.contains(new RegExp(text, 'i')).should('exist').and('be.visible');
+        });
+        cy.contains('SHIVAM').scrollIntoView({ duration: 50 }).should('exist').and('be.visible');
+        cy.contains('Krutidev').scrollIntoView({ duration: 50 }).should('exist').and('be.visible');
+        cy.contains('Share result').scrollIntoView({ duration: 50 }).should('exist').and('be.visible').click();
+
+        cy.get('.popUpContent')
+            .should('exist')
+            .within(() => {
+                cy.contains('Share result');
+                cy.contains('DOWNLOAD');
+                cy.contains('COPY LINK');
+                cy.contains('FACEBOOK');
+                cy.contains('LINKEDIN');
+            });
+
+        cy.get('.popUpContent .circleButton').click();
+        cy.contains('Know more').scrollIntoView({ duration: 50 }).should('exist').and('be.visible').click();
     });
 
     it('should navigate to /contents when "Contents" is clicked', () => {
