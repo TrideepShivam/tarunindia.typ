@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from 'react';
+import FullScreenBtn, { exitFullscreen } from '../../components/fullScreenBtn/FullScreenBtn';
 import logo from '../../assets/logo-reverse.svg';
 import Button from '../../components/button/Button';
-import FullScreenBtn from '../../components/fullScreenBtn/FullScreenBtn';
 import TextContent from '../../components/textContent/TextContent';
 import Timer from '../../components/timer/Timer';
 import ToggleDarkLight from '../../components/toggleDarkLight/ToggleDarkLight';
@@ -115,7 +115,7 @@ const Try = () => {
         }
     };
     const timeOut = () => {
-        setOreintation();
+        exitFullscreen();
         setTypingDisabled(true);
         setSwitchPage(true);
     };
@@ -126,7 +126,7 @@ const Try = () => {
     if (switchPage && second == 60) {
         return (
             <div className="tryFrontContainer">
-                <img src={logo} alt="" />
+                <img width={'200em'} src={logo} alt="" />
                 <div className="tryFormContainer">
                     <h1>
                         Welcome to <span className="highlight">Typathon</span>

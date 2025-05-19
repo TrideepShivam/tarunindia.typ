@@ -81,9 +81,9 @@ const Home = () => {
                 <p>
                     <Hyperlink href="/register" value="Register" /> for Free
                 </p>
-                <div style={{ fontSize:'1.5em',paddingTop:'.5em'}}>
+                <div style={{ fontSize: '1.5em', paddingTop: '.5em' }}>
                     <Hyperlink
-                        type='themed'
+                        type="themed"
                         href="/demo"
                         value="Demo"
                         icon="https://img.icons8.com/ios/18/color/external-link.png"
