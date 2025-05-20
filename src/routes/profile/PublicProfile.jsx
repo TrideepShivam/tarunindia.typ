@@ -5,14 +5,26 @@ import Hyperlink from '../../components/hyperlink/Hyperlink';
 import Loading from '../../components/loading/Loading';
 import useAuthInterceptor from '../../hooks/useAuthInterceptor';
 import { useParams } from 'react-router-dom';
-
-import './PublicProfile.css';
 import { format } from 'date-fns';
 import TypingDetails from './typingDetails/TypingDetails';
+import useMetaTags from '../../hooks/useMetaTags';
+
+import './PublicProfile.css';
 
 const PublicProfile = () => {
     const { id } = useParams();
     useAuthInterceptor();
+    useMetaTags({
+        title: 'SEO Optimized Page',
+        description: 'This page has dynamic meta tags for better SEO',
+        keywords: 'React, SEO, Open Graph',
+        robots: 'index, follow',
+        'og:title': 'Typing practice platform by Tarun India',
+        'og:description': 'Hey, using this web app to improve my typing speed in English and Hindi.',
+        'og:image': 'https://typathon.com/assets/logo-reverse-BI2gGMJY.svg',
+        'og:url': 'https://typathon.com',
+    });
+
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
 
