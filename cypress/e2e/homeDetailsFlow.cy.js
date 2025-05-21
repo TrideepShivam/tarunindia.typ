@@ -447,8 +447,9 @@ describe('All Visible Literals on Home Page', () => {
         cy.url().should('include', '/pricing');
         cy.wait(100);
         faqItems.forEach(({ question, answer }) => {
+            cy.wait(50);
             cy.contains(question).click();
-            cy.wait(200);
+            cy.wait(100);
             cy.contains(answer).should('be.visible');
         });
     });

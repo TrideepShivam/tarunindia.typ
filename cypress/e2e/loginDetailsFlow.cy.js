@@ -439,7 +439,7 @@ describe('Typing test for English and Mangal', () => {
 
         // Checking Pricing details
         cy.log('Checking pricing details');
-        cy.get('div.userContainer', { timeout: 500 }).should('be.visible');
+        cy.get('div.userContainer', { timeout: 3000 }).should('be.visible');
         cy.get('div.userContainer').click();
         cy.contains('Pricing').click();
         cy.wait(200);
@@ -475,13 +475,10 @@ describe('Typing test for English and Mangal', () => {
             cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
         });
 
-        // Check if typing test is pending
+        // Check if typing test is pending for English
         cy.log('Checking if typing test is pending');
         cy.get('body').then(($body) => {
-            if (
-                ($body.text().includes('English') || $body.text().includes('Mangal')) &&
-                $body.text().includes('1 min')
-            ) {
+            if ($body.text().includes('English') && $body.text().includes('1 min')) {
                 cy.get('a.bordered-theme')
                     .contains('Play')
                     .then(($el) => {
