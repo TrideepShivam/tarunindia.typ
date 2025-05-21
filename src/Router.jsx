@@ -1,4 +1,5 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 import About from './routes/about/About';
 import Admin from './routes/admin/Admin';
 import AdminDashboard from './routes/admin/dashboard/Dashboard';
@@ -9,7 +10,6 @@ import NotFound from './routes/error/NotFound';
 import Events from './routes/events/Events';
 import ForgotPassword from './routes/forgotPassword/ForgotPassword';
 import SetPassword from './routes/forgotPassword/SetPassword';
-import Home from './routes/home/Home';
 import InProgress from './routes/inProgress/InProgress';
 import AdminDashboardLayout from './routes/layouts/adminDashboardLayout/AdminDashboardLayout';
 import DashboardLayout from './routes/layouts/dashboardLayout/DashboardLayout';
@@ -25,6 +25,15 @@ import Results from './routes/results/Results';
 import Support from './routes/support/Support';
 import PublicProfile from './routes/profile/PublicProfile';
 import Try from './routes/try/Try';
+import Loading from './components/loading/Loading';
+
+const Home = lazy(() => import('./routes/home/Home'));
+
+const suspense = (Component) => (
+    <Suspense fallback={<Loading />}>
+        <Component />
+    </Suspense>
+);
 
 const Router = createBrowserRouter([
     {
@@ -32,7 +41,7 @@ const Router = createBrowserRouter([
         element: <LoginRegisterLayout />,
         errorElement: <NotFound />,
         children: [
-            { path: '/', element: <Home /> },
+            { path: '/', element: suspense(Home) },
             { path: '/login', element: <Login /> },
             { path: '/register', element: <Register /> },
             { path: '/admin', element: <Admin /> },

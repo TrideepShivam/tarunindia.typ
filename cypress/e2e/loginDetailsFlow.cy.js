@@ -167,6 +167,40 @@ describe('Typing test for English and Mangal', () => {
         'Accuracy',
     ];
 
+    const analyticsLiterals = [
+        'Advance Analytics',
+        'Filter',
+        'Dashboard',
+        'Average WPM',
+        'Highest WPM',
+        'Average KPM',
+        'Highest KPM',
+        'Average Accuracy',
+        'Total Attempts',
+        'WPM',
+        'KPM',
+        'Tests',
+        'Daily test Counts',
+        'Accuracy',
+        'Progress Report',
+        'Joined on',
+    ];
+
+    const filterLiterals = [
+        'Filter analytics',
+        'Easily filter your data based on duration and language to get more relevant results.',
+        'Language',
+        'English',
+        'Mangal',
+        'Krutidev',
+        'Duration',
+        '1 min',
+        '10 min',
+        '5 min',
+        'See Results',
+        'Leave',
+    ];
+
     const playgroundLiterals = [
         'PLAYGROUND',
         'Welcome to',
@@ -333,6 +367,19 @@ describe('Typing test for English and Mangal', () => {
             cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
         });
 
+        // Checking Advance Analytics
+        cy.log('Checking advance analytics');
+        cy.contains('Advance Analytics').click();
+        analyticsLiterals.forEach((item) => {
+            cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
+        });
+        cy.contains('Filter').click();
+        filterLiterals.forEach((item) => {
+            cy.contains(item, { matchCase: false }).scrollIntoView().should('be.visible');
+        });
+        cy.contains('Leave').click();
+        cy.contains('Dashboard').click();
+
         // Checking Profile items
         cy.log('Checking profile items');
         cy.get('div.userContainer', { timeout: 1000 }).should('be.visible');
@@ -477,40 +524,87 @@ describe('Typing test for English and Mangal', () => {
 
         // Check if typing test is pending
         cy.log('Checking if typing test is pending');
-        cy.get('body').then(($body) => {
-            if (
-                ($body.text().includes('English') || $body.text().includes('Mangal')) &&
-                $body.text().includes('1 min')
-            ) {
-                cy.get('a.bordered-theme')
-                    .contains('Play')
-                    .then(($el) => {
-                        if ($el.is(':visible')) {
-                            cy.wrap($el).click();
-                            cy.url().should('include', '/play/');
-                        }
-                    });
+        // Check if typing test is pending for English
+        cy.get('table.pendingDataTable tbody tr')
+            .first()
+            .then(($row) => {
+                const cells = $row.find('td');
+                const language = cells.eq(1).text().trim();
+                const duration = cells.eq(2).text().trim();
+                if (language === 'English' && duration === '1 min') {
+                    cy.wrap(cells).last().find('a.bordered-theme').should('be.visible').click();
+                    cy.url().should('include', '/play/');
+                    cy.contains('Skip', { timeout: 10000 }).should('be.visible').click();
+                    cy.get('p.textContent')
+                        .invoke('text')
+                        .then((text) => {
+                            const words = text.split(' ').slice(0, 20).join(' ');
+                            cy.get('textarea[placeholder="start typing..."]')
+                                .type(words, { delay: 500 })
+                                .then(() => {
+                                    cy.wait(15000);
+                                });
+                        });
+                    cy.log('Checking playground details');
+                    cy.get('a.navigation[href="/playground"]').should('be.visible').click();
+                    cy.wait(200);
+                }
+            });
 
-                cy.contains('Skip', { timeout: 10000 }).should('be.visible');
-                cy.contains('Skip').click();
+        // Check if typing test is pending for Mangal
+        cy.get('table.pendingDataTable tbody tr')
+            .first()
+            .then(($row) => {
+                const cells = $row.find('td');
+                const language = cells.eq(1).text().trim();
+                const duration = cells.eq(2).text().trim();
+                if (language === 'Mangal' && duration === '1 min') {
+                    cy.wait(100);
+                    cy.wrap(cells).last().find('a.bordered-theme').should('be.visible').click();
+                    cy.url().should('include', '/play/');
+                    cy.contains('Skip', { timeout: 10000 }).should('be.visible').click();
+                    cy.get('p.textContent')
+                        .invoke('text')
+                        .then((text) => {
+                            const words = text.split(' ').slice(0, 20).join(' ');
+                            cy.get('textarea[placeholder="start typing..."]')
+                                .type(words, { delay: 500 })
+                                .then(() => {
+                                    cy.wait(15000);
+                                });
+                        });
+                    cy.log('Checking playground details');
+                    cy.get('a.navigation[href="/playground"]').should('be.visible').click();
+                    cy.wait(200);
+                }
+            });
 
-                cy.get('p.textContent')
-                    .invoke('text')
-                    .then((text) => {
-                        const words = text.split(' ').slice(0, 20).join(' ');
-
-                        cy.get('textarea[placeholder="start typing..."]')
-                            .type(words, { delay: 500 })
-                            .then(() => {
-                                cy.wait(15000);
-                            });
-                    });
-
-                cy.log('Checking playground details');
-                cy.get('a.navigation[href="/playground"]').should('be.visible').click();
-                cy.wait(200);
-            }
-        });
+        // Check if typing test is pending for Krutidev
+        cy.get('table.pendingDataTable tbody tr')
+            .first()
+            .then(($row) => {
+                const cells = $row.find('td');
+                const language = cells.eq(1).text().trim();
+                const duration = cells.eq(2).text().trim();
+                if (language === 'Krutidev' && duration === '1 min') {
+                    cy.wrap(cells).last().find('a.bordered-theme').should('be.visible').click();
+                    cy.url().should('include', '/play/');
+                    cy.contains('Skip', { timeout: 10000 }).should('be.visible').click();
+                    cy.get('p.textContent')
+                        .invoke('text')
+                        .then((text) => {
+                            const words = text.split(' ').slice(0, 20).join(' ');
+                            cy.get('textarea[placeholder="Vkbi djsa---"]')
+                                .type(words, { delay: 500 })
+                                .then(() => {
+                                    cy.wait(15000);
+                                });
+                        });
+                    cy.log('Checking playground details');
+                    cy.get('a.navigation[href="/playground"]').should('be.visible').click();
+                    cy.wait(200);
+                }
+            });
 
         // Checking the dropdowns
         cy.log('Checking the dropdowns');
