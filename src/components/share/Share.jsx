@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import html2canvas from 'html2canvas';
 import PopUpContainer from '../popUpContainer/PopUpContainer';
 import CircleButton from '../circleButton/CircleButton';
+import { Context } from '../../ContextAPI';
 
 import './Share.css';
 
@@ -12,6 +13,7 @@ const Share = ({
     style = { top: '.5em', right: '.5em' },
 }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const { setMsg } = useContext(Context);
 
     const handleDownload = async () => {
         let node = null;
@@ -21,7 +23,10 @@ const Share = ({
             node = document.getElementById(className) || document.querySelector(`.${className}`);
         }
         if (!node) {
-            alert('Something went wrong! Please try again.');
+            setMsg({
+                status: 'Error',
+                message: 'Something went wrong! Please try again.',
+            });
             return;
         }
         try {
@@ -32,16 +37,25 @@ const Share = ({
             link.href = dataUrl;
             link.click();
         } catch (error) {
-            console.error('Download failed', error);
+            setMsg({
+                status: 'Error',
+                message: 'Download failed Please try again.',
+            });
         }
     };
 
     const handleCopyLink = async () => {
         try {
             await navigator.clipboard.writeText(shareableUrl);
-            alert('Link copied to clipboard!');
+            setMsg({
+                status: 'Success',
+                message: 'Link copied to clipboard!',
+            });
         } catch (error) {
-            console.error('Failed to copy', error);
+            setMsg({
+                status: 'Error',
+                message: 'Failed to copy link. Please try again.',
+            });
         }
     };
 
