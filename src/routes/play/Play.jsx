@@ -303,7 +303,7 @@ const Play = () => {
                     checkpoint={checkpoint}
                 />
                 <WordCount value={wordCount} />
-                <Button value={'Restart'} style={{ width: '80%' }} onClick={() => window.location.reload()} />
+                <Button value={'Restart'} onClick={() => window.location.reload()} />
                 <Button
                     value={!pauseTimer ? 'Pause' : 'Resume'}
                     transparancy={true}

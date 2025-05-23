@@ -153,7 +153,7 @@ const Home = () => {
                         </div>
                     ))}
                 </div>
-                <Button value="JOIN NOW" onClick={() => navigate('/login')} style={{ width: 22 + 'vh' }}></Button>
+                <Button value="JOIN NOW" onClick={() => navigate('/login')}></Button>
             </BlurImgDiv>
 
             <div className="workFlow">
