@@ -1,0 +1,62 @@
+.hero{
+    padding:4em;
+    display:flex;
+    gap:1em;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient(var(--light-transparent-color), var(--transparent-color)),
+                url(../../../assets/wavy-background.svg);
+    background-size:cover;
+
+    .heroContent{
+        width:40%;
+        min-width: 40%;
+        display:flex;
+        gap:.5em;
+        flex-direction: column;
+
+        .heroTitle{
+            background: linear-gradient(100deg, var(--theme-color), #5000ff 80%);
+            background-clip: text;
+            color:transparent;
+            font-size: 5em;
+        }
+
+        .heroButtonContainer{
+            padding:.5em 0em;
+            font-size: 1.2em;
+            display: flex;
+            gap:1em;
+            align-items: center;
+        }
+    }
+
+    .heroImg{
+        animation:shakeing 5s infinite;
+    }
+}
+
+@keyframes shakeing {
+    0%{transform: translatey(0);}
+    50%{transform: translatey(1em);}
+    100%{transform: translatey(0);}
+}
+
+@media only screen and (width <=900px){
+	.hero{
+        padding:4em 1.5em;
+        flex-direction: column;
+
+        .heroContent{
+            width:100%;
+
+            .heroButtonContainer{
+                flex-direction: column;
+            }
+        }
+
+        .heroImg{
+            width:120%;
+        }
+    }
+}
