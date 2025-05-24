@@ -55,6 +55,7 @@ const SetPassword = () => {
                     if (response.status == 200) {
                         setIsRequested(true);
                     }
+                    setPassword('');
                     setLoading(false);
                 })
                 .catch((response) => {
@@ -79,7 +80,7 @@ const SetPassword = () => {
             heading="Reset Password"
             subheading="Reset your typ-A-thon account Password"
         >
-            {isRequested ? (
+            {!isRequested ? (
                 <>
                     <p style={{ textAlign: 'left', margin: '0 1em' }}>
                         <span className="highlight">Note: </span>Password must be at least 8 character long and must
